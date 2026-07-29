@@ -14,7 +14,7 @@
 | **Owner** | Product Owner, AEOS |
 | **Author** | Chief Product Architect, AEOS |
 | **Audience** | Product owner, engineering contributors, AI runtimes consuming this repository |
-| **Suggested path** | `docs/product/PRD.md` |
+| **Suggested path** | `docs/foundation/PRD.md` |
 | **Companion documents** | `AEOS_VISION.md` (AEOS-VISION) · `AEOS_GLOSSARY.md` (AEOS-GLOSSARY) · `AEOS_DOCUMENT_STANDARD.md` (AEOS-DOCSTD) · `AEOS_SUPPORTED_TECHNOLOGIES.md` (AEOS-TECH) |
 | **Supersedes** | None |
 

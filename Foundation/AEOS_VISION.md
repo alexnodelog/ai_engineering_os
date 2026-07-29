@@ -14,7 +14,7 @@
 | **Owner** | Product Owner, AEOS |
 | **Author** | Chief Product Strategist and Vision Architect, AEOS |
 | **Audience** | Product owner, contributors, adopters, educators, and future maintainers of AEOS |
-| **Suggested path** | `docs/product/VISION.md` |
+| **Suggested path** | `docs/foundation/VISION.md` |
 | **Companion documents** | `AEOS_PRODUCT_REQUIREMENTS.md` (AEOS-PRD) |
 | **Supersedes** | AEOS-VISION 1.0.0 |
 

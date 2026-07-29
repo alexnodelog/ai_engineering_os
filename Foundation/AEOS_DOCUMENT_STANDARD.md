@@ -14,7 +14,7 @@
 | **Owner** | Product Owner, AEOS |
 | **Author** | Documentation Governance Board, AEOS |
 | **Audience** | AI systems, contributors, maintainers, reviewers, and documentation authors |
-| **Suggested path** | `docs/product/DOCUMENT_STANDARD.md` |
+| **Suggested path** | `docs/foundation/DOCUMENT_STANDARD.md` |
 | **Companion documents** | `AEOS_VISION.md` (AEOS-VISION) · `AEOS_PRODUCT_REQUIREMENTS.md` (AEOS-PRD) · `AEOS_GLOSSARY.md` (AEOS-GLOSSARY) · `AEOS_SUPPORTED_TECHNOLOGIES.md` (AEOS-TECH) |
 | **Supersedes** | AEOS-DOCSTD 2.0.0 |
 

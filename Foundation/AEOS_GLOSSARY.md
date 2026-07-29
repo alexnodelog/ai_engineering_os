@@ -14,7 +14,7 @@
 | **Owner** | Product Owner, AEOS |
 | **Author** | Chief Information Architect and Terminology Authority, AEOS |
 | **Audience** | Architects, contributors, maintainers, documentation authors, and AI runtimes consuming this repository |
-| **Suggested path** | `docs/product/GLOSSARY.md` |
+| **Suggested path** | `docs/foundation/GLOSSARY.md` |
 | **Companion documents** | `AEOS_VISION.md` (AEOS-VISION) · `AEOS_PRODUCT_REQUIREMENTS.md` (AEOS-PRD) · `AEOS_DOCUMENT_STANDARD.md` (AEOS-DOCSTD) · `AEOS_SUPPORTED_TECHNOLOGIES.md` (AEOS-TECH) |
 | **Supersedes** | AEOS-GLOSSARY 1.0.0 |
 

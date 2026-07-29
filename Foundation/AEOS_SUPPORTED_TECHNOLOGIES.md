@@ -14,7 +14,7 @@
 | **Owner** | Product Owner, AEOS |
 | **Author** | Chief Technology Officer and Technology Governance Authority, AEOS |
 | **Audience** | Developers, architects, maintainers, contributors, and AI Runtimes consuming this repository |
-| **Suggested path** | `docs/product/SUPPORTED_TECHNOLOGIES.md` |
+| **Suggested path** | `docs/foundation/SUPPORTED_TECHNOLOGIES.md` |
 | **Companion documents** | AEOS-PRD · AEOS-VISION · AEOS-GLOSSARY · AEOS-DOCSTD |
 | **Supersedes** | AEOS-TECH 1.0.0 |
 
