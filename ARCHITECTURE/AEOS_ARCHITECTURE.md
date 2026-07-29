@@ -182,6 +182,34 @@ responsibilities assigned to them in [Section 4](#4-architectural-layer-model). 
 AEOS-GLOSSARY is proposed in [Section 13.5](#135-proposed-glossary-additions), as AEOS-GLOSSARY rule
 `W4` requires. Until the owner acts on that proposal, this document is their only authority.
 
+### 2.7 Architectural Stability
+
+For long-term governance, AEOS distinguishes between architectural elements that are intentionally frozen and those intentionally designed for future extension.
+
+### Frozen Architectural Invariants
+
+The following architectural elements are considered stable throughout the AEOS 1.x lifecycle unless explicitly revised by Owner decision.
+
+- Architectural layer structure
+- Layer responsibilities
+- Dependency direction
+- Repository-first architecture
+- Human-in-the-Loop architecture
+- Architectural boundaries
+- Architecture Rules (AR-*)
+
+
+### Architectural Extension Points
+
+The following architectural areas are intentionally designed for future extension without changing the architectural model.
+
+- Runtime implementations
+- Runtime adapters
+- Capability registries
+- Repository asset categories
+- Platform integrations
+- Project templates
+
 ---
 
 ## 3. Architectural Principles
@@ -502,6 +530,40 @@ above it.
 
 Reverse dependencies are prohibited. So is any cycle, however indirect. The normative statements are
 `AR-DEP-001` through `AR-DEP-006` in [Section 8.3](#83-dependency-invariants).
+
+```mermaid
+graph TD
+
+Human["Human Layer"]
+
+Workflow["Workflow Layer"]
+
+Context["Context Layer"]
+
+Runtime["Runtime Layer"]
+
+Adapter["Adapter Layer"]
+
+Execution["Execution Layer"]
+
+Repository["Repository Layer"]
+
+External["External AI Layer"]
+
+Human --> Workflow
+
+Workflow --> Context
+
+Context --> Runtime
+
+Runtime --> Adapter
+
+Adapter --> External
+
+Runtime --> Execution
+
+Execution --> Repository
+```
 
 ### 5.2 The Dependency Graph
 
