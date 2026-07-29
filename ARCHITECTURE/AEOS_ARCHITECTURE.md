@@ -10,7 +10,7 @@
 | **Product** | AI Engineering Operating System (AEOS) |
 | **Document ID** | AEOS-ARCH |
 | **Version** | 1.1.0 |
-| **Status** | Final freeze candidate — awaiting owner approval |
+| **Status** | Frozen |
 | **Owner** | Product Owner, AEOS |
 | **Author** | Chief Software Architect, AEOS |
 | **Audience** | Architects, engineering contributors, maintainers, reviewers, and AI runtimes consuming this repository |
