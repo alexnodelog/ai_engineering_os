@@ -443,9 +443,9 @@ point where a decision is required.
 </table>
 
 Two things sit outside every layer and are named here so that no reader places them inside one: the
-**Environment**, which belongs to the user, and the **Tools** the Execution Layer orchestrates —
-version control, build and test tooling, delivery systems, and the rest. AEOS acts upon them, is a
-guest among them, and contains none of them.
+**Environment**, which belongs to the user, and the **Tools** the Execution Layer orchestrates, such as
+version control, build and test tooling, and delivery systems. AEOS acts upon them, is a guest
+among them, and contains none of them.
 
 ### 4.3 Layer Responsibilities
 
@@ -615,7 +615,7 @@ the audit record complete rather than approximately complete.
 ### 4.4 Permitted Interactions
 
 A layer may address only the counterparties listed for it. Every other interaction is prohibited.
-This table is complete.
+This table is complete, and the rule that binds it is <code>AR-LAY-004</code>.
 
 <table>
 <thead>
@@ -702,7 +702,8 @@ the one place that knows what was proposed and what remains outstanding.
 ### 5.1 What the Repository Layer Holds
 
 The Repository Layer holds two kinds of content and refuses a third. The distinction is drawn by
-AEOS-PRD as a product distinction; this section states its structural consequence.
+AEOS-PRD as a product distinction; this section states its structural consequence. The rule that
+binds this table is <code>AR-REP-002</code>.
 
 <table>
 <thead>
@@ -1210,7 +1211,7 @@ extension.
 <tr><th align="left">Extension point</th><th align="left">What it admits</th><th align="left">Layer that consumes it</th></tr>
 </thead>
 <tbody>
-<tr><td><strong>Repository Assets of an existing kind</strong></td><td>Additional Rules, Skills, Prompts, Workflows, Templates, Profiles, and documents.</td><td>Repository Layer, resolved to the layer that needs them.</td></tr>
+<tr><td><strong>Repository Assets of an existing kind</strong></td><td>Additional assets of kinds already in use, among them Rules, Skills, Prompts, Workflows, Templates, Profiles, and documents.</td><td>Repository Layer, resolved to the layer that needs them.</td></tr>
 <tr><td><strong>Repository Assets of a new kind</strong></td><td>A kind of asset the Product did not enumerate, carrying the same six elements every asset carries.</td><td>Repository Layer.</td></tr>
 <tr><td><strong>Runtime adapters</strong></td><td>Support for an additional Runtime, including categories that do not yet exist.</td><td>Adapter Layer.</td></tr>
 <tr><td><strong>Project conventions</strong></td><td>Project-defined documentation and prompt conventions that override defaults within their scope.</td><td>Repository Layer, applied by the layer that owns the concern.</td></tr>
@@ -1224,14 +1225,14 @@ Extensions add. They never subtract, and they never grant themselves authority.
 
 <table>
 <thead>
-<tr><th align="left">Prohibition</th><th align="left">Reason</th></tr>
+<tr><th align="left">Prohibition</th><th align="left">Carried by</th><th align="left">Reason</th></tr>
 </thead>
 <tbody>
-<tr><td>An extension MUST NOT remove, weaken, or bypass an Approval Gate.</td><td>The gates are the product. An extension able to remove one would make every guarantee conditional on what is installed.</td></tr>
-<tr><td>An extension MUST NOT introduce a layer, a dependency, or a permitted interaction.</td><td>The layer model is what every other guarantee is expressed in terms of.</td></tr>
-<tr><td>An extension MUST NOT create a path to inference other than through the Runtime Layer and an adapter.</td><td>A second path would make the disclosure obligation unenforceable.</td></tr>
-<tr><td>An extension MUST NOT hold durable product meaning outside the Repository Layer.</td><td>A project would then depend on something its repository does not contain.</td></tr>
-<tr><td>An extension MUST NOT act other than through the interaction loop and its Action Class.</td><td>Supervision applies to what AEOS does, not to what AEOS shipped with.</td></tr>
+<tr><td>An extension MUST NOT remove, weaken, or bypass an Approval Gate.</td><td><code>AR-EXT-003</code></td><td>The gates are the product. An extension able to remove one would make every guarantee conditional on what is installed.</td></tr>
+<tr><td>An extension MUST NOT introduce a layer, a dependency, or a permitted interaction.</td><td><code>AR-EXT-004</code></td><td>The layer model is what every other guarantee is expressed in terms of.</td></tr>
+<tr><td>An extension MUST NOT create a path to inference other than through the Runtime Layer and an adapter.</td><td><code>AR-EXT-004</code></td><td>A second path would make the disclosure obligation unenforceable.</td></tr>
+<tr><td>An extension MUST NOT hold durable product meaning outside the Repository Layer.</td><td><code>AR-BND-004</code></td><td>A project would then depend on something its repository does not contain.</td></tr>
+<tr><td>An extension MUST NOT act other than through the interaction loop and its Action Class.</td><td><code>AR-EXT-005</code></td><td>Supervision applies to what AEOS does, not to what AEOS shipped with.</td></tr>
 </tbody>
 </table>
 
@@ -1854,9 +1855,10 @@ or Major findings remain.
 
 ## Appendix A — Architecture Diagrams
 
-**Appendix A is non-normative.** Each diagram restates material stated normatively in the sections
-above, and the table beneath each diagram carries the same information in text. Where a diagram and
-the document body appear to differ, the body governs.
+**Appendix A is non-normative.** Each diagram restates material stated normatively in
+[Section 4](#4-architectural-layers) through [Section 12](#12-architectural-boundaries), and the
+table beneath each diagram carries the same information in text. Where a diagram and the document
+body appear to differ, the body governs.
 
 ### A.1 The Layer Model
 
@@ -2044,7 +2046,7 @@ differs from those sections, they govern.
 
 <table>
 <thead>
-<tr><th align="left">Layer</th><th align="left">Kind</th><th align="left">Single responsibility</th><th align="left">Named responsibility discharged</th><th align="left">Owns</th><th align="left">MUST NOT</th><th align="left">Depends on</th><th align="left">Primary traces</th></tr>
+<tr><th align="left">Layer</th><th align="left">Kind</th><th align="left">Single responsibility</th><th align="left">Named responsibility discharged</th><th align="left">Owns</th><th align="left">Excluded from this layer</th><th align="left">Depends on</th><th align="left">Primary traces</th></tr>
 </thead>
 <tbody>
 <tr>
