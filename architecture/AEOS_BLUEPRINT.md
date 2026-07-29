@@ -10,7 +10,7 @@
 | **Product** | AI Engineering Operating System (AEOS) |
 | **Document ID** | AEOS-BLUEPRINT |
 | **Version** | 1.1.0 |
-| **Status** | Freeze candidate |
+| **Status** | Frozen |
 | **Owner** | Product Owner, AEOS |
 | **Author** | Chief System Architect, AEOS |
 | **Audience** | Architects, specification authors, maintainers, contributors, and AI runtimes consuming this repository |
