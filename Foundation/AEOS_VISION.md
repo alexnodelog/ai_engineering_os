@@ -10,7 +10,7 @@
 | **Product** | AI Engineering Operating System (AEOS) |
 | **Document ID** | AEOS-VISION |
 | **Version** | 1.0.1 |
-| **Status** | Freeze candidate — awaiting owner approval |
+| **Status** | Frozen |
 | **Owner** | Product Owner, AEOS |
 | **Author** | Chief Product Strategist and Vision Architect, AEOS |
 | **Audience** | Product owner, contributors, adopters, educators, and future maintainers of AEOS |

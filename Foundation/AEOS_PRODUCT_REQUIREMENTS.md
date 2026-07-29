@@ -10,7 +10,7 @@
 | **Product** | AI Engineering Operating System (AEOS) |
 | **Document ID** | AEOS-PRD |
 | **Version** | 1.1.1 |
-| **Status** | Freeze candidate — awaiting owner approval |
+| **Status** | Frozen |
 | **Owner** | Product Owner, AEOS |
 | **Author** | Chief Product Architect, AEOS |
 | **Audience** | Product owner, engineering contributors, AI runtimes consuming this repository |

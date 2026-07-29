@@ -10,7 +10,7 @@
 | **Product** | AI Engineering Operating System (AEOS) |
 | **Document ID** | AEOS-DOCSTD |
 | **Version** | 3.0.0 |
-| **Status** | Freeze candidate — awaiting owner approval |
+| **Status** | Frozen |
 | **Owner** | Product Owner, AEOS |
 | **Author** | Documentation Governance Board, AEOS |
 | **Audience** | AI systems, contributors, maintainers, reviewers, and documentation authors |

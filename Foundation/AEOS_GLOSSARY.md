@@ -10,7 +10,7 @@
 | **Product** | AI Engineering Operating System (AEOS) |
 | **Document ID** | AEOS-GLOSSARY |
 | **Version** | 1.0.1 |
-| **Status** | Freeze candidate — awaiting owner approval |
+| **Status** | Frozen |
 | **Owner** | Product Owner, AEOS |
 | **Author** | Chief Information Architect and Terminology Authority, AEOS |
 | **Audience** | Architects, contributors, maintainers, documentation authors, and AI runtimes consuming this repository |

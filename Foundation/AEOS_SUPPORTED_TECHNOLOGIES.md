@@ -10,7 +10,7 @@
 | **Product** | AI Engineering Operating System (AEOS) |
 | **Document ID** | AEOS-TECH |
 | **Version** | 1.0.1 |
-| **Status** | Freeze candidate — awaiting owner approval |
+| **Status** | Frozen |
 | **Owner** | Product Owner, AEOS |
 | **Author** | Chief Technology Officer and Technology Governance Authority, AEOS |
 | **Audience** | Developers, architects, maintainers, contributors, and AI Runtimes consuming this repository |
