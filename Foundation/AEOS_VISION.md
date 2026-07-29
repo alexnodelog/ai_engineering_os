@@ -1024,10 +1024,10 @@ philosophy is enforced in practice, at the level of an individual contribution.
 
 ## 10. Future Direction
 
-These are directions of travel, not commitments. Each names a problem AEOS expects to keep working
-on, and deliberately names no mechanism, technology, timeline, or design. Nothing here is approved
-work; everything here would require an owner decision and a place in the product definition before it
-became real.
+These are directions of travel, not commitments. 
+Each names an enduring engineering challenge that AEOS expects to address over time, while deliberately avoiding commitments to specific mechanisms, technologies, timelines, or designs.
+The following observations describe the long-term direction of AEOS. They are not commitments to future product capabilities, implementation strategies, or product roadmaps.
+
 
 <details>
 <summary><strong>Better AI orchestration</strong></summary>
