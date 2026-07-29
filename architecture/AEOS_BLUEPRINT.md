@@ -9,14 +9,14 @@
 | **Document** | Blueprint |
 | **Product** | AI Engineering Operating System (AEOS) |
 | **Document ID** | AEOS-BLUEPRINT |
-| **Version** | 1.0.0 |
+| **Version** | 1.1.0 |
 | **Status** | Freeze candidate |
 | **Owner** | Product Owner, AEOS |
 | **Author** | Chief System Architect, AEOS |
 | **Audience** | Architects, specification authors, maintainers, contributors, and AI runtimes consuming this repository |
 | **Suggested path** | `docs/architecture/BLUEPRINT.md` |
 | **Companion documents** | `AEOS_VISION.md` (AEOS-VISION) · `AEOS_PRODUCT_REQUIREMENTS.md` (AEOS-PRD) · `AEOS_GLOSSARY.md` (AEOS-GLOSSARY) · `AEOS_DOCUMENT_STANDARD.md` (AEOS-DOCSTD) · `AEOS_SUPPORTED_TECHNOLOGIES.md` (AEOS-TECH) · `AEOS_ARCHITECTURE.md` (AEOS-ARCH) |
-| **Supersedes** | None |
+| **Supersedes** | AEOS-BLUEPRINT 1.0.0 |
 
 > **Authority of this document.**
 > This document defines the **internal structural decomposition of AEOS**: the subsystems within each
@@ -145,9 +145,8 @@ and AEOS-ARCH. Conformance is asserted, not assumed, and takes a specific form i
 | AEOS-TECH | No technology is named. Where a subsystem's realization will require a technology, the choice is recognized by AEOS-TECH and is made below this layer. |
 | AEOS-ARCH | The Architecture Layers decomposed in [Sections 7](#7-repository-blueprint--bp-rep) to [13](#13-human-interaction-blueprint--bp-hum) are those AEOS-ARCH establishes. This document divides them; it does not create, rename, merge, or retire any of them. |
 
-Where any of those documents states something this document contradicts, that document governs, the
-contradiction is a defect here, and it is resolved at the owning document under
-[Section 20.5](#205-precedence).
+Where any of those documents and this one differ, that document governs.
+[Section 20.5](#205-precedence) states the resolution for each case.
 
 ### 2.4 Applicability
 
@@ -169,6 +168,62 @@ Two matters are recorded here as finished statements rather than left to a reade
 | :--- | :--- | :--- |
 | D1 | **Subsystem labels are not terminology.** | The subsystem labels introduced in [Sections 7](#7-repository-blueprint--bp-rep) to [13](#13-human-interaction-blueprint--bp-hum) name positions within this Blueprint's decomposition. They are structural labels, not AEOS terms: they define no concept, confer no capability, and carry authority only within this document. Where a label would become general AEOS vocabulary used outside this document, its addition MUST be proposed to AEOS-GLOSSARY under rule `T5` rather than assumed from use here. |
 | D2 | **Identifier form.** | Blueprint Rules use the identifier shape `BP-<AREA>-<NNN>` required by AEOS-GLOSSARY Section 6.4, not a flat `BP-<NNN>` series. A flat series would not survive the addition of a second Blueprint document and would leave the `AREA` allocation unregistered, which rule `I3` prohibits. |
+
+### 2.6 Position in the Document Hierarchy
+
+**This subsection is a summary for orientation.** AEOS-DOCSTD Section 4 owns the documentation
+hierarchy and is the statement of record for it. Nothing here is to be relied upon in place of that
+document; where the two differ, AEOS-DOCSTD governs.
+
+A reader who knows where this document sits knows what it may say. The layer above decides what
+structure exists. The layer below states what each behavior must do. This Blueprint is the layer
+between them.
+
+```mermaid
+flowchart TD
+  VIS["AEOS Vision - why the product exists"]
+  PRD["AEOS Product Requirements - what the product is and must do"]
+  ARC["AEOS Architecture - how the product is structured"]
+  BLU["AEOS Blueprint - how that structure is organized internally"]
+  SPE["AEOS Specification - how each behavior must work, precisely"]
+  IMP["Implementation - the code and tests that realize the layers above"]
+  FND["Foundational: AEOS-GLOSSARY, AEOS-DOCSTD, AEOS-TECH"]
+
+  VIS --> PRD
+  PRD --> ARC
+  ARC --> BLU
+  BLU --> SPE
+  SPE --> IMP
+  FND -.- PRD
+  FND -.- ARC
+  FND -.- BLU
+  FND -.- SPE
+  FND -.- IMP
+```
+
+The same information, stated without the diagram:
+
+| Layer | Question it answers | Relationship to this document |
+| :--- | :--- | :--- |
+| AEOS Vision | Why the product exists and what must never change about it | Bounds what this document may propose. |
+| AEOS Product Requirements | What the product is and what it must do | Every Blueprint Rule traces to it. |
+| AEOS Architecture | How the product is structured | Establishes the layers this document decomposes. |
+| **AEOS Blueprint** | **How that structure is organized internally** | **This document.** |
+| AEOS Specification | How each behavior must work, precisely and testably | Written against the boundaries this document fixes. |
+| Implementation | What code and tests realize the layers above | Traces through the Specification to this document and to `PR-` identifiers. |
+| AEOS-GLOSSARY · AEOS-DOCSTD · AEOS-TECH | What terms mean, how documents are written, what technologies are recognized | Foundational. They serve every layer at once rather than deriving from the layer above, which is why they are drawn beside the chain and not within it. |
+
+> **The Blueprint is the bridge between Architecture and Specification.**
+> Architecture decides that a layer exists and why. Specification states what a behavior in that layer
+> must do, precisely enough to be tested. Neither act divides a layer into the parts that hold its
+> responsibilities, and a Specification written before that division is settled fixes a boundary
+> nobody agreed to. This Blueprint performs that division: it defines the internal structural
+> organization of AEOS — the subsystems within each layer, what each is responsible for, and which may
+> depend on which — and hands the Specification a boundary to be written against.
+
+The boundaries against the layers immediately above and below are stated in full in
+[Section 17](#17-blueprint-and-specification-boundary) and
+[Section 18](#18-blueprint-and-runtime-boundary).
 
 ---
 
@@ -342,18 +397,22 @@ product behavior, and never states how a behavior works, which is specification.
 This document registers the following `AREA` codes under AEOS-GLOSSARY rule `I3`. An area is
 allocated once and is not reused with a different meaning at any layer.
 
-| Area | Names | Registered by |
-| :--- | :--- | :--- |
-| `PRN` | Blueprint principles | This document |
-| `REP` | Repository arrangement | This document, consistent with the repository area of AEOS-PRD |
-| `WFL` | Workflow arrangement | This document, consistent with the workflow area of AEOS-PRD |
-| `CTX` | Context arrangement | This document |
-| `RUN` | Runtime coordination arrangement | This document, consistent with the runtime area of AEOS-PRD |
-| `ADP` | Adapter arrangement | This document |
-| `EXE` | Execution arrangement | This document |
-| `HUM` | Human interaction arrangement | This document |
-| `EXT` | Extension model | This document |
-| `GOV` | Blueprint-wide constraints | This document |
+| Area | Names | Registered by | Identifiers | Stated in |
+| :--- | :--- | :--- | :--- | :--- |
+| `PRN` | Blueprint principles | This document | `BP-PRN-001`–`BP-PRN-012` | [Section 3](#3-blueprint-principles--bp-prn) |
+| `REP` | Repository arrangement | This document, consistent with the repository area of AEOS-PRD | `BP-REP-001`–`BP-REP-014` | [Section 7.8](#78-blueprint-rules) |
+| `WFL` | Workflow arrangement | This document, consistent with the workflow area of AEOS-PRD | `BP-WFL-001`–`BP-WFL-016` | [Section 8.8](#88-blueprint-rules) |
+| `CTX` | Context arrangement | This document | `BP-CTX-001`–`BP-CTX-012` | [Section 9.8](#98-blueprint-rules) |
+| `RUN` | Runtime coordination arrangement | This document, consistent with the runtime area of AEOS-PRD | `BP-RUN-001`–`BP-RUN-013` | [Section 10.8](#108-blueprint-rules) |
+| `ADP` | Adapter arrangement | This document | `BP-ADP-001`–`BP-ADP-012` | [Section 11.8](#118-blueprint-rules) |
+| `EXE` | Execution arrangement | This document | `BP-EXE-001`–`BP-EXE-014` | [Section 12.8](#128-blueprint-rules) |
+| `HUM` | Human interaction arrangement | This document | `BP-HUM-001`–`BP-HUM-013` | [Section 13.8](#138-blueprint-rules) |
+| `EXT` | Extension model | This document | `BP-EXT-001`–`BP-EXT-010` | [Section 16.3](#163-blueprint-rules) |
+| `GOV` | Blueprint-wide constraints | This document | `BP-GOV-001`–`BP-GOV-028` | [Sections 6.3](#63-identifier-stability), [15](#15-blueprint-ownership-matrix), [17.3](#173-blueprint-rules), [18.2](#182-blueprint-rules), and [19](#19-blueprint-constraints--bp-gov) |
+
+*See also: [Appendix A — Blueprint Identifier Index](#appendix-a--blueprint-identifier-index) for
+counts, and [Appendix B — Traceability Summary](#appendix-b--traceability-summary) for the product
+requirement families each area traces to.*
 
 ### 6.3 Identifier Stability
 
@@ -410,6 +469,8 @@ deciding what an asset means, which the assets themselves and AEOS-PRD state.
 | Asset kind | The registration of kinds and the openness of the set. |
 | Repository state | Its observation and interpretation, never its modification. |
 | Decision record | The custody of proposals, decisions, and executions as durable artifacts. |
+
+*See also: [Section 15 — Blueprint Ownership Matrix](#15-blueprint-ownership-matrix), which consolidates this layer's ownership alongside every other layer's, and names the document holding definitional authority for each term involved.*
 
 ### 7.5 Inbound Dependencies
 
@@ -510,6 +571,8 @@ Blueprint performs; or reaching a Runtime, which the Runtime Blueprint reaches.
 | Rule and Skill application | The point at which each is applied. What each is, is owned by AEOS-PRD. |
 | Engineering Capability | The declaration of what a step requires. Its meaning is owned by AEOS-GLOSSARY. |
 
+*See also: [Section 15 — Blueprint Ownership Matrix](#15-blueprint-ownership-matrix), which consolidates this layer's ownership alongside every other layer's, and names the document holding definitional authority for each term involved.*
+
 ### 8.5 Inbound Dependencies
 
 None. No Blueprint Layer depends on the Workflow Blueprint. Orchestration is not a service that other
@@ -601,6 +664,8 @@ occurs at all, which the Workflow Blueprint decides.
 | Sensitivity exclusion | The determination of what is excluded from a composition. |
 | Composition size | Its measurement, as material for disclosure. |
 
+*See also: [Section 15 — Blueprint Ownership Matrix](#15-blueprint-ownership-matrix), which consolidates this layer's ownership alongside every other layer's, and names the document holding definitional authority for each term involved.*
+
 ### 9.5 Inbound Dependencies
 
 | Depending layer | For |
@@ -685,6 +750,8 @@ AEOS never performs.
 | Availability | The record of what is reachable, as observed. |
 | Degradation | The determination of what remains available in absence. |
 
+*See also: [Section 15 — Blueprint Ownership Matrix](#15-blueprint-ownership-matrix), which consolidates this layer's ownership alongside every other layer's, and names the document holding definitional authority for each term involved.*
+
 ### 10.5 Inbound Dependencies
 
 | Depending layer | For |
@@ -768,6 +835,8 @@ suitability against another, which the arrangement does not do at all.
 | Capability advertisement | The statement of one Runtime's offer in neutral terms. |
 | Mediation | The conversion of requests, results, and faults in both directions. |
 | Adapter admission | The additive path by which an adapter enters use. |
+
+*See also: [Section 15 — Blueprint Ownership Matrix](#15-blueprint-ownership-matrix), which consolidates this layer's ownership alongside every other layer's, and names the document holding definitional authority for each term involved.*
 
 ### 11.5 Inbound Dependencies
 
@@ -856,6 +925,8 @@ none of which AEOS provides; or reporting to a person, which the Human Interacti
 | Outcome | Its observation, including partial completion and failure. |
 | Reversibility | Its assessment, as material for a proposal. |
 | Platform difference | Its absorption, so that it is not visible above this layer. |
+
+*See also: [Section 15 — Blueprint Ownership Matrix](#15-blueprint-ownership-matrix), which consolidates this layer's ownership alongside every other layer's, and names the document holding definitional authority for each term involved.*
 
 ### 12.5 Inbound Dependencies
 
@@ -951,6 +1022,8 @@ performs; or choosing a surface, which lies below this Blueprint entirely.
 | Explanation | Its assembly, and the separation of fact from inference within it. |
 | Status | The assembly of workflow position and outstanding decisions. |
 | Report | The assembly of what actually happened. |
+
+*See also: [Section 15 — Blueprint Ownership Matrix](#15-blueprint-ownership-matrix), which consolidates this layer's ownership alongside every other layer's, and names the document holding definitional authority for each term involved.*
 
 ### 13.5 Inbound Dependencies
 
@@ -1095,6 +1168,15 @@ The same information, stated without the diagram:
 
 ## 15. Blueprint Ownership Matrix
 
+*Each concern below is decomposed in the section of its owning layer:
+[Repository](#7-repository-blueprint--bp-rep) ·
+[Workflow](#8-workflow-blueprint--bp-wfl) ·
+[Context](#9-context-blueprint--bp-ctx) ·
+[Runtime](#10-runtime-blueprint--bp-run) ·
+[Adapter](#11-adapter-blueprint--bp-adp) ·
+[Execution](#12-execution-blueprint--bp-exe) ·
+[Human Interaction](#13-human-interaction-blueprint--bp-hum).*
+
 The matrix states, for each structural concern, which Blueprint Layer owns it and which document
 owns the meaning of the terms involved. Structural ownership and definitional authority are different
 things and are never merged.
@@ -1180,6 +1262,28 @@ An extension point is not a place where the arrangement may be bypassed. Each of
 adds material that the arrangement then treats exactly as it treats material that arrived any other
 way: an admitted Workflow is gated like every Workflow, an admitted adapter is disclosed like every
 adapter, an admitted asset is held under the same custody boundary as every asset.
+
+> **On seams and plug-ins.** *This note is non-normative. It explains the five classes above and
+> extends nothing.*
+>
+> The five extension classes are **architectural seams**, not implementation plug-ins. The
+> distinction is worth stating because the two are easily confused and the confusion is expensive.
+>
+> A plug-in is a place where behavior is injected into a running system: it is a property of a
+> realization, it is discovered at a moment in time, and adding one is a question of what the
+> software permits. A seam is a place where the arrangement itself was drawn so that material could
+> be added without the arrangement changing. It is a property of the structure, not of any
+> realization of it, and it exists in this document because the boundary was placed deliberately —
+> the Adapter Blueprint contains all Runtime-specific knowledge so that a Runtime can be added; the
+> Repository Blueprint registers asset kinds so that a kind can be added; the Human Interaction
+> Blueprint is independent of any surface so that a surface can be added.
+>
+> Three consequences follow. A seam is stated before anything is built, and a Specification is
+> written against it rather than discovering it. A seam constrains what an extension may not change,
+> which a plug-in interface has no vocabulary to express. And the count of seams is small and
+> deliberate: five classes exist because five boundaries were drawn, not because five were convenient.
+> A sixth kind of extension is therefore a proposal to draw a new boundary, which is a change to this
+> Blueprint under [Section 20.2](#202-change-control) — not a gap in an interface to be filled.
 
 ### 16.3 Blueprint Rules
 
@@ -1363,7 +1467,8 @@ responsibility it does not own, or states an arrangement that would cause incorr
 
 | Version | Status | Summary |
 | :--- | :--- | :--- |
-| 1.0.0 | Freeze candidate | Initial Blueprint. Establishes twelve Blueprint principles, seven Blueprint Layers arranged in four dependency tiers, the internal subsystem decomposition of each layer with its responsibilities, owned concepts, inbound and outbound dependencies and extension points, the Blueprint dependency and subsystem relationship diagrams, the Blueprint ownership matrix, a five-class extension model, the boundaries against the Specification and Runtime layers, and the Blueprint-wide constraints. Registers ten `AREA` codes and 144 Blueprint identifiers. Introduces no product requirement, no terminology, no Architecture Layer, and no technology. |
+| 1.0.0 | Superseded | Initial Blueprint. Establishes twelve Blueprint principles, seven Blueprint Layers arranged in four dependency tiers, the internal subsystem decomposition of each layer with its responsibilities, owned concepts, inbound and outbound dependencies and extension points, the Blueprint dependency and subsystem relationship diagrams, the Blueprint ownership matrix, a five-class extension model, the boundaries against the Specification and Runtime layers, and the Blueprint-wide constraints. Registers ten `AREA` codes and 144 Blueprint identifiers. Introduces no product requirement, no terminology, no Architecture Layer, and no technology. |
+| 1.1.0 | Freeze candidate | Documentation-quality pass following Architecture Review. Adds Section 2.6 recording this document's position in the documentation hierarchy, marked as a summary of the hierarchy AEOS-DOCSTD owns. Adds identifier ranges and section references to the registered areas table in Section 6.2. Adds ownership-matrix cross references to each of the seven layer sections and reciprocal layer references to Section 15. Adds a non-normative note to Section 16.2 explaining the five extension classes as architectural seams rather than implementation plug-ins. Reduces the restatement of precedence in Section 2.3 to a reference. No scope, principle, subsystem, responsibility, ownership assignment, dependency edge, tier, extension class, Blueprint Rule, identifier, trace, or governance decision was changed, and no identifier was added, retired, or renumbered. |
 
 ---
 
@@ -1410,4 +1515,4 @@ traces to. The authoritative trace is the *Traces to* column beside each rule in
 
 **End of Blueprint**
 
-AEOS-BLUEPRINT · Version 1.0.0 · Blueprint Source of Truth
+AEOS-BLUEPRINT · Version 1.1.0 · Blueprint Source of Truth
