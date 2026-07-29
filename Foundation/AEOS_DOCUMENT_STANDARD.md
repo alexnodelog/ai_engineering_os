@@ -9,14 +9,14 @@
 | **Document** | Document Standard |
 | **Product** | AI Engineering Operating System (AEOS) |
 | **Document ID** | AEOS-DOCSTD |
-| **Version** | 2.0.0 |
+| **Version** | 3.0.0 |
 | **Status** | Freeze candidate — awaiting owner approval |
 | **Owner** | Product Owner, AEOS |
-| **Author** | Documentation Standards Board, AEOS |
+| **Author** | Documentation Governance Board, AEOS |
 | **Audience** | AI systems, contributors, maintainers, reviewers, and documentation authors |
 | **Suggested path** | `docs/product/DOCUMENT_STANDARD.md` |
-| **Companion documents** | `AEOS_VISION.md` (AEOS-VISION) · `AEOS_PRODUCT_REQUIREMENTS.md` (AEOS-PRD) · `AEOS_GLOSSARY.md` (AEOS-GLOSSARY) |
-| **Supersedes** | AEOS-DOCSTD 1.0.0 |
+| **Companion documents** | `AEOS_VISION.md` (AEOS-VISION) · `AEOS_PRODUCT_REQUIREMENTS.md` (AEOS-PRD) · `AEOS_GLOSSARY.md` (AEOS-GLOSSARY) · `AEOS_SUPPORTED_TECHNOLOGIES.md` (AEOS-TECH) |
+| **Supersedes** | AEOS-DOCSTD 2.0.0 |
 
 > **Authority of this document.**
 > This document defines *how* AEOS documentation is written. It is normative for the **form,
@@ -292,7 +292,7 @@ contradict documents above it.
         AEOS-DOCSTD            How documentation is written
               |
               v
-        TECHNOLOGY CATALOG     What technologies the project recognizes
+        AEOS-TECH              What technologies the project recognizes
               |
               v
         ARCHITECTURE           How the product is structured
@@ -382,13 +382,17 @@ normative vocabulary, format rules, readability conventions, source-of-truth rul
 
 **Does not contain:** anything about the product itself.
 
-#### Technology Catalog
+#### Technology Catalog — AEOS-TECH
+
+The Technology Catalog is represented by the document `AEOS_SUPPORTED_TECHNOLOGIES.md`, which serves
+as the authoritative technology governance document within AEOS.
 
 **Answers:** Which technologies, runtimes, and tooling does the project recognize, and what is the
 recorded status of each?
 
-**Contains:** an inventory with the recorded status of each entry — recognized, adopted, evaluated,
-or declined — and the reasoning attached to that status.
+**Contains:** an inventory of the technologies the project recognizes, the recorded status of each,
+and the reasoning attached to that status. The statuses themselves, and the process by which they
+change, are defined by that document and are not restated here.
 
 **Stability:** moderate. The technology landscape changes; the catalog is expected to record that.
 
@@ -628,6 +632,11 @@ through markup: headings, lists, tables, and fenced blocks are the structure, an
 legible to a person reading rendered output, a person reading raw text, and a runtime parsing the
 file.
 
+GitHub-Flavored Markdown (GFM), as defined by GitHub, is the official documentation format of AEOS.
+Adopting a published format specification is not a platform dependency: the format is plain text,
+its constructs carry their meaning without a renderer, and a document written to it remains usable
+wherever Markdown is read.
+
 | # | Rule |
 | :--- | :--- |
 | F1 | Every AEOS document MUST be a Markdown file with the `.md` extension. |
@@ -635,7 +644,7 @@ file.
 | F3 | A document MUST render correctly without any external asset, stylesheet, or script. |
 | F4 | A document MUST remain meaningful as plain text when no renderer is present. |
 | F5 | *Retired in 2.0.0.* Previously permitted HTML wherever Markdown could not express the structure, without further constraint. Replaced by F13 and the exception procedure in [Section 8.3](#83-raw-html). |
-| F12 | GitHub-Flavored Markdown is the official AEOS documentation format. Documents MUST use standard Markdown constructs wherever a standard construct expresses the required structure. |
+| F12 | GitHub-Flavored Markdown, as defined by GitHub, is the official AEOS documentation format. Documents MUST use standard Markdown constructs wherever a standard construct expresses the required structure. |
 | F13 | Raw HTML is prohibited unless Markdown cannot express the required structure. A normal AEOS document contains no HTML tags. |
 | F14 | A document MUST render cleanly in the environments listed in [Section 8.5](#85-rendering-targets) without requiring HTML rendering. |
 | F15 | Markdown tables are the preferred table format and MUST be used for tabular content. |
@@ -665,6 +674,8 @@ anything else first checks whether one of these expresses the intent.
 | Links | Internal section references and references to other documents. |
 | Horizontal rules (`---`) | Separating major sections. |
 | Mermaid blocks | Diagrams, expressed as a fenced `mermaid` block. |
+
+The vocabulary above changes only under rule E9 in [Section 13.2](#132-rules-of-evolution).
 
 A Mermaid diagram is written as a fenced block, so that a renderer without Mermaid support displays
 readable source rather than a broken element. The following is a non-normative illustration of the
@@ -961,6 +972,15 @@ changes through a process proportionate to what depends on it.
 | E6 | A change that alters what a document owns is a change to this Standard, not to the document. |
 | E7 | An improvement that would alter a frozen document's concepts is recorded as a recommendation for a future release and applied only after explicit owner approval. |
 | E8 | Every change to a frozen document MUST update that document's version and revision history. |
+| E9 | New Markdown syntax is not adopted automatically. A construct becomes available to AEOS documentation only after it is supported by GitHub-Flavored Markdown, and only after its adoption is approved through AEOS documentation governance. |
+
+Rule E9 governs the construct vocabulary in
+[Section 8.2](#82-standard-markdown-constructs). Both conditions are required and neither
+substitutes for the other: support by GitHub-Flavored Markdown establishes that a construct exists
+in the adopted format, and approval establishes that AEOS documentation uses it. Until both hold, an
+author writes with the constructs already listed. A proposal to add one follows the change control in
+[Section 14.2](#142-change-control), where the addition of a permitted format construct is a Major
+change.
 
 ### 13.3 Versioning
 
@@ -1021,7 +1041,8 @@ or Major findings remain.
 | Version | Status | Summary |
 | :--- | :--- | :--- |
 | 1.0.0 | Superseded | Initial documentation standard. Established twelve documentation principles, a ten-layer documentation hierarchy with responsibility boundaries, writing style conventions, adoption of RFC 2119 normative language with a five-keyword working set, an HTML-in-Markdown format standard with permitted elements and prohibitions, AI and human readability conventions, source-of-truth and referencing rules, the draft-to-freeze lifecycle with four finding classes, evolution rules, a document template, and a recommended section ordering. Introduced no requirement, terminology, capability, or architecture. |
-| 2.0.0 | Freeze candidate | Format policy revision only. Replaced the HTML-in-Markdown policy with a GitHub-Flavored Markdown First policy: human readability takes priority, AI readability is achieved through standard Markdown structure, GFM is the official format, standard constructs are used wherever possible, raw HTML is prohibited unless Markdown cannot express the required structure, Mermaid remains officially supported, and Markdown tables are preferred. Added rules F12 to F17 and rendering targets; retired F2, F5, and F10 in place under E3. Renamed Section 8 from "HTML-in-Markdown Standard" to "Documentation Format Standard" and updated the dependent guidance in Sections 2.1, 9, 10, and both appendices. Converted the document's own construction to GFM so that the Standard conforms to itself. No principle, hierarchy, responsibility, ownership, source-of-truth rule, lifecycle rule, or governance rule was changed. |
+| 2.0.0 | Superseded | Format policy revision only. Replaced the HTML-in-Markdown policy with a GitHub-Flavored Markdown First policy: human readability takes priority, AI readability is achieved through standard Markdown structure, GFM is the official format, standard constructs are used wherever possible, raw HTML is prohibited unless Markdown cannot express the required structure, Mermaid remains officially supported, and Markdown tables are preferred. Added rules F12 to F17 and rendering targets; retired F2, F5, and F10 in place under E3. Renamed Section 8 from "HTML-in-Markdown Standard" to "Documentation Format Standard" and updated the dependent guidance in Sections 2.1, 9, 10, and both appendices. Converted the document's own construction to GFM so that the Standard conforms to itself. No principle, hierarchy, responsibility, ownership, source-of-truth rule, lifecycle rule, or governance rule was changed. |
+| 3.0.0 | Freeze candidate | Governance refinements only. Bound the Technology Catalog layer to its authoritative document, `AEOS_SUPPORTED_TECHNOLOGIES.md` (AEOS-TECH), in the hierarchy diagram and in Section 4.3, and removed the status enumeration that restated content AEOS-TECH owns. Clarified F12 and Section 8.1 to state that GitHub-Flavored Markdown, as defined by GitHub, is the official documentation format of AEOS. Added evolution rule E9 governing the adoption of new Markdown syntax, referenced from Section 8.2. Renamed the Section 4.3 subheading for the Technology Catalog layer to carry its document ID, matching the convention used by the other document-bearing layers. No principle, hierarchy position, responsibility, ownership rule, source-of-truth rule, lifecycle rule, writing convention, or governance rule was changed. |
 
 ---
 
@@ -1166,4 +1187,4 @@ their way through the next one without reading it.
 
 **End of Document Standard**
 
-AEOS-DOCSTD · Version 2.0.0 · Documentation Source of Truth
+AEOS-DOCSTD · Version 3.0.0 · Documentation Source of Truth
