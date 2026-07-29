@@ -1,45 +1,36 @@
-<div align="center">
-
 # AI Engineering Operating System
 
-**AEOS — Vision Document**
+## AEOS — Vision Document
 
 *The enduring statement of why AEOS exists and what it must always remain.*
 
-</div>
-
-<table>
-<thead>
-<tr><th align="left">Field</th><th align="left">Value</th></tr>
-</thead>
-<tbody>
-<tr><td><strong>Document</strong></td><td>Vision Document</td></tr>
-<tr><td><strong>Product</strong></td><td>AI Engineering Operating System (AEOS)</td></tr>
-<tr><td><strong>Document ID</strong></td><td>AEOS-VISION</td></tr>
-<tr><td><strong>Version</strong></td><td>1.0.0</td></tr>
-<tr><td><strong>Status</strong></td><td>Freeze candidate — awaiting owner approval</td></tr>
-<tr><td><strong>Owner</strong></td><td>Product Owner, AEOS</td></tr>
-<tr><td><strong>Author</strong></td><td>Chief Product Strategist and Vision Architect, AEOS</td></tr>
-<tr><td><strong>Audience</strong></td><td>Product owner, contributors, adopters, educators, and future maintainers of AEOS</td></tr>
-<tr><td><strong>Suggested path</strong></td><td><code>docs/product/VISION.md</code></td></tr>
-<tr><td><strong>Companion document</strong></td><td><code>AEOS_PRODUCT_REQUIREMENTS.md</code> (AEOS-PRD)</td></tr>
-<tr><td><strong>Supersedes</strong></td><td>None</td></tr>
-</tbody>
-</table>
+| Field | Value |
+| :--- | :--- |
+| **Document** | Vision Document |
+| **Product** | AI Engineering Operating System (AEOS) |
+| **Document ID** | AEOS-VISION |
+| **Version** | 1.0.1 |
+| **Status** | Freeze candidate — awaiting owner approval |
+| **Owner** | Product Owner, AEOS |
+| **Author** | Chief Product Strategist and Vision Architect, AEOS |
+| **Audience** | Product owner, contributors, adopters, educators, and future maintainers of AEOS |
+| **Suggested path** | `docs/product/VISION.md` |
+| **Companion documents** | `AEOS_PRODUCT_REQUIREMENTS.md` (AEOS-PRD) |
+| **Supersedes** | AEOS-VISION 1.0.0 |
 
 > **Authority of this document.**
 > This document states *why* AEOS exists, what future it intends to serve, and which convictions
 > must survive every future revision of the product. It defines no requirement, no capability,
-> no architecture, and no interface. Where this document and the PRD both speak to a subject,
-> the PRD governs product behavior and this document explains the reasoning behind it.
+> no architecture, and no interface. Where this document and AEOS-PRD both speak to a subject,
+> AEOS-PRD governs product behavior and this document explains the reasoning behind it.
 > Neither document may be used to introduce architecture.
 
 ---
 
 ## Table of Contents
 
-1. [Purpose of This Document](#1-purpose-of-this-document)
-2. [Relationship to the Product Requirements Document](#2-relationship-to-the-product-requirements-document)
+1. [Executive Summary](#1-executive-summary)
+2. [Scope and Applicability](#2-scope-and-applicability)
 3. [Vision Statement](#3-vision-statement)
 4. [Mission](#4-mission)
 5. [Long-Term Vision](#5-long-term-vision)
@@ -55,9 +46,7 @@
 
 ---
 
-<section>
-
-## 1. Purpose of This Document
+## 1. Executive Summary
 
 A product that expects to be maintained for a decade needs two kinds of memory. It needs a record of
 what it must do, which changes as the product matures. And it needs a record of why it was built at
@@ -68,70 +57,59 @@ after the original participants have moved on — can determine whether a propos
 product's reason for existing or quietly undermines it. It is written to be read by that person, and
 by the AI runtimes that will read the repository alongside them.
 
-It answers four questions and no others:
+---
 
-<table>
-<thead>
-<tr><th align="left">Question</th><th align="left">Answered in</th></tr>
-</thead>
-<tbody>
-<tr><td>Why does AEOS exist?</td><td><a href="#3-vision-statement">Vision Statement</a>, <a href="#4-mission">Mission</a></td></tr>
-<tr><td>What future is AEOS trying to create?</td><td><a href="#5-long-term-vision">Long-Term Vision</a>, <a href="#10-future-direction">Future Direction</a></td></tr>
-<tr><td>Which convictions must never change?</td><td><a href="#6-core-philosophy">Core Philosophy</a>, <a href="#12-invariants--what-must-never-change">Invariants</a></td></tr>
-<tr><td>Which values guide every decision?</td><td><a href="#7-design-values">Design Values</a>, <a href="#9-guiding-principles-for-contributors">Guiding Principles</a></td></tr>
-</tbody>
-</table>
+## 2. Scope and Applicability
+
+### 2.1 What This Document Governs
+
+This document answers four questions and no others:
+
+| Question | Answered in |
+| :--- | :--- |
+| Why does AEOS exist? | [Vision Statement](#3-vision-statement), [Mission](#4-mission) |
+| What future is AEOS trying to create? | [Long-Term Vision](#5-long-term-vision), [Future Direction](#10-future-direction) |
+| Which convictions must never change? | [Core Philosophy](#6-core-philosophy), [Invariants](#12-invariants--what-must-never-change) |
+| Which values guide every decision? | [Design Values](#7-design-values), [Guiding Principles](#9-guiding-principles-for-contributors) |
+
+### 2.2 What This Document Does Not Govern
 
 Everything else — capabilities, requirements, structure, mechanism, format, technology — belongs to
 other documents and is deliberately absent here.
 
-</section>
-
----
-
-<section>
-
-## 2. Relationship to the Product Requirements Document
+### 2.3 Relationship to AEOS-PRD
 
 AEOS maintains a small number of documents with strictly separated authority. Two of them are
 product-level.
 
-<table>
-<thead>
-<tr><th align="left"></th><th align="left">AEOS-PRD</th><th align="left">AEOS-VISION (this document)</th></tr>
-</thead>
-<tbody>
-<tr><td><strong>Answers</strong></td><td>What AEOS is and what it must do</td><td>Why AEOS exists and what it must remain</td></tr>
-<tr><td><strong>Contains</strong></td><td>Capabilities, requirements, scope, metrics, phases</td><td>Vision, mission, philosophy, values, non-goals</td></tr>
-<tr><td><strong>Normative for</strong></td><td>Product behavior; downstream documents trace to its identifiers</td><td>Intent; it constrains what may be proposed, never how it is built</td></tr>
-<tr><td><strong>Expected to change</strong></td><td>Yes — requirements are added, refined, and retired under change control</td><td>Rarely — a change here is a change of purpose</td></tr>
-<tr><td><strong>Time horizon</strong></td><td>The current product definition</td><td>The life of the product</td></tr>
-</tbody>
-</table>
+| Aspect | AEOS-PRD | AEOS-VISION (this document) |
+| :--- | :--- | :--- |
+| **Answers** | What AEOS is and what it must do | Why AEOS exists and what it must remain |
+| **Contains** | Capabilities, requirements, scope, metrics, phases | Vision, mission, philosophy, values, non-goals |
+| **Normative for** | Product behavior; downstream documents trace to its identifiers | Intent; it constrains what may be proposed, never how it is built |
+| **Expected to change** | Yes — requirements are added, refined, and retired under change control | Rarely — a change here is a change of purpose |
+| **Time horizon** | The current product definition | The life of the product |
 
-### Reading Rule
+#### Reading Rule
 
-> **Where the two documents address the same subject, the PRD governs behavior and this document
+> **Where the two documents address the same subject, AEOS-PRD governs behavior and this document
 > governs reasoning.**
 > If a statement here appears to grant a capability, impose a requirement, or imply a structure,
 > that is a defect in this document. Report it rather than acting on it.
 
-The PRD establishes thirteen product principles as mandatory constraints on product behavior. This
+AEOS-PRD establishes thirteen product principles as mandatory constraints on product behavior. This
 document does not restate them, weaken them, extend them, or replace them. It explains the
 convictions those principles were derived from, and records additional convictions that guide
-judgment where no requirement applies. [Appendix A](#appendix-a--philosophy-to-product-principle-mapping)
-maps the relationship explicitly so that neither document can be mistaken for the other.
+judgment where no requirement applies.
+[Appendix A](#appendix-a--philosophy-to-product-principle-mapping) maps the relationship explicitly
+so that neither document can be mistaken for the other.
 
-A philosophy in this document that has no counterpart in the PRD is a matter of judgment, not a
+A philosophy in this document that has no counterpart in AEOS-PRD is a matter of judgment, not a
 product obligation. It does not authorize new capability. Ideas that would extend the product belong
-in the PRD's recommendations appendix, under the owner's approval, as the architecture freeze
+in the AEOS-PRD recommendations appendix, under the owner's approval, as the architecture freeze
 requires.
 
-</section>
-
 ---
-
-<section>
 
 ## 3. Vision Statement
 
@@ -155,11 +133,7 @@ the repository, in a form both they and their AI can read.
 AEOS is not a model, and will never become one. It is not a vendor's ecosystem, and will never
 belong to one. It is not an autonomous factory, and will never remove the person who decides.
 
-</section>
-
 ---
-
-<section>
 
 ## 4. Mission
 
@@ -173,49 +147,25 @@ makes it sustainable.
 
 AEOS pursues this mission along four lines.
 
-<table>
-<thead>
-<tr><th align="left">Line</th><th align="left">What AEOS is trying to change</th></tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Make the process explicit</strong></td>
-<td>Engineering practice improvised per session cannot be reviewed, taught, or repeated. AEOS moves the practice out of the individual's habits and into the repository, where it can be read, criticized, and improved.</td>
-</tr>
-<tr>
-<td><strong>Keep the human deciding</strong></td>
-<td>Speed is worthless if nobody understood what happened. AEOS structures work so that the person retains not just veto power but genuine comprehension of what is about to occur.</td>
-</tr>
-<tr>
-<td><strong>Keep verification ahead of generation</strong></td>
-<td>Code can now be written faster than it can be reviewed. Test-first development is the only practice that scales verification at the same rate as production.</td>
-</tr>
-<tr>
-<td><strong>Keep the practice free</strong></td>
-<td>A discipline that belongs to a vendor is borrowed, not owned. AEOS exists so that a team's accumulated engineering knowledge survives every change of tool, model, platform, and employer.</td>
-</tr>
-</tbody>
-</table>
+| Line | What AEOS is trying to change |
+| :--- | :--- |
+| **Make the process explicit** | Engineering practice improvised per session cannot be reviewed, taught, or repeated. AEOS moves the practice out of the individual's habits and into the repository, where it can be read, criticized, and improved. |
+| **Keep the human deciding** | Speed is worthless if nobody understood what happened. AEOS structures work so that the person retains not just veto power but genuine comprehension of what is about to occur. |
+| **Keep verification ahead of generation** | Code can now be written faster than it can be reviewed. Test-first development is the only practice that scales verification at the same rate as production. |
+| **Keep the practice free** | A discipline that belongs to a vendor is borrowed, not owned. AEOS exists so that a team's accumulated engineering knowledge survives every change of tool, model, platform, and employer. |
 
 The mission is complete for a given project when the project can be handed to a stranger — human or
 AI — and the repository alone tells them how it is built, why it is built that way, and what they
 must not break.
 
-</section>
-
 ---
-
-<section>
 
 ## 5. Long-Term Vision
 
 This section describes the world AEOS intends to help create over roughly a decade. It describes
 outcomes, not mechanisms. None of it prescribes how AEOS is built.
 
-<details>
-<summary><strong>AI-assisted engineering becomes a discipline, not a technique</strong></summary>
-
-<br>
+### 5.1 AI-assisted engineering becomes a discipline, not a technique
 
 Today, working with AI is a skill held unevenly by individuals and transmitted informally. In the
 world AEOS is working toward, it is a discipline: taught, documented, versioned, reviewed, and
@@ -225,12 +175,7 @@ happens to be at the keyboard.
 The measure of success is boring and specific — that the quality of AI-assisted work stops depending
 on which developer performed it.
 
-</details>
-
-<details>
-<summary><strong>Human-in-the-Loop development remains normal, not nostalgic</strong></summary>
-
-<br>
+### 5.2 Human-in-the-Loop development remains normal, not nostalgic
 
 There will be sustained pressure to remove the human from the loop, justified by cost, latency, and
 the confidence of increasingly capable systems. AEOS is a standing argument that supervision is not
@@ -241,12 +186,7 @@ It is one where the *decision to delegate* remains a human decision — explicit
 and revocable — rather than a default that arrived without anyone choosing it. Delegation is a thing
 a person does. It is never a thing that happens to them.
 
-</details>
-
-<details>
-<summary><strong>Engineering practice outlives vendors</strong></summary>
-
-<br>
+### 5.3 Engineering practice outlives vendors
 
 The current AI landscape will not be the landscape of a decade from now. Vendors will consolidate,
 disappear, and be replaced. Interfaces will be standardized and then superseded.
@@ -256,12 +196,7 @@ changes a compiler version: deliberately, with a decision recorded, and without 
 works. The rules, the workflows, the accumulated procedures, and the project's memory of its own
 decisions are the team's property and move with them.
 
-</details>
-
-<details>
-<summary><strong>Model choice becomes an ordinary engineering decision</strong></summary>
-
-<br>
+### 5.4 Model choice becomes an ordinary engineering decision
 
 Models improve, deprecate, change price, and change behavior on schedules no project controls.
 AEOS aims at a future where that churn is absorbed rather than tracked — where choosing a model is a
@@ -270,12 +205,7 @@ tuned to the quirks of one generation of one model family.
 
 A practice that only works with one model is not a practice. It is a dependency.
 
-</details>
-
-<details>
-<summary><strong>Platform differences stop being a tax on engineering</strong></summary>
-
-<br>
+### 5.5 Platform differences stop being a tax on engineering
 
 Windows, macOS, and Linux each host serious engineering work, and each hosts developers who have
 grown used to being second-class somewhere. The intended future is one where a project moves between
@@ -284,12 +214,7 @@ carefully they must read the instructions.
 
 This is a commitment about equality of capability, not about uniformity of machines.
 
-</details>
-
-<details>
-<summary><strong>Software development becomes reproducible again</strong></summary>
-
-<br>
+### 5.6 Software development becomes reproducible again
 
 Reproducibility has been eroding for years: dependencies drift, environments diverge, and now the
 generative step itself is non-deterministic. Perfect reproduction of AI output is neither achievable
@@ -300,12 +225,7 @@ process, the same rules, the same tests, and a record of what was decided and wh
 different developer with a different runtime should reach a comparable, verifiable result — and
 should be able to see where their result differs and why.
 
-</details>
-
-<details>
-<summary><strong>Knowledge stops dying in conversations</strong></summary>
-
-<br>
+### 5.7 Knowledge stops dying in conversations
 
 An enormous amount of contemporary engineering reasoning now occurs in chat sessions and is lost
 when they close. The next session — human or AI — begins uninformed, and the project slowly forgets
@@ -315,12 +235,7 @@ AEOS works toward a future in which the repository is where a project's understa
 accumulates. Decisions, constraints, and rationale live beside the code they govern, reviewed like
 code, versioned like code, and readable by the next participant of either kind.
 
-</details>
-
-<details>
-<summary><strong>Sustainable engineering becomes the default posture</strong></summary>
-
-<br>
+### 5.8 Sustainable engineering becomes the default posture
 
 Sustainability here means three things at once: work that a team can maintain years later, work that
 does not consume computation and human attention wastefully, and work that does not accumulate
@@ -329,12 +244,7 @@ unreviewed material faster than anyone can understand it.
 Minimal, deliberate context is part of this. So is the refusal to generate what nobody will read.
 A practice that produces more artifacts than it can maintain is not productive; it is deferred cost.
 
-</details>
-
-<details>
-<summary><strong>Open-source collaboration becomes AI-legible</strong></summary>
-
-<br>
+### 5.9 Open-source collaboration becomes AI-legible
 
 Open-source maintainers increasingly receive contributions produced with tools they did not choose,
 by contributors they have never met, following practices they never stated. The result is review
@@ -345,12 +255,7 @@ both the contributor and their AI runtime read before the first line is written,
 contributions arrive already aligned. This benefits maintainers first and contributors immediately
 after.
 
-</details>
-
-<details>
-<summary><strong>Teams share a practice rather than a toolchain</strong></summary>
-
-<br>
+### 5.10 Teams share a practice rather than a toolchain
 
 Teams currently achieve consistency by standardizing tools, which is fragile: the tool changes, the
 consistency evaporates. AEOS aims at teams that standardize the *practice* — the rules, the
@@ -360,12 +265,7 @@ it.
 An engineering lead should be able to express how the team builds once, in the repository, and have
 it hold for every developer and every runtime without being restated in a meeting.
 
-</details>
-
-<details>
-<summary><strong>Engineering discipline becomes teachable again</strong></summary>
-
-<br>
+### 5.11 Engineering discipline becomes teachable again
 
 A generation of developers is learning to program alongside systems that will write the code for
 them. The risk is not that they will learn nothing; it is that they will learn output without
@@ -376,12 +276,7 @@ first, and whose decisions are recorded is a project a student can learn *from*,
 with. Education is not a feature of the product; it is a consequence of the product being honest
 about how engineering works.
 
-</details>
-
-<details>
-<summary><strong>The repository outlives everything else</strong></summary>
-
-<br>
+### 5.12 The repository outlives everything else
 
 Runtimes, models, machines, distributions, contributors, and eventually AEOS itself are all
 temporary relative to the projects built with them.
@@ -391,27 +286,18 @@ without AEOS running. If the product disappeared tomorrow, the repository would 
 maintainers what the project is, how it is built, and why. Any future in which that stops being true
 is a failure of the vision, however successful the product appears.
 
-</details>
-
-</section>
-
 ---
-
-<section>
 
 ## 6. Core Philosophy
 
 These are the convictions from which the product's principles were derived. Each states what is
-believed and why it is believed — not what the product does about it, which belongs to the PRD.
+believed and why it is believed — not what the product does about it, which belongs to AEOS-PRD.
 
 Where a philosophy corresponds to a mandatory product principle, that correspondence is recorded in
 [Appendix A](#appendix-a--philosophy-to-product-principle-mapping). Where it does not, it is a matter
 of engineering judgment and confers no capability.
 
-<details>
-<summary><strong>6.1 Human-in-the-Loop by Default</strong></summary>
-
-<br>
+### 6.1 Human-in-the-Loop by Default
 
 **The conviction.** Responsibility for software cannot be delegated to a system that cannot be held
 responsible. The person remains accountable for what ships, and accountability without authority is
@@ -427,12 +313,7 @@ does, so the default must be the position that is hardest to recover once lost.
 **Its cost, accepted knowingly.** Supervision is slower than automation at the level of a single
 action. AEOS accepts that cost and works to make it small, never to make it disappear.
 
-</details>
-
-<details>
-<summary><strong>6.2 Explain Before Execute</strong></summary>
-
-<br>
+### 6.2 Explain Before Execute
 
 **The conviction.** An approval given without understanding is not supervision; it is ceremony. The
 obligation therefore falls on the system to be understood, not on the person to figure it out.
@@ -446,12 +327,7 @@ arrives in time either. Trust is destroyed by a pattern, not by an incident.
 **Its standard.** An explanation is adequate when a competent person who was not present for the
 reasoning can predict what will happen and decide against it if they wish.
 
-</details>
-
-<details>
-<summary><strong>6.3 Incremental Execution</strong></summary>
-
-<br>
+### 6.3 Incremental Execution
 
 **The conviction.** Work that advances in small verifiable steps is work that can be inspected while
 it is happening, interrupted without damage, and corrected before the cost of correction compounds.
@@ -463,12 +339,7 @@ work. Small steps convert catastrophes into inconveniences.
 **What it protects.** The ability to change one's mind halfway through, which is a normal part of
 engineering rather than a failure of planning.
 
-</details>
-
-<details>
-<summary><strong>6.4 TDD-first Development</strong></summary>
-
-<br>
+### 6.4 TDD-first Development
 
 **The conviction.** A test written before the implementation is a statement of intent. A test written
 afterward is, too often, a description of whatever was produced. The order is not stylistic; it
@@ -485,12 +356,7 @@ generated.
 **Its application.** This applies to AEOS itself with no exemption. A product that enforces a
 discipline it does not follow is arguing against its own thesis.
 
-</details>
-
-<details>
-<summary><strong>6.5 Repository as Product</strong></summary>
-
-<br>
+### 6.5 Repository as Product
 
 **The conviction.** The repository is not storage for the product. It is the product's durable form —
 the only place where a project's understanding of itself can survive the departure of the people and
@@ -505,12 +371,7 @@ is needed most.
 **Its test.** If losing something costs only repeated work, it was never product knowledge. If losing
 it costs meaning, it should never have lived outside the repository.
 
-</details>
-
-<details>
-<summary><strong>6.6 Documentation as Engineering Asset</strong></summary>
-
-<br>
+### 6.6 Documentation as Engineering Asset
 
 **The conviction.** Documentation is not a description of the work performed after the work is
 finished. It is part of the work, subject to the same review, the same versioning, and the same
@@ -527,12 +388,7 @@ and only the documentation to reconstruct it from.
 **Its consequence.** Incomplete documentation is a defect, not a lower-priority task. A document with
 placeholders is an unfinished artifact and is not shipped.
 
-</details>
-
-<details>
-<summary><strong>6.7 AI as Engineering Partner</strong></summary>
-
-<br>
+### 6.7 AI as Engineering Partner
 
 **The conviction.** An AI runtime is neither a tool that merely executes nor an authority that
 decides. It is a capable participant that contributes work and reasoning within a discipline it did
@@ -550,12 +406,7 @@ human's authority is unambiguous.
 produces. A document that only a human can act on has failed half its audience; a format only a
 machine can read has failed the other half.
 
-</details>
-
-<details>
-<summary><strong>6.8 Transparency over Automation</strong></summary>
-
-<br>
+### 6.8 Transparency over Automation
 
 **The conviction.** When visibility and convenience conflict, visibility wins. A system that does
 more but explains less is a worse system, regardless of how much more it does.
@@ -569,12 +420,7 @@ maintaining it. The failure is never announced; it is discovered later, during a
 **Its rule of thumb.** If a capability can be made either faster or more legible, and only one can be
 chosen, choose legible and work on the speed afterward.
 
-</details>
-
-<details>
-<summary><strong>6.9 Review before Execution</strong></summary>
-
-<br>
+### 6.9 Review before Execution
 
 **The conviction.** Nothing enters the repository — code, configuration, rules, documentation,
 generated or hand-written — without a human having had a real opportunity to reject it.
@@ -590,12 +436,7 @@ part of the project. One concerns intent, the other concerns result. Both are re
 **What it protects.** The repository's right to contain only material someone has taken
 responsibility for.
 
-</details>
-
-<details>
-<summary><strong>6.10 Context Minimization</strong></summary>
-
-<br>
+### 6.10 Context Minimization
 
 **The conviction.** Sending everything is not thoroughness; it is the absence of a decision about
 what matters.
@@ -610,12 +451,7 @@ information was needed.
 
 **Its standard.** Every inclusion should have a reason its author could state on request.
 
-</details>
-
-<details>
-<summary><strong>6.11 Independence as a Design Constraint</strong></summary>
-
-<br>
+### 6.11 Independence as a Design Constraint
 
 **The conviction.** A practice that depends on a specific vendor, runtime, model, platform, or
 installation method is borrowed rather than owned, and will be repossessed on someone else's
@@ -631,12 +467,7 @@ changing how they work.
 **Its honest cost.** Independence forecloses the deepest possible integration with any single
 ecosystem. AEOS accepts being second-best at exclusivity in exchange for being first at durability.
 
-</details>
-
-<details>
-<summary><strong>6.12 Safety by Default</strong></summary>
-
-<br>
+### 6.12 Safety by Default
 
 **The conviction.** The safe path must be the path taken by default, and the unsafe path must require
 a deliberate act. Uncertainty resolves toward asking, never toward proceeding.
@@ -651,12 +482,7 @@ outweighs a great deal of correct behavior.
 **Its stance.** A guest does not rearrange the house. It does not remove what it did not install, and
 it does not treat something it fails to recognize as something to be fixed.
 
-</details>
-
-<details>
-<summary><strong>6.13 Extensibility by Design</strong></summary>
-
-<br>
+### 6.13 Extensibility by Design
 
 **The conviction.** A system that must be modified in order to be extended will eventually be forked,
 and every fork is a permanent maintenance liability for someone.
@@ -671,12 +497,7 @@ inheriting the burden of maintaining AEOS.
 **Its test.** If a common extension requires understanding how AEOS works internally, extensibility
 has failed regardless of how many extension points exist.
 
-</details>
-
-<details>
-<summary><strong>6.14 Simplicity over Cleverness</strong></summary>
-
-<br>
+### 6.14 Simplicity over Cleverness
 
 **The conviction.** The reader of a system is not its author. Every clever solution transfers effort
 from the person who wrote it to everyone who ever maintains it, and there are always more of the
@@ -691,12 +512,7 @@ increasingly by participants — human and AI — who were never told what the t
 **Its trade.** AEOS will accept a longer, plainer solution over a shorter, subtler one whenever the
 two are otherwise equivalent, and will treat that as a win rather than a compromise.
 
-</details>
-
-<details>
-<summary><strong>6.15 Explicit over Implicit</strong></summary>
-
-<br>
+### 6.15 Explicit over Implicit
 
 **The conviction.** Behavior that is inferred, implied, or conventional is behavior nobody agreed to.
 What matters must be stated.
@@ -711,12 +527,7 @@ project's own understanding of itself.
 
 **Its consequence.** Silence is never consent, in approvals or anywhere else.
 
-</details>
-
-<details>
-<summary><strong>6.16 Long-term Maintainability</strong></summary>
-
-<br>
+### 6.16 Long-term Maintainability
 
 **The conviction.** The correct time horizon for an engineering decision is the lifetime of the
 project, not the duration of the task that prompted it.
@@ -732,88 +543,35 @@ determines whether software stays alive.
 who inherits this in five years be able to understand it, change it, and be glad it was done this
 way?
 
-</details>
-
-</section>
-
 ---
-
-<section>
 
 ## 7. Design Values
 
 Values are how the philosophy is applied when a decision is genuinely close. They do not resolve
 every case, but they establish which direction a tie should break in.
 
-<table>
-<thead>
-<tr><th align="left">Value</th><th align="left">What it means</th><th align="left">Why it matters here</th></tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Consistency</strong></td>
-<td>The same idea is expressed the same way everywhere it appears.</td>
-<td>Inconsistency forces every reader — human and AI — to re-learn the system in each new corner of it, and makes correct guesses impossible.</td>
-</tr>
-<tr>
-<td><strong>Predictability</strong></td>
-<td>Behavior follows from what was stated, and surprises are treated as defects.</td>
-<td>Supervision only works if a person can anticipate what is about to happen. An unpredictable system cannot be meaningfully approved.</td>
-</tr>
-<tr>
-<td><strong>Traceability</strong></td>
-<td>Every decision, artifact, and behavior can be followed back to the intent that motivated it.</td>
-<td>Without traceability, nobody can tell whether a change is a correction or a regression, and the reason for a constraint is lost the moment its author leaves.</td>
-</tr>
-<tr>
-<td><strong>Portability</strong></td>
-<td>Work moves between machines, platforms, runtimes, and distributions without modification.</td>
-<td>Portability is independence made concrete. A practice that cannot move is a practice that can be trapped.</td>
-</tr>
-<tr>
-<td><strong>Observability</strong></td>
-<td>What the system found, intended, did, and failed at is visible on request.</td>
-<td>Trust is built by inspection, not assertion. A system that cannot be examined can only be believed or abandoned.</td>
-</tr>
-<tr>
-<td><strong>Extensibility</strong></td>
-<td>New capability is added alongside, not by modification.</td>
-<td>Users' needs will always exceed what the product anticipated. Extension is the alternative to forking.</td>
-</tr>
-<tr>
-<td><strong>Modularity</strong></td>
-<td>Responsibilities are separated so that each can be understood, changed, and replaced on its own.</td>
-<td>Separation is what makes a decade-long product revisable. Entanglement makes every change a negotiation with the whole system.</td>
-</tr>
-<tr>
-<td><strong>Reusability</strong></td>
-<td>Engineering knowledge is captured once and applied in many places.</td>
-<td>Knowledge that must be restated is knowledge that will eventually be restated incorrectly. Reuse is how a practice compounds instead of eroding.</td>
-</tr>
-<tr>
-<td><strong>Comprehensibility</strong></td>
-<td>Every artifact is intelligible to both humans and AI runtimes, from the same source.</td>
-<td>Two audiences with two formats guarantees that one of them will drift out of date, and it will always be the one nobody is reading today.</td>
-</tr>
-<tr>
-<td><strong>Reversibility</strong></td>
-<td>Actions prefer forms that can be undone, and irreversibility is stated plainly when unavoidable.</td>
-<td>Reversibility is what makes experimentation safe, and safe experimentation is where most engineering understanding comes from.</td>
-</tr>
-</tbody>
-</table>
+### 7.1 The Values
 
-### When Values Conflict
+| Value | What it means | Why it matters here |
+| :--- | :--- | :--- |
+| **Consistency** | The same idea is expressed the same way everywhere it appears. | Inconsistency forces every reader — human and AI — to re-learn the system in each new corner of it, and makes correct guesses impossible. |
+| **Predictability** | Behavior follows from what was stated, and surprises are treated as defects. | Supervision only works if a person can anticipate what is about to happen. An unpredictable system cannot be meaningfully approved. |
+| **Traceability** | Every decision, artifact, and behavior can be followed back to the intent that motivated it. | Without traceability, nobody can tell whether a change is a correction or a regression, and the reason for a constraint is lost the moment its author leaves. |
+| **Portability** | Work moves between machines, platforms, runtimes, and distributions without modification. | Portability is independence made concrete. A practice that cannot move is a practice that can be trapped. |
+| **Observability** | What the system found, intended, did, and failed at is visible on request. | Trust is built by inspection, not assertion. A system that cannot be examined can only be believed or abandoned. |
+| **Extensibility** | New capability is added alongside, not by modification. | Users' needs will always exceed what the product anticipated. Extension is the alternative to forking. |
+| **Modularity** | Responsibilities are separated so that each can be understood, changed, and replaced on its own. | Separation is what makes a decade-long product revisable. Entanglement makes every change a negotiation with the whole system. |
+| **Reusability** | Engineering knowledge is captured once and applied in many places. | Knowledge that must be restated is knowledge that will eventually be restated incorrectly. Reuse is how a practice compounds instead of eroding. |
+| **Comprehensibility** | Every artifact is intelligible to both humans and AI runtimes, from the same source. | Two audiences with two formats guarantees that one of them will drift out of date, and it will always be the one nobody is reading today. |
+| **Reversibility** | Actions prefer forms that can be undone, and irreversibility is stated plainly when unavoidable. | Reversibility is what makes experimentation safe, and safe experimentation is where most engineering understanding comes from. |
+
+### 7.2 When Values Conflict
 
 Values are weighed, not ranked absolutely — with one exception. Where any value would be served by
 reducing safety or removing the human's decision, it is not served. Those two are not tradeable
 against the rest, and a proposal framed as such a tradeoff has misunderstood the product.
 
-</section>
-
 ---
-
-<section>
 
 ## 8. Non-Goals
 
@@ -821,10 +579,7 @@ A vision is defined as much by refusal as by ambition. Each item below has been 
 deliberately rejected. They are not gaps awaiting a future release; they are boundaries, and a
 proposal to cross one is a proposal to change what AEOS is.
 
-<details>
-<summary><strong>AEOS will not become a replacement operating system</strong></summary>
-
-<br>
+### 8.1 AEOS will not become a replacement operating system
 
 The name describes what AEOS does for engineering activity — making many independent capabilities
 usable together, consistently — and nothing below that level. AEOS does not schedule processes,
@@ -834,12 +589,7 @@ abstract hardware, or replace the operating system a machine already runs.
 literally it would put AEOS in competition with systems it has no business competing with, and would
 abandon the actual problem in favor of a much larger and already-solved one.
 
-</details>
-
-<details>
-<summary><strong>AEOS will not become a proprietary AI platform</strong></summary>
-
-<br>
+### 8.2 AEOS will not become a proprietary AI platform
 
 AEOS performs no inference and will never contain a model. It does not aspire to own the generative
 layer, to become a paid gateway to it, or to make its own runtime the one that works best.
@@ -848,12 +598,7 @@ layer, to become a paid gateway to it, or to make its own runtime the one that w
 independence becomes a marketing position rather than a structural fact. Users would be right to stop
 believing it, and they would be right about everything else it said too.
 
-</details>
-
-<details>
-<summary><strong>AEOS will not become a single-vendor ecosystem</strong></summary>
-
-<br>
+### 8.3 AEOS will not become a single-vendor ecosystem
 
 No vendor is privileged, no vendor is required, and no vendor's absence disables AEOS. Being named in
 AEOS documentation confers nothing; being unnamed excludes nothing.
@@ -862,12 +607,7 @@ AEOS documentation confers nothing; being unnamed excludes nothing.
 did not choose. A privileged vendor — even a good one, even a temporarily dominant one — converts
 that guarantee into a preference, and preferences do not survive acquisitions.
 
-</details>
-
-<details>
-<summary><strong>AEOS will not become a fully autonomous software factory</strong></summary>
-
-<br>
+### 8.4 AEOS will not become a fully autonomous software factory
 
 AEOS is not working toward the removal of the human. Automation exists within AEOS as delegated
 authority — explicit, scoped, recorded, revocable, and never extending to destruction — not as a
@@ -878,12 +618,7 @@ always sound reasonable. But a system that decides without accountability is not
 practice; it is an unowned risk with good throughput metrics. Others may pursue that. AEOS exists to
 be the alternative, and it cannot be the alternative while drifting toward the same place.
 
-</details>
-
-<details>
-<summary><strong>AEOS will not become a no-code or low-code platform</strong></summary>
-
-<br>
+### 8.5 AEOS will not become a no-code or low-code platform
 
 AEOS is built for people who write software and intend to keep understanding it. It does not aim to
 remove the code, hide it behind a visual layer, or make engineering knowledge unnecessary.
@@ -892,12 +627,7 @@ remove the code, hide it behind a visual layer, or make engineering knowledge un
 trade for some problems, and the exact opposite of what AEOS is for. AEOS increases the amount of
 software a person can be responsible for. It does not reduce what they must understand.
 
-</details>
-
-<details>
-<summary><strong>AEOS will not become an IDE, editor, or application framework</strong></summary>
-
-<br>
+### 8.6 AEOS will not become an IDE, editor, or application framework
 
 AEOS operates alongside whatever editing surface a developer prefers and produces no framework that
 the user's application must be built on.
@@ -906,12 +636,7 @@ the user's application must be built on.
 long-term commitment users should make on their own terms. Requiring either would make AEOS a
 migration project rather than something a team can adopt on a Tuesday.
 
-</details>
-
-<details>
-<summary><strong>AEOS will not replace version control, CI/CD, or delivery systems</strong></summary>
-
-<br>
+### 8.7 AEOS will not replace version control, CI/CD, or delivery systems
 
 AEOS integrates with the systems a project already uses and orchestrates them. It does not become
 one.
@@ -921,12 +646,7 @@ organizations operate. Rebuilding them would consume the product's attention, pr
 worse, and force users to abandon working infrastructure to adopt an engineering practice — a price
 no reasonable team should pay.
 
-</details>
-
-<details>
-<summary><strong>AEOS will not optimize for unverified speed</strong></summary>
-
-<br>
+### 8.8 AEOS will not optimize for unverified speed
 
 AEOS does not compete on how quickly code can be produced without review. It competes on how much
 verified work a person can be responsible for.
@@ -935,280 +655,118 @@ verified work a person can be responsible for.
 product that begins defending itself on that ground will eventually weaken a gate to win the
 argument, and the gates are the product.
 
-</details>
-
-</section>
-
 ---
-
-<section>
 
 ## 9. Guiding Principles for Contributors
 
 These principles apply to anyone proposing a change to AEOS — human or AI. They are how the
 philosophy is enforced in practice, at the level of an individual contribution.
 
-<table>
-<thead>
-<tr><th align="left">#</th><th align="left">Principle</th><th align="left">In practice</th></tr>
-</thead>
-<tbody>
-<tr>
-<td>G1</td>
-<td><strong>Prefer clarity over novelty.</strong></td>
-<td>A familiar approach that the next maintainer will recognize beats an original one they must decode. Novelty must earn its place by solving a problem the familiar approach cannot.</td>
-</tr>
-<tr>
-<td>G2</td>
-<td><strong>Minimize unnecessary complexity.</strong></td>
-<td>Complexity that serves a stated requirement is cost. Complexity that serves an anticipated one is speculation. Build for the requirement in front of you.</td>
-</tr>
-<tr>
-<td>G3</td>
-<td><strong>Keep architectural responsibilities separate.</strong></td>
-<td>Product, architecture, specification, runtime, and implementation are distinct layers with distinct owners. A contribution that blurs them is rejected even if the change itself is good.</td>
-</tr>
-<tr>
-<td>G4</td>
-<td><strong>Preserve backward compatibility where reasonable.</strong></td>
-<td>Existing projects are commitments already made. Breaking them requires a stated benefit that exceeds the cost imposed on people who are not present to object, plus a migration path.</td>
-</tr>
-<tr>
-<td>G5</td>
-<td><strong>Every major decision must support long-term maintainability.</strong></td>
-<td>Decisions are justified against the project's lifetime, not the task's deadline. "We can clean it up later" is a prediction, and it is usually wrong.</td>
-</tr>
-<tr>
-<td>G6</td>
-<td><strong>Human approval is the default for engineering decisions.</strong></td>
-<td>Where a contribution reduces what a human decides, that reduction is the change under review — not an incidental detail of it.</td>
-</tr>
-<tr>
-<td>G7</td>
-<td><strong>Do not rebuild what mature systems already do well.</strong></td>
-<td>Orchestrate and integrate. Reimplementation requires an explicit owner decision and a reason that survives scrutiny beyond preference.</td>
-</tr>
-<tr>
-<td>G8</td>
-<td><strong>Record better ideas; do not apply them silently.</strong></td>
-<td>Under the architecture freeze, an improvement to the product's concepts is a recommendation for a future release, submitted for owner approval — never an unannounced change.</td>
-</tr>
-<tr>
-<td>G9</td>
-<td><strong>Write for two audiences from one artifact.</strong></td>
-<td>Everything produced should be intelligible to a human maintainer and consumable by an AI runtime without a second, machine-only version existing.</td>
-</tr>
-<tr>
-<td>G10</td>
-<td><strong>Test first, including here.</strong></td>
-<td>AEOS is built under the discipline it asks of its users. A contribution that exempts itself contradicts the product it is contributing to.</td>
-</tr>
-<tr>
-<td>G11</td>
-<td><strong>Leave the repository more understandable than you found it.</strong></td>
-<td>Understandability is a contribution in its own right, and its absence is a defect even when every test passes.</td>
-</tr>
-<tr>
-<td>G12</td>
-<td><strong>When in doubt, ask.</strong></td>
-<td>Ambiguity resolved by assumption becomes a decision nobody made. Ask the owner before deciding, at every layer of the product.</td>
-</tr>
-</tbody>
-</table>
-
-</section>
+| # | Principle | In practice |
+| :--- | :--- | :--- |
+| G1 | **Prefer clarity over novelty.** | A familiar approach that the next maintainer will recognize beats an original one they must decode. Novelty must earn its place by solving a problem the familiar approach cannot. |
+| G2 | **Minimize unnecessary complexity.** | Complexity that serves a stated requirement is cost. Complexity that serves an anticipated one is speculation. Build for the requirement in front of you. |
+| G3 | **Keep architectural responsibilities separate.** | Product, architecture, specification, runtime, and implementation are distinct layers with distinct owners. A contribution that blurs them is rejected even if the change itself is good. |
+| G4 | **Preserve backward compatibility where reasonable.** | Existing projects are commitments already made. Breaking them requires a stated benefit that exceeds the cost imposed on people who are not present to object, plus a migration path. |
+| G5 | **Every major decision must support long-term maintainability.** | Decisions are justified against the project's lifetime, not the task's deadline. "We can clean it up later" is a prediction, and it is usually wrong. |
+| G6 | **Human approval is the default for engineering decisions.** | Where a contribution reduces what a human decides, that reduction is the change under review — not an incidental detail of it. |
+| G7 | **Do not rebuild what mature systems already do well.** | Orchestrate and integrate. Reimplementation requires an explicit owner decision and a reason that survives scrutiny beyond preference. |
+| G8 | **Record better ideas; do not apply them silently.** | Under the architecture freeze, an improvement to the product's concepts is a recommendation for a future release, submitted for owner approval — never an unannounced change. |
+| G9 | **Write for two audiences from one artifact.** | Everything produced should be intelligible to a human maintainer and consumable by an AI runtime without a second, machine-only version existing. |
+| G10 | **Test first, including here.** | AEOS is built under the discipline it asks of its users. A contribution that exempts itself contradicts the product it is contributing to. |
+| G11 | **Leave the repository more understandable than you found it.** | Understandability is a contribution in its own right, and its absence is a defect even when every test passes. |
+| G12 | **When in doubt, ask.** | Ambiguity resolved by assumption becomes a decision nobody made. Ask the owner before deciding, at every layer of the product. |
 
 ---
 
-<section>
-
 ## 10. Future Direction
 
-These are directions of travel, not commitments. 
+These are directions of travel, not commitments.
 Each names an enduring engineering challenge that AEOS expects to address over time, while deliberately avoiding commitments to specific mechanisms, technologies, timelines, or designs.
 The following observations describe the long-term direction of AEOS. They are not commitments to future product capabilities, implementation strategies, or product roadmaps.
 
-
-<details>
-<summary><strong>Better AI orchestration</strong></summary>
-
-<br>
+### 10.1 Better AI orchestration
 
 Coordinating multi-step engineering work across capable participants, with each consequential step
 still held to its approval gate, is an unsolved problem in general and a difficult one in practice.
 The direction is toward orchestration that scales in ambition without scaling the amount a person
 must read to stay in control — and that fails visibly rather than quietly when a step goes wrong.
 
-</details>
-
-<details>
-<summary><strong>Better engineering workflows</strong></summary>
-
-<br>
+### 10.2 Better engineering workflows
 
 Real projects re-enter lifecycle stages continuously and rarely proceed in a straight line. The
 direction is toward workflows that express how engineering actually behaves — interrupted, revisited,
 partially complete — without becoming so flexible that they stop encoding a practice at all.
 
-</details>
-
-<details>
-<summary><strong>Better context management</strong></summary>
-
-<br>
+### 10.3 Better context management
 
 Deciding what a task actually requires remains largely a matter of judgment. The direction is toward
 context selection that is more deliberate, more explainable, and smaller over time — with the
 explanation of each inclusion treated as part of the result, not a debugging feature.
 
-</details>
-
-<details>
-<summary><strong>Better project generation and adoption</strong></summary>
-
-<br>
+### 10.4 Better project generation and adoption
 
 Most projects that would benefit from AEOS already exist, and adoption is therefore harder and more
 important than creation. The direction is toward making an existing repository — with its history,
 its conventions, and its accumulated irregularity — safe to adopt without disruption.
 
-</details>
-
-<details>
-<summary><strong>Better runtime interoperability</strong></summary>
-
-<br>
+### 10.5 Better runtime interoperability
 
 The landscape of runtimes and interoperability standards will change repeatedly, and AEOS expects to
 outlive the current one. The direction is toward absorbing that change so that projects do not
 experience it — including categories of runtime that do not exist at the time of writing.
 
-</details>
-
-<details>
-<summary><strong>Better local and private AI integration</strong></summary>
-
-<br>
+### 10.6 Better local and private AI integration
 
 Locally and privately hosted models matter for privacy, cost, regulation, latency, and offline work,
 and they are first-class runtimes rather than a fallback. The direction is toward making that choice
 practical for real engineering work rather than merely permitted.
 
-</details>
-
-<details>
-<summary><strong>Better team collaboration</strong></summary>
-
-<br>
+### 10.7 Better team collaboration
 
 An engineering practice held by one person is a habit; held by a team it is a standard. The direction
 is toward making a shared practice easy to express, easy to review, and uniform across people and
 runtimes — without introducing authority tiers above the project owner, which would be a change to
 the product's concepts and requires an owner decision.
 
-</details>
-
-<details>
-<summary><strong>Better educational support</strong></summary>
-
-<br>
+### 10.8 Better educational support
 
 The most valuable thing AEOS can offer a learner is a project whose reasoning is visible. The
 direction is toward repositories that teach by being honest about how the work was done — a
 consequence of the product's existing commitments rather than a separate feature set.
 
-</details>
-
-<details>
-<summary><strong>Better evidence about the practice itself</strong></summary>
-
-<br>
+### 10.9 Better evidence about the practice itself
 
 AEOS makes claims — that discipline survives deadlines, that supervision remains meaningful, that
 independence is real rather than aspirational. The direction is toward being able to tell honestly
 whether those claims hold in practice, including when the answer is unwelcome.
 
-</details>
-
-</section>
-
 ---
-
-<section>
 
 ## 11. Audience
 
 AEOS is built for people who are responsible for software and intend to remain so. Each audience
 below is a first-class consideration.
 
-<table>
-<thead>
-<tr><th align="left">Audience</th><th align="left">What they bring</th><th align="left">What AEOS is for them</th></tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Individual developers</strong></td>
-<td>Full responsibility for their projects and no colleague to enforce a process.</td>
-<td>A practice that holds without a team to hold it, and confidence that nothing changes behind their back.</td>
-</tr>
-<tr>
-<td><strong>Professional teams</strong></td>
-<td>Shared ownership, differing habits, and real deadlines.</td>
-<td>A practice expressed once and applied uniformly, so consistency does not depend on who is on call.</td>
-</tr>
-<tr>
-<td><strong>Engineering leads and architects</strong></td>
-<td>Responsibility for how a team builds, not only what it ships.</td>
-<td>Standards that live in the repository rather than in meetings, and that reach every developer and every runtime unchanged.</td>
-</tr>
-<tr>
-<td><strong>Educators</strong></td>
-<td>The task of teaching judgment to students whose tools will happily supply answers.</td>
-<td>A setting where the engineering process is visible and can be examined, discussed, and assessed — not just its output.</td>
-</tr>
-<tr>
-<td><strong>Students</strong></td>
-<td>Willingness to learn, and exposure to systems that can do the work for them.</td>
-<td>A way to work with AI that builds understanding rather than substituting for it.</td>
-</tr>
-<tr>
-<td><strong>Researchers</strong></td>
-<td>The need to know exactly what was done in order for a result to mean anything.</td>
-<td>Recorded process, recorded decisions, and a project that can be described precisely enough to be built upon.</td>
-</tr>
-<tr>
-<td><strong>Open-source maintainers</strong></td>
-<td>Contributions from unknown people using unknown tools, and finite review capacity.</td>
-<td>A repository that states its own practice so that contributions — and the AI runtimes assisting them — arrive already aligned.</td>
-</tr>
-<tr>
-<td><strong>Open-source contributors</strong></td>
-<td>Good intentions and no way to know a project's unwritten expectations.</td>
-<td>Expectations that are written down, so a first contribution can be right on the first attempt.</td>
-</tr>
-<tr>
-<td><strong>Organizations</strong></td>
-<td>Obligations around auditability, continuity, privacy, and vendor risk.</td>
-<td>Supervision that is recorded, practice that survives staff and vendor changes, and no dependency acquired by accident.</td>
-</tr>
-<tr>
-<td><strong>AI runtimes</strong> <em>(non-human)</em></td>
-<td>Capability, and no inherent knowledge of a project's expectations.</td>
-<td>An unambiguous, readable statement of how to act inside this project, from the same artifacts humans read.</td>
-</tr>
-</tbody>
-</table>
+| Audience | What they bring | What AEOS is for them |
+| :--- | :--- | :--- |
+| **Individual developers** | Full responsibility for their projects and no colleague to enforce a process. | A practice that holds without a team to hold it, and confidence that nothing changes behind their back. |
+| **Professional teams** | Shared ownership, differing habits, and real deadlines. | A practice expressed once and applied uniformly, so consistency does not depend on who is on call. |
+| **Engineering leads and architects** | Responsibility for how a team builds, not only what it ships. | Standards that live in the repository rather than in meetings, and that reach every developer and every runtime unchanged. |
+| **Educators** | The task of teaching judgment to students whose tools will happily supply answers. | A setting where the engineering process is visible and can be examined, discussed, and assessed — not just its output. |
+| **Students** | Willingness to learn, and exposure to systems that can do the work for them. | A way to work with AI that builds understanding rather than substituting for it. |
+| **Researchers** | The need to know exactly what was done in order for a result to mean anything. | Recorded process, recorded decisions, and a project that can be described precisely enough to be built upon. |
+| **Open-source maintainers** | Contributions from unknown people using unknown tools, and finite review capacity. | A repository that states its own practice so that contributions — and the AI runtimes assisting them — arrive already aligned. |
+| **Open-source contributors** | Good intentions and no way to know a project's unwritten expectations. | Expectations that are written down, so a first contribution can be right on the first attempt. |
+| **Organizations** | Obligations around auditability, continuity, privacy, and vendor risk. | Supervision that is recorded, practice that survives staff and vendor changes, and no dependency acquired by accident. |
+| **AI runtimes** *(non-human)* | Capability, and no inherent knowledge of a project's expectations. | An unambiguous, readable statement of how to act inside this project, from the same artifacts humans read. |
 
 > **On the last row.** AI runtimes are listed as an audience deliberately and without irony. A
 > significant share of the reading of this repository will be done by systems rather than people.
 > Writing for them is not a concession to tooling; it is a recognition of who the maintainers of
 > software are going to be.
 
-</section>
-
 ---
-
-<section>
 
 ## 12. Invariants — What Must Never Change
 
@@ -1216,23 +774,18 @@ These statements are the vision reduced to its irreducible form. They are the th
 abandoned, would mean AEOS no longer exists in any meaningful sense — whatever continued to carry
 the name.
 
-<table>
-<thead>
-<tr><th align="left">#</th><th align="left">Invariant</th></tr>
-</thead>
-<tbody>
-<tr><td>V1</td><td><strong>AEOS performs no inference.</strong> It never contains a model and never becomes one.</td></tr>
-<tr><td>V2</td><td><strong>The human decides.</strong> Consequential action follows a human decision; delegation is chosen explicitly and can always be withdrawn.</td></tr>
-<tr><td>V3</td><td><strong>Nothing consequential happens without being understandable first.</strong></td></tr>
-<tr><td>V4</td><td><strong>Verification precedes implementation.</strong> Test-first is the practice, including for AEOS itself.</td></tr>
-<tr><td>V5</td><td><strong>The repository is the product</strong> and remains meaningful when AEOS is not running.</td></tr>
-<tr><td>V6</td><td><strong>No vendor, runtime, model, platform, or distribution is privileged or required.</strong></td></tr>
-<tr><td>V7</td><td><strong>The safe path is the default,</strong> and uncertainty stops the work rather than resolving toward action.</td></tr>
-<tr><td>V8</td><td><strong>The user's machine, repository, credentials, and judgment belong to the user.</strong></td></tr>
-<tr><td>V9</td><td><strong>What AEOS does can be inspected</strong> — by the human it works for and by the runtimes it works with.</td></tr>
-<tr><td>V10</td><td><strong>AEOS is extended, not modified,</strong> so that a user's practice never depends on forking the product.</td></tr>
-</tbody>
-</table>
+| # | Invariant |
+| :--- | :--- |
+| V1 | **AEOS performs no inference.** It never contains a model and never becomes one. |
+| V2 | **The human decides.** Consequential action follows a human decision; delegation is chosen explicitly and can always be withdrawn. |
+| V3 | **Nothing consequential happens without being understandable first.** |
+| V4 | **Verification precedes implementation.** Test-first is the practice, including for AEOS itself. |
+| V5 | **The repository is the product** and remains meaningful when AEOS is not running. |
+| V6 | **No vendor, runtime, model, platform, or distribution is privileged or required.** |
+| V7 | **The safe path is the default,** and uncertainty stops the work rather than resolving toward action. |
+| V8 | **The user's machine, repository, credentials, and judgment belong to the user.** |
+| V9 | **What AEOS does can be inspected** — by the human it works for and by the runtimes it works with. |
+| V10 | **AEOS is extended, not modified,** so that a user's practice never depends on forking the product. |
 
 > **On the word "never".**
 > These are not aspirations phrased strongly. They are the conditions under which the product is
@@ -1240,120 +793,90 @@ the name.
 > has replaced it with something that has different reasons for existing and should be given a
 > different name.
 
-</section>
-
 ---
-
-<section>
 
 ## 13. Document Governance
 
-### Status
+### 13.1 Status
 
 This document is the **Vision Source of Truth** for the AEOS repository. It is intended to be frozen
 as part of AEOS 1.0 and to remain stable across the life of the product.
 
-### Change Control
+### 13.2 Change Control
 
-<table>
-<thead>
-<tr><th align="left">Change type</th><th align="left">Requires</th><th align="left">Version impact</th></tr>
-</thead>
-<tbody>
-<tr><td>Editorial correction with no change of meaning</td><td>Contributor change, owner acceptance</td><td>Patch</td></tr>
-<tr><td>Clarification of an existing philosophy, value, or non-goal</td><td>Owner approval</td><td>Minor</td></tr>
-<tr><td>Addition of a philosophy, value, non-goal, or guiding principle</td><td>Explicit owner revision request</td><td>Major</td></tr>
-<tr><td>Change to the vision, mission, or any invariant</td><td>Explicit owner revision request with recorded rationale</td><td>Major</td></tr>
-<tr><td>Removal of an invariant</td><td>Explicit owner decision, recorded, with the reasoning preserved in place</td><td>Major</td></tr>
-</tbody>
-</table>
+| Change type | Requires | Version impact |
+| :--- | :--- | :--- |
+| Editorial correction with no change of meaning | Contributor change, owner acceptance | Patch |
+| Clarification of an existing philosophy, value, or non-goal | Owner approval | Minor |
+| Addition of a philosophy, value, non-goal, or guiding principle | Explicit owner revision request | Major |
+| Change to the vision, mission, or any invariant | Explicit owner revision request with recorded rationale | Major |
+| Removal of an invariant | Explicit owner decision, recorded, with the reasoning preserved in place | Major |
 
-### Relationship to the Architecture Freeze
+### 13.3 Relationship to the Architecture Freeze
 
 This document introduces no architecture and grants no capability. Ideas arising from it that would
 change the product's concepts, capability set, or principles are recorded as recommendations for a
-future release under the PRD's governance, and are applied only after explicit owner approval.
+future release under the AEOS-PRD governance, and are applied only after explicit owner approval.
 
-### Review Policy
+### 13.4 Review Policy
 
 Reviews of this document classify findings as **Critical**, **Major**, **Minor**, or **Nitpick**,
 identify inconsistencies without redesigning, and recommend freezing the document when no Critical or
 Major findings remain.
 
-### Precedence
+### 13.5 Precedence
 
-<table>
-<thead>
-<tr><th align="left">Situation</th><th align="left">Resolution</th></tr>
-</thead>
-<tbody>
-<tr><td>This document conflicts with the PRD on product behavior</td><td>The PRD governs. The conflict is a defect in this document and is reported.</td></tr>
-<tr><td>The PRD conflicts with an invariant in Section 12</td><td>Escalate to the owner. One of the two documents is wrong and the question is not resolved by a contributor.</td></tr>
-<tr><td>A downstream document appears to contradict this document's intent</td><td>The PRD's requirement identifiers govern. Report the apparent contradiction rather than reinterpreting either document.</td></tr>
-</tbody>
-</table>
+| Situation | Resolution |
+| :--- | :--- |
+| This document conflicts with AEOS-PRD on product behavior | AEOS-PRD governs. The conflict is a defect in this document and is reported. |
+| AEOS-PRD conflicts with an invariant in [Section 12](#12-invariants--what-must-never-change) | Escalate to the owner. One of the two documents is wrong and the question is not resolved by a contributor. |
+| A downstream document appears to contradict this document's intent | The AEOS-PRD requirement identifiers govern. Report the apparent contradiction rather than reinterpreting either document. |
 
-### Revision History
+### 13.6 Revision History
 
-<table>
-<thead>
-<tr><th align="left">Version</th><th align="left">Status</th><th align="left">Summary</th></tr>
-</thead>
-<tbody>
-<tr><td>1.0.0</td><td>Freeze candidate</td><td>Initial vision definition. Establishes the vision statement, mission, decade-horizon long-term vision, sixteen core philosophies, ten design values, eight non-goals, twelve contributor guiding principles, nine future directions, ten audiences, and ten invariants. Introduces no requirement, capability, or architecture.</td></tr>
-</tbody>
-</table>
-
-</section>
+| Version | Status | Summary |
+| :--- | :--- | :--- |
+| 1.0.0 | Superseded | Initial vision definition. Establishes the vision statement, mission, decade-horizon long-term vision, sixteen core philosophies, ten design values, eight non-goals, twelve contributor guiding principles, nine future directions, ten audiences, and ten invariants. Introduces no requirement, capability, or architecture. |
+| 1.0.1 | Freeze candidate | Format conformance only, under AEOS-DOCSTD 3.0.0. Converted the document from HTML-in-Markdown construction to GitHub-Flavored Markdown First form: replaced every HTML table, collapsible block, section wrapper, and inline markup element with standard Markdown constructs; promoted each collapsible block to a numbered subsection under heading-based progressive disclosure; reorganized the opening material into an executive summary and a scope section as the document template requires, leaving sections three to thirteen in place; numbered the governance subsections; normalized references to AEOS-PRD to the document identifier form; and marked Appendix A non-normative. No vision, mission, philosophy, design value, non-goal, guiding principle, future direction, audience, invariant, ownership statement, responsibility boundary, precedence rule, or governance rule was changed. |
 
 ---
-
-<section>
 
 ## Appendix A — Philosophy to Product Principle Mapping
 
-This mapping exists so that neither document can be mistaken for the other, and so that a reader can
-determine at a glance whether a statement in Section 6 carries product obligation.
+**This appendix is non-normative.**
 
-<table>
-<thead>
-<tr><th align="left">Philosophy (Section 6)</th><th align="left">Corresponding PRD product principle</th><th align="left">Status</th></tr>
-</thead>
-<tbody>
-<tr><td>6.1 Human-in-the-Loop by Default</td><td>Human-in-the-Loop by Default</td><td>Mandatory in the PRD</td></tr>
-<tr><td>6.2 Explain Before Execute</td><td>Explain Before Execute</td><td>Mandatory in the PRD</td></tr>
-<tr><td>6.3 Incremental Execution</td><td>Incremental Execution</td><td>Mandatory in the PRD</td></tr>
-<tr><td>6.4 TDD-first Development</td><td>TDD-first Development</td><td>Mandatory in the PRD</td></tr>
-<tr><td>6.5 Repository as Product</td><td>Repository as Product</td><td>Mandatory in the PRD</td></tr>
-<tr><td>6.6 Documentation as Engineering Asset</td><td>No single counterpart; reflected across the PRD's documentation capability</td><td>Guiding conviction</td></tr>
-<tr><td>6.7 AI as Engineering Partner</td><td>No counterpart; informs the PRD's treatment of runtimes as integrations and of AI runtimes as readers</td><td>Guiding conviction</td></tr>
-<tr><td>6.8 Transparency over Automation</td><td>No single counterpart; informs the PRD's transparency quality attribute</td><td>Guiding conviction</td></tr>
-<tr><td>6.9 Review before Execution</td><td>No single counterpart; informs the PRD's approval model and review capability</td><td>Guiding conviction</td></tr>
-<tr><td>6.10 Context Minimization</td><td>Context Minimization</td><td>Mandatory in the PRD</td></tr>
-<tr><td>6.11 Independence as a Design Constraint</td><td>Vendor, Runtime, Model, Platform, and Distribution Independence (five principles)</td><td>Mandatory in the PRD</td></tr>
-<tr><td>6.12 Safety by Default</td><td>Safety by Default</td><td>Mandatory in the PRD</td></tr>
-<tr><td>6.13 Extensibility by Design</td><td>Extensibility by Design</td><td>Mandatory in the PRD</td></tr>
-<tr><td>6.14 Simplicity over Cleverness</td><td>No counterpart; informs the PRD's maintainability quality attribute</td><td>Guiding conviction</td></tr>
-<tr><td>6.15 Explicit over Implicit</td><td>No counterpart; informs the PRD's approval and asset inspectability commitments</td><td>Guiding conviction</td></tr>
-<tr><td>6.16 Long-term Maintainability</td><td>No counterpart; informs the PRD's maintainability quality attribute</td><td>Guiding conviction</td></tr>
-</tbody>
-</table>
+This mapping exists so that neither document can be mistaken for the other, and so that a reader can
+determine at a glance whether a statement in [Section 6](#6-core-philosophy) carries product
+obligation.
+
+| Philosophy (Section 6) | Corresponding AEOS-PRD product principle | Status |
+| :--- | :--- | :--- |
+| 6.1 Human-in-the-Loop by Default | Human-in-the-Loop by Default | Mandatory in AEOS-PRD |
+| 6.2 Explain Before Execute | Explain Before Execute | Mandatory in AEOS-PRD |
+| 6.3 Incremental Execution | Incremental Execution | Mandatory in AEOS-PRD |
+| 6.4 TDD-first Development | TDD-first Development | Mandatory in AEOS-PRD |
+| 6.5 Repository as Product | Repository as Product | Mandatory in AEOS-PRD |
+| 6.6 Documentation as Engineering Asset | No single counterpart; reflected across the AEOS-PRD documentation capability | Guiding conviction |
+| 6.7 AI as Engineering Partner | No counterpart; informs the AEOS-PRD treatment of runtimes as integrations and of AI runtimes as readers | Guiding conviction |
+| 6.8 Transparency over Automation | No single counterpart; informs the AEOS-PRD transparency quality attribute | Guiding conviction |
+| 6.9 Review before Execution | No single counterpart; informs the AEOS-PRD approval model and review capability | Guiding conviction |
+| 6.10 Context Minimization | Context Minimization | Mandatory in AEOS-PRD |
+| 6.11 Independence as a Design Constraint | Vendor, Runtime, Model, Platform, and Distribution Independence (five principles) | Mandatory in AEOS-PRD |
+| 6.12 Safety by Default | Safety by Default | Mandatory in AEOS-PRD |
+| 6.13 Extensibility by Design | Extensibility by Design | Mandatory in AEOS-PRD |
+| 6.14 Simplicity over Cleverness | No counterpart; informs the AEOS-PRD maintainability quality attribute | Guiding conviction |
+| 6.15 Explicit over Implicit | No counterpart; informs the AEOS-PRD approval and asset inspectability commitments | Guiding conviction |
+| 6.16 Long-term Maintainability | No counterpart; informs the AEOS-PRD maintainability quality attribute | Guiding conviction |
 
 > **How to read the Status column.**
-> *Mandatory in the PRD* means the PRD imposes a binding constraint on product behavior and governs;
-> this document only explains the reasoning behind it.
+> *Mandatory in AEOS-PRD* means AEOS-PRD imposes a binding constraint on product behavior and
+> governs; this document only explains the reasoning behind it.
 > *Guiding conviction* means the philosophy informs judgment where no requirement applies. It confers
-> no capability, imposes no requirement, and may not be cited to justify behavior the PRD does not
-> define.
-
-</section>
+> no capability, imposes no requirement, and may not be cited to justify behavior that AEOS-PRD does
+> not define.
 
 ---
 
-<div align="center">
-
 **End of Vision Document**
 
-AEOS-VISION · Version 1.0.0 · Vision Source of Truth
-
-</div>
+AEOS-VISION · Version 1.0.1 · Vision Source of Truth
