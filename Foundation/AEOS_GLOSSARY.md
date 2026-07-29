@@ -1,31 +1,22 @@
-<div align="center">
-
 # AI Engineering Operating System
 
-**AEOS — Glossary**
+## AEOS — Glossary
 
 *The permanent terminology source of truth for AEOS.*
 
-</div>
-
-<table>
-<thead>
-<tr><th align="left">Field</th><th align="left">Value</th></tr>
-</thead>
-<tbody>
-<tr><td><strong>Document</strong></td><td>Glossary</td></tr>
-<tr><td><strong>Product</strong></td><td>AI Engineering Operating System (AEOS)</td></tr>
-<tr><td><strong>Document ID</strong></td><td>AEOS-GLOSSARY</td></tr>
-<tr><td><strong>Version</strong></td><td>1.0.0</td></tr>
-<tr><td><strong>Status</strong></td><td>Freeze candidate — awaiting owner approval</td></tr>
-<tr><td><strong>Owner</strong></td><td>Product Owner, AEOS</td></tr>
-<tr><td><strong>Author</strong></td><td>Chief Information Architect and Terminology Authority, AEOS</td></tr>
-<tr><td><strong>Audience</strong></td><td>Architects, contributors, maintainers, documentation authors, and AI runtimes consuming this repository</td></tr>
-<tr><td><strong>Suggested path</strong></td><td><code>docs/product/GLOSSARY.md</code></td></tr>
-<tr><td><strong>Companion documents</strong></td><td><code>AEOS_VISION.md</code> (AEOS-VISION) · <code>AEOS_PRODUCT_REQUIREMENTS.md</code> (AEOS-PRD)</td></tr>
-<tr><td><strong>Supersedes</strong></td><td>None</td></tr>
-</tbody>
-</table>
+| Field | Value |
+| :--- | :--- |
+| **Document** | Glossary |
+| **Product** | AI Engineering Operating System (AEOS) |
+| **Document ID** | AEOS-GLOSSARY |
+| **Version** | 1.0.1 |
+| **Status** | Freeze candidate — awaiting owner approval |
+| **Owner** | Product Owner, AEOS |
+| **Author** | Chief Information Architect and Terminology Authority, AEOS |
+| **Audience** | Architects, contributors, maintainers, documentation authors, and AI runtimes consuming this repository |
+| **Suggested path** | `docs/product/GLOSSARY.md` |
+| **Companion documents** | `AEOS_VISION.md` (AEOS-VISION) · `AEOS_PRODUCT_REQUIREMENTS.md` (AEOS-PRD) · `AEOS_DOCUMENT_STANDARD.md` (AEOS-DOCSTD) · `AEOS_SUPPORTED_TECHNOLOGIES.md` (AEOS-TECH) |
+| **Supersedes** | AEOS-GLOSSARY 1.0.0 |
 
 > **Authority of this document.**
 > This document defines *how AEOS speaks*. It establishes the official name and canonical definition
@@ -42,27 +33,26 @@
 > Every future AEOS document MUST use these definitions and MUST reference this glossary instead of
 > restating them.
 
-The key words **MUST**, **MUST NOT**, **REQUIRED**, **SHALL**, **SHALL NOT**, **SHOULD**,
-**SHOULD NOT**, **RECOMMENDED**, **MAY**, and **OPTIONAL** in this document are to be interpreted as
-described in RFC 2119.
+> The key words **MUST**, **MUST NOT**, **SHOULD**, **SHOULD NOT**, and **MAY** in this document are
+> to be interpreted as described in RFC 2119 and RFC 8174, and carry their normative meaning only
+> when they appear in all capitals.
 
 ---
 
 ## Table of Contents
 
 1. [Executive Summary](#1-executive-summary)
-2. [Terminology Principles](#2-terminology-principles)
-3. [Core Terminology](#3-core-terminology)
-4. [Terminology Relationships](#4-terminology-relationships)
-5. [Naming Conventions](#5-naming-conventions)
-6. [Reserved Terms](#6-reserved-terms)
-7. [Deprecated Terminology](#7-deprecated-terminology)
-8. [Appendix A — Quick Reference Table](#appendix-a--quick-reference-table)
-9. [Revision History](#revision-history)
+2. [Scope and Applicability](#2-scope-and-applicability)
+3. [Terminology Principles](#3-terminology-principles)
+4. [Core Terminology](#4-core-terminology)
+5. [Terminology Relationships](#5-terminology-relationships)
+6. [Naming Conventions](#6-naming-conventions)
+7. [Reserved Terms](#7-reserved-terms)
+8. [Deprecated Terminology](#8-deprecated-terminology)
+9. [Document Governance](#9-document-governance)
+10. [Appendix A — Quick Reference Table](#appendix-a--quick-reference-table)
 
 ---
-
-<section>
 
 ## 1. Executive Summary
 
@@ -73,155 +63,105 @@ question of someone who is no longer present.
 
 A term used in two senses is therefore not a stylistic blemish. It is a defect with consequences:
 
-<table>
-<thead>
-<tr><th align="left">Where inconsistency lands</th><th align="left">What it costs</th></tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Traceability</strong></td>
-<td>AEOS-PRD requires every architectural decision, specification, and test to trace to a requirement identifier. A trace is only verifiable if both ends use the same vocabulary. Two names for one concept break the chain silently.</td>
-</tr>
-<tr>
-<td><strong>Review</strong></td>
-<td>A review classifies findings against a stated standard. Where the standard's words are ambiguous, reviewers argue about meaning instead of about the change, and the argument is settled by whoever is most senior rather than by what was written.</td>
-</tr>
-<tr>
-<td><strong>AI consumption</strong></td>
-<td>An unstated convention is not a convention to a runtime; it is a guess with a plausible tone. Ambiguous terminology produces confidently wrong work at machine speed.</td>
-</tr>
-<tr>
-<td><strong>Layer separation</strong></td>
-<td>AEOS keeps Product, Architecture, Specification, Runtime, and Implementation strictly separated. That separation is enforced through words. When a product term drifts into architectural meaning, the boundary is crossed before anyone notices it was approached.</td>
-</tr>
-<tr>
-<td><strong>Freeze</strong></td>
-<td>A frozen document is only as stable as the meaning of its sentences. If definitions drift underneath it, the document changes without a version, an approval, or a record.</td>
-</tr>
-</tbody>
-</table>
+| Where inconsistency lands | What it costs |
+| :--- | :--- |
+| **Traceability** | AEOS-PRD requires every architectural decision, specification, and test to trace to a requirement identifier. A trace is only verifiable if both ends use the same vocabulary. Two names for one concept break the chain silently. |
+| **Review** | A review classifies findings against a stated standard. Where the standard's words are ambiguous, reviewers argue about meaning instead of about the change, and the argument is settled by whoever is most senior rather than by what was written. |
+| **AI consumption** | An unstated convention is not a convention to a runtime; it is a guess with a plausible tone. Ambiguous terminology produces confidently wrong work at machine speed. |
+| **Layer separation** | AEOS keeps Product, Architecture, Specification, Runtime, and Implementation strictly separated. That separation is enforced through words. When a product term drifts into architectural meaning, the boundary is crossed before anyone notices it was approached. |
+| **Freeze** | A frozen document is only as stable as the meaning of its sentences. If definitions drift underneath it, the document changes without a version, an approval, or a record. |
 
 This glossary exists so that those failures cannot occur quietly. It fixes one official name and one
 canonical definition per concept, states which document holds authority over each, and defines the
 conventions by which future names are formed. It is deliberately narrow: it standardizes language and
 nothing else.
 
-</section>
+---
+
+## 2. Scope and Applicability
+
+### 2.1 What This Document Governs
+
+This document governs the language of AEOS:
+
+- the official name of each AEOS concept;
+- the canonical definition of each official name;
+- the relationships between official names;
+- the conventions by which document names, asset names, and identifiers are formed;
+- the words that carry a fixed meaning inside AEOS;
+- the process by which terminology changes.
+
+### 2.2 What This Document Does Not Govern
+
+This document defines no requirement, no capability, no architecture, no workflow, and no runtime
+behavior. It records which document holds authority over the meaning of each term; it does not
+acquire ownership of a subject by recording it. The registered sources of truth are listed in the
+Source of Truth entry in [Section 4](#4-core-terminology) and are not restated here.
+
+A statement in this document that grants a capability, imposes a requirement, or decides a structure
+is a defect in this document. It MUST be reported rather than acted upon.
+
+### 2.3 Applicability
+
+This document applies to every AEOS document at every layer, and binds human and AI authors
+identically. An author who needs a term this document does not define proposes its addition here
+under [Section 9](#9-document-governance) rather than defining it locally.
+
+### 2.4 Recorded Deviation
+
+AEOS-DOCSTD Section 7.3 states that the Glossary layer SHOULD NOT use normative keywords, on the
+ground that a definition states meaning rather than obligation. This document uses normative keywords
+in its principles, naming conventions, reserved terms, and change-management rules, which govern how
+terminology is used rather than what a term means, and in entry notes that record a constraint on a
+term's use. The deviation is deliberate: removing the keywords would leave those rules unenforceable
+and would change what this document requires. It is recorded here as AEOS-DOCSTD Section 7.2 requires
+of a deliberate deviation from a SHOULD.
 
 ---
 
-<section>
-
-## 2. Terminology Principles
+## 3. Terminology Principles
 
 These principles govern all AEOS terminology, in this document and in every document that follows it.
 
-<table>
-<thead>
-<tr><th align="left">#</th><th align="left">Principle</th><th align="left">Rule</th></tr>
-</thead>
-<tbody>
-<tr>
-<td>T1</td>
-<td><strong>One concept, one official name.</strong></td>
-<td>Each concept SHALL have exactly one official name. Documents MUST use that name and MUST NOT introduce an alternative for the same concept.</td>
-</tr>
-<tr>
-<td>T2</td>
-<td><strong>One official definition.</strong></td>
-<td>Each official name SHALL have exactly one canonical definition, recorded in <a href="#3-core-terminology">Core Terminology</a>. No document MAY state a competing definition.</td>
-</tr>
-<tr>
-<td>T3</td>
-<td><strong>No unregistered synonyms.</strong></td>
-<td>Synonymous engineering terms MUST NOT be used interchangeably. Where an alternative wording is genuinely required, it MUST be registered in this glossary as a synonym of the official name, or it MUST NOT be used.</td>
-</tr>
-<tr>
-<td>T4</td>
-<td><strong>Definitions are stable across versions.</strong></td>
-<td>A published definition MUST NOT be changed in place to mean something different. Meaning changes proceed by deprecation and replacement under <a href="#7-deprecated-terminology">Section 7</a>.</td>
-</tr>
-<tr>
-<td>T5</td>
-<td><strong>Reference, do not redefine.</strong></td>
-<td>Future documents MUST reference this glossary for terminology. A document that needs a term this glossary does not define MUST propose its addition here rather than defining it locally.</td>
-</tr>
-<tr>
-<td>T6</td>
-<td><strong>Definitions are implementation-independent.</strong></td>
-<td>A definition MUST describe what a concept <em>is</em>, never how it is built, stored, transported, or executed. A definition that can be satisfied in only one way is a defect in this document.</td>
-</tr>
-<tr>
-<td>T7</td>
-<td><strong>Definitions are vendor-neutral.</strong></td>
-<td>No definition MAY be expressed in terms of a specific vendor, runtime, model, platform, distribution method, language, or product. Vendor names MAY appear only as illustration, and confer nothing.</td>
-</tr>
-<tr>
-<td>T8</td>
-<td><strong>Authority is recorded, not assumed.</strong></td>
-<td>Every entry SHALL state which document holds authority over its meaning. This glossary records definitions owned elsewhere; it does not acquire ownership of them by recording them.</td>
-</tr>
-<tr>
-<td>T9</td>
-<td><strong>A name confers nothing.</strong></td>
-<td>Defining a term neither creates a capability nor authorizes behavior. Product obligation arises only from AEOS-PRD requirement identifiers.</td>
-</tr>
-<tr>
-<td>T10</td>
-<td><strong>Write for both audiences.</strong></td>
-<td>Every definition SHALL be intelligible to a human maintainer and unambiguous to an AI runtime, from the same text. A definition that requires tone, context, or prior acquaintance to disambiguate is incomplete.</td>
-</tr>
-</tbody>
-</table>
-
-</section>
+| # | Principle | Rule |
+| :--- | :--- | :--- |
+| T1 | **One concept, one official name.** | Each concept MUST have exactly one official name. Documents MUST use that name and MUST NOT introduce an alternative for the same concept. |
+| T2 | **One official definition.** | Each official name MUST have exactly one canonical definition, recorded in [Core Terminology](#4-core-terminology). No document MAY state a competing definition. |
+| T3 | **No unregistered synonyms.** | Synonymous engineering terms MUST NOT be used interchangeably. Where an alternative wording is genuinely required, it MUST be registered in this glossary as a synonym of the official name, or it MUST NOT be used. |
+| T4 | **Definitions are stable across versions.** | A published definition MUST NOT be changed in place to mean something different. Meaning changes proceed by deprecation and replacement under [Section 7](#8-deprecated-terminology). |
+| T5 | **Reference, do not redefine.** | Future documents MUST reference this glossary for terminology. A document that needs a term this glossary does not define MUST propose its addition here rather than defining it locally. |
+| T6 | **Definitions are implementation-independent.** | A definition MUST describe what a concept *is*, never how it is built, stored, transported, or executed. A definition that can be satisfied in only one way is a defect in this document. |
+| T7 | **Definitions are vendor-neutral.** | No definition MAY be expressed in terms of a specific vendor, runtime, model, platform, distribution method, language, or product. Vendor names MAY appear only as illustration, and confer nothing. |
+| T8 | **Authority is recorded, not assumed.** | Every entry MUST state which document holds authority over its meaning. This glossary records definitions owned elsewhere; it does not acquire ownership of them by recording them. |
+| T9 | **A name confers nothing.** | Defining a term neither creates a capability nor authorizes behavior. Product obligation arises only from AEOS-PRD requirement identifiers. |
+| T10 | **Write for both audiences.** | Every definition MUST be intelligible to a human maintainer and unambiguous to an AI runtime, from the same text. A definition that requires tone, context, or prior acquaintance to disambiguate is incomplete. |
 
 ---
 
-<section>
+## 4. Core Terminology
 
-## 3. Core Terminology
-
-### How to Read an Entry
+### 4.1 How to Read an Entry
 
 Each entry states a **Definition**, a **Purpose**, an **Authority**, its **Related terms**, and where
 useful, **Notes** recording distinctions that are commonly gotten wrong.
 
 The **Authority** field is the load-bearing one. It states which document governs the meaning:
 
-<table>
-<thead>
-<tr><th align="left">Authority value</th><th align="left">Meaning</th></tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>AEOS-PRD</strong></td>
-<td>The meaning is governed by the Product Requirements Document. This glossary records it and MUST NOT alter it. Product obligation attaches through <code>PR-</code> identifiers.</td>
-</tr>
-<tr>
-<td><strong>AEOS-VISION</strong></td>
-<td>The meaning is governed by the Vision Document. It expresses intent and confers no product obligation.</td>
-</tr>
-<tr>
-<td><strong>AEOS-GLOSSARY</strong></td>
-<td>This document is the defining authority. The term is terminology only: it names something the other documents use without naming, and confers no capability.</td>
-</tr>
-<tr>
-<td><strong>AEOS-GLOSSARY (reserved for architecture)</strong></td>
-<td>This document reserves the <em>name</em> and fixes the concept it refers to, so that architecture documents cannot introduce it under a competing label. The normative definition — whether the thing exists, what form it takes, and how it behaves — belongs to architecture documents and is not decided here. Such a term MUST NOT be cited to justify behavior, and MUST NOT appear in product-layer documents as though it carried obligation.</td>
-</tr>
-</tbody>
-</table>
+| Authority value | Meaning |
+| :--- | :--- |
+| **AEOS-PRD** | The meaning is governed by the Product Requirements Document. This glossary records it and MUST NOT alter it. Product obligation attaches through `PR-` identifiers. |
+| **AEOS-VISION** | The meaning is governed by the Vision Document. It expresses intent and confers no product obligation. |
+| **AEOS-GLOSSARY** | This document is the defining authority. The term is terminology only: it names something the other documents use without naming, and confers no capability. |
+| **AEOS-GLOSSARY (reserved for architecture)** | This document reserves the *name* and fixes the concept it refers to, so that architecture documents cannot introduce it under a competing label. The normative definition — whether the thing exists, what form it takes, and how it behaves — belongs to architecture documents and is not decided here. Such a term MUST NOT be cited to justify behavior, and MUST NOT appear in product-layer documents as though it carried obligation. |
 
 Entries are ordered alphabetically. Related terms are given as official names and are all defined in
 this section.
 
 ---
 
-<details>
-<summary><strong>Action Class</strong> — the classification of an action by its effect, determining the approval it requires</summary>
+### 4.2 Terms
 
-<br>
+#### Action Class
 
 **Definition.** The classification of an action by its effect — observation, local change, external
 effect, or destructive — determining the approval required before it may be executed.
@@ -236,12 +176,7 @@ judgment at the moment of asking, so that identical actions are always gated ide
 **Notes.** The four classes are a closed set. A document that needs a fifth is proposing a change to
 the product's concepts and MUST route the idea through owner approval rather than naming it.
 
-</details>
-
-<details>
-<summary><strong>AEOS</strong> — the product defined by AEOS-PRD; an operating system for AI-assisted software engineering</summary>
-
-<br>
+#### AEOS
 
 **Definition.** AI Engineering Operating System. The product defined by AEOS-PRD: an operating system
 for AI-assisted, human-supervised software engineering that orchestrates external AI runtimes and
@@ -259,12 +194,7 @@ System*, without hyphenation. The operating-system element of the name is a meta
 orchestration of engineering activity and nothing below that level; it MUST NOT be read as a claim
 about processes, hardware, or the host operating system.
 
-</details>
-
-<details>
-<summary><strong>Approval Gate</strong> — the point at which a proposed action requires explicit human confirmation before execution</summary>
-
-<br>
+#### Approval Gate
 
 **Definition.** The point at which a proposed action requires explicit human confirmation before
 execution.
@@ -279,12 +209,7 @@ particular confirmation is obtained.
 **Notes.** An Approval Gate is a position; Human Approval is the act that satisfies it. The two MUST
 NOT be used interchangeably.
 
-</details>
-
-<details>
-<summary><strong>Architecture</strong> — the layer that determines how AEOS is structured so that it can deliver the Product</summary>
-
-<br>
+#### Architecture
 
 **Definition.** The layer that determines how AEOS is structured so that it can deliver the Product,
 together with the documents that record those determinations.
@@ -299,12 +224,7 @@ together with the documents that record those determinations.
 of a user's software is *project architecture* and MUST be written that way; the Repository Asset kind
 that records it is an *Architecture Document*. Architecture decides *how*; it never decides *whether*.
 
-</details>
-
-<details>
-<summary><strong>Automation Grant</strong> — an explicit, scoped, recorded, revocable delegation of approval authority</summary>
-
-<br>
+#### Automation Grant
 
 **Definition.** An explicit, scoped, recorded, revocable delegation of approval authority for specific
 action classes.
@@ -319,12 +239,7 @@ always a decision someone made rather than a default that arrived.
 **Notes.** An Automation Grant never authorizes destructive actions. *Automation* used without the
 word *grant* MUST NOT be read as implying one.
 
-</details>
-
-<details>
-<summary><strong>Blueprint</strong> — the document layer between Architecture and Specification</summary>
-
-<br>
+#### Blueprint
 
 **Definition.** The document layer that expresses how a defined portion of AEOS is to be realized,
 positioned between Architecture and Specification: more concrete than a structural decision, less
@@ -342,12 +257,7 @@ Vision → Product → Architecture → Blueprint → Specification → Implemen
 Whether Blueprints exist as documents, what they contain, and whether they constitute a Repository
 Asset kind are architecture governance decisions and are not made here.
 
-</details>
-
-<details>
-<summary><strong>Bootstrap</strong> — the first, human-approved sequence that makes AEOS usable in an Environment or Project</summary>
-
-<br>
+#### Bootstrap
 
 **Definition.** The initial sequence by which AEOS becomes usable in an Environment or a Project for
 the first time: inspection of what exists, proposal of what is missing, and execution of only what was
@@ -364,12 +274,7 @@ project initialization or adoption, so that neither term is stretched to cover b
 implication of unattended execution: every consequential step within a Bootstrap is subject to its
 Action Class and its Approval Gate exactly as any other step is.
 
-</details>
-
-<details>
-<summary><strong>Capability</strong> — one of the ten product capabilities that together constitute AEOS</summary>
-
-<br>
+#### Capability
 
 **Definition.** One of the ten product capabilities defined in AEOS-PRD that together constitute the
 product, each identified as `C1` through `C10` and expressed as numbered product requirements.
@@ -384,12 +289,7 @@ product, each identified as `C1` through `C10` and expressed as numbered product
 "feature", "function", "module", or "what a runtime can do". For the ability a workflow step requires
 and a runtime may or may not provide, use **Engineering Capability**.
 
-</details>
-
-<details>
-<summary><strong>Context</strong> — the information deliberately selected and supplied to a Runtime for a step of work</summary>
-
-<br>
+#### Context
 
 **Definition.** The information deliberately selected and supplied to a Runtime so that it can perform
 a defined step of work, together with the reason each element was included.
@@ -405,12 +305,7 @@ and its justification can be discussed as one thing.
 model's input window, which is a property of a Model and is written *context window*. Context that
 cannot be justified element by element is not minimized, whatever its size.
 
-</details>
-
-<details>
-<summary><strong>Context Minimization</strong> — the principle of sending the smallest context sufficient for the task</summary>
-
-<br>
+#### Context Minimization
 
 **Definition.** The principle that AEOS sends the smallest context sufficient for the task and can
 explain each inclusion.
@@ -424,12 +319,7 @@ explain each inclusion.
 **Notes.** Minimization is a property of deliberate selection, not of measured size. Bulk transfer is
 a failure of design, and unnecessary context is a defect rather than overhead.
 
-</details>
-
-<details>
-<summary><strong>Context Router</strong> — the named responsibility for selecting and justifying the Context of a step</summary>
-
-<br>
+#### Context Router
 
 **Definition.** The responsibility for selecting the minimum sufficient Context for a step of work and
 for retaining the reason each element was included.
@@ -446,12 +336,7 @@ states the product obligation — minimized context, explainable inclusion, insp
 naming anything that performs it. Whether that responsibility is realized as one thing, several, or
 none is an architecture decision.
 
-</details>
-
-<details>
-<summary><strong>Contributor</strong> — a person or AI runtime proposing a change to AEOS itself</summary>
-
-<br>
+#### Contributor
 
 **Definition.** A person or AI runtime proposing a change to AEOS itself — to its documents, its
 assets, or its implementation.
@@ -467,12 +352,7 @@ governed by different rules.
 freeze. One individual may be both a Contributor and a Developer; the roles remain distinct in review
 and governance, and a document MUST state which one it addresses.
 
-</details>
-
-<details>
-<summary><strong>Developer</strong> — a person who uses AEOS to build or maintain their own project</summary>
-
-<br>
+#### Developer
 
 **Definition.** A person who uses AEOS to build or maintain their own software project.
 
@@ -486,12 +366,7 @@ and governance, and a document MUST state which one it addresses.
 the team member, the engineering lead, and the platform engineer described in AEOS-PRD. Where a
 statement applies to only one of those, that role MUST be named explicitly instead.
 
-</details>
-
-<details>
-<summary><strong>Distribution Method</strong> — an official way AEOS is delivered to users</summary>
-
-<br>
+#### Distribution Method
 
 **Definition.** An official way AEOS is delivered to users. It never changes the product architecture.
 
@@ -505,12 +380,7 @@ statement applies to only one of those, that role MUST be named explicitly inste
 semantic difference. *Distribution* and *Distribution Method* refer to the same concept; the shorter
 form MAY be used where no ambiguity arises.
 
-</details>
-
-<details>
-<summary><strong>Document</strong> — a durable, versioned, human- and AI-readable artifact stating part of what a project or product knows about itself</summary>
-
-<br>
+#### Document
 
 **Definition.** A durable, versioned artifact that states some part of what AEOS or a project knows
 about itself, readable by humans and consumable by AI runtimes from the same text.
@@ -526,12 +396,7 @@ behavior, and decision.
 authority. Documents are Repository Assets and are reviewed, versioned, and maintained like code. A
 document containing placeholders or unfinished sections is an unfinished artifact and is not shipped.
 
-</details>
-
-<details>
-<summary><strong>Engineering Capability</strong> — a discrete unit of engineering work a Workflow step requires and a Runtime may or may not provide</summary>
-
-<br>
+#### Engineering Capability
 
 **Definition.** A discrete unit of engineering work that a Workflow step requires in order to proceed,
 and that a selected Runtime may or may not be able to perform.
@@ -549,12 +414,7 @@ for one another: a Capability is one of the ten product capabilities; an Enginee
 unit of work matched between a workflow and a runtime. This term names the concept only; the
 obligation to report unsupported work before it begins arises from AEOS-PRD.
 
-</details>
-
-<details>
-<summary><strong>Environment</strong> — the machine, its tooling, and its available runtimes, as observed at a point in time</summary>
-
-<br>
+#### Environment
 
 **Definition.** The machine on which AEOS operates, together with its platform, its project-relevant
 tooling, and the AI runtimes available on it, as observed at a point in time.
@@ -571,12 +431,7 @@ determined, the uncertainty is reported as such. The Environment belongs to the 
 on it. *Environment inspection* is the act of determining actual machine and project state before
 proposing or performing an action.
 
-</details>
-
-<details>
-<summary><strong>Freeze</strong> — the governance state in which a document's content changes only through its stated change control</summary>
-
-<br>
+#### Freeze
 
 **Definition.** The governance state in which a document's definitions and decisions MUST NOT change
 except through the change control that document defines, under the owner's approval.
@@ -592,12 +447,7 @@ editorial correction at patch level; what it does not accept is a change of mean
 decision. Under the architecture freeze, an improvement to the product's concepts is recorded as a
 recommendation for a future release rather than applied.
 
-</details>
-
-<details>
-<summary><strong>Human Approval</strong> — the explicit act by which a person authorizes a specific proposed action</summary>
-
-<br>
+#### Human Approval
 
 **Definition.** The explicit act by which a person authorizes a specific proposed action before it is
 executed.
@@ -613,12 +463,7 @@ about separately.
 action is not Human Approval of this one. Approval authorizes exactly what was proposed; scope
 expansion requires a new Proposal.
 
-</details>
-
-<details>
-<summary><strong>Human-in-the-Loop</strong> — the requirement that a human decides before AEOS acts consequentially</summary>
-
-<br>
+#### Human-in-the-Loop
 
 **Definition.** The requirement that a human decides before AEOS acts consequentially.
 
@@ -631,12 +476,7 @@ expansion requires a new Proposal.
 **Notes.** Written with hyphens and initial capitals when naming the principle. The abbreviation *HITL*
 MUST NOT be used in AEOS documents.
 
-</details>
-
-<details>
-<summary><strong>Implementation</strong> — the code and tests that realize the layers above them</summary>
-
-<br>
+#### Implementation
 
 **Definition.** The code and tests that realize the Architecture, Blueprint, and Specification layers,
 traced back to the requirement identifiers they satisfy.
@@ -651,12 +491,7 @@ traced back to the requirement identifiers they satisfy.
 their own project is *project code* and MUST be written that way. *Implementation detail* is out of
 scope for product-layer documents.
 
-</details>
-
-<details>
-<summary><strong>Model</strong> — a language model, model family, or model version used by a Runtime to perform inference</summary>
-
-<br>
+#### Model
 
 **Definition.** A specific language model, model family, or model version that a Runtime uses to
 perform inference.
@@ -672,12 +507,7 @@ choice can be discussed as an ordinary engineering decision.
 user. AEOS is independent of any model, model family, or model version, and no AEOS behavior may
 depend on undocumented behavior of a specific one.
 
-</details>
-
-<details>
-<summary><strong>Platform</strong> — a supported host operating system</summary>
-
-<br>
+#### Platform
 
 **Definition.** A supported host operating system on which AEOS operates: Windows, macOS, or Linux.
 
@@ -691,12 +521,7 @@ depend on undocumented behavior of a specific one.
 provider, or an application runtime. The three platforms are equal citizens; a capability that works on
 only one of them is incomplete rather than shipped.
 
-</details>
-
-<details>
-<summary><strong>Product</strong> — the whole of what AEOS is and does for its users, as defined by AEOS-PRD</summary>
-
-<br>
+#### Product
 
 **Definition.** The whole of what AEOS is and does for its users, as defined by AEOS-PRD; equivalently,
 the layer that answers what AEOS is, who it is for, and what it must do for them.
@@ -711,12 +536,7 @@ the layer that answers what AEOS is, who it is for, and what it must do for them
 what AEOS is belongs to the product layer; how AEOS is built belongs to architecture, specification, and
 runtime documents. The repository is the product's durable form, not a place where the product is kept.
 
-</details>
-
-<details>
-<summary><strong>Product Boundary</strong> — the line between what AEOS is and how AEOS is built</summary>
-
-<br>
+#### Product Boundary
 
 **Definition.** The line AEOS-PRD draws between product definition and implementation: what AEOS is
 belongs to the product layer, and how AEOS is built belongs to architecture, specification, and runtime
@@ -733,12 +553,7 @@ can be reported as a specific defect rather than as a stylistic objection.
 Boundary. It is reported as a defect in the document that contains it, and is not treated as an
 architectural instruction.
 
-</details>
-
-<details>
-<summary><strong>Profile</strong> — the versioned Repository Asset describing what a Project is and how it is built</summary>
-
-<br>
+#### Profile
 
 **Definition.** The versioned Repository Asset describing a project's identity, technology, build and
 test approach, runtime selection, and applicable rules.
@@ -754,12 +569,7 @@ project being re-explained.
 ambiguity arises. AEOS defines no other kind of profile, and the word MUST NOT be used for user
 profiles, performance profiling, or runtime configuration.
 
-</details>
-
-<details>
-<summary><strong>Project</strong> — the unit of work AEOS operates on</summary>
-
-<br>
+#### Project
 
 **Definition.** The unit of work AEOS operates on: a repository together with its Repository Assets,
 governed by AEOS.
@@ -774,12 +584,7 @@ governed by AEOS.
 ordinary case rather than the exception, and adoption never overwrites, relocates, or restructures what
 was already there. Work on one project never affects another.
 
-</details>
-
-<details>
-<summary><strong>Project Type</strong> — a descriptive classification of a Project recorded in its Profile</summary>
-
-<br>
+#### Project Type
 
 **Definition.** A descriptive classification of a Project, recorded in its Profile, expressing the kind
 of software the project builds.
@@ -795,12 +600,7 @@ refer to the classification instead of enumerating characteristics.
 applied merely because a project carries a given type. AEOS-supplied workflow templates for common
 project archetypes are a recorded recommendation for a future release, not a current product concept.
 
-</details>
-
-<details>
-<summary><strong>Prompt</strong> — a versioned, parameterized, portable Repository Asset of deliberate instruction and context</summary>
-
-<br>
+#### Prompt
 
 **Definition.** A versioned, parameterized, portable Repository Asset composed of deliberately selected
 context and instruction.
@@ -815,12 +615,7 @@ and reuse, rather than as disposable session material.
 **Notes.** A Prompt remains inspectable before it is sent, because a prompt the user cannot read is a
 decision the user did not make. Credentials and user-designated sensitive content never appear in one.
 
-</details>
-
-<details>
-<summary><strong>Proposal</strong> — a statement of intended action, its rationale, effects, reversibility, and the consequence of declining</summary>
-
-<br>
+#### Proposal
 
 **Definition.** A statement of intended action including rationale, effects, reversibility, and the
 consequence of declining.
@@ -835,12 +630,7 @@ something specific and recorded.
 **Notes.** A declined Proposal is a normal outcome and is never treated as an error. Executing beyond
 what a Proposal stated requires a new Proposal, not a broader reading of the old one.
 
-</details>
-
-<details>
-<summary><strong>Repository</strong> — the version-controlled store that holds a Project's code and Repository Assets and is its Source of Truth</summary>
-
-<br>
+#### Repository
 
 **Definition.** The version-controlled store that contains a project's code and Repository Assets and is
 the authoritative source of truth for that project.
@@ -856,12 +646,7 @@ repository*. *Repository as Product* is the principle that the repository is the
 authoritative source of truth. What is not in the repository does not exist, and a repository remains
 meaningful when AEOS is not running.
 
-</details>
-
-<details>
-<summary><strong>Repository Asset</strong> — a durable, versioned artifact that forms part of the product and lives in the repository</summary>
-
-<br>
+#### Repository Asset
 
 **Definition.** Any durable, versioned artifact that forms part of the product and lives in the
 repository. Includes rules, skills, prompts, workflows, profiles, templates, playbooks, recipes,
@@ -880,12 +665,7 @@ runtimes, portable, and extensible by users without modifying AEOS. The distingu
 in AEOS-PRD: if losing it costs only repeated work it is Runtime State; if losing it costs product
 meaning it is a Repository Asset.
 
-</details>
-
-<details>
-<summary><strong>Review</strong> — examination of an artifact against requirements, rules, and tests before it enters the Repository</summary>
-
-<br>
+#### Review
 
 **Definition.** The examination of an artifact, change, or document against requirements, rules, and
 tests, producing findings classified as Critical, Major, Minor, or Nitpick.
@@ -902,12 +682,7 @@ examines a result; explanation before execution concerns an intent. Both are req
 substitutes for the other. A review identifies inconsistencies; it does not redesign the artifact under
 review.
 
-</details>
-
-<details>
-<summary><strong>Rule</strong> — a versioned, scoped engineering constraint applied during generation, review, and refactoring</summary>
-
-<br>
+#### Rule
 
 **Definition.** A versioned, scoped engineering constraint applied during generation, review, and
 refactoring.
@@ -923,12 +698,7 @@ restated.
 explainable. AEOS never applies a rule the user cannot inspect. A rule that cannot be enforced under the
 selected runtime is reported rather than silently ignored.
 
-</details>
-
-<details>
-<summary><strong>Runtime</strong> — an external AI system that performs inference</summary>
-
-<br>
+#### Runtime
 
 **Definition.** An external AI system that performs inference. Always an integration, never a part of
 AEOS.
@@ -944,12 +714,7 @@ an application runtime, or an execution environment; where those are meant, they
 A system that performs no inference is a **Tool**, not a Runtime. Runtime selection belongs to the user
 and is never overridden or silently substituted.
 
-</details>
-
-<details>
-<summary><strong>Runtime Adapter</strong> — the named responsibility that mediates between AEOS and one external Runtime</summary>
-
-<br>
+#### Runtime Adapter
 
 **Definition.** The responsibility for mediating between AEOS and one external Runtime, so that
 workflows, rules, skills, and prompts remain unchanged when the runtime changes.
@@ -966,12 +731,7 @@ states the product obligations — no inference, runtime independence, support f
 modifying AEOS — without naming anything that discharges them. Whether adapters exist as discrete
 artifacts, how they are declared, and how they are distributed are architecture decisions.
 
-</details>
-
-<details>
-<summary><strong>Runtime State</strong> — transient, machine-local, or environment-specific information produced while AEOS runs</summary>
-
-<br>
+#### Runtime State
 
 **Definition.** Transient, machine-local, or environment-specific information produced while AEOS runs.
 Not a Repository Asset and not part of the product.
@@ -988,12 +748,7 @@ machine-specific configuration are Runtime State. A project MUST remain fully un
 reproducible without it. Runtime State MUST NOT be confused with **Workflow State**, which is durable
 and belongs to the repository.
 
-</details>
-
-<details>
-<summary><strong>Skill</strong> — a versioned, reusable, runtime-independent packaged engineering procedure</summary>
-
-<br>
+#### Skill
 
 **Definition.** A versioned, reusable, runtime-independent packaged engineering procedure.
 
@@ -1007,12 +762,7 @@ and belongs to the repository.
 was applied, and why, is reported rather than left implicit. *Skill* MUST NOT be used to describe a
 runtime-specific feature offered under the same word by a vendor.
 
-</details>
-
-<details>
-<summary><strong>Source of Truth</strong> — the single artifact that governs a subject and wins any conflict about it</summary>
-
-<br>
+#### Source of Truth
 
 **Definition.** The single artifact that governs a subject: where it conflicts with any other statement
 about that subject, it governs and the other statement is a defect.
@@ -1025,26 +775,16 @@ about that subject, it governs and the other statement is a defect.
 
 **Notes.** The registered sources of truth are:
 
-<table>
-<thead>
-<tr><th align="left">Subject</th><th align="left">Source of Truth</th></tr>
-</thead>
-<tbody>
-<tr><td>Why AEOS exists and what it must remain</td><td>AEOS-VISION</td></tr>
-<tr><td>What AEOS is and what it must do</td><td>AEOS-PRD</td></tr>
-<tr><td>Official terminology and naming</td><td>AEOS-GLOSSARY</td></tr>
-<tr><td>A project's code, assets, and state</td><td>The Repository</td></tr>
-</tbody>
-</table>
+| Subject | Source of Truth |
+| :--- | :--- |
+| Why AEOS exists and what it must remain | AEOS-VISION |
+| What AEOS is and what it must do | AEOS-PRD |
+| Official terminology and naming | AEOS-GLOSSARY |
+| A project's code, assets, and state | The Repository |
 
 A document MUST NOT declare itself a source of truth for a subject already registered above.
 
-</details>
-
-<details>
-<summary><strong>Specification</strong> — a precise, testable statement of required behavior, traceable to a requirement identifier</summary>
-
-<br>
+#### Specification
 
 **Definition.** A precise statement of required behavior, expressed testably and traceable to one or
 more product requirement identifiers; also the document layer in which such statements live.
@@ -1058,12 +798,7 @@ more product requirement identifiers; also the document layer in which such stat
 **Notes.** Specifications use RFC 2119 terminology. A specification MUST NOT weaken, reinterpret, or
 quietly widen a product requirement; where the two conflict, AEOS-PRD governs.
 
-</details>
-
-<details>
-<summary><strong>TDD Cycle</strong> — define behavior, failing test, verified failure reason, minimal implementation, refactor green</summary>
-
-<br>
+#### TDD Cycle
 
 **Definition.** Define behavior → failing test → verify failure reason → minimal implementation →
 refactor green.
@@ -1078,12 +813,7 @@ refactor green.
 exception a human acknowledges; it is never silent and never the default. The cycle applies to AEOS's
 own development without exemption.
 
-</details>
-
-<details>
-<summary><strong>Technology Stack</strong> — the languages, frameworks, and tools a Project uses, recorded in its Profile</summary>
-
-<br>
+#### Technology Stack
 
 **Definition.** The set of languages, frameworks, libraries, build tools, and test tools a Project uses,
 recorded descriptively in its Profile.
@@ -1099,12 +829,7 @@ expectations can be recorded rather than inferred each session.
 capability may depend on a particular technology choice. Recording a technology in a Profile confers no
 preference on it.
 
-</details>
-
-<details>
-<summary><strong>Template</strong> — a Repository Asset providing a reusable starting point for repeated work</summary>
-
-<br>
+#### Template
 
 **Definition.** A Repository Asset providing a reusable starting point for work a project performs
 repeatedly.
@@ -1119,12 +844,7 @@ repeatedly.
 project archetypes are a recorded recommendation for a future release and are not part of the current
 product definition; the two MUST NOT be conflated.
 
-</details>
-
-<details>
-<summary><strong>Tool</strong> — an external program or system that performs non-inference work for a Project</summary>
-
-<br>
+#### Tool
 
 **Definition.** An external program or system a project depends on that performs no inference: build,
 test, version control, packaging, delivery, and comparable systems.
@@ -1140,12 +860,7 @@ since the two are governed differently.
 orchestrates them rather than replacing them, and never removes or reconfigures a tool it did not
 install without explicit, specific confirmation.
 
-</details>
-
-<details>
-<summary><strong>Vendor</strong> — an organization that supplies a Runtime, Model, or Tool</summary>
-
-<br>
+#### Vendor
 
 **Definition.** An organization that supplies a Runtime, a Model, or a Tool used with AEOS.
 
@@ -1160,12 +875,7 @@ independence from it can be stated precisely.
 available to a user and never disables AEOS. Being named in AEOS documentation confers nothing; being
 unnamed excludes nothing. Vendor names MUST NOT appear in definitions, requirements, or asset names.
 
-</details>
-
-<details>
-<summary><strong>Vision</strong> — the statement of why AEOS exists and what it must remain</summary>
-
-<br>
+#### Vision
 
 **Definition.** The statement of why AEOS exists, what future it intends to serve, and which convictions
 must survive every revision of the product; also the document that records it, AEOS-VISION.
@@ -1181,12 +891,7 @@ serves the product's reason for existing.
 appears to grant capability or impose a requirement is a defect in that document. Its invariants are
 identified `V1` through `V10`.
 
-</details>
-
-<details>
-<summary><strong>Workflow</strong> — a versioned, runtime-independent declaration of steps, preconditions, approval gates, and success criteria</summary>
-
-<br>
+#### Workflow
 
 **Definition.** A versioned, runtime-independent declaration of engineering steps, preconditions,
 approval gates, and success criteria.
@@ -1202,12 +907,7 @@ portable asset.
 must change when the runtime changes, runtime independence has been violated. *Agentic orchestration* is
 the sequencing of multi-step work across runtimes with each consequential step held to its approval gate.
 
-</details>
-
-<details>
-<summary><strong>Workflow Engine</strong> — the named responsibility for executing Workflow declarations under their Approval Gates</summary>
-
-<br>
+#### Workflow Engine
 
 **Definition.** The responsibility for executing Workflow declarations incrementally, holding each
 consequential step to its Approval Gate, and maintaining Workflow State across interruption.
@@ -1224,12 +924,7 @@ states the product obligations — incremental execution, gated steps, resumable
 outcomes — without naming anything that performs them. Whether the responsibility is realized as one
 thing, several, or none is an architecture decision.
 
-</details>
-
-<details>
-<summary><strong>Workflow State</strong> — the durable record of where a Workflow stands</summary>
-
-<br>
+#### Workflow State
 
 **Definition.** The durable record of where a Workflow currently stands: completed steps, the current
 step, outstanding decisions, and the position within any active TDD Cycle.
@@ -1245,15 +940,9 @@ without re-establishing context.
 consequence of execution and does not. The two MUST NOT be conflated, and Workflow State MUST NOT be
 described as transient.
 
-</details>
-
-</section>
-
 ---
 
-<section>
-
-## 4. Terminology Relationships
+## 5. Terminology Relationships
 
 The diagrams below record how the official terms relate. They are terminology maps, not architecture:
 they state which concept is defined in terms of which, and nothing about structure, dependency, or
@@ -1262,7 +951,7 @@ execution.
 > **Reading the arrows.** Each chain states one relationship, given beneath it. An arrow never means
 > "calls", "contains at runtime", "is implemented by", or "happens after".
 
-### 4.1 The Definition Chain
+### 5.1 The Definition Chain
 
 Each layer is defined by, and must trace back to, the layer above it.
 
@@ -1285,20 +974,15 @@ Each layer is defined by, and must trace back to, the layer above it.
         Implementation    the code and tests that realize it
 ```
 
-<table>
-<thead>
-<tr><th align="left">Relationship</th><th align="left">Statement</th></tr>
-</thead>
-<tbody>
-<tr><td>Vision → Product</td><td>The Product is constrained by the Vision. The Vision governs reasoning; the Product governs behavior.</td></tr>
-<tr><td>Product → Architecture</td><td>Architecture decides how the Product is delivered. It decides <em>how</em>, never <em>whether</em>.</td></tr>
-<tr><td>Architecture → Blueprint</td><td>A Blueprint expresses a defined portion of the Architecture in realizable form.</td></tr>
-<tr><td>Blueprint → Specification</td><td>A Specification states the behavior precisely enough to be tested.</td></tr>
-<tr><td>Specification → Implementation</td><td>Implementation realizes the Specification and traces back to product requirement identifiers.</td></tr>
-</tbody>
-</table>
+| Relationship | Statement |
+| :--- | :--- |
+| Vision → Product | The Product is constrained by the Vision. The Vision governs reasoning; the Product governs behavior. |
+| Product → Architecture | Architecture decides how the Product is delivered. It decides *how*, never *whether*. |
+| Architecture → Blueprint | A Blueprint expresses a defined portion of the Architecture in realizable form. |
+| Blueprint → Specification | A Specification states the behavior precisely enough to be tested. |
+| Specification → Implementation | Implementation realizes the Specification and traces back to product requirement identifiers. |
 
-### 4.2 The Asset Chain
+### 5.2 The Asset Chain
 
 The Repository holds Repository Assets. Rule, Skill, Prompt, Template, and the other asset kinds are
 *kinds of* Repository Asset, not stages of one another.
@@ -1319,18 +1003,13 @@ The Repository holds Repository Assets. Rule, Skill, Prompt, Template, and the o
           +-- ...           the list of kinds is open
 ```
 
-<table>
-<thead>
-<tr><th align="left">Relationship</th><th align="left">Statement</th></tr>
-</thead>
-<tbody>
-<tr><td>Repository → Repository Asset</td><td>The Repository contains all Repository Assets and is their source of truth.</td></tr>
-<tr><td>Repository Asset → kinds</td><td>Each kind is a Repository Asset and inherits every property of one: durable, versioned, inspectable, consumable, portable, extensible.</td></tr>
-<tr><td>Repository Asset ↔ Runtime State</td><td>Mutually exclusive. Runtime State is never a Repository Asset, and no project requires Runtime State to be understood or reproduced.</td></tr>
-</tbody>
-</table>
+| Relationship | Statement |
+| :--- | :--- |
+| Repository → Repository Asset | The Repository contains all Repository Assets and is their source of truth. |
+| Repository Asset → kinds | Each kind is a Repository Asset and inherits every property of one: durable, versioned, inspectable, consumable, portable, extensible. |
+| Repository Asset ↔ Runtime State | Mutually exclusive. Runtime State is never a Repository Asset, and no project requires Runtime State to be understood or reproduced. |
 
-### 4.3 The Work Chain
+### 5.3 The Work Chain
 
 How a unit of work relates to the context it needs and the runtime that performs it.
 
@@ -1350,19 +1029,14 @@ How a unit of work relates to the context it needs and the runtime that performs
         Runtime ---- performs inference using ----> Model
 ```
 
-<table>
-<thead>
-<tr><th align="left">Relationship</th><th align="left">Statement</th></tr>
-</thead>
-<tbody>
-<tr><td>Context → Workflow</td><td>Context is selected per step of a Workflow, minimized deliberately, and explainable element by element.</td></tr>
-<tr><td>Workflow → Engineering Capability</td><td>A Workflow step declares the engineering work it requires.</td></tr>
-<tr><td>Engineering Capability → Runtime</td><td>A Runtime either provides the required work or does not; the difference is reported before work begins.</td></tr>
-<tr><td>Runtime → Model</td><td>A Runtime performs inference using a Model. Neither is part of AEOS.</td></tr>
-</tbody>
-</table>
+| Relationship | Statement |
+| :--- | :--- |
+| Context → Workflow | Context is selected per step of a Workflow, minimized deliberately, and explainable element by element. |
+| Workflow → Engineering Capability | A Workflow step declares the engineering work it requires. |
+| Engineering Capability → Runtime | A Runtime either provides the required work or does not; the difference is reported before work begins. |
+| Runtime → Model | A Runtime performs inference using a Model. Neither is part of AEOS. |
 
-### 4.4 The Supervision Chain
+### 5.4 The Supervision Chain
 
 How an intended action becomes an executed one.
 
@@ -1380,95 +1054,66 @@ How an intended action becomes an executed one.
         Execution ---- recorded as ----> Workflow State
 ```
 
-<table>
-<thead>
-<tr><th align="left">Relationship</th><th align="left">Statement</th></tr>
-</thead>
-<tbody>
-<tr><td>Action Class → Approval Gate</td><td>The class of an action determines the approval it requires.</td></tr>
-<tr><td>Proposal → Human Approval</td><td>Approval attaches to a specific Proposal and to nothing beyond it.</td></tr>
-<tr><td>Human Approval → Automation Grant</td><td>A grant delegates approval authority explicitly, scoped and revocably, and never for destructive actions.</td></tr>
-<tr><td>Execution → Workflow State</td><td>What actually occurred, including partial completion and failure, is recorded in the project.</td></tr>
-</tbody>
-</table>
+| Relationship | Statement |
+| :--- | :--- |
+| Action Class → Approval Gate | The class of an action determines the approval it requires. |
+| Proposal → Human Approval | Approval attaches to a specific Proposal and to nothing beyond it. |
+| Human Approval → Automation Grant | A grant delegates approval authority explicitly, scoped and revocably, and never for destructive actions. |
+| Execution → Workflow State | What actually occurred, including partial completion and failure, is recorded in the project. |
 
-### 4.5 Terms That Are Commonly Confused
+### 5.5 Terms That Are Commonly Confused
 
-<table>
-<thead>
-<tr><th align="left">These are different</th><th align="left">The distinction</th></tr>
-</thead>
-<tbody>
-<tr><td><strong>Capability</strong> vs <strong>Engineering Capability</strong></td><td>One of the ten product capabilities, versus a unit of work matched between a workflow step and a runtime.</td></tr>
-<tr><td><strong>Repository Asset</strong> vs <strong>Runtime State</strong></td><td>Losing it costs product meaning, versus losing it costs only repeated work.</td></tr>
-<tr><td><strong>Workflow State</strong> vs <strong>Runtime State</strong></td><td>Durable project knowledge in the repository, versus a transient consequence of execution.</td></tr>
-<tr><td><strong>Runtime</strong> vs <strong>Tool</strong></td><td>Performs inference, versus performs no inference.</td></tr>
-<tr><td><strong>Runtime</strong> vs <strong>Model</strong></td><td>The external system that exposes inference, versus the model it uses to perform it.</td></tr>
-<tr><td><strong>Approval Gate</strong> vs <strong>Human Approval</strong></td><td>The position at which confirmation is required, versus the act that satisfies it.</td></tr>
-<tr><td><strong>Review</strong> vs <strong>explanation before execution</strong></td><td>Examination of a result, versus the obligation to be understood before acting. Both are required.</td></tr>
-<tr><td><strong>Developer</strong> vs <strong>Contributor</strong></td><td>Uses AEOS on their own project, versus changes AEOS itself.</td></tr>
-<tr><td><strong>Architecture</strong> vs <strong>project architecture</strong></td><td>The structure of AEOS, versus the structure of a user's software.</td></tr>
-<tr><td><strong>Implementation</strong> vs <strong>project code</strong></td><td>AEOS's own code, versus code written by a Developer in their project.</td></tr>
-</tbody>
-</table>
-
-</section>
+| These are different | The distinction |
+| :--- | :--- |
+| **Capability** vs **Engineering Capability** | One of the ten product capabilities, versus a unit of work matched between a workflow step and a runtime. |
+| **Repository Asset** vs **Runtime State** | Losing it costs product meaning, versus losing it costs only repeated work. |
+| **Workflow State** vs **Runtime State** | Durable project knowledge in the repository, versus a transient consequence of execution. |
+| **Runtime** vs **Tool** | Performs inference, versus performs no inference. |
+| **Runtime** vs **Model** | The external system that exposes inference, versus the model it uses to perform it. |
+| **Approval Gate** vs **Human Approval** | The position at which confirmation is required, versus the act that satisfies it. |
+| **Review** vs **explanation before execution** | Examination of a result, versus the obligation to be understood before acting. Both are required. |
+| **Developer** vs **Contributor** | Uses AEOS on their own project, versus changes AEOS itself. |
+| **Architecture** vs **project architecture** | The structure of AEOS, versus the structure of a user's software. |
+| **Implementation** vs **project code** | AEOS's own code, versus code written by a Developer in their project. |
 
 ---
 
-<section>
-
-## 5. Naming Conventions
+## 6. Naming Conventions
 
 These conventions govern every name introduced in an AEOS repository. They apply to documents, assets,
 identifiers, and prose.
 
-### 5.1 General Rules
+### 6.1 General Rules
 
-<table>
-<thead>
-<tr><th align="left">#</th><th align="left">Rule</th></tr>
-</thead>
-<tbody>
-<tr><td>N1</td><td>A name MUST describe what a thing is or does, never how it is built.</td></tr>
-<tr><td>N2</td><td>A name MUST NOT contain a vendor, runtime, model, product, or platform name.</td></tr>
-<tr><td>N3</td><td>A name MUST NOT encode a version, a date, a status, or an author.</td></tr>
-<tr><td>N4</td><td>Abbreviations MUST NOT be invented. Only abbreviations registered in this glossary MAY be used; at present the registered set is <code>AEOS</code>, <code>PRD</code>, <code>TDD</code>, <code>CI/CD</code>, and <code>MCP</code>.</td></tr>
-<tr><td>N5</td><td>Names SHOULD be stable. Renaming a published thing follows the deprecation process in <a href="#7-deprecated-terminology">Section 7</a>.</td></tr>
-<tr><td>N6</td><td>English SHALL be the language of all names and identifiers.</td></tr>
-</tbody>
-</table>
+| # | Rule |
+| :--- | :--- |
+| N1 | A name MUST describe what a thing is or does, never how it is built. |
+| N2 | A name MUST NOT contain a vendor, runtime, model, product, or platform name. |
+| N3 | A name MUST NOT encode a version, a date, a status, or an author. |
+| N4 | Abbreviations MUST NOT be invented. Only abbreviations registered in this glossary MAY be used; at present the registered set is `AEOS`, `PRD`, `TDD`, `CI/CD`, and `MCP`. |
+| N5 | Names SHOULD be stable. Renaming a published thing follows the deprecation process in [Section 7](#8-deprecated-terminology). |
+| N6 | English MUST be the language of all names and identifiers. |
 
-### 5.2 Document Names
+### 6.2 Document Names
 
-<table>
-<thead>
-<tr><th align="left">Aspect</th><th align="left">Convention</th></tr>
-</thead>
-<tbody>
-<tr><td><strong>File name</strong></td><td>Product-level AEOS documents MUST be named <code>AEOS_&lt;NAME&gt;.md</code>, uppercase, words separated by underscores (for example <code>AEOS_PRODUCT_REQUIREMENTS.md</code>). Other documents SHOULD use the repository's prevailing convention for their location.</td></tr>
-<tr><td><strong>Document ID</strong></td><td>MUST be <code>AEOS-&lt;NAME&gt;</code>, uppercase, words separated by hyphens (for example <code>AEOS-PRD</code>, <code>AEOS-VISION</code>, <code>AEOS-GLOSSARY</code>). A Document ID MUST be unique and MUST NOT be reused after retirement.</td></tr>
-<tr><td><strong>Version</strong></td><td>MUST be semantic versioning, <code>MAJOR.MINOR.PATCH</code>, with the version impact of a change determined by that document's own change control.</td></tr>
-<tr><td><strong>Status</strong></td><td>MUST be one of: <code>Draft</code>, <code>Review</code>, <code>Freeze candidate</code>, <code>Frozen</code>, <code>Superseded</code>, <code>Retired</code>.</td></tr>
-<tr><td><strong>Header block</strong></td><td>Every AEOS document MUST open with a metadata block stating at least Document, Product, Document ID, Version, Status, Owner, Audience, and Supersedes, followed by a statement of the document's authority.</td></tr>
-</tbody>
-</table>
+| Aspect | Convention |
+| :--- | :--- |
+| **File name** | Product-level AEOS documents MUST be named `AEOS_<NAME>.md`, uppercase, words separated by underscores (for example `AEOS_PRODUCT_REQUIREMENTS.md`). Other documents SHOULD use the repository's prevailing convention for their location. |
+| **Document ID** | MUST be `AEOS-<NAME>`, uppercase, words separated by hyphens (for example `AEOS-PRD`, `AEOS-VISION`, `AEOS-GLOSSARY`). A Document ID MUST be unique and MUST NOT be reused after retirement. |
+| **Version** | MUST be semantic versioning, `MAJOR.MINOR.PATCH`, with the version impact of a change determined by that document's own change control. |
+| **Status** | MUST be one of: `Draft`, `Review`, `Freeze candidate`, `Frozen`, `Superseded`, `Retired`. |
+| **Header block** | Every AEOS document MUST open with a metadata block stating at least Document, Product, Document ID, Version, Status, Owner, Audience, and Supersedes, followed by a statement of the document's authority. |
 
-### 5.3 Repository Asset Names
+### 6.3 Repository Asset Names
 
-<table>
-<thead>
-<tr><th align="left">Aspect</th><th align="left">Convention</th></tr>
-</thead>
-<tbody>
-<tr><td><strong>Form</strong></td><td>Repository Asset names MUST be lowercase kebab-case (for example <code>test-first-cycle</code>, <code>commit-message-standard</code>).</td></tr>
-<tr><td><strong>Content</strong></td><td>A name MUST state the asset's purpose. It MUST NOT state its kind redundantly: an asset of kind Rule is not named <code>rule-…</code> where its kind is already evident from its declaration.</td></tr>
-<tr><td><strong>Uniqueness</strong></td><td>Asset names MUST be unique within their kind and scope. Two assets of the same kind MUST NOT share a name.</td></tr>
-<tr><td><strong>Versioning</strong></td><td>Versions MUST NOT appear in asset names. Assets are versioned through the repository and their own declared version.</td></tr>
-</tbody>
-</table>
+| Aspect | Convention |
+| :--- | :--- |
+| **Form** | Repository Asset names MUST be lowercase kebab-case (for example `test-first-cycle`, `commit-message-standard`). |
+| **Content** | A name MUST state the asset's purpose. It MUST NOT state its kind redundantly: an asset of kind Rule is not named `rule-…` where its kind is already evident from its declaration. |
+| **Uniqueness** | Asset names MUST be unique within their kind and scope. Two assets of the same kind MUST NOT share a name. |
+| **Versioning** | Versions MUST NOT appear in asset names. Assets are versioned through the repository and their own declared version. |
 
-### 5.4 Identifiers
+### 6.4 Identifiers
 
 All AEOS identifiers share one shape:
 
@@ -1480,352 +1125,213 @@ All AEOS identifiers share one shape:
         NNN     three digits, zero-padded, allocated sequentially from 001
 ```
 
-<table>
-<thead>
-<tr><th align="left">Prefix</th><th align="left">Identifies</th><th align="left">Owning document</th><th align="left">Example</th></tr>
-</thead>
-<tbody>
-<tr><td><code>PR</code></td><td>Product requirement</td><td>AEOS-PRD</td><td><code>PR-ENV-001</code></td></tr>
-<tr><td><code>AR</code></td><td>Architecture decision</td><td>Architecture documents</td><td><code>AR-&lt;AREA&gt;-001</code></td></tr>
-<tr><td><code>BP</code></td><td>Blueprint item</td><td>Blueprint documents</td><td><code>BP-&lt;AREA&gt;-001</code></td></tr>
-<tr><td><code>SP</code></td><td>Specified behavior</td><td>Specification documents</td><td><code>SP-&lt;AREA&gt;-001</code></td></tr>
-<tr><td><code>WF</code></td><td>Workflow</td><td>Workflow assets</td><td><code>WF-&lt;AREA&gt;-001</code></td></tr>
-</tbody>
-</table>
+| Prefix | Identifies | Owning document | Example |
+| :--- | :--- | :--- | :--- |
+| `PR` | Product requirement | AEOS-PRD | `PR-ENV-001` |
+| `AR` | Architecture decision | Architecture documents | `AR-<AREA>-001` |
+| `BP` | Blueprint item | Blueprint documents | `BP-<AREA>-001` |
+| `SP` | Specified behavior | Specification documents | `SP-<AREA>-001` |
+| `WF` | Workflow | Workflow assets | `WF-<AREA>-001` |
 
 Identifier rules:
 
-<table>
-<thead>
-<tr><th align="left">#</th><th align="left">Rule</th></tr>
-</thead>
-<tbody>
-<tr><td>I1</td><td>Identifiers MUST be immutable. They are never reused, never renumbered, and never reassigned to different intent.</td></tr>
-<tr><td>I2</td><td>A retired item MUST be marked retired in place, retaining its identifier and its rationale.</td></tr>
-<tr><td>I3</td><td>An <code>AREA</code> code MUST be registered by the document that introduces it, and MUST NOT be reused across layers with a different meaning.</td></tr>
-<tr><td>I4</td><td>New layer prefixes MUST NOT be invented. Adding one is a change to this glossary and requires owner approval.</td></tr>
-<tr><td>I5</td><td>Every architecture, blueprint, and specification identifier MUST trace to one or more <code>PR-</code> identifiers.</td></tr>
-<tr><td>I6</td><td>Identifiers already in use in frozen documents — the product requirement prefixes <code>PR-ENV</code>, <code>PR-PRJ</code>, <code>PR-WFL</code>, <code>PR-RUN</code>, <code>PR-TDD</code>, <code>PR-DOC</code>, <code>PR-RUL</code>, <code>PR-SKL</code>, <code>PR-PMT</code>, <code>PR-REP</code>, <code>PR-PLT</code>, <code>PR-DST</code>, <code>PR-SAF</code>, <code>PR-NFR</code>, and the short-form series <code>C</code> (capabilities), <code>P</code> (problems), <code>V</code> (invariants), <code>G</code> (guiding principles), <code>R</code> (recommendations) — MUST be preserved exactly as published and MUST NOT be redefined by this or any later document.</td></tr>
-</tbody>
-</table>
+| # | Rule |
+| :--- | :--- |
+| I1 | Identifiers MUST be immutable. They are never reused, never renumbered, and never reassigned to different intent. |
+| I2 | A retired item MUST be marked retired in place, retaining its identifier and its rationale. |
+| I3 | An `AREA` code MUST be registered by the document that introduces it, and MUST NOT be reused across layers with a different meaning. |
+| I4 | New layer prefixes MUST NOT be invented. Adding one is a change to this glossary and requires owner approval. |
+| I5 | Every architecture, blueprint, and specification identifier MUST trace to one or more `PR-` identifiers. |
+| I6 | Identifiers already in use in frozen documents — the product requirement prefixes `PR-ENV`, `PR-PRJ`, `PR-WFL`, `PR-RUN`, `PR-TDD`, `PR-DOC`, `PR-RUL`, `PR-SKL`, `PR-PMT`, `PR-REP`, `PR-PLT`, `PR-DST`, `PR-SAF`, `PR-NFR`, and the short-form series `C` (capabilities), `P` (problems), `V` (invariants), `G` (guiding principles), `R` (recommendations) — MUST be preserved exactly as published and MUST NOT be redefined by this or any later document. |
 
-### 5.5 Technology Identifiers
+### 6.5 Technology Identifiers
 
-<table>
-<thead>
-<tr><th align="left">#</th><th align="left">Rule</th></tr>
-</thead>
-<tbody>
-<tr><td>X1</td><td>A technology MUST be referred to by its supplier's canonical name, spelled and capitalized as the supplier publishes it.</td></tr>
-<tr><td>X2</td><td>Marketing modifiers, edition names, and tiers MUST NOT be used unless they are load-bearing for the statement being made.</td></tr>
-<tr><td>X3</td><td>Where a machine-consumable asset must identify a technology, the identifier SHOULD be lowercase kebab-case derived from the canonical name.</td></tr>
-<tr><td>X4</td><td>Version references SHOULD use the supplier's published version string, and MUST NOT be paraphrased ("latest", "current", "recent").</td></tr>
-<tr><td>X5</td><td>Naming a technology confers no privilege, no requirement, and no support commitment.</td></tr>
-</tbody>
-</table>
+| # | Rule |
+| :--- | :--- |
+| X1 | A technology MUST be referred to by its supplier's canonical name, spelled and capitalized as the supplier publishes it. |
+| X2 | Marketing modifiers, edition names, and tiers MUST NOT be used unless they are load-bearing for the statement being made. |
+| X3 | Where a machine-consumable asset must identify a technology, the identifier SHOULD be lowercase kebab-case derived from the canonical name. |
+| X4 | Version references SHOULD use the supplier's published version string, and MUST NOT be paraphrased ("latest", "current", "recent"). |
+| X5 | Naming a technology confers no privilege, no requirement, and no support commitment. |
 
-### 5.6 Terms in Prose
+### 6.6 Terms in Prose
 
-<table>
-<thead>
-<tr><th align="left">#</th><th align="left">Rule</th></tr>
-</thead>
-<tbody>
-<tr><td>W1</td><td>A Reserved Term MUST be capitalized when used in its AEOS sense, and MUST be lowercase when used in its ordinary English sense.</td></tr>
-<tr><td>W2</td><td>Where a Reserved Term's ordinary sense would be ambiguous, the sentence MUST be qualified instead (for example <em>project architecture</em>, <em>context window</em>, <em>language runtime</em>).</td></tr>
-<tr><td>W3</td><td>A document MUST NOT restate a glossary definition. It MAY quote one, attributed to AEOS-GLOSSARY.</td></tr>
-<tr><td>W4</td><td>Where a document uses a term this glossary does not define, it MUST either propose the addition or rephrase using defined terms.</td></tr>
-</tbody>
-</table>
-
-</section>
+| # | Rule |
+| :--- | :--- |
+| W1 | A Reserved Term MUST be capitalized when used in its AEOS sense, and MUST be lowercase when used in its ordinary English sense. |
+| W2 | Where a Reserved Term's ordinary sense would be ambiguous, the sentence MUST be qualified instead (for example *project architecture*, *context window*, *language runtime*). |
+| W3 | A document MUST NOT restate a glossary definition. It MAY quote one, attributed to AEOS-GLOSSARY. |
+| W4 | Where a document uses a term this glossary does not define, it MUST either propose the addition or rephrase using defined terms. |
 
 ---
 
-<section>
-
-## 6. Reserved Terms
+## 7. Reserved Terms
 
 These words carry a specific, fixed meaning inside AEOS. Their meanings MUST remain stable across every
 version of every AEOS document. Where an ordinary English sense is intended, the word MUST be lowercase
 and the sentence MUST make the ordinary sense unmistakable.
 
-<table>
-<thead>
-<tr><th align="left">Reserved Term</th><th align="left">Fixed AEOS meaning</th><th align="left">MUST NOT be used to mean</th></tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Product</strong></td>
-<td>What AEOS is and does, as defined by AEOS-PRD; the topmost definition layer beneath the Vision.</td>
-<td>A commercial offering, a release, a package, or a feature set.</td>
-</tr>
-<tr>
-<td><strong>Architecture</strong></td>
-<td>How AEOS itself is structured to deliver the Product.</td>
-<td>The structure of a user's software (write <em>project architecture</em>), or a diagram.</td>
-</tr>
-<tr>
-<td><strong>Capability</strong></td>
-<td>One of the ten product capabilities <code>C1</code>–<code>C10</code>.</td>
-<td>A feature, a function, a module, or what a runtime can do (write <em>Engineering Capability</em>).</td>
-</tr>
-<tr>
-<td><strong>Workflow</strong></td>
-<td>A versioned, runtime-independent declaration of steps, preconditions, gates, and success criteria.</td>
-<td>A CI pipeline, a job definition, a habit, or an informal sequence of actions.</td>
-</tr>
-<tr>
-<td><strong>Repository</strong></td>
-<td>The version-controlled store that is a project's source of truth.</td>
-<td>A package registry, an artifact store, a data store, or a directory.</td>
-</tr>
-<tr>
-<td><strong>Asset</strong></td>
-<td>Short form of Repository Asset: a durable, versioned artifact forming part of the product.</td>
-<td>A binary, a media file, a build output, or anything transient.</td>
-</tr>
-<tr>
-<td><strong>Runtime</strong></td>
-<td>An external AI system that performs inference.</td>
-<td>A language runtime, an application runtime, an execution environment, or a Tool.</td>
-</tr>
-<tr>
-<td><strong>Review</strong></td>
-<td>Examination of an artifact against requirements, rules, and tests, producing severity-classified findings.</td>
-<td>A casual read, an approval, or a retrospective.</td>
-</tr>
-<tr>
-<td><strong>Freeze</strong></td>
-<td>The governance state in which content changes only through stated change control.</td>
-<td>A technical lock, a feature freeze in the scheduling sense, or an indefinite prohibition on change.</td>
-</tr>
-<tr>
-<td><strong>Context</strong></td>
-<td>Information deliberately selected and supplied to a Runtime for a step of work.</td>
-<td>A model's input window (write <em>context window</em>), or background information generally.</td>
-</tr>
-<tr>
-<td><strong>Rule</strong></td>
-<td>A versioned, scoped engineering constraint applied during generation, review, and refactoring.</td>
-<td>A linter configuration, a policy about people, or a convention that is merely preferred.</td>
-</tr>
-<tr>
-<td><strong>Skill</strong></td>
-<td>A versioned, reusable, runtime-independent packaged engineering procedure.</td>
-<td>A vendor feature of the same name, or a person's ability.</td>
-</tr>
-<tr>
-<td><strong>Prompt</strong></td>
-<td>A versioned, parameterized Repository Asset of deliberate instruction and context.</td>
-<td>Disposable chat text, or a user interface prompt.</td>
-</tr>
-<tr>
-<td><strong>Profile</strong></td>
-<td>The Repository Asset describing what a project is and how it is built.</td>
-<td>A user account, a preference set, or performance profiling.</td>
-</tr>
-<tr>
-<td><strong>Platform</strong></td>
-<td>A supported host operating system: Windows, macOS, or Linux.</td>
-<td>A vendor's AI service, a cloud provider, or a distribution channel.</td>
-</tr>
-<tr>
-<td><strong>Model</strong></td>
-<td>A language model, model family, or model version used by a Runtime.</td>
-<td>A data model, a domain model, or a mental model.</td>
-</tr>
-<tr>
-<td><strong>Specification</strong></td>
-<td>A precise, testable statement of required behavior traceable to a requirement identifier.</td>
-<td>A requirement, a design note, or a description of existing behavior.</td>
-</tr>
-</tbody>
-</table>
+| Reserved Term | Fixed AEOS meaning | MUST NOT be used to mean |
+| :--- | :--- | :--- |
+| **Product** | What AEOS is and does, as defined by AEOS-PRD; the topmost definition layer beneath the Vision. | A commercial offering, a release, a package, or a feature set. |
+| **Architecture** | How AEOS itself is structured to deliver the Product. | The structure of a user's software (write *project architecture*), or a diagram. |
+| **Capability** | One of the ten product capabilities `C1`–`C10`. | A feature, a function, a module, or what a runtime can do (write *Engineering Capability*). |
+| **Workflow** | A versioned, runtime-independent declaration of steps, preconditions, gates, and success criteria. | A CI pipeline, a job definition, a habit, or an informal sequence of actions. |
+| **Repository** | The version-controlled store that is a project's source of truth. | A package registry, an artifact store, a data store, or a directory. |
+| **Asset** | Short form of Repository Asset: a durable, versioned artifact forming part of the product. | A binary, a media file, a build output, or anything transient. |
+| **Runtime** | An external AI system that performs inference. | A language runtime, an application runtime, an execution environment, or a Tool. |
+| **Review** | Examination of an artifact against requirements, rules, and tests, producing severity-classified findings. | A casual read, an approval, or a retrospective. |
+| **Freeze** | The governance state in which content changes only through stated change control. | A technical lock, a feature freeze in the scheduling sense, or an indefinite prohibition on change. |
+| **Context** | Information deliberately selected and supplied to a Runtime for a step of work. | A model's input window (write *context window*), or background information generally. |
+| **Rule** | A versioned, scoped engineering constraint applied during generation, review, and refactoring. | A linter configuration, a policy about people, or a convention that is merely preferred. |
+| **Skill** | A versioned, reusable, runtime-independent packaged engineering procedure. | A vendor feature of the same name, or a person's ability. |
+| **Prompt** | A versioned, parameterized Repository Asset of deliberate instruction and context. | Disposable chat text, or a user interface prompt. |
+| **Profile** | The Repository Asset describing what a project is and how it is built. | A user account, a preference set, or performance profiling. |
+| **Platform** | A supported host operating system: Windows, macOS, or Linux. | A vendor's AI service, a cloud provider, or a distribution channel. |
+| **Model** | A language model, model family, or model version used by a Runtime. | A data model, a domain model, or a mental model. |
+| **Specification** | A precise, testable statement of required behavior traceable to a requirement identifier. | A requirement, a design note, or a description of existing behavior. |
 
 > **On the strength of "reserved".**
 > A reserved meaning is not a preference about style. A document that uses one of these words in a
 > different sense states something other than what its author intended, and will be read incorrectly by
 > the AI runtimes that maintain this repository. Such usage is a defect and is reported in review.
 
-</section>
-
 ---
 
-<section>
-
-## 7. Deprecated Terminology
+## 8. Deprecated Terminology
 
 Definitions are load-bearing for traceability, review, and freeze. A definition that changes quietly
 invalidates every document that relied on it, without a version, an approval, or a record. AEOS
 therefore never changes a definition in place to mean something different.
 
-### 7.1 Rules
+### 8.1 Rules
 
-<table>
-<thead>
-<tr><th align="left">#</th><th align="left">Rule</th></tr>
-</thead>
-<tbody>
-<tr><td>D1</td><td>A published definition MUST NOT be edited to mean something different. Editorial correction that preserves meaning is permitted; a change of meaning is not.</td></tr>
-<tr><td>D2</td><td>A change of meaning MUST proceed by deprecating the existing term and introducing a new official name with its own definition.</td></tr>
-<tr><td>D3</td><td>A deprecated term MUST remain documented, in place, with its original definition intact, its deprecated status, the version in which it was deprecated, the term that supersedes it, and the reason.</td></tr>
-<tr><td>D4</td><td>A superseding term's entry MUST reference the term it replaces, so that a reader of either can reach the other.</td></tr>
-<tr><td>D5</td><td>A deprecated term MUST NOT be used in new documents. Existing documents retain it until they are revised under their own change control.</td></tr>
-<tr><td>D6</td><td>A deprecated name MUST NOT be reused later for a different concept.</td></tr>
-<tr><td>D7</td><td>Deprecation is never silent: it MUST appear in the deprecation record and in this document's revision history.</td></tr>
-</tbody>
-</table>
+| # | Rule |
+| :--- | :--- |
+| D1 | A published definition MUST NOT be edited to mean something different. Editorial correction that preserves meaning is permitted; a change of meaning is not. |
+| D2 | A change of meaning MUST proceed by deprecating the existing term and introducing a new official name with its own definition. |
+| D3 | A deprecated term MUST remain documented, in place, with its original definition intact, its deprecated status, the version in which it was deprecated, the term that supersedes it, and the reason. |
+| D4 | A superseding term's entry MUST reference the term it replaces, so that a reader of either can reach the other. |
+| D5 | A deprecated term MUST NOT be used in new documents. Existing documents retain it until they are revised under their own change control. |
+| D6 | A deprecated name MUST NOT be reused later for a different concept. |
+| D7 | Deprecation is never silent: it MUST appear in the deprecation record and in this document's revision history. |
 
-### 7.2 Deprecation Record
+### 8.2 Deprecation Record
 
 The record below is the complete list of deprecated AEOS terminology. It is empty because no term has
 been deprecated: version 1.0.0 is the first publication of AEOS terminology, and all terms in
-[Core Terminology](#3-core-terminology) are current.
+[Core Terminology](#4-core-terminology) are current.
 
-<table>
-<thead>
-<tr><th align="left">Deprecated term</th><th align="left">Original definition</th><th align="left">Superseded by</th><th align="left">Deprecated in</th><th align="left">Reason</th></tr>
-</thead>
-<tbody>
-<tr><td colspan="5" align="center"><em>No terms are deprecated as of AEOS-GLOSSARY 1.0.0.</em></td></tr>
-</tbody>
-</table>
+| Deprecated term | Original definition | Superseded by | Deprecated in | Reason |
+| :--- | :--- | :--- | :--- | :--- |
+| *No terms are deprecated as of AEOS-GLOSSARY 1.0.1.* | — | — | — | — |
 
-### 7.3 Change Control
+---
 
-<table>
-<thead>
-<tr><th align="left">Change type</th><th align="left">Requires</th><th align="left">Version impact</th></tr>
-</thead>
-<tbody>
-<tr><td>Editorial correction with no change of meaning</td><td>Contributor change, owner acceptance</td><td>Patch</td></tr>
-<tr><td>Clarification of an existing definition that preserves its meaning</td><td>Owner approval</td><td>Minor</td></tr>
-<tr><td>Addition of a term, naming convention, or reserved term</td><td>Owner approval</td><td>Minor</td></tr>
-<tr><td>Deprecation of a term and introduction of its replacement</td><td>Explicit owner revision request with recorded rationale</td><td>Major</td></tr>
-<tr><td>Change to a terminology principle or to an identifier convention</td><td>Explicit owner revision request with recorded rationale</td><td>Major</td></tr>
-<tr><td>Removal of a term without replacement</td><td>Explicit owner decision, recorded, with the definition preserved in the deprecation record</td><td>Major</td></tr>
-</tbody>
-</table>
+## 9. Document Governance
 
-### 7.4 Precedence
+### 9.1 Status
 
-<table>
-<thead>
-<tr><th align="left">Situation</th><th align="left">Resolution</th></tr>
-</thead>
-<tbody>
-<tr><td>This document conflicts with AEOS-PRD on the meaning of a term</td><td>AEOS-PRD governs. The conflict is a defect in this document and is reported.</td></tr>
-<tr><td>This document conflicts with AEOS-VISION on intent</td><td>AEOS-VISION governs for intent, AEOS-PRD for behavior. The conflict is a defect in this document and is reported.</td></tr>
-<tr><td>A downstream document defines a term this glossary already defines</td><td>This glossary governs. The downstream definition is removed and replaced by a reference.</td></tr>
-<tr><td>A downstream document needs a term this glossary does not define</td><td>The term is proposed for addition here under change control. It is not defined locally.</td></tr>
-<tr><td>A term reserved for architecture is cited as authority for product behavior</td><td>The citation is invalid. Product obligation arises only from <code>PR-</code> identifiers.</td></tr>
-</tbody>
-</table>
+This document is the Terminology Source of Truth for the AEOS repository. It is intended to be frozen
+as part of AEOS 1.0 and to remain stable across the life of the product.
 
-### 7.5 Review Policy
+### 9.2 Change Control
+
+| Change type | Requires | Version impact |
+| :--- | :--- | :--- |
+| Editorial correction with no change of meaning | Contributor change, owner acceptance | Patch |
+| Clarification of an existing definition that preserves its meaning | Owner approval | Minor |
+| Addition of a term, naming convention, or reserved term | Owner approval | Minor |
+| Deprecation of a term and introduction of its replacement | Explicit owner revision request with recorded rationale | Major |
+| Change to a terminology principle or to an identifier convention | Explicit owner revision request with recorded rationale | Major |
+| Removal of a term without replacement | Explicit owner decision, recorded, with the definition preserved in the deprecation record | Major |
+
+### 9.3 Review Policy
 
 Reviews of this document classify findings as **Critical**, **Major**, **Minor**, or **Nitpick**,
 identify inconsistencies without redesigning, and recommend freezing the document when no Critical or
 Major findings remain.
 
-</section>
+### 9.4 Precedence
+
+| Situation | Resolution |
+| :--- | :--- |
+| This document conflicts with AEOS-PRD on the meaning of a term | AEOS-PRD governs. The conflict is a defect in this document and is reported. |
+| This document conflicts with AEOS-VISION on intent | AEOS-VISION governs for intent, AEOS-PRD for behavior. The conflict is a defect in this document and is reported. |
+| A downstream document defines a term this glossary already defines | This glossary governs. The downstream definition is removed and replaced by a reference. |
+| A downstream document needs a term this glossary does not define | The term is proposed for addition here under change control. It is not defined locally. |
+| A term reserved for architecture is cited as authority for product behavior | The citation is invalid. Product obligation arises only from `PR-` identifiers. |
+
+### 9.5 Revision History
+
+| Version | Status | Summary |
+| :--- | :--- | :--- |
+| 1.0.0 | Freeze candidate | Initial terminology definition. Establishes ten terminology principles, forty-nine canonical term entries with recorded authority, four terminology relationship chains and a confusion table, naming conventions for documents, repository assets, identifiers, technology references, and prose, seventeen reserved terms, and the deprecation policy with an empty deprecation record. Introduces no requirement, capability, or architecture. Four terms — Blueprint, Context Router, Runtime Adapter, and Workflow Engine — are recorded as reserved for architecture: the names are fixed, the normative definitions are not made here. |
+| 1.0.1 | Freeze candidate | Format conformance only, under AEOS-DOCSTD. Converted the document from HTML-in-Markdown to GitHub-Flavored Markdown: every table rendered as a Markdown table, every collapsible term entry rendered as a heading, and all raw HTML, alignment attributes, and structural wrappers removed. Adopted the required conformance notice verbatim and normalized the keyword `SHALL` to `MUST`, which AEOS-DOCSTD Section 7.2 recognizes as synonyms, so that every keyword used is covered by that notice. Added the required scope section, recorded the deliberate deviation from the Glossary-layer guidance on normative keywords, consolidated status, change control, review policy, precedence, and revision history into a Document Governance section as the final numbered section, renumbered sections accordingly, and updated internal links. Marked Appendix A non-normative. The one-line summary that headed each collapsible entry was removed with the collapsible construct; the same short definition is retained for every term in Appendix A. No definition, purpose, authority assignment, principle, relationship, naming convention, reserved term, deprecation rule, or ownership statement was changed. |
 
 ---
-
-<section>
 
 ## Appendix A — Quick Reference Table
 
+**This appendix is non-normative.**
+
 Short definitions for scanning. The canonical definition of every term is its entry in
-[Core Terminology](#3-core-terminology); where the two appear to differ, the entry governs.
+[Core Terminology](#4-core-terminology); where the two appear to differ, the entry governs.
 
-<table>
-<thead>
-<tr><th align="left">Term</th><th align="left">Short definition</th><th align="left">Primary document</th></tr>
-</thead>
-<tbody>
-<tr><td><strong>Action Class</strong></td><td>Classification of an action by effect, determining the approval it requires.</td><td>AEOS-PRD</td></tr>
-<tr><td><strong>AEOS</strong></td><td>The product: an operating system for AI-assisted, human-supervised software engineering.</td><td>AEOS-PRD</td></tr>
-<tr><td><strong>Approval Gate</strong></td><td>The point at which a proposed action requires explicit human confirmation.</td><td>AEOS-PRD</td></tr>
-<tr><td><strong>Architecture</strong></td><td>How AEOS is structured to deliver the Product.</td><td>AEOS-PRD</td></tr>
-<tr><td><strong>Automation Grant</strong></td><td>Explicit, scoped, recorded, revocable delegation of approval authority.</td><td>AEOS-PRD</td></tr>
-<tr><td><strong>Blueprint</strong></td><td>Document layer between Architecture and Specification.</td><td>AEOS-GLOSSARY (reserved for architecture)</td></tr>
-<tr><td><strong>Bootstrap</strong></td><td>The first, human-approved sequence making AEOS usable in an environment or project.</td><td>AEOS-GLOSSARY</td></tr>
-<tr><td><strong>Capability</strong></td><td>One of the ten product capabilities <code>C1</code>–<code>C10</code>.</td><td>AEOS-PRD</td></tr>
-<tr><td><strong>Context</strong></td><td>Information deliberately selected and supplied to a Runtime for a step of work.</td><td>AEOS-PRD</td></tr>
-<tr><td><strong>Context Minimization</strong></td><td>Sending the smallest context sufficient for the task, with each inclusion explainable.</td><td>AEOS-PRD</td></tr>
-<tr><td><strong>Context Router</strong></td><td>The named responsibility for selecting and justifying a step's Context.</td><td>AEOS-GLOSSARY (reserved for architecture)</td></tr>
-<tr><td><strong>Contributor</strong></td><td>A person or AI runtime proposing a change to AEOS itself.</td><td>AEOS-VISION</td></tr>
-<tr><td><strong>Developer</strong></td><td>A person who uses AEOS to build or maintain their own project.</td><td>AEOS-GLOSSARY</td></tr>
-<tr><td><strong>Distribution Method</strong></td><td>An official way AEOS is delivered; never changes the product architecture.</td><td>AEOS-PRD</td></tr>
-<tr><td><strong>Document</strong></td><td>A durable, versioned artifact readable by humans and consumable by AI runtimes.</td><td>AEOS-GLOSSARY</td></tr>
-<tr><td><strong>Engineering Capability</strong></td><td>A unit of engineering work a workflow step requires and a runtime may or may not provide.</td><td>AEOS-GLOSSARY</td></tr>
-<tr><td><strong>Environment</strong></td><td>The machine, its platform, its tooling, and its available runtimes, as observed.</td><td>AEOS-PRD</td></tr>
-<tr><td><strong>Freeze</strong></td><td>The governance state in which content changes only through stated change control.</td><td>AEOS-PRD</td></tr>
-<tr><td><strong>Human Approval</strong></td><td>The explicit act authorizing a specific proposed action.</td><td>AEOS-PRD</td></tr>
-<tr><td><strong>Human-in-the-Loop</strong></td><td>The requirement that a human decides before AEOS acts consequentially.</td><td>AEOS-PRD</td></tr>
-<tr><td><strong>Implementation</strong></td><td>The code and tests that realize the layers above them.</td><td>AEOS-PRD</td></tr>
-<tr><td><strong>Model</strong></td><td>A language model, model family, or version used by a Runtime to perform inference.</td><td>AEOS-GLOSSARY</td></tr>
-<tr><td><strong>Platform</strong></td><td>A supported host operating system: Windows, macOS, or Linux.</td><td>AEOS-PRD</td></tr>
-<tr><td><strong>Product</strong></td><td>What AEOS is and does for its users; the layer beneath the Vision.</td><td>AEOS-PRD</td></tr>
-<tr><td><strong>Product Boundary</strong></td><td>The line between what AEOS is and how AEOS is built.</td><td>AEOS-PRD</td></tr>
-<tr><td><strong>Profile</strong></td><td>The asset describing a project's identity, technology, build and test approach, runtime, and rules.</td><td>AEOS-PRD</td></tr>
-<tr><td><strong>Project</strong></td><td>The unit of work AEOS operates on: a repository and its Repository Assets.</td><td>AEOS-PRD</td></tr>
-<tr><td><strong>Project Type</strong></td><td>A descriptive classification of a project recorded in its Profile.</td><td>AEOS-GLOSSARY</td></tr>
-<tr><td><strong>Prompt</strong></td><td>A versioned, parameterized asset of deliberate instruction and context.</td><td>AEOS-PRD</td></tr>
-<tr><td><strong>Proposal</strong></td><td>A statement of intended action, rationale, effects, reversibility, and consequence of declining.</td><td>AEOS-PRD</td></tr>
-<tr><td><strong>Repository</strong></td><td>The version-controlled store that is a project's source of truth.</td><td>AEOS-PRD</td></tr>
-<tr><td><strong>Repository Asset</strong></td><td>A durable, versioned artifact forming part of the product.</td><td>AEOS-PRD</td></tr>
-<tr><td><strong>Review</strong></td><td>Examination against requirements, rules, and tests, producing severity-classified findings.</td><td>AEOS-PRD</td></tr>
-<tr><td><strong>Rule</strong></td><td>A versioned, scoped engineering constraint applied during generation, review, and refactoring.</td><td>AEOS-PRD</td></tr>
-<tr><td><strong>Runtime</strong></td><td>An external AI system that performs inference; always an integration.</td><td>AEOS-PRD</td></tr>
-<tr><td><strong>Runtime Adapter</strong></td><td>The named responsibility mediating between AEOS and one external Runtime.</td><td>AEOS-GLOSSARY (reserved for architecture)</td></tr>
-<tr><td><strong>Runtime State</strong></td><td>Transient, machine-local information produced while AEOS runs; not a product asset.</td><td>AEOS-PRD</td></tr>
-<tr><td><strong>Skill</strong></td><td>A versioned, reusable, runtime-independent packaged engineering procedure.</td><td>AEOS-PRD</td></tr>
-<tr><td><strong>Source of Truth</strong></td><td>The artifact that governs a subject and wins any conflict about it.</td><td>AEOS-GLOSSARY</td></tr>
-<tr><td><strong>Specification</strong></td><td>A precise, testable statement of required behavior, traceable to a requirement identifier.</td><td>AEOS-PRD</td></tr>
-<tr><td><strong>TDD Cycle</strong></td><td>Define behavior → failing test → verify failure reason → minimal implementation → refactor green.</td><td>AEOS-PRD</td></tr>
-<tr><td><strong>Technology Stack</strong></td><td>The languages, frameworks, and tools a project uses, recorded in its Profile.</td><td>AEOS-GLOSSARY</td></tr>
-<tr><td><strong>Template</strong></td><td>An asset providing a reusable starting point for repeated work.</td><td>AEOS-PRD</td></tr>
-<tr><td><strong>Tool</strong></td><td>An external program or system that performs non-inference work for a project.</td><td>AEOS-GLOSSARY</td></tr>
-<tr><td><strong>Vendor</strong></td><td>An organization that supplies a Runtime, Model, or Tool.</td><td>AEOS-GLOSSARY</td></tr>
-<tr><td><strong>Vision</strong></td><td>Why AEOS exists and what it must remain.</td><td>AEOS-VISION</td></tr>
-<tr><td><strong>Workflow</strong></td><td>A versioned, runtime-independent declaration of steps, gates, and success criteria.</td><td>AEOS-PRD</td></tr>
-<tr><td><strong>Workflow Engine</strong></td><td>The named responsibility for executing workflows under their approval gates.</td><td>AEOS-GLOSSARY (reserved for architecture)</td></tr>
-<tr><td><strong>Workflow State</strong></td><td>The durable record of where a workflow stands.</td><td>AEOS-GLOSSARY</td></tr>
-</tbody>
-</table>
-
-</section>
+| Term | Short definition | Primary document |
+| :--- | :--- | :--- |
+| **Action Class** | Classification of an action by effect, determining the approval it requires. | AEOS-PRD |
+| **AEOS** | The product: an operating system for AI-assisted, human-supervised software engineering. | AEOS-PRD |
+| **Approval Gate** | The point at which a proposed action requires explicit human confirmation. | AEOS-PRD |
+| **Architecture** | How AEOS is structured to deliver the Product. | AEOS-PRD |
+| **Automation Grant** | Explicit, scoped, recorded, revocable delegation of approval authority. | AEOS-PRD |
+| **Blueprint** | Document layer between Architecture and Specification. | AEOS-GLOSSARY (reserved for architecture) |
+| **Bootstrap** | The first, human-approved sequence making AEOS usable in an environment or project. | AEOS-GLOSSARY |
+| **Capability** | One of the ten product capabilities `C1`–`C10`. | AEOS-PRD |
+| **Context** | Information deliberately selected and supplied to a Runtime for a step of work. | AEOS-PRD |
+| **Context Minimization** | Sending the smallest context sufficient for the task, with each inclusion explainable. | AEOS-PRD |
+| **Context Router** | The named responsibility for selecting and justifying a step's Context. | AEOS-GLOSSARY (reserved for architecture) |
+| **Contributor** | A person or AI runtime proposing a change to AEOS itself. | AEOS-VISION |
+| **Developer** | A person who uses AEOS to build or maintain their own project. | AEOS-GLOSSARY |
+| **Distribution Method** | An official way AEOS is delivered; never changes the product architecture. | AEOS-PRD |
+| **Document** | A durable, versioned artifact readable by humans and consumable by AI runtimes. | AEOS-GLOSSARY |
+| **Engineering Capability** | A unit of engineering work a workflow step requires and a runtime may or may not provide. | AEOS-GLOSSARY |
+| **Environment** | The machine, its platform, its tooling, and its available runtimes, as observed. | AEOS-PRD |
+| **Freeze** | The governance state in which content changes only through stated change control. | AEOS-PRD |
+| **Human Approval** | The explicit act authorizing a specific proposed action. | AEOS-PRD |
+| **Human-in-the-Loop** | The requirement that a human decides before AEOS acts consequentially. | AEOS-PRD |
+| **Implementation** | The code and tests that realize the layers above them. | AEOS-PRD |
+| **Model** | A language model, model family, or version used by a Runtime to perform inference. | AEOS-GLOSSARY |
+| **Platform** | A supported host operating system: Windows, macOS, or Linux. | AEOS-PRD |
+| **Product** | What AEOS is and does for its users; the layer beneath the Vision. | AEOS-PRD |
+| **Product Boundary** | The line between what AEOS is and how AEOS is built. | AEOS-PRD |
+| **Profile** | The asset describing a project's identity, technology, build and test approach, runtime, and rules. | AEOS-PRD |
+| **Project** | The unit of work AEOS operates on: a repository and its Repository Assets. | AEOS-PRD |
+| **Project Type** | A descriptive classification of a project recorded in its Profile. | AEOS-GLOSSARY |
+| **Prompt** | A versioned, parameterized asset of deliberate instruction and context. | AEOS-PRD |
+| **Proposal** | A statement of intended action, rationale, effects, reversibility, and consequence of declining. | AEOS-PRD |
+| **Repository** | The version-controlled store that is a project's source of truth. | AEOS-PRD |
+| **Repository Asset** | A durable, versioned artifact forming part of the product. | AEOS-PRD |
+| **Review** | Examination against requirements, rules, and tests, producing severity-classified findings. | AEOS-PRD |
+| **Rule** | A versioned, scoped engineering constraint applied during generation, review, and refactoring. | AEOS-PRD |
+| **Runtime** | An external AI system that performs inference; always an integration. | AEOS-PRD |
+| **Runtime Adapter** | The named responsibility mediating between AEOS and one external Runtime. | AEOS-GLOSSARY (reserved for architecture) |
+| **Runtime State** | Transient, machine-local information produced while AEOS runs; not a product asset. | AEOS-PRD |
+| **Skill** | A versioned, reusable, runtime-independent packaged engineering procedure. | AEOS-PRD |
+| **Source of Truth** | The artifact that governs a subject and wins any conflict about it. | AEOS-GLOSSARY |
+| **Specification** | A precise, testable statement of required behavior, traceable to a requirement identifier. | AEOS-PRD |
+| **TDD Cycle** | Define behavior → failing test → verify failure reason → minimal implementation → refactor green. | AEOS-PRD |
+| **Technology Stack** | The languages, frameworks, and tools a project uses, recorded in its Profile. | AEOS-GLOSSARY |
+| **Template** | An asset providing a reusable starting point for repeated work. | AEOS-PRD |
+| **Tool** | An external program or system that performs non-inference work for a project. | AEOS-GLOSSARY |
+| **Vendor** | An organization that supplies a Runtime, Model, or Tool. | AEOS-GLOSSARY |
+| **Vision** | Why AEOS exists and what it must remain. | AEOS-VISION |
+| **Workflow** | A versioned, runtime-independent declaration of steps, gates, and success criteria. | AEOS-PRD |
+| **Workflow Engine** | The named responsibility for executing workflows under their approval gates. | AEOS-GLOSSARY (reserved for architecture) |
+| **Workflow State** | The durable record of where a workflow stands. | AEOS-GLOSSARY |
 
 ---
-
-<section>
-
-## Revision History
-
-<table>
-<thead>
-<tr><th align="left">Version</th><th align="left">Status</th><th align="left">Summary</th></tr>
-</thead>
-<tbody>
-<tr>
-<td>1.0.0</td>
-<td>Freeze candidate</td>
-<td>Initial terminology definition. Establishes ten terminology principles, forty-nine canonical term entries with recorded authority, four terminology relationship chains and a confusion table, naming conventions for documents, repository assets, identifiers, technology references, and prose, seventeen reserved terms, and the deprecation policy with an empty deprecation record. Introduces no requirement, capability, or architecture. Four terms — Blueprint, Context Router, Runtime Adapter, and Workflow Engine — are recorded as reserved for architecture: the names are fixed, the normative definitions are not made here.</td>
-</tr>
-</tbody>
-</table>
-
-</section>
-
----
-
-<div align="center">
 
 **End of Glossary**
 
-AEOS-GLOSSARY · Version 1.0.0 · Terminology Source of Truth
-
-</div>
+AEOS-GLOSSARY · Version 1.0.1 · Terminology Source of Truth
