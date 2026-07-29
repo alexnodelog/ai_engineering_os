@@ -9,8 +9,8 @@
 | **Document** | Architecture |
 | **Product** | AI Engineering Operating System (AEOS) |
 | **Document ID** | AEOS-ARCH |
-| **Version** | 1.0.0 |
-| **Status** | Freeze candidate — awaiting owner approval |
+| **Version** | 1.1.0 |
+| **Status** | Final freeze candidate — awaiting owner approval |
 | **Owner** | Product Owner, AEOS |
 | **Author** | Chief Software Architect, AEOS |
 | **Audience** | Architects, engineering contributors, maintainers, reviewers, and AI runtimes consuming this repository |
@@ -661,7 +661,7 @@ A boundary is preserved when no structure exists that could carry something acro
 the stated path. Preservation is therefore a property of the arrangement, not a check performed at
 run time: the absence of a second path is what makes the first path sufficient.
 
-Three preservation rules follow, stated normatively as `AR-BND-001` through `AR-BND-012` in
+Three preservation rules follow, stated normatively as `AR-BND-001` through `AR-BND-016` in
 [Section 8.4](#84-boundary-invariants).
 
 - Knowledge does not leak outward. Runtime, Vendor, and Model knowledge exists only in the Adapter
@@ -701,6 +701,8 @@ with its traces, is [Appendix B](#appendix-b--invariant-index).
 | `AR-LAY-006` | An internal layer other than the Repository Layer MUST NOT hold durable state. | `PR-REP-002` · `PR-SAF-010` |
 | `AR-LAY-007` | A layer, responsibility, dependency, or boundary MUST NOT vary by Platform or by distribution method. | `PR-PLT-003` · `PR-DST-005` |
 | `AR-LAY-008` | Each internal layer MUST be verifiable in isolation, with its counterparties replaceable at their boundary for the purpose of verification. | `PR-NFR-010` · `PR-TDD-012` |
+| `AR-LAY-009` | A concept assigned to a layer as an owned concept in [Section 4](#4-architectural-layer-model) MUST be owned by that layer alone. | `PR-NFR-006` · `PR-NFR-007` |
+| `AR-LAY-010` | The contents of the Repository Layer MUST remain readable and meaningful when AEOS is not running. | `PR-REP-016` · `PR-REP-010` |
 
 ### 8.3 Dependency Invariants
 
@@ -712,6 +714,7 @@ with its traces, is [Appendix B](#appendix-b--invariant-index).
 | `AR-DEP-004` | A layer MUST NOT address a counterparty that [Section 5.3](#53-permitted-interactions) does not permit it to address. | `PR-SAF-005` · `PR-NFR-006` |
 | `AR-DEP-005` | The Repository Layer MUST depend on no layer. | `PR-REP-016` |
 | `AR-DEP-006` | Every durable write to the Repository Layer MUST be performed by the Execution Layer. | `PR-WFL-015` · `PR-SAF-005` |
+| `AR-DEP-007` | A layer MUST NOT hold knowledge of, or a reference to, a layer that depends on it. | `PR-NFR-006` · `PR-NFR-008` |
 
 ### 8.4 Boundary Invariants
 
@@ -729,6 +732,10 @@ with its traces, is [Appendix B](#appendix-b--invariant-index).
 | `AR-BND-010` | AEOS MUST NOT simulate, predict, or stand in for a decision belonging to the Human Layer. | `PR-WFL-005` · `PR-SAF-002` |
 | `AR-BND-011` | The structure MUST NOT privilege one Vendor, Runtime, or Model over another. | `PR-RUN-003` · `PR-RUN-004` |
 | `AR-BND-012` | AEOS MUST orchestrate the project's version control, delivery, build, and test systems rather than replace them. | `PR-REP-007` · `PR-TDD-009` · `PR-NFR-012` |
+| `AR-BND-013` | A Repository Asset MUST NOT contain runtime-specific, vendor-specific, model-specific, platform-specific, or distribution-specific content. | `PR-WFL-003` · `PR-RUN-005` · `PR-PLT-003` |
+| `AR-BND-014` | An approval MUST authorize one Proposal at the scope proposed, and an execution MUST NOT exceed that scope. | `PR-SAF-005` · `PR-WFL-015` |
+| `AR-BND-015` | An Automation Grant MUST NOT satisfy a gate for an action of the destructive class. | `PR-WFL-014` · `PR-SAF-012` |
+| `AR-BND-016` | The scope of every crossing of the External AI boundary MUST be disclosed to the Human Layer before the crossing occurs. | `PR-SAF-007` · `PR-SAF-008` · `PR-RUN-009` |
 
 ### 8.5 Extension Invariants
 
@@ -754,6 +761,7 @@ with its traces, is [Appendix B](#appendix-b--invariant-index).
 | `AR-GOV-005` | A change to a layer, a responsibility, a dependency, a boundary, an extension point, or an invariant MUST be an architecture revision under [Section 13.2](#132-change-control). | `PR-NFR-006` |
 | `AR-GOV-006` | An architectural identifier MUST NOT be reused, renumbered, or repurposed; a retired invariant is marked retired in place. | `PR-NFR-001` |
 | `AR-GOV-007` | Where this document conflicts with a Foundation document, the Foundation document governs, and the conflict MUST be reported as a defect in this document. | `PR-NFR-001` |
+| `AR-GOV-008` | A Blueprint document MUST define internal organization only. | `PR-NFR-006` · `PR-NFR-007` |
 
 ---
 
@@ -796,6 +804,63 @@ Blueprint's authority. The correct response is a revision request under
 
 The normative statement is `AR-GOV-002`.
 
+### 9.4 The Blueprint Boundary, Stated
+
+Architecture defines structural organization. A Blueprint elaborates that organization. The boundary
+between them is one of kind, not of detail: a Blueprint may be arbitrarily detailed and still remain
+inside it, and a single sentence may cross it.
+
+A Blueprint MUST NOT redefine any of the following. This list is complete.
+
+| A Blueprint MUST NOT redefine | Defined by |
+| :--- | :--- |
+| An architectural layer, or the set of layers | [Section 4.1](#41-the-layers) |
+| An architectural responsibility, whether held or prohibited | [Section 4](#4-architectural-layer-model) |
+| An architectural boundary, or what may cross it | [Section 7](#7-architectural-boundaries) |
+| An architectural dependency, or a permitted interaction | [Section 5](#5-architectural-dependency-model) |
+| An architectural invariant or principle | [Section 3](#3-architectural-principles) · [Section 8](#8-architectural-invariants) |
+| An extension point | [Section 11.2](#112-extension-points) |
+
+A Blueprint defines internal organization only: how the parts inside a layer are arranged, named,
+and related to one another, within the responsibility that layer already holds. The normative
+statements are `AR-GOV-002` and `AR-GOV-008`.
+
+### 9.5 The Derivation Chain
+
+The document layers of AEOS derive from one another in one direction. AEOS-DOCSTD owns this
+hierarchy; the diagram restates it so that the position of this document, and of the Blueprint layer
+beneath it, can be read at a glance.
+
+```mermaid
+flowchart TD
+    F["Foundation: Vision, Product Requirements, Glossary, Document Standard, Supported Technologies"]
+    A["Architecture: structural organization"]
+    B["Blueprint: internal organization"]
+    S["Specification: behavior"]
+    R["Runtime documents: execution and lifecycle"]
+    I["Implementation: code and tests"]
+    F --> A
+    A --> B
+    B --> S
+    S --> R
+    R --> I
+```
+
+| Layer | Defines | May not define |
+| :--- | :--- | :--- |
+| Foundation | Purpose, product behavior, terminology, document form, technology policy | Structure |
+| Architecture | Layers, responsibilities, dependencies, boundaries, invariants | Product behavior, or anything below structure |
+| Blueprint | Internal organization of a layer | Anything the Architecture layer defines |
+| Specification | Behavior, states, interfaces, error conditions | Structure or internal organization |
+| Runtime documents | Execution, lifecycle, environment mechanics | Structure or behavior |
+| Implementation | Code and the tests that constrain it | Any of the above |
+
+Each layer derives from the one above it and MUST NOT redefine it. A statement that belongs to a
+layer above is a defect reported upward; a statement that belongs to a layer below has reached below
+its own layer and is a defect in place. In this chain, *Runtime documents* means documents about how
+AEOS itself executes. It carries no relation to the Runtime Layer of
+[Section 4.6](#46-runtime-layer) or to a Runtime in the sense AEOS-GLOSSARY fixes.
+
 ---
 
 ## 10. Architecture and Specification
@@ -823,7 +888,8 @@ itself.
 
 This document, in turn, never states what a Specification owns. Where a reader finds a precise
 behavioral rule, a state transition, an interface, or an error condition here, that statement has
-reached below the architecture layer and is a defect in this document.
+reached below the architecture layer and is a defect in this document. The position of both
+documents in the derivation chain is shown in [Section 9.5](#95-the-derivation-chain).
 
 The normative statement is `AR-GOV-003`.
 
@@ -831,11 +897,12 @@ The normative statement is `AR-GOV-003`.
 
 ## 11. Extension Model
 
-### 11.1 The Frozen Core and the Extension Surface
+### 11.1 Frozen Architectural Invariants and Architectural Extension Points
 
 The architecture is frozen. What is extensible is deliberately placed outside the frozen part, so
 that the product can absorb new runtimes, new practices, and new integrations for years without the
-structure moving.
+structure moving. Two categories follow from that placement, and telling them apart is the first
+question to ask of any proposed addition.
 
 | Frozen | Extensible |
 | :--- | :--- |
@@ -844,6 +911,36 @@ structure moving.
 | The dependency direction and the permitted interactions | The set of adapters that exist |
 | The four boundaries and what may cross them | The set of Engineering Capabilities that may be declared |
 | Every invariant in [Section 8](#8-architectural-invariants) and every principle in [Section 3](#3-architectural-principles) | The set of asset kinds that exist |
+
+**Frozen Architectural Invariants** are fixed for the life of the architecture and change only by an
+architecture revision under [Section 13.2](#132-change-control). The examples below are illustrative;
+the complete set is [Section 3](#3-architectural-principles) together with
+[Section 8](#8-architectural-invariants).
+
+| Frozen invariant | Carried by |
+| :--- | :--- |
+| The architectural layers and their classification | `AR-LAY-001` · `AR-LAY-002` |
+| The dependency direction | `AR-DEP-001` · `AR-DEP-002` · `AR-DEP-003` |
+| The repository-first architecture | `AR-PRN-003` · `AR-BND-007` · `AR-LAY-010` |
+| The human approval model | `AR-BND-003` · `AR-BND-010` · `AR-BND-014` · `AR-BND-015` |
+| The boundaries and what may cross them | `AR-BND-001` · `AR-BND-016` |
+
+**Architectural Extension Points** are the places where addition is admitted without structural
+change. The examples below are illustrative; the complete list of points is
+[Section 11.2](#112-extension-points), and the mapping from common proposals to points is
+[Section 11.3](#113-how-common-extensions-map-to-these-points).
+
+| Extension | Attaches at |
+| :--- | :--- |
+| Runtime adapters | `EP-3` |
+| Model providers | `EP-3`, because a Model is reached through the Runtime that exposes it |
+| Plugins | `EP-1`, `EP-3`, or `EP-5`, according to what the plugin extends |
+| Capability registries | `EP-4` |
+| Project templates | `EP-1`, a Template being a Repository Asset kind |
+
+The distinction between the two categories is not one of importance. It is one of consequence: an
+addition at an extension point changes what AEOS can do, and a change to a frozen invariant changes
+what AEOS is.
 
 ### 11.2 Extension Points
 
@@ -939,19 +1036,19 @@ trusting an intention.
 
 | Principle | Structure that realizes it |
 | :--- | :--- |
-| Human-in-the-Loop by Default | The Workflow Layer is the only layer that addresses the Human Layer and the only layer that initiates a consequential action — `AR-BND-003` · `AR-BND-010` |
+| Human-in-the-Loop by Default | The Workflow Layer is the only layer that addresses the Human Layer and the only layer that initiates a consequential action — `AR-BND-003` · `AR-BND-010` · `AR-BND-014` · `AR-BND-015` |
 | Explain Before Execute | The interaction loop is the only route to effect, so a step that cannot be explained cannot reach execution — [6.2](#62-the-supervised-path-to-effect) |
 | Incremental Execution | Workflow State is durable and maintained at every step boundary, making position observable and interruption safe — [4.4](#44-workflow-layer) · `AR-LAY-006` |
 | Environment Inspection Before Execution | Inspection is the Execution Layer's first responsibility and the first phase of the loop; findings are distinguished from inference — [4.8](#48-execution-layer) · [6.2](#62-the-supervised-path-to-effect) |
 | TDD-first Development | Cycle position is Workflow State, so verification order is part of the sequence rather than a separate mechanism — [4.4](#44-workflow-layer) |
-| Repository as Product | The Repository Layer is the only store of durable meaning and depends on no layer — `AR-PRN-003` · `AR-DEP-005` |
+| Repository as Product | The Repository Layer is the only store of durable meaning, depends on no layer, and stays readable without AEOS — `AR-PRN-003` · `AR-DEP-005` · `AR-LAY-010` |
 | Context Minimization | The Context Layer selects per step from the Repository Layer and retains a justification for each element — [4.5](#45-context-layer) · [6.3](#63-minimum-sufficient-crossing) |
 | Vendor Independence | Vendor knowledge exists only in the Adapter Layer, and no structure privileges a Vendor — `AR-BND-005` · `AR-BND-011` |
-| Runtime Independence | The Runtime Layer expresses work only in runtime-independent terms; translation happens at the Adapter Layer — [4.6](#46-runtime-layer) · `AR-BND-005` |
+| Runtime Independence | The Runtime Layer expresses work only in runtime-independent terms; translation happens at the Adapter Layer, and no asset carries runtime-specific content — [4.6](#46-runtime-layer) · `AR-BND-005` · `AR-BND-013` |
 | Model Independence | A Model is reached only through the Runtime that exposes it, so Model knowledge is adapter-local — `AR-BND-005` |
 | Platform Independence | Platform differences are absorbed in the Execution Layer and are invisible elsewhere — `AR-BND-006` · `AR-LAY-007` |
 | Distribution Independence | A distribution method supplies an entry surface and packaging, and alters no layer, dependency, or boundary — `AR-LAY-007` · `EP-6` |
-| Safety by Default | Action Class determines gate strength at one place, and nothing crosses a boundary without an authorized path — `AR-BND-001` · `AR-BND-003` |
+| Safety by Default | Action Class determines gate strength at one place, and nothing crosses a boundary without an authorized and disclosed path — `AR-BND-001` · `AR-BND-003` · `AR-BND-016` |
 | Extensibility by Design | Six named extension points, none of which may weaken a gate or a boundary — [11.2](#112-extension-points) · `AR-EXT-003` |
 
 ### 12.3 Invariants of Purpose to Structure
@@ -962,13 +1059,13 @@ stop being commitments and become properties of an arrangement.
 | Invariant of purpose | Structure that makes it hold |
 | :--- | :--- |
 | `V1` No inference | `AR-BND-002` · [4.6](#46-runtime-layer) |
-| `V2` The human decides | `AR-BND-003` · `AR-BND-010` |
+| `V2` The human decides | `AR-BND-003` · `AR-BND-010` · `AR-BND-014` |
 | `V3` Understandable first | `AR-PRN-007` · [6.2](#62-the-supervised-path-to-effect) |
 | `V4` Verification precedes implementation | [4.4](#44-workflow-layer) |
-| `V5` The repository is the product | `AR-PRN-003` · `AR-DEP-005` |
+| `V5` The repository is the product | `AR-PRN-003` · `AR-DEP-005` · `AR-LAY-010` |
 | `V6` Nothing privileged | `AR-BND-005` · `AR-BND-011` |
 | `V7` Safe path by default | `AR-PRN-008` · `AR-BND-001` |
-| `V8` The user's machine and judgment | `AR-BND-009` · [7.1](#71-the-four-boundaries) |
+| `V8` The user's machine and judgment | `AR-BND-009` · `AR-BND-016` · [7.1](#71-the-four-boundaries) |
 | `V9` Inspectable | `AR-PRN-007` · [6.6](#66-accounts-do-not-require-inference) |
 | `V10` Extended, not modified | `AR-PRN-009` · `AR-EXT-007` |
 
@@ -1057,6 +1154,8 @@ additions. Until the owner acts, the definitions of record are the responsibilit
 | :--- | :--- | :--- |
 | 1.0.0 | Freeze candidate | Initial architecture. Defines ten architectural principles; an eight-layer model with six internal and two external layers, each with purpose, responsibilities, owned concepts, dependencies, prohibited responsibilities, and neighbor interactions; a single dependency direction with a complete table of permitted interactions; six cross-layer interaction principles; four boundaries; forty-one invariants across five areas; the divisions between Architecture, Blueprint, and Specification; and six extension points. Assigns the three responsibilities AEOS-GLOSSARY reserved for architecture — Workflow Engine, Context Router, Runtime Adapter — to layers. Registers six `AREA` codes. Introduces no requirement, terminology, philosophy, technology, behavior, or implementation. Written in GitHub-Flavored Markdown without embedded HTML, under the record in [Section 2.4](#24-recorded-format-deviation). Replaces an earlier unapproved freeze candidate of this Document ID; no identifier from that draft had entered the frozen record, and identifiers here are allocated afresh. |
 
+| 1.1.0 | Final freeze candidate | Architecture Freeze refinement. Adds no architecture and changes no layer, responsibility, dependency, boundary, extension point, or existing identifier. Converts eight constraints already present in the document into explicit invariants: `AR-LAY-009`, `AR-LAY-010`, `AR-DEP-007`, `AR-BND-013`, `AR-BND-014`, `AR-BND-015`, `AR-BND-016`, and `AR-GOV-008`. Strengthens the Architecture and Blueprint boundary with a complete statement of what a Blueprint may not redefine, in [Section 9.4](#94-the-blueprint-boundary-stated). Adds the derivation chain diagram in [Section 9.5](#95-the-derivation-chain), restating the hierarchy AEOS-DOCSTD owns. Names the two categories of the extension model explicitly in [Section 11.1](#111-frozen-architectural-invariants-and-architectural-extension-points), with illustrative examples of each. Total: ten principles and forty-nine invariants across five areas. |
+
 ---
 
 ## Appendix A — Layer Responsibility Matrix
@@ -1104,12 +1203,15 @@ differs from those sections, they govern.
 | `AR-LAY-006` | Layer | Durable state only in the Repository Layer | [8.2](#82-layer-invariants) |
 | `AR-LAY-007` | Layer | No variation by Platform or distribution | [8.2](#82-layer-invariants) |
 | `AR-LAY-008` | Layer | Verifiable in isolation | [8.2](#82-layer-invariants) |
+| `AR-LAY-009` | Layer | Owned concepts belong to one layer | [8.2](#82-layer-invariants) |
+| `AR-LAY-010` | Layer | Repository contents readable without AEOS | [8.2](#82-layer-invariants) |
 | `AR-DEP-001` | Dependency | Dependency moves toward lower abstraction | [8.3](#83-dependency-invariants) |
 | `AR-DEP-002` | Dependency | No reverse dependency | [8.3](#83-dependency-invariants) |
 | `AR-DEP-003` | Dependency | No cycle | [8.3](#83-dependency-invariants) |
 | `AR-DEP-004` | Dependency | Only permitted interactions | [8.3](#83-dependency-invariants) |
 | `AR-DEP-005` | Dependency | The Repository Layer depends on nothing | [8.3](#83-dependency-invariants) |
 | `AR-DEP-006` | Dependency | One write path | [8.3](#83-dependency-invariants) |
+| `AR-DEP-007` | Dependency | No knowledge of a dependent layer | [8.3](#83-dependency-invariants) |
 | `AR-BND-001` | Boundary | No path other than the stated path | [8.4](#84-boundary-invariants) |
 | `AR-BND-002` | Boundary | No inference inside AEOS | [8.4](#84-boundary-invariants) |
 | `AR-BND-003` | Boundary | No effect without a gate | [8.4](#84-boundary-invariants) |
@@ -1122,6 +1224,10 @@ differs from those sections, they govern.
 | `AR-BND-010` | Boundary | Human decisions are never simulated | [8.4](#84-boundary-invariants) |
 | `AR-BND-011` | Boundary | Nothing is privileged | [8.4](#84-boundary-invariants) |
 | `AR-BND-012` | Boundary | External systems are orchestrated, not replaced | [8.4](#84-boundary-invariants) |
+| `AR-BND-013` | Boundary | Assets carry no runtime or platform specifics | [8.4](#84-boundary-invariants) |
+| `AR-BND-014` | Boundary | Approval binds to one Proposal and its scope | [8.4](#84-boundary-invariants) |
+| `AR-BND-015` | Boundary | Grants never cover the destructive class | [8.4](#84-boundary-invariants) |
+| `AR-BND-016` | Boundary | Crossings are disclosed before they occur | [8.4](#84-boundary-invariants) |
 | `AR-EXT-001` | Extension | Only through named extension points | [8.5](#85-extension-invariants) |
 | `AR-EXT-002` | Extension | Declared, versioned, inspectable | [8.5](#85-extension-invariants) |
 | `AR-EXT-003` | Extension | No weakening of gates or boundaries | [8.5](#85-extension-invariants) |
@@ -1137,9 +1243,10 @@ differs from those sections, they govern.
 | `AR-GOV-005` | Governance | Structural change is an architecture revision | [8.6](#86-architectural-governance-invariants) |
 | `AR-GOV-006` | Governance | Identifiers are permanent | [8.6](#86-architectural-governance-invariants) |
 | `AR-GOV-007` | Governance | Foundation documents govern | [8.6](#86-architectural-governance-invariants) |
+| `AR-GOV-008` | Governance | Blueprint defines internal organization only | [8.6](#86-architectural-governance-invariants) |
 
 ---
 
 **End of Architecture**
 
-AEOS-ARCH · Version 1.0.0 · Architecture Source of Truth
+AEOS-ARCH · Version 1.1.0 · Architecture Source of Truth
