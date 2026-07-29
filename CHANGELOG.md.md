@@ -31,7 +31,7 @@
 
 | Foundation-0005 | 
 | AEOS_SUPPORTED_TECHNOLOGIES | 
-| Status : Frozen
+| Status : Frozen | 
 
 | architecture-0001 | 
 | AEOS_ARCHITECTURE | 
