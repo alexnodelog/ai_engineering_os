@@ -10,7 +10,7 @@ traced, and frozen.*
 | **Document** | Specification Standard |
 | **Product** | AI Engineering Operating System (AEOS) |
 | **Document ID** | AEOS-SPECSTD |
-| **Version** | 1.0.0 |
+| **Version** | 1.1.0 |
 | **Status** | Freeze candidate |
 | **Owner** | Product Owner, AEOS |
 | **Author** | Specification Governance Board, AEOS |
@@ -127,10 +127,19 @@ This Standard governs the Specification layer of AEOS documentation:
 | The content of any individual specified behavior | The Specification document that owns it |
 | How specified behavior is realized in code | Implementation Guides and the codebase |
 | How a person works within the result | Developer Guides |
+| The verification of specified behavior — Test Specifications, Test Plans, Test Cases, and other testing artifacts | Downstream documents, not governed by this Standard |
 
 A statement in this document that redefines a product requirement, the Vision, a glossary term, the
 documentation hierarchy, or a structural decision is a **defect in this document**. It MUST be
 reported rather than acted upon.
+
+> **Note on testing artifacts (non-normative).** This Standard governs behavioral Specifications
+> only — documents stating what AEOS must do. Test Specifications, Test Plans, Test Cases, and any
+> other artifact that verifies a behavioral Specification are downstream of it, in the same sense
+> Implementation Guides are downstream of it. This Standard states no requirement for such artifacts,
+> assigns them no identifier prefix, and takes no position on their form; it notes the boundary only,
+> so that a future testing-artifact standard is understood to be a separate document rather than an
+> extension of this one.
 
 ### 2.3 Applicability
 
@@ -143,6 +152,13 @@ This Standard does not retroactively invalidate a Specification document frozen 
 was frozen. Where such a document diverges from this Standard, the divergence is recorded as a Minor
 finding and is reconciled only through that document's own change control, consistent with
 AEOS-DOCSTD Section 2.3.
+
+A Specification document's validity and authority derive from its Document ID and its recorded
+lifecycle state, never from its location in the repository. Repository layout, directory structure,
+packaging, or a future reorganization of the repository does not alter, suspend, or invalidate a
+Specification document; only this Standard's own change control, under
+[Section 18](#18-versioning-and-change-management), does. This Standard takes no position on
+repository layout itself, which remains a decision for Blueprint or Implementation governance.
 
 ### 2.4 Relationship to the Documentation Hierarchy
 
@@ -307,6 +323,22 @@ completely.
 ---
 
 ## 6. Specification Ownership
+
+Ownership is stated at three distinct levels, and this section governs each differently. A
+Specification document, the behavior domain it owns, and the Specification Rules — `SP-` identifiers
+— it contains are not interchangeable, and treating them as such is a common source of scope drift.
+
+| Level | What it is | Governed by |
+| :--- | :--- | :--- |
+| Specification document | The Repository Asset itself: one file, one metadata block, one lifecycle state. | AEOS-DOCSTD's document lifecycle, applied to this layer. |
+| Behavior domain | The set of behavior a single `AREA` code names, owned by exactly one Specification document. | [Section 6.2](#62-assigning-a-domain). |
+| Specification Rule | One `SP-<AREA>-<NNN>` identifier: a single testable statement within a behavior domain. | [Section 11](#11-identifier-conventions). |
+
+A document's version changes, under [Section 18](#18-versioning-and-change-management), whenever a
+Rule within it is added, retired, or changed; a Rule's meaning does not change merely because the
+document that carries it is reissued at a new version. Confusing document-level governance with
+rule-level governance — for example, treating a document version bump as a change to what a specific
+Rule requires, or citing a document where a specific Rule identifier is meant — MUST be avoided.
 
 ### 6.1 The Ownership Rule
 
@@ -498,6 +530,7 @@ Standard.
 | `ID4` | Every `SP-` identifier MUST trace to one or more `PR-` identifiers, per AEOS-GLOSSARY `I5` and [Section 13](#13-traceability-rules). |
 | `ID5` | An `AREA` code MUST be registered before it is used, per [Section 11.4](#114-area-registration), and MUST NOT be reused across behavior domains with a different meaning, per AEOS-GLOSSARY `I3`. |
 | `ID6` | An identifier MUST NOT be assigned to a statement that fails the responsibility test in [Section 7.2](#72-the-responsibility-test). |
+| `ID7` | Where a revision changes the context an existing `SP-` identifier depends on — for example, the set of `PR-` identifiers it traces to — the revision SHOULD preserve backward traceability wherever practical, such as by retaining a superseded trace alongside the new one rather than removing it outright. This is a recommendation only: it does not relax `ID2` or `ID3`, and it MUST NOT be read as permission to edit what a frozen identifier requires. |
 
 ### 11.4 Area Registration
 
@@ -770,6 +803,7 @@ lifecycle; the Specification document governs on the content of the behavior dom
 | Version | Status | Summary |
 | :--- | :--- | :--- |
 | 1.0.0 | Freeze candidate | Initial Specification Writing Standard. Establishes ten specification principles, the relationship of the Specification layer to Vision, Product Requirements, Glossary, Document Standard, Supported Technologies, Architecture, and Blueprint, specification ownership rules, the responsibility boundary of the Specification layer, nine required-content rules and seven prohibited-content rules with a single-satisfiability test, an eleven-section standard specification structure with ordering rules, the identifier convention built on the existing `SP-<AREA>-<NNN>` shape with an explicit decision not to introduce new top-level prefixes, normative language rules, traceability rules, cross-reference rules, dependency rules, extension and retirement rules, format requirements, a Specification-layer versioning and change-control table, a freeze checklist, and document governance. Introduces no product requirement, no vision, no terminology, no architecture, no technology, and no implementation. Redefines no hierarchy AEOS-DOCSTD establishes. |
+| 1.1.0 | Freeze candidate | Governance refinement pass preceding the AEOS 1.0 Architecture Freeze. Added a non-normative distinction between a Specification document, the behavior domain it owns, and a Specification Rule, as an introduction to [Section 6](#6-specification-ownership). Added a row and a non-normative note to [Section 2.2](#22-what-this-document-does-not-govern) clarifying that this Standard governs behavioral Specifications only and that Test Specifications, Test Plans, Test Cases, and other testing artifacts are downstream documents outside its scope; no testing governance is introduced. Added a statement to [Section 2.3](#23-applicability) that a Specification document's validity derives from its Document ID and lifecycle state, not from repository layout, directory structure, packaging, or reorganization. Added rule `ID7` to [Section 11.3](#113-identifier-rules), a SHOULD-level recommendation that revisions preserve backward traceability wherever practical; `ID2` and `ID3` are unchanged and identifier immutability is not weakened. Updated the Appendix C rule index accordingly. No principle, responsibility, ownership boundary, required or prohibited content rule, identifier prefix, structural section, traceability obligation, or precedence rule was changed. |
 
 ---
 
@@ -878,7 +912,7 @@ form of AEOS-DOCSTD Appendix B, for a reader comparing this Standard directly ag
 | `MD1` to `MD9` | What a Specification MUST define | 9 | [8](#8-what-a-specification-must-define) |
 | `MN1` to `MN7` | What a Specification MUST NOT define | 7 | [9](#9-what-a-specification-must-not-define) |
 | `RS1` to `RS14` | Standard Specification structure and ordering | 14 | [10](#10-standard-specification-structure) |
-| `ID1` to `ID6` | Identifier conventions | 6 | [11.3](#113-identifier-rules) |
+| `ID1` to `ID7` | Identifier conventions | 7 | [11.3](#113-identifier-rules) |
 | `NL1` to `NL3` | Normative language | 3 | [12.2](#122-requirement-for-the-specification-layer) |
 | `TR1` to `TR5` | Traceability rules | 5 | [13.2](#132-trace-rules) |
 | `XR1` to `XR5` | Cross-reference rules | 5 | [14.3](#143-rules) |
@@ -892,4 +926,4 @@ form of AEOS-DOCSTD Appendix B, for a reader comparing this Standard directly ag
 
 **End of Specification Standard**
 
-AEOS-SPECSTD · Version 1.0.0 · Specification Source of Truth
+AEOS-SPECSTD · Version 1.1.0 · Specification Source of Truth
