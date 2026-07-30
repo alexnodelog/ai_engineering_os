@@ -11,7 +11,7 @@ traced, and frozen.*
 | **Product** | AI Engineering Operating System (AEOS) |
 | **Document ID** | AEOS-SPECSTD |
 | **Version** | 1.1.0 |
-| **Status** | Freeze candidate |
+| **Status** | Frozen |
 | **Owner** | Product Owner, AEOS |
 | **Author** | Specification Governance Board, AEOS |
 | **Audience** | AI systems, architects, contributors, maintainers, reviewers, and specification authors |
