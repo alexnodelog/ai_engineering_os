@@ -16,7 +16,7 @@ traced, and frozen.*
 | **Author** | Specification Governance Board, AEOS |
 | **Audience** | AI systems, architects, contributors, maintainers, reviewers, and specification authors |
 | **Suggested path** | `docs/product/SPECIFICATION_STANDARD.md` |
-| **Companion documents** | `AEOS_VISION.md` (AEOS-VISION) · `AEOS_PRODUCT_REQUIREMENTS.md` (AEOS-PRD) · `AEOS_GLOSSARY.md` (AEOS-GLOSSARY) · `AEOS_DOCUMENT_STANDARD.md` (AEOS-DOCSTD) · `AEOS_SUPPORTED_TECHNOLOGIES.md` (AEOS-TECH) |
+| **Companion documents** | `AEOS_VISION.md` (AEOS-VISION) · `AEOS_PRODUCT_REQUIREMENTS.md` (AEOS-PRD) · `AEOS_GLOSSARY.md` (AEOS-GLOSSARY) · `AEOS_DOCUMENT_STANDARD.md` (AEOS-DOCSTD) · `AEOS_SUPPORTED_TECHNOLOGIES.md` (AEOS-TECH) · `AEOS_ARCHITECTURE.md` (AEOS-ARCH) · `AEOS_BLUEPRINT.md` (AEOS-BLUEPRINT) |
 | **Supersedes** | None |
 
 > **Authority of this document.**
@@ -188,19 +188,20 @@ nothing they already define; where it appears to, the entry below states the cor
 
 ### 3.2 Relationship to Architecture and Blueprint
 
-Architecture and Blueprint are not yet expressed as single, frozen documents at the time this
-Standard is written; AEOS-DOCSTD Section 4.5 records a comparable open position for the Runtime
-layer. This Standard does not assign Architecture or Blueprint a Document ID, and does not wait for
-one to exist before stating the Specification layer's obligations toward them:
+Architecture and Blueprint are frozen documents, identified as AEOS-ARCH and AEOS-BLUEPRINT
+respectively. This Standard cites each by Document ID and by the `AR-` and `BP-` identifiers
+AEOS-GLOSSARY Section 6.4 registers for architectural decisions and Blueprint items, in the same form
+it cites AEOS-PRD's `PR-` identifiers:
 
 | Layer | What it supplies to a Specification | What a Specification owes it in return |
 | :--- | :--- | :--- |
-| **Architecture** | The structural decisions and boundaries within which a specified behavior must fit. | A Specification MUST NOT contradict a structural decision or boundary an Architecture document has made, and MUST remain implementation-independent in the same sense Architecture is: it states what must be true, never how the structure realizing it is built. |
-| **Blueprint** | The buildable arrangement, decomposed to the level of detail a Specification can be written against, per AEOS-DOCSTD Section 4.3. | A Specification MUST be written against a Blueprint's arrangement where one exists, and MUST NOT restate the arrangement itself — only the precise, testable behavior expected within it. |
+| **AEOS-ARCH** | The structural decisions and boundaries — each carrying an `AR-` identifier — within which a specified behavior must fit. | A Specification MUST NOT contradict a structural decision or boundary AEOS-ARCH has made, and MUST remain implementation-independent in the same sense AEOS-ARCH is: it states what must be true, never how the structure realizing it is built. |
+| **AEOS-BLUEPRINT** | The buildable arrangement — each item carrying a `BP-` identifier — decomposed to the level of detail a Specification can be written against, per AEOS-DOCSTD Section 4.3. | A Specification MUST be written against AEOS-BLUEPRINT's arrangement, citing the `BP-` items it relies on, and MUST NOT restate the arrangement itself — only the precise, testable behavior expected within it. |
 
-Where Architecture or Blueprint is later assigned a Document ID, references in Specification
-documents are updated to cite it; this is an editorial correction under
-[Section 18](#18-versioning-and-change-management) and changes no obligation stated here.
+Where a later revision of AEOS-ARCH or AEOS-BLUEPRINT changes a decision or an item a Specification
+depends on, the affected Specification MUST be revised under
+[Section 18](#18-versioning-and-change-management); this Standard states the obligation only, not the
+content of either document.
 
 ### 3.3 Precedence
 
@@ -613,7 +614,8 @@ This section states the reference forms specific to Specification content.
 | A specified rule in this document | `SP-<AREA>-<NNN>` — for example, `SP-ENV-014`. |
 | A specified rule in another Specification document | The document's file name or Document ID, followed by the identifier — for example, "per the Environment Specification, `SP-ENV-014`." |
 | A term | The term itself, spelled as AEOS-GLOSSARY spells it, linked where useful. |
-| An Architecture or Blueprint decision | The decision's own identifier once Architecture and Blueprint documents assign one, per [Section 3.2](#32-relationship-to-architecture-and-blueprint); until then, by the plainest available description of the decision and the document that states it. |
+| An Architecture decision | `AR-<AREA>-<NNN>`, per AEOS-ARCH — for example, `AR-PRN-001`. |
+| A Blueprint item | `BP-<AREA>-<NNN>`, per AEOS-BLUEPRINT — for example, `BP-PRN-001`. |
 | A section within the same document | An internal link to the section heading. |
 
 ### 14.3 Rules
