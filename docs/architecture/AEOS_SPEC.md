@@ -9,7 +9,7 @@
 | **Document** | System Specification |
 | **Product** | AI Engineering Operating System (AEOS) |
 | **Document ID** | AEOS-SPEC |
-| **Version** | 1.0.0 |
+| **Version** | 1.0.1 |
 | **Status** | Freeze candidate |
 | **Owner** | Product Owner, AEOS |
 | **Author** | Chief Specification Architect, AEOS |
@@ -244,6 +244,11 @@ is a defined condition, not an unhandled one.
 
 ## 5. Outputs
 
+The outputs below describe externally observable, contractual behavior — what crosses a boundary,
+and in what form a counterparty can rely on it — not the internal artifact, structure, or mechanism
+that produces it. An implementation MAY realize an output through any internal form; this document
+constrains only what the output must observably be.
+
 | Output | Crosses (AEOS-ARCH boundary) | Content | Produced when |
 | :--- | :--- | :--- | :--- |
 | Explanation | Human boundary, outward | What was inspected, stated so a human can act on it, fact distinguished from inference | Following every Inspect phase that precedes a consequential action |
@@ -372,6 +377,12 @@ them.
 | `SP-SYS-046` | Every behavior specified in [Section 6](#6-behavior) MUST be identical under every official Distribution Method. | `PR-DST-005` · `PR-DST-006` |
 | `SP-SYS-047` | A project prepared under one supported Platform or Distribution Method MUST be usable, unmodified, under another. | `PR-PLT-004` · `PR-DST-007` |
 
+> **On "identical," non-normative.** The identity `SP-SYS-045` through `SP-SYS-047` require is
+> identity of observable behavior — what a human, an AI runtime, or another Repository Asset can
+> detect. It does not require identical internal implementation, mechanism, or code path across
+> Platforms or Distribution Methods. How that identical behavior is achieved on each is a matter for
+> Runtime documents and Implementation Guides, neither of which this document constrains.
+
 ### 7.2 Safety and Trust Constraints
 
 | ID | Rule | Traces to |
@@ -390,6 +401,12 @@ them.
 | `SP-SYS-054` | Every behavior specified in [Section 6](#6-behavior) MUST be verifiable in isolation, with its counterparties replaceable at the point they are reached, for the purpose of that verification. | `PR-NFR-010` |
 | `SP-SYS-055` | AEOS MUST make a decision it has taken explainable to the user on request: what was inspected, what was proposed, what was applied, and why. | `PR-NFR-001` |
 
+> **On "isolation," non-normative.** The isolation `SP-SYS-054` requires is behavioral verification
+> isolation: a rule can be tested against its stated inputs and outputs, with its counterparties
+> replaced by test doubles at the point they are reached, without exercising the whole system at
+> once. It is not a statement of architectural isolation, which AEOS-ARCH's layer boundaries already
+> establish and this document does not restate.
+
 ---
 
 ## 8. Extension Points
@@ -399,7 +416,10 @@ altered. This document's own extension mechanism is the addition of new `SP-SYS-
 under AEOS-SPECSTD Section 18.1.
 Beyond that ordinary mechanism, this document declares seven extension points at which the AEOS 1.0
 Specification layer as a whole is intended to grow: the seven functional areas
-[Section 2.3](#23-functional-decomposition) names.
+[Section 2.3](#23-functional-decomposition) names. A Specification attaching at `EPS-1` through
+`EPS-7` extends this document only by adding behavior within its own functional area; it does not,
+and MUST NOT, modify a rule this document already states — the boundary `SP-SYS-EXT-3` already
+requires.
 
 ### 8.1 Specification Extension Points
 
@@ -551,7 +571,8 @@ Traceability for this document is stated in full in [Section 9](#9-traceability)
 
 | Version | Status | Summary |
 | :--- | :--- | :--- |
-| 1.0.0 | Freeze candidate | Initial System Specification. Registers the `SYS` behavior domain. Establishes fifty-five `SP-SYS` rules across the system interaction loop, action classification and approval, environment and repository behavior, runtime coordination and boundary-crossing behavior, verification behavior, documentation/rule/skill behavior, project and prompt behavior, repository history behavior, independence constraints, safety and trust constraints, and non-functional behavioral constraints. States the functional decomposition of the AEOS 1.0 Specification layer into seven areas — Repository, Workflow, Context, Runtime coordination, Adapter, Execution, and Human Interaction — and declares seven Specification extension points, `EPS-1` through `EPS-7`, with five governing rules. Traces every rule to one or more `PR-` identifiers and every functional area to its owning AEOS-ARCH layer and AEOS-BLUEPRINT document. Introduces no product requirement, no vision, no terminology, no architectural decision, and no Blueprint arrangement. Redefines nothing stated by AEOS-VISION, AEOS-PRD, AEOS-GLOSSARY, AEOS-ARCH, or AEOS-BLUEPRINT. |
+| 1.0.0 | Superseded | Initial System Specification. Registers the `SYS` behavior domain. Establishes fifty-five `SP-SYS` rules across the system interaction loop, action classification and approval, environment and repository behavior, runtime coordination and boundary-crossing behavior, verification behavior, documentation/rule/skill behavior, project and prompt behavior, repository history behavior, independence constraints, safety and trust constraints, and non-functional behavioral constraints. States the functional decomposition of the AEOS 1.0 Specification layer into seven areas — Repository, Workflow, Context, Runtime coordination, Adapter, Execution, and Human Interaction — and declares seven Specification extension points, `EPS-1` through `EPS-7`, with five governing rules. Traces every rule to one or more `PR-` identifiers and every functional area to its owning AEOS-ARCH layer and AEOS-BLUEPRINT document. Introduces no product requirement, no vision, no terminology, no architectural decision, and no Blueprint arrangement. Redefines nothing stated by AEOS-VISION, AEOS-PRD, AEOS-GLOSSARY, AEOS-ARCH, or AEOS-BLUEPRINT. |
+| 1.0.1 | Freeze candidate | Editorial clarification pass; no change of meaning. Added four non-normative clarifying notes: after [Section 7.1](#71-independence-constraints), that the identity `SP-SYS-045` through `SP-SYS-047` require is identity of observable behavior, not of internal implementation; before the [Section 5](#5-outputs) table, that an output describes externally observable, contractual behavior rather than an implementation artifact; in the [Section 8](#8-extension-points) introduction, that a Specification attaching at `EPS-1` through `EPS-7` adds behavior within its own functional area only, per the boundary `SP-SYS-EXT-3` already states; and after [Section 7.3](#73-non-functional-behavioral-constraints), that the isolation `SP-SYS-054` requires is behavioral verification isolation, not architectural isolation. No `SP-SYS` identifier, rule text, trace, extension point, or architectural boundary was added, removed, or changed. |
 
 ---
 
@@ -628,5 +649,5 @@ Traceability for this document is stated in full in [Section 9](#9-traceability)
 
 **End of System Specification**
 
-AEOS-SPEC · Version 1.0.0 · Traces to `PR-ENV` · `PR-PRJ` · `PR-WFL` · `PR-RUN` · `PR-TDD` ·
+AEOS-SPEC · Version 1.0.1 · Traces to `PR-ENV` · `PR-PRJ` · `PR-WFL` · `PR-RUN` · `PR-TDD` ·
 `PR-DOC` · `PR-RUL` · `PR-SKL` · `PR-PMT` · `PR-REP` · `PR-PLT` · `PR-DST` · `PR-SAF` · `PR-NFR`
