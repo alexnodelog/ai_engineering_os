@@ -9,7 +9,7 @@
 | **Document** | Context Router Specification |
 | **Product** | AI Engineering Operating System (AEOS) |
 | **Document ID** | AEOS-SPEC-CTX |
-| **Version** | 1.0.0 |
+| **Version** | 1.0.1 |
 | **Status** | Freeze candidate |
 | **Owner** | Product Owner, AEOS |
 | **Author** | Chief Specification Architect, AEOS |
@@ -217,9 +217,11 @@ flowchart LR
     D --> W["Passed to the requesting Workflow step"]
 ```
 
-Nothing in this lifecycle is retained once the composed result has been passed outward; the
-Constraints in [Section 7.1](#71-isolation-and-non-inheritance-constraints) state that boundary
-normatively.
+Nothing in this lifecycle is retained once the composed result has been passed outward, and this is
+the point at which the lifecycle terminates for the Context Layer: `SP-CTX-022` and `SP-CTX-023` fix
+that no earlier point in this diagram may be treated as an ending, and that no state from it persists
+afterward. [Section 7.1](#71-isolation-and-non-inheritance-constraints) states this boundary
+normatively; [Section 7.5](#75-context-custody) explains it further.
 
 ### 6.2 Context Selection
 
@@ -284,6 +286,12 @@ The invariants below MUST hold before, during, and after every behavior stated i
 
 ### 7.1 Isolation and Non-Inheritance Constraints
 
+> **On the inheritance model, non-normative.** `SP-CTX-003` (Section 6.2) and `SP-CTX-024`, below,
+> together fix that Context is never inherited across steps: no element, justification, or composed
+> result produced for one step is available, in whole or in part, to any other step. This note
+> states no obligation beyond what those two rules already require; it names the pattern explicitly
+> so a reader need not infer it from separate rules.
+
 | ID | Rule | Traces to |
 | :--- | :--- | :--- |
 | `SP-CTX-022` | The Context Layer MUST NOT hold a composed result once it has been passed outward under `SP-CTX-020`. | `PR-REP-015` |
@@ -321,6 +329,25 @@ Consistent with AEOS-SPECSTD `DP4`, each dependency above is stated behaviorally
 hold, not which document, technology, or component makes it hold. Consistent with `DP2`, none of the
 rules in [Section 6](#6-behavior) or elsewhere in this document presumes an unstated precondition
 from `SP-SYS`; every precondition this domain relies on is named in this table.
+
+### 7.5 Context Custody
+
+**This section is non-normative.** It draws together, in one place, what
+[Section 6](#6-behavior) and [Section 7.1](#71-isolation-and-non-inheritance-constraints) through
+[Section 7.3](#73-non-functional-constraints) already require about who holds a step's selection,
+its justification, and its composed result, and when that changes. It states no obligation beyond
+those already-normative rules. The word *custody* is used rather than *ownership*, which elsewhere
+in the AEOS document family — AEOS-DOCSTD, AEOS-ARCH, and AEOS-SPECSTD — names definitional or
+documentation authority over a concept, a different relationship from the one described here;
+*custody* instead follows the sense AEOS-ARCH and AEOS-BLUEPRINT already use for Repository Asset
+custody, Workflow State custody, and Selection Custody.
+
+While a step's selection, justification, or composed result exists within this domain, the Context
+Layer is its sole holder, consistent with the single-step scope `SP-CTX-003` fixes and the
+exactly-one-result rule `SP-CTX-010` fixes. Holding transfers to the requesting Workflow step at the
+moment `SP-CTX-020` passes a composed result outward, and at no other moment; from that point the
+Context Layer holds nothing, per `SP-CTX-022` and `SP-CTX-023`. At no point does more than one party
+hold the same selection, justification, or composed result at once.
 
 ---
 
@@ -489,7 +516,8 @@ Traceability for this document is stated in full in [Section 9](#9-traceability)
 
 | Version | Status | Summary |
 | :--- | :--- | :--- |
-| 1.0.0 | Freeze candidate | Initial Context Router Specification. Registers the `CTX` behavior domain and attaches at `EPS-3` of AEOS-SPEC. Establishes twenty-nine `SP-CTX` rules organized under the five AEOS-BLUEPRINT `BP-CTX` subsystems — Context Selection, Inclusion Justification, Prompt Composition, Sensitivity Exclusion, and Composition Disclosure — together with isolation, independence, and non-functional constraints and four declared dependencies on `SP-SYS` rules. States three Context extension points, `EPC-1` through `EPC-3`, matching AEOS-BLUEPRINT Section 9.7 exactly, with five governing rules. Traces every rule to one or more `PR-` identifiers and grounds the document as a whole in the complete `BP-CTX-001` through `BP-CTX-012` arrangement and in the relevant `AR-` invariants. Introduces no product requirement, no vision, no terminology, no architectural decision, and no Blueprint arrangement. Redefines nothing stated by AEOS-VISION, AEOS-PRD, AEOS-GLOSSARY, AEOS-ARCH, AEOS-BLUEPRINT, or AEOS-SPEC. |
+| 1.0.0 | Superseded | Initial Context Router Specification. Registers the `CTX` behavior domain and attaches at `EPS-3` of AEOS-SPEC. Establishes twenty-nine `SP-CTX` rules organized under the five AEOS-BLUEPRINT `BP-CTX` subsystems — Context Selection, Inclusion Justification, Prompt Composition, Sensitivity Exclusion, and Composition Disclosure — together with isolation, independence, and non-functional constraints and four declared dependencies on `SP-SYS` rules. States three Context extension points, `EPC-1` through `EPC-3`, matching AEOS-BLUEPRINT Section 9.7 exactly, with five governing rules. Traces every rule to one or more `PR-` identifiers and grounds the document as a whole in the complete `BP-CTX-001` through `BP-CTX-012` arrangement and in the relevant `AR-` invariants. Introduces no product requirement, no vision, no terminology, no architectural decision, and no Blueprint arrangement. Redefines nothing stated by AEOS-VISION, AEOS-PRD, AEOS-GLOSSARY, AEOS-ARCH, AEOS-BLUEPRINT, or AEOS-SPEC. |
+| 1.0.1 | Freeze candidate | Review-response clarification pass, addressing Architecture Review Board findings on version 1.0.0 regarding Context ownership, the Context inheritance model, and lifecycle termination. Added a non-normative note to [Section 7.1](#71-isolation-and-non-inheritance-constraints) naming the inheritance model `SP-CTX-003` and `SP-CTX-024` already establish, so it need not be inferred from separate rules. Added a new non-normative [Section 7.5](#75-context-custody), Context Custody, drawing together what `SP-CTX-003`, `SP-CTX-010`, `SP-CTX-020`, `SP-CTX-022`, and `SP-CTX-023` already establish about who holds a step's selection, justification, and composed result and when that changes — using the term *custody* rather than *ownership*, since the latter already names definitional or documentation authority elsewhere in the AEOS document family (AEOS-DOCSTD, AEOS-ARCH, AEOS-SPECSTD) and *custody* is the term AEOS-ARCH and AEOS-BLUEPRINT already use for this relationship (Repository Asset custody, Workflow State custody, Selection Custody). Extended [Section 6.1](#61-the-context-lifecycle) to state explicitly that the Context Layer's lifecycle terminates at the point `SP-CTX-022` and `SP-CTX-023` already fix, without adding a lifecycle phase. No `SP-CTX` identifier was added, removed, retired, or changed in meaning; no trace was added or altered; no extension point, constraint, or behavior rule was changed; no new obligation was introduced. |
 
 ---
 
@@ -540,5 +568,5 @@ Traceability for this document is stated in full in [Section 9](#9-traceability)
 
 **End of Context Router Specification**
 
-AEOS-SPEC-CTX · Version 1.0.0 · Traces to `PR-PMT` · `PR-RUN` · `PR-SAF` · `PR-REP` · `PR-PLT` ·
+AEOS-SPEC-CTX · Version 1.0.1 · Traces to `PR-PMT` · `PR-RUN` · `PR-SAF` · `PR-REP` · `PR-PLT` ·
 `PR-NFR`
