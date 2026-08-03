@@ -12,6 +12,12 @@
 | architecture-0001 | AEOS_ARCHITECTUR.mdE | Status : Frozen | 
 | architecture-0002 | AEOS_BLUEPRINT.md| Status : Frozen | 
 | architecture-0003 | AEOS_SPECIFICATION_STANDARD.md | Status : Frozen | 
+| architecture-0004 | AEOS_SPEC.md | Status : Frozen |
+| architecture-0005 | AEOS_CONTEXT_ROUTER.md | Status : Frozen |
+| architecture-0006 | AEOS_WORKFLOW_ENGINE.md | Status : Frozen |
+| architecture-0007 | AEOS_STATE_MACHINE.md | Status : Frozen |
+| FRAMEWORK | All framework files are uploaded | Status : Frozen | 
+
 
 ## 2026-07-28
 
@@ -38,3 +44,15 @@
 | number | file name | status |
 | :--- | :--- | :--- |
 | architecture-0003 | AEOS_SPECIFICATION_STANDARD.md | Status : Frozen | 
+| architecture-0004 | AEOS_SPEC.md | Status : Frozen |
+| architecture-0005 | AEOS_CONTEXT_ROUTER.md | Status : Frozen |
+| architecture-0006 | AEOS_WORKFLOW_ENGINE.md | Status : Frozen |
+| architecture-0007 | AEOS_STATE_MACHINE.md | Status : Frozen |
+| FRAMEWORK | All framework files are uploaded | Status : Frozen | 
+
+
+## 2026-08-03
+
+| number | file name | status |
+| :--- | :--- | :--- |
+| architecture | arrange the tree of project | Status : Frozen | 
