@@ -9,8 +9,8 @@
 | **Document** | Product Requirements Document (PRD) |
 | **Product** | AI Engineering Operating System (AEOS) |
 | **Document ID** | AEOS-PRD |
-| **Version** | 1.1.1 |
-| **Status** | Frozen |
+| **Version** | 1.2.0 |
+| **Status** | Freeze candidate |
 | **Owner** | Product Owner, AEOS |
 | **Author** | Chief Product Architect, AEOS |
 | **Audience** | Product owner, engineering contributors, AI runtimes consuming this repository |
@@ -790,6 +790,23 @@ selection. The workflow file does not change. The rules do not change. The skill
 repository does not change. If any of those must change, runtime independence has been violated and
 the violation is a defect in AEOS, not a limitation of the user's setup.
 
+### 16.4 Distribution, Installation, Runtime Connection, and Developer Workflow
+
+Four related product concerns are easy to conflate. This document treats them as distinct so that a
+requirement is never mistakenly satisfied by the wrong one.
+
+| Concern | Governing section | Statement |
+| :--- | :--- | :--- |
+| **Distribution Strategy** | [Section 15](#15-distribution-strategy) | Distribution SHALL describe how AEOS reaches users — the methods by which a developer acquires AEOS. |
+| **Installation Experience** | [Section 18.14](#1814-developer-onboarding--pr-onb) | Installation SHALL describe product expectations for what happens after acquisition and before AEOS is usable. |
+| **Runtime Connection** | [Section 18.14](#1814-developer-onboarding--pr-onb) | Runtime Connection SHALL describe product expectations for connecting a supported AI runtime once AEOS is installed. This section (16) states which runtimes exist and how AEOS relates to them; Runtime Connection states what the developer experiences while establishing that relationship. |
+| **Developer Workflow** | [Sections 9](#9-the-engineering-lifecycle), [10](#10-the-interaction-model), [18.3](#183-workflow-orchestration--pr-wfl), and [18.4](#184-ai-runtime-orchestration--pr-run) | Developer Workflow SHALL remain separate: it governs ongoing engineering work once onboarding is complete, and this section neither redefines nor restates it. |
+
+A requirement governing acquisition belongs to Section 15. A requirement governing what happens
+after acquisition and before productive use belongs to Section 18.14. A requirement governing
+ongoing engineering work belongs to the capability sections that already state it. No downstream
+document may satisfy a requirement drawn from one of these four concerns by addressing another.
+
 ---
 
 ## 17. Product Scope
@@ -1088,6 +1105,34 @@ mechanism: each one should admit more than one honest implementation.
 
 ---
 
+### 18.14 Developer Onboarding — `PR-ONB`
+
+AEOS owns the developer's experience from first discovering the product through completing a first
+productive development session. This section covers product discoverability, the developer-facing
+experience of distribution and installation, the experience of connecting a supported AI runtime,
+and the first development session — as observable product outcomes, without prescribing mechanism,
+selecting a distribution technology beyond what AEOS-TECH already governs, or naming a runtime
+vendor.
+
+| ID | Requirement | Priority | Phase |
+| :--- | :--- | :--- | :--- |
+| `PR-ONB-001` | AEOS states, before a developer acquires it, what the product is, what it requires, and what happens next — in terms a developer can evaluate without installing anything. | P0 | 1 |
+| `PR-ONB-002` | Discoverability material accurately reflects current product capability and never claims a capability that has not shipped. | P0 | 1 |
+| `PR-ONB-003` | A developer can determine which distribution methods are currently available and what each requires, before choosing one. | P0 | 1 |
+| `PR-ONB-004` | Completion of acquisition is observable: a developer can determine, without guesswork, that they now possess a usable copy of AEOS. | P0 | 1 |
+| `PR-ONB-005` | Installation reports what it found, what it proposes to do, and what it actually did, following the Interaction Model in Section 10. | P0 | 1 |
+| `PR-ONB-006` | Installation states explicitly, on completion, what remains before AEOS is usable — including connecting a runtime where none was connected during installation. | P0 | 1 |
+| `PR-ONB-007` | An interrupted or failed installation leaves the machine in a state the developer can understand and safely retry, consistent with `PR-SAF-010`. | P0 | 2 |
+| `PR-ONB-008` | A developer can determine which supported runtimes are available to connect, and what connecting each requires, without first selecting one. | P0 | 1 |
+| `PR-ONB-009` | AEOS reports, before a runtime connection is established, what will be disclosed to that runtime and what the developer must approve, consistent with `PR-SAF-007` and `PR-SAF-008`. | P0 | 1 |
+| `PR-ONB-010` | The current runtime connection state — connected, unconnected, or unreachable — is observable to the developer on request at any time. | P0 | 1 |
+| `PR-ONB-011` | Once installed and connected to at least one runtime, AEOS states what a developer can do first, without requiring prior knowledge of AEOS's internal model. | P0 | 1 |
+| `PR-ONB-012` | A developer can complete one full pass of the Interaction Model — inspect, explain, propose, confirm, execute, report — within their first session. | P1 | 2 |
+| `PR-ONB-013` | The onboarding experience is identical in substance across every officially supported platform and every official distribution method; only acquisition mechanics differ. | P0 | 2 |
+| `PR-ONB-014` | Absence of a connected runtime does not block a developer from observing what AEOS is or from completing installation; it blocks only the inference-dependent capabilities that require one, consistent with `PR-RUN-010`. | P1 | 2 |
+
+---
+
 ## 19. Quality Attributes
 
 Product-level qualities. They apply to every capability and every requirement above.
@@ -1287,6 +1332,7 @@ or Major findings remain.
 | 1.0.0 | Superseded | Initial product definition. Establishes mission, thirteen product principles, interaction model, environment philosophy, ten capabilities, platform and distribution strategy, runtime strategy, scope, 151 numbered product requirements, and 12 quality attributes. |
 | 1.1.0 | Superseded | Product/implementation separation pass. Adds Executive Summary, Product Boundary, and Repository Product Assets and Runtime State. Restates implementation-prescriptive requirements as observable outcomes. Clarifies the operating-system metaphor. Adds `PR-RUN-016`, `PR-REP-015`, `PR-REP-016`. All pre-existing identifiers preserved unchanged. Mission, vision, and frozen product principles unaltered. |
 | 1.1.1 | Freeze candidate | Presentation conformance pass against AEOS-DOCSTD 3.0.0. Converted the document to GitHub-Flavored Markdown First form: all tables rendered as Markdown tables, collapsible blocks replaced by heading hierarchy, and all raw HTML removed. Rebuilt the title, metadata, and closing blocks to the standard template; added the companion-documents field. Renamed Section 3 to *Scope and Applicability*, retaining *The Product Boundary* as its opening subsection. Numbered all subsections. Corrected the version stated in the closing block. No requirement, identifier, principle, responsibility, ownership statement, or scope boundary was changed. |
+| 1.2.0 | Freeze candidate | Incremental governance update. Adds Section 16.4, clarifying the boundary between Distribution Strategy, Installation Experience, Runtime Connection, and Developer Workflow. Adds Section 18.14, a new requirement family (`PR-ONB`, Developer Onboarding, requirements 001–014) covering product discoverability and the developer-facing experience of distribution, installation, runtime connection, and the first development session — following the precedent already set by the Platform, Distribution, and Safety families, none of which correspond to a numbered Section 12 capability. Updates the Appendix B requirement index (166 → 180 requirements). No existing requirement, identifier, principle, capability, or scope boundary was changed. |
 
 ---
 
@@ -1323,11 +1369,12 @@ Each requires an explicit owner revision request before it may be adopted.
 | `PR-PLT` | Platform | 001–006 | 6 | [18.11](#1811-platform--pr-plt) |
 | `PR-DST` | Distribution | 001–013 | 13 | [18.12](#1812-distribution--pr-dst) |
 | `PR-SAF` | Safety | 001–012 | 12 | [18.13](#1813-safety--pr-saf) |
+| `PR-ONB` | Developer onboarding | 001–014 | 14 | [18.14](#1814-developer-onboarding--pr-onb) |
 | `PR-NFR` | Quality attributes | 001–012 | 12 | [19](#19-quality-attributes) |
-| **Total** |  |  | **166** | — |
+| **Total** |  |  | **180** | — |
 
 ---
 
 **End of Product Requirements Document**
 
-AEOS-PRD · Version 1.1.1 · Product Source of Truth
+AEOS-PRD · Version 1.2.0 · Product Source of Truth
