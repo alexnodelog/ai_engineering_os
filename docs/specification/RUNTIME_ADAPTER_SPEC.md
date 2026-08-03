@@ -10,7 +10,7 @@
 | **Product** | AI Engineering Operating System (AEOS) |
 | **Document ID** | AEOS-SPEC-ADP |
 | **Version** | 1.0.0 |
-| **Status** | Draft |
+| **Status** | Frozen |
 | **Owner** | Product Owner, AEOS |
 | **Author** | Specification Governance Board, AEOS |
 | **Audience** | Architects, implementers, reviewers, test authors, and AI runtimes |

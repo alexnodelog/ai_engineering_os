@@ -11,7 +11,7 @@ capability are registered, discovered, and retired within AEOS.*
 | **Product** | AI Engineering Operating System (AEOS) |
 | **Document ID** | AEOS-SPEC-MDL |
 | **Version** | 1.0.0 |
-| **Status** | Freeze candidate |
+| **Status** | Frozen |
 | **Owner** | Product Owner, AEOS |
 | **Author** | Specification Governance Board, AEOS |
 | **Audience** | Architects, implementers, reviewers, test authors, and AI runtimes |

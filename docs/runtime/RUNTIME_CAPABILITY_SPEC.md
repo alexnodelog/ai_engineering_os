@@ -11,7 +11,7 @@ Adapter, and Model within AEOS.*
 | **Product** | AI Engineering Operating System (AEOS) |
 | **Document ID** | AEOS-CAP |
 | **Version** | 1.0.0 |
-| **Status** | Freeze candidate |
+| **Status** | Frozen |
 | **Owner** | Product Owner, AEOS |
 | **Author** | Runtime Governance Board, AEOS |
 | **Audience** | Architects, adapter authors, runtime integrators, reviewers, maintainers, and AI runtimes consuming this repository |

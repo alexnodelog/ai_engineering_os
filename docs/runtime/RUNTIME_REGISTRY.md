@@ -11,7 +11,7 @@ behavior a project may depend on it for.*
 | **Product** | AI Engineering Operating System (AEOS) |
 | **Document ID** | AEOS-RUNTIME-REG |
 | **Version** | 1.0.0 |
-| **Status** | Freeze candidate |
+| **Status** | Frozen |
 | **Owner** | Product Owner, AEOS |
 | **Author** | Runtime Governance Board, AEOS |
 | **Audience** | Architects, adapter authors, runtime integrators, reviewers, maintainers, and AI runtimes consuming this repository |
