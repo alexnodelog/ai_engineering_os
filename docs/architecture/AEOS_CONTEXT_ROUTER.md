@@ -10,7 +10,7 @@
 | **Product** | AI Engineering Operating System (AEOS) |
 | **Document ID** | AEOS-SPEC-CTX |
 | **Version** | 1.0.1 |
-| **Status** | Freeze candidate |
+| **Status** | Frozen |
 | **Owner** | Product Owner, AEOS |
 | **Author** | Chief Specification Architect, AEOS |
 | **Audience** | Architects, implementers, reviewers, test authors, and AI runtimes consuming this repository |
