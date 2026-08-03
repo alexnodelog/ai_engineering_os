@@ -17,7 +17,18 @@
 | architecture-0006 | AEOS_WORKFLOW_ENGINE.md | Status : Frozen |
 | architecture-0007 | AEOS_STATE_MACHINE.md | Status : Frozen |
 | FRAMEWORK | All framework files are uploaded | Status : Frozen | 
+| runtime-0001 | RUNTIME_ADAPTER_SPEC.md | Status : Frozen |
+| runtime-0002 | MODEL_REGISTRY.md | Status : Frozen |
+| runtime-0003 | RUNTIME_REGISTRY.md | Status : Frozen |
+| runtime-0004 | RUNTIME_CAPABILITY_SPEC.md | Status : Frozen |
+| runtime-0005 | RUNTIME_NEGOTIATION_SPEC.md | Status : Frozen |
+| runtime-0006 | RUNTIME_FLOW.md | Status : Frozen |
 
+Move various docs to better-organized locations: 
+architecture/*.md files (AEOS_SPEC, AEOS_CONTEXT_ROUTER, AEOS_WORKFLOW_ENGINE, AEOS_STATE_MACHINE) were moved to docs/specification/, 
+AEOS_SPECIFICATION_STANDARD.md was moved from docs/architecture/ to docs/product/, and 
+runtime/*.md (RUNTIME_ADAPTER_SPEC, MODEL_REGISTRY, RUNTIME_NEGOTIATION_SPEC) were moved to docs/specification/. 
+This clarifies separation between product-facing and specification documents.
 
 ## 2026-07-28
 
@@ -51,8 +62,19 @@
 | FRAMEWORK | All framework files are uploaded | Status : Frozen | 
 
 
-## 2026-08-03
+## 2026-08-01
 
 | number | file name | status |
 | :--- | :--- | :--- |
-| architecture | arrange the tree of project | Status : Frozen | 
+| runtime-0001 | RUNTIME_ADAPTER_SPEC.md | Status : Frozen |
+| runtime-0002 | MODEL_REGISTRY.md | Status : Frozen |
+| runtime-0003 | RUNTIME_REGISTRY.md | Status : Frozen |
+
+
+## 2026-08-02
+
+| number | file name | status |
+| :--- | :--- | :--- |
+| runtime-0004 | RUNTIME_CAPABILITY_SPEC.md | Status : Frozen |
+| runtime-0005 | RUNTIME_NEGOTIATION_SPEC.md | Status : Frozen |
+| runtime-0006 | RUNTIME_FLOW.md | Status : Frozen |
