@@ -10,7 +10,7 @@ result, recovers from an interrupted attempt, and reinstalls or upgrades it.*
 | **Document** | Installation Guide |
 | **Product** | AI Engineering Operating System (AEOS) |
 | **Document ID** | AEOS-INSTALL |
-| **Version** | 1.0.0 |
+| **Version** | 1.1.0 |
 | **Status** | Draft |
 | **Owner** | Product Owner, AEOS |
 | **Author** | Release Engineering Board, AEOS |
@@ -38,6 +38,12 @@ result, recovers from an interrupted attempt, and reinstalls or upgrades it.*
 > required software, no environment variable, and no directory-level or path condition of its own;
 > every prerequisite this document depends on is established by AEOS-ENVSETUP or AEOS-TECH and is
 > referenced here, never restated.
+>
+> **This document is not a Runtime Connection guide, and not a Developer Guide.** It states no
+> procedure for connecting a supported AI runtime, no disclosure-and-approval mechanism for that
+> connection, and no guidance for a Developer's first or ongoing use of an installed copy of AEOS;
+> [Section 2.4](#24-boundary-environment-setup-installation-runtime-connection-and-developer-workflow)
+> states precisely where this document's responsibility ends and each of those begins.
 >
 > **This document is not an architecture document.** It states no structural decision, no Blueprint
 > arrangement, and no specified behavior; where a statement here appears to do any of these, that is a
@@ -118,6 +124,16 @@ narrower than either AEOS-BOOT or AEOS-ENVSETUP: it begins only after both of th
 already settled, and it states nothing about how AEOS behaves once installation completes — that
 remains Runtime-layer and product-layer territory.
 
+AEOS-PRD Version 1.2.0 added Section 18.14, the `PR-ONB` (Developer Onboarding) requirement family,
+and Section 16.4, which distinguishes Distribution Strategy, Installation Experience, Runtime
+Connection, and Developer Workflow as four separate concerns. This document's procedure already
+satisfied much of the Installation Experience portion of that family implicitly; this revision makes
+that support explicit, strengthens the observability of installation's outcome and failure states, and
+states precisely where Installation Experience ends and Runtime Connection begins, per
+[Section 2.4](#24-boundary-environment-setup-installation-runtime-connection-and-developer-workflow).
+It introduces no Runtime Connection procedure, no Developer Workflow guidance, and no product
+requirement AEOS-PRD does not already state.
+
 Four properties bind the procedure this document states, consistent with the discipline AEOS-BOOT and
 AEOS-ENVSETUP record for a comparable statement of fact:
 
@@ -145,6 +161,8 @@ nothing beyond it:
 - the failures installation may encounter, and the recovery procedure that follows an interruption;
 - the guidance by which an existing installation is reinstalled;
 - the considerations that apply when an installed copy of AEOS is upgraded to a newer version;
+- the boundary separating this document's Installation Experience concern from Environment Setup,
+  which precedes it, and from Runtime Connection and Developer Workflow, which follow it;
 - what installation explicitly does not do, so a reader does not search this document, or a future
   document, for a capability installation was never meant to have.
 
@@ -168,6 +186,9 @@ This list is complete.
 | Installing, configuring, or launching any AEOS Runtime, Adapter, or Model | Runtime documents and future Implementation Guides for those layers |
 | Initializing or adopting a Developer's own project once AEOS is installed | `PR-PRJ`, and a future Implementation or Developer Guide |
 | How a person works day to day within an installed copy of AEOS | Developer Guides, none of which yet exist for AEOS |
+| Connecting a supported AI runtime once AEOS is installed (Runtime Connection) | `PR-ONB` (Section 18.14), and a future Runtime Connection Implementation or Developer Guide |
+| A Developer's first or ongoing development session (Developer Workflow) | `PR-ONB`, `PR-WFL`, `PR-RUN`, and Developer Guides |
+| Product discoverability material describing AEOS before a Developer acquires it | `PR-ONB` (Section 18.14); outside any Implementation Guide's scope |
 | What code realizes any capability named above | The codebase and its tests |
 
 A statement in this document that states a repository-initialization procedure, an environment
@@ -188,12 +209,31 @@ This document does not apply to the production of the distributable artifact its
 packaged portable bundle. Producing those artifacts is a Release Engineering and build concern,
 outside this document's scope, per [Section 14](#14-non-goals).
 
+### 2.4 Boundary: Environment Setup, Installation, Runtime Connection, and Developer Workflow
+
+AEOS-PRD Section 16.4 distinguishes four concerns that are easy to conflate: Distribution Strategy,
+Installation Experience, Runtime Connection, and Developer Workflow. This document is the
+Implementation Guide for the Installation Experience concern only. Its two neighbors are not yet
+documented by any frozen or draft document, so this section states the boundary precisely rather than
+leaving it to be inferred.
+
+| Concern | Governed by | Where it ends and the next begins |
+| :--- | :--- | :--- |
+| **Environment Setup** | AEOS-ENVSETUP | Ends when every prerequisite [Section 6](#6-installation-prerequisites-reference-only) references is satisfied. This document's Step 1 confirms that and does not begin before it. |
+| **Installation** (this document) | AEOS-INSTALL | Begins at [Section 7](#7-installation-sequence) Step 1, once Environment Setup has ended. Ends at Step 8, once [Section 8](#8-verification-after-installation) reports no failure — whether or not a Runtime Connection has yet been established, per `INSTALL-039`. |
+| **Runtime Connection** | `PR-ONB` (Section 18.14), and a future Implementation or Developer Guide | Begins only after Installation ends. This document never establishes, and never requires, a Runtime Connection; it states only, at Step 8, whether one remains to be made, per `INSTALL-038`. |
+| **Developer Workflow** | AEOS-PRD Sections 9, 10, 18.3, 18.4, and Developer Guides | Begins once both Installation and, where a workflow step requires inference, a Runtime Connection are complete. Out of scope here in full. |
+
+| ID | Rule | Traces to |
+| :--- | :--- | :--- |
+| `INSTALL-034` | [Section 7](#7-installation-sequence) Step 1 MUST NOT be entered until every prerequisite Environment Setup establishes is already satisfied; completion of that sequence, reported at Step 8, MUST NOT depend on, and MUST NOT itself perform, the establishment of a Runtime Connection. | `PR-ONB-006` · `PR-ONB-014` |
+
 ## 3. Relationship to Other Documents
 
 | Document | Governs | This document's obligation |
 | :--- | :--- | :--- |
 | **AEOS-VISION** | Purpose and enduring intent. | This document takes no position on why AEOS exists. No rule below may require trading away an AEOS-VISION invariant. |
-| **AEOS-PRD** | Product definition, the Distribution Strategy in Section 15, and the `PR-` requirements. | Every `INSTALL-` rule that binds a party traces to one or more `PR-` identifiers already established there; this document adds no new requirement and narrows none. |
+| **AEOS-PRD** | Product definition, the Distribution Strategy in Section 15, the Installation Experience portion of the `PR-ONB` family in Section 18.14, and the `PR-` requirements generally. | Every `INSTALL-` rule that binds a party traces to one or more `PR-` identifiers already established there; this document adds no new requirement and narrows none. It implements the Installation Experience concern Section 16.4 names and none of that section's other three concerns. |
 | **AEOS-GLOSSARY** | Terminology. | This document uses *Developer*, *Distribution Method*, *Platform*, *Repository*, *Repository Asset*, and *Runtime State* exactly as AEOS-GLOSSARY defines them, and defines none of them again. |
 | **AEOS-DOCSTD** | Documentation form and lifecycle. | This document's structure, format, normative vocabulary, and template follow it without exception. |
 | **AEOS-TECH** | Recognized technologies and their support tiers. | This document names no technology of its own; where a scenario depends on a recognized technology, that dependency is stated by reference to AEOS-TECH, never restated. |
@@ -215,6 +255,8 @@ merely unconventional.
 | `IP5` | An interruption at any point leaves the target location in a state [Section 11](#11-recovery-procedures) can describe and act on. |
 | `IP6` | Installation never modifies or removes a component it did not itself place. |
 | `IP7` | A completed installation always reports its own version and origin. |
+| `IP8` | Installation reports what it found, what it proposes, and what it did, consistent with the Interaction Model AEOS-PRD Section 10 states. |
+| `IP9` | Completion of installation and establishment of a Runtime Connection are separate, sequential concerns; neither depends on the other for its own definition of success. |
 
 ## 5. Supported Installation Scenarios
 
@@ -235,6 +277,7 @@ records that boundary.
 | `INSTALL-001` | This document recognizes exactly the four scenarios in this section's table, one for each Distribution Method `PR-DST-001` through `PR-DST-004` names. | `PR-DST-001` · `PR-DST-002` · `PR-DST-003` · `PR-DST-004` |
 | `INSTALL-002` | Every scenario MUST result in the identical product architecture; a scenario-specific step MUST NOT alter product behavior, capability availability, or terminology. | `PR-DST-005` |
 | `INSTALL-003` | No capability MUST be exclusive to one scenario; where two scenarios differ, the difference is confined to how AEOS is obtained and placed, never to what it does once installed. | `PR-DST-006` |
+| `INSTALL-035` | Before a Developer chooses among the scenarios in this section's table, it MUST be possible to determine which scenarios are currently available and what obtaining and placing under each requires, per [Section 7.2](#72-step-4--what-is-obtained-by-scenario) and [Section 7.3](#73-step-5--what-placement-completes-by-scenario). | `PR-ONB-003` |
 
 ## 6. Installation Prerequisites (Reference Only)
 
@@ -304,15 +347,16 @@ state — never in whether the step occurs.
 | :--- | :--- | :--- |
 | `INSTALL-006` | The sequence in this section's table MUST occur in the stated order; a bootstrap-style reordering, skipping, or parallelization that changes what a later step observes MUST NOT be performed. | `PR-NFR-002` |
 | `INSTALL-007` | Every step MUST be stated, and performed, as *what* occurs; a step MUST NOT be expressed as an operating-system-specific or scenario-internal command. | `PR-PLT-003` · `PR-PLT-005` |
-| `INSTALL-008` | Step 3 MUST occur before Step 4 or Step 5, in every scenario, without exception. | `PR-DST-009` |
-| `INSTALL-009` | Where [Section 7.1](#71-step-3--inspection-outcomes) records that Step 3 found a differing existing installation, Step 4 MUST NOT be entered without the explicit, specific approval that row requires. | `PR-DST-009` · `PR-SAF-003` |
-| `INSTALL-010` | Where [Section 7.1](#71-step-3--inspection-outcomes) records that Step 3 found a matching existing installation, installation MUST report that finding and propose no change, rather than silently re-running Step 4 or Step 5. | `PR-DST-009` · `PR-NFR-001` |
-| `INSTALL-011` | Step 4 is the only step whose concrete action differs by scenario, per [Section 7.2](#72-step-4--what-is-obtained-by-scenario); every other step MUST be identical in kind across every scenario. | `PR-DST-005` |
+| `INSTALL-008` | Step 3 MUST occur before Step 4 or Step 5, in every scenario, without exception. | `PR-DST-009` · `PR-ONB-005` |
+| `INSTALL-009` | Where [Section 7.1](#71-step-3--inspection-outcomes) records that Step 3 found a differing existing installation, Step 4 MUST NOT be entered without the explicit, specific approval that row requires. | `PR-DST-009` · `PR-SAF-003` · `PR-ONB-005` |
+| `INSTALL-010` | Where [Section 7.1](#71-step-3--inspection-outcomes) records that Step 3 found a matching existing installation, installation MUST report that finding and propose no change, rather than silently re-running Step 4 or Step 5. | `PR-DST-009` · `PR-NFR-001` · `PR-ONB-005` |
+| `INSTALL-011` | Step 4 is the only step whose concrete action differs by scenario, per [Section 7.2](#72-step-4--what-is-obtained-by-scenario); every other step MUST be identical in kind across every scenario. | `PR-DST-005` · `PR-ONB-013` |
 | `INSTALL-012` | Installation MUST NOT create, populate, or reference Runtime State, a credential, a secret, or a selection of a specific Runtime, Adapter, or Model. | `PR-SAF-006` · `PR-REP-013` · `PR-REP-015` |
 | `INSTALL-013` | Installation MUST NOT establish CI/CD configuration. | `PR-REP-007` |
 | `INSTALL-014` | Installation MUST NOT perform the repository-initialization procedure AEOS-BOOT states; the GitHub Clone scenario's Step 4 MUST instead obtain an already-bootstrapped repository unmodified. | AEOS-BOOT Section 2.3 |
-| `INSTALL-015` | An interruption at any step MUST leave the target location in a state [Section 11](#11-recovery-procedures) can describe and act on. | `PR-SAF-010` |
-| `INSTALL-016` | Step 6 MUST complete, and installation MUST NOT report success, until the installed version and origin are recorded and available to the Developer. | `PR-DST-008` |
+| `INSTALL-015` | An interruption at any step MUST leave the target location in a state [Section 11](#11-recovery-procedures) can describe and act on. | `PR-SAF-010` · `PR-ONB-007` |
+| `INSTALL-016` | Step 6 MUST complete, and installation MUST NOT report success, until the installed version and origin are recorded and available to the Developer. | `PR-DST-008` · `PR-ONB-004` |
+| `INSTALL-036` | Every step in this section's table MUST report, in terms consistent with the Interaction Model AEOS-PRD Section 10 states, what was found, what is proposed, and what was done. | `PR-ONB-005` |
 
 ## 8. Verification After Installation
 
@@ -329,10 +373,11 @@ Verification is read-only. It confirms the state Step 5 and Step 6 of
 | ID | Rule | Traces to |
 | :--- | :--- | :--- |
 | `INSTALL-017` | Verification MUST be read-only; it MUST NOT modify, create, or remove anything at the target location. | `PR-SAF-005` |
-| `INSTALL-018` | Verification MUST confirm that a version and an origin, per `INSTALL-016`, are present and legible. | `PR-DST-008` |
+| `INSTALL-018` | Verification MUST confirm that a version and an origin, per `INSTALL-016`, are present and legible. | `PR-DST-008` · `PR-ONB-004` |
 | `INSTALL-019` | Verification MUST confirm that no component installation did not itself place has been modified or removed. | `PR-SAF-009` |
 | `INSTALL-020` | What verification checks MUST be identical in kind across every scenario in [Section 5](#5-supported-installation-scenarios); the mechanism by which a check is performed MAY differ by scenario. | `PR-DST-005` |
 | `INSTALL-021` | A verification failure MUST be reported; verification MUST NOT silently retry, self-correct, or suppress the finding. | `PR-SAF-002` · `PR-NFR-001` |
+| `INSTALL-037` | Verification MUST make completion of installation determinable by the Developer without requiring the Developer to infer it from indirect evidence. | `PR-ONB-004` |
 
 ## 9. Expected Successful Installation State
 
@@ -351,12 +396,24 @@ passes:
 - No CI/CD configuration exists as a result of installation, per `INSTALL-013`.
 - For the GitHub Clone scenario specifically, the repository is in the state AEOS-BOOT Section 9
   already describes; this section adds nothing to that description and does not restate it.
+- Step 8's completion report states explicitly what remains before AEOS is usable, including,
+  where none was established during installation, that a Runtime Connection has not yet been made,
+  per `INSTALL-038`; this document does not state how that connection is made.
+- Whether or not a Runtime Connection exists at the moment Step 8 reports, installation is complete
+  once [Section 8](#8-verification-after-installation) reports no failure — per `INSTALL-039` and the
+  boundary [Section 2.4](#24-boundary-environment-setup-installation-runtime-connection-and-developer-workflow)
+  states.
 
-This is a description of a state, not a procedure: this section states no action of its own.
+This is a description of a state, not a procedure: this section states no action of its own. It
+describes the **first successful installation outcome** in the same terms it describes any later one:
+[Section 12](#12-reinstallation-guidance) and [Section 13](#13-upgrade-considerations) reach this same
+state by the same sequence, and neither introduces a different definition of success.
 
 | ID | Rule | Traces to |
 | :--- | :--- | :--- |
 | `INSTALL-022` | An installation for which [Section 8](#8-verification-after-installation) reports no failure is in the state this section describes, and only that state. | `PR-NFR-001` |
+| `INSTALL-038` | On completion, installation MUST state explicitly what remains before AEOS is usable, including, where none was established during installation, that a Runtime Connection remains to be made. | `PR-ONB-006` |
+| `INSTALL-039` | The state this section describes MUST be reachable, and MUST be reported as complete, whether or not a Runtime Connection exists; installation completion is never blocked by, and never itself establishes, a Runtime Connection. | `PR-ONB-014` · `PR-RUN-010` |
 
 ## 10. Common Installation Failures
 
@@ -378,10 +435,11 @@ leaves the target location in a state this section can describe and act on.
 
 | ID | Rule | Traces to |
 | :--- | :--- | :--- |
-| `INSTALL-023` | Recovery MUST begin with [Section 8](#8-verification-after-installation)'s checks, used to determine which step of [Section 7](#7-installation-sequence) last completed. | `PR-SAF-010` |
+| `INSTALL-023` | Recovery MUST begin with [Section 8](#8-verification-after-installation)'s checks, used to determine which step of [Section 7](#7-installation-sequence) last completed. | `PR-SAF-010` · `PR-ONB-007` |
 | `INSTALL-024` | Recovery MUST NOT skip [Section 7](#7-installation-sequence) Step 3's inspection, even when resuming a previously interrupted installation. | `PR-DST-009` |
 | `INSTALL-025` | Recovery MUST discard only content this document's own sequence placed; it MUST NOT remove or modify a component that existed before installation began. | `PR-SAF-009` |
 | `INSTALL-026` | Where the last completed step cannot be determined, recovery MUST treat the target location as [Section 7.1](#71-step-3--inspection-outcomes) treats a differing existing installation, and MUST NOT proceed without explicit, specific approval. | `PR-SAF-002` · `PR-DST-009` |
+| `INSTALL-040` | The state Recovery determines and acts on, per `INSTALL-023`, MUST be describable to the Developer in terms sufficient for the Developer to decide whether to retry. | `PR-ONB-007` |
 
 Once the last completed step is determined, recovery resumes at the first incomplete step of
 [Section 7](#7-installation-sequence)'s sequence; it introduces no step beyond those already stated.
@@ -440,11 +498,15 @@ the wrong place.
 | `NG-10` | The exact, scenario-specific mechanism by which obtaining, placement, removal, or update occurs — commands, installer internals, or packaging format. | Release Engineering, and each Distribution Method's own build and packaging process. |
 | `NG-11` | Package Manager, Docker Image, or IDE Marketplace distribution. | Not yet official, per AEOS-PRD Section 15.2; reserved to a future revision of this document once a Distribution Method is promoted to official. |
 | `NG-12` | Correcting an installation found to diverge from [Section 9](#9-expected-successful-installation-state) by any means other than [Sections 11](#11-recovery-procedures) through [13](#13-upgrade-considerations). | Those sections; this is not a distinct, unstated procedure. |
+| `NG-13` | Establishing a Runtime Connection: determining which runtimes are available to connect, disclosing what will be shared with a runtime, obtaining connection approval, or connecting one. | `PR-ONB-008` · `PR-ONB-009` · `PR-ONB-010`, and a future Runtime Connection Implementation or Developer Guide, per AEOS-PRD Section 16.4. |
+| `NG-14` | What a Developer can do first, or on an ongoing basis, once installed and connected to a runtime (Developer Workflow). | `PR-ONB-011` · `PR-ONB-012`, AEOS-PRD Sections 9, 10, 18.3, and 18.4, and Developer Guides. |
+| `NG-15` | Product discoverability material describing AEOS before a Developer acquires it. | `PR-ONB-001` · `PR-ONB-002`; outside any Implementation Guide's scope. |
 
 ## 15. Traceability
 
 Every `INSTALL-` rule states its own trace inline, in
-[Sections 5](#5-supported-installation-scenarios) through [13](#13-upgrade-considerations). This
+[Section 2.4](#24-boundary-environment-setup-installation-runtime-connection-and-developer-workflow)
+and [Sections 5](#5-supported-installation-scenarios) through [13](#13-upgrade-considerations). This
 section consolidates that trace by target.
 
 ### 15.1 Product Requirements
@@ -474,6 +536,14 @@ section consolidates that trace by target.
 | `PR-PLT-005` | `007` |
 | `PR-NFR-001` | `010` · `021` · `022` |
 | `PR-NFR-002` | `006` · `027` |
+| `PR-ONB-003` | `035` |
+| `PR-ONB-004` | `016` · `018` · `037` |
+| `PR-ONB-005` | `008` · `009` · `010` · `036` |
+| `PR-ONB-006` | `034` · `038` |
+| `PR-ONB-007` | `015` · `023` · `040` |
+| `PR-ONB-013` | `011` |
+| `PR-ONB-014` | `034` · `039` |
+| `PR-RUN-010` | `039` |
 
 ### 15.2 AEOS-BOOT, AEOS-ENVSETUP, and AEOS-LAYOUT
 
@@ -484,13 +554,32 @@ section consolidates that trace by target.
 | AEOS-ENVSETUP Sections 5, 6, 8, 13 | Referenced by [Section 6](#6-installation-prerequisites-reference-only); not separately traced, per `INSTALL-004`. |
 | AEOS-LAYOUT | Referenced by [Section 6](#6-installation-prerequisites-reference-only); not separately traced, per `INSTALL-004`. |
 
+### 15.3 PR-ONB Requirements Outside This Document's Scope
+
+Section 18.14 of AEOS-PRD covers Installation Experience, Runtime Connection, and, indirectly, the
+first development session together. The `PR-ONB` identifiers below belong to that section but not to
+this document's Installation Experience concern; each is out of scope here for the reason its `NG-`
+entry in [Section 14](#14-non-goals) states, and none is traced to an `INSTALL-` rule.
+
+| `PR-ONB` identifier | Concern | Out of scope per |
+| :--- | :--- | :--- |
+| `PR-ONB-001` | Pre-acquisition product discoverability. | `NG-15` |
+| `PR-ONB-002` | Discoverability material accuracy. | `NG-15` |
+| `PR-ONB-008` | Runtime availability, prior to selecting one to connect. | `NG-13` |
+| `PR-ONB-009` | Pre-connection disclosure and approval. | `NG-13` |
+| `PR-ONB-010` | Ongoing, on-request Runtime Connection state. | `NG-13` |
+| `PR-ONB-011` | What a Developer can do first, once installed and connected. | `NG-14` |
+| `PR-ONB-012` | Completing a first Interaction Model pass in the first session. | `NG-14` |
+
 ## 16. References
 
 | Document or section | What this document cites it for |
 | :--- | :--- |
 | AEOS-VISION | Purpose and enduring intent this document takes no position against. |
 | AEOS-PRD Section 15 (Distribution Strategy) | The four official Distribution Methods, the Distribution invariants, and the `PR-DST` identifiers this document's rules trace to. |
-| AEOS-PRD `PR-SAF`, `PR-REP`, `PR-PLT`, `PR-NFR` | The supporting requirement families [Section 15](#15-traceability) traces `INSTALL-` rules to. |
+| AEOS-PRD Section 16.4 (Distribution, Installation, Runtime Connection, and Developer Workflow) | The four-way boundary [Section 2.4](#24-boundary-environment-setup-installation-runtime-connection-and-developer-workflow) states, restated here only as a boundary, never as the rationale behind it. |
+| AEOS-PRD Section 18.14 (`PR-ONB`, Developer Onboarding) | The Installation Experience requirements [Sections 5](#5-supported-installation-scenarios) through [13](#13-upgrade-considerations) trace to, and the requirements [Section 15.3](#153-pr-onb-requirements-outside-this-documents-scope) marks out of scope. |
+| AEOS-PRD `PR-SAF`, `PR-REP`, `PR-PLT`, `PR-NFR`, `PR-RUN-010` | The supporting requirement families [Section 15](#15-traceability) traces `INSTALL-` rules to. |
 | AEOS-GLOSSARY | The terms this document uses without redefinition, including *Developer*, *Distribution Method*, *Repository Asset*, and *Runtime State*. |
 | AEOS-DOCSTD Section 4.1, 4.3, 5.2 | The Implementation Guide layer's position and purpose, and the Ownership Rule, this document is written under. |
 | AEOS-TECH `TC-01` | The host operating system tiers [Section 6](#6-installation-prerequisites-reference-only) references without restating. |
@@ -513,6 +602,7 @@ to be placed and frozen alongside AEOS-BOOT and AEOS-ENVSETUP in `docs/implement
 | :--- | :--- | :--- |
 | Editorial correction with no change of meaning | Contributor change, owner acceptance | Patch |
 | Addition of a new `INSTALL-<NNN>` rule that does not alter what an existing rule requires | Owner approval | Minor |
+| Addition of a `PR-` trace citation to an existing `INSTALL-<NNN>` rule's `Traces to` column, without altering the rule's own requirement | Owner approval | Minor |
 | Promotion of a Planned Distribution Method to a recognized installation scenario, once AEOS-PRD Section 15.2 promotes it to official | Explicit owner revision request | Minor |
 | Any change to what an existing `INSTALL-<NNN>` rule requires, or its retirement | Explicit owner revision request | Major |
 | Change to [Section 7](#7-installation-sequence)'s sequence, or to the set of recognized scenarios in [Section 5](#5-supported-installation-scenarios) | Explicit owner revision request | Major |
@@ -532,12 +622,17 @@ identify inconsistencies without redesigning the document, and recommend freezin
 or Major finding remains, per AEOS-DOCSTD Section 12.3 and 12.4. A reviewer additionally confirms,
 before recommending freeze:
 
-- [ ] Every rule in [Sections 5](#5-supported-installation-scenarios) through
+- [ ] Every rule in [Section 2.4](#24-boundary-environment-setup-installation-runtime-connection-and-developer-workflow)
+      and [Sections 5](#5-supported-installation-scenarios) through
       [13](#13-upgrade-considerations) carries an `INSTALL-<NNN>` identifier and a trace.
 - [ ] No rule restates the content of AEOS-BOOT, AEOS-ENVSETUP, AEOS-LAYOUT, or AEOS-TECH.
 - [ ] No rule states an environment-preparation step, a repository-organization rule, a runtime
       behavior, an architectural decision, or a technology choice absent from AEOS-TECH.
 - [ ] No installation scenario is named that AEOS-PRD Section 15.1 does not list as official.
+- [ ] No rule states a Runtime Connection procedure, a Developer Workflow procedure, or
+      pre-acquisition discoverability content, consistent with [Section 2.4](#24-boundary-environment-setup-installation-runtime-connection-and-developer-workflow).
+- [ ] Every `PR-ONB` identifier this document does not trace to appears in
+      [Section 15.3](#153-pr-onb-requirements-outside-this-documents-scope) with an `NG-` reference.
 - [ ] All seventeen numbered sections in this document's Table of Contents are present, in order, and
       none is silently empty.
 - [ ] No Critical or Major finding remains open.
@@ -557,6 +652,7 @@ before recommending freeze:
 | Version | Status | Summary |
 | :--- | :--- | :--- |
 | 1.0.0 | Draft | Initial Installation Guide. States four recognized installation scenarios, one per official Distribution Method; a reference-only prerequisites section depending on AEOS-ENVSETUP and AEOS-TECH; an eight-step installation sequence with inspection preceding every scenario's obtaining and placement steps; a read-only verification procedure; the expected successful installation state; common installation failures; recovery procedures for an interrupted installation; reinstallation guidance, including the clean-removal principle; upgrade considerations preserving project independence from AEOS's own version; twelve non-goals; and thirty-three `INSTALL-<NNN>` rules in total. Introduces no product requirement, no vision, no terminology, no architectural decision, no Blueprint arrangement, no specified behavior, no environment-preparation step, and no repository-organization or repository-initialization procedure. Redefines nothing stated by AEOS-VISION, AEOS-PRD, AEOS-GLOSSARY, AEOS-DOCSTD, AEOS-TECH, AEOS-BOOT, AEOS-ENVSETUP, or AEOS-LAYOUT. |
+| 1.1.0 | Draft | Incremental update responding to AEOS-PRD Version 1.2.0, which added the `PR-ONB` (Developer Onboarding) family (Section 18.14) and Section 16.4's boundary among Distribution Strategy, Installation Experience, Runtime Connection, and Developer Workflow. Every identifier, rule requirement, and prior Revision History entry from 1.0.0 is preserved unchanged; nothing was renumbered or retired. Specifically: (1) added Section 2.4, stating the boundary between Environment Setup, Installation, Runtime Connection, and Developer Workflow, with new rule `INSTALL-034`; (2) added a fourth Authority-statement paragraph and two new principles, `IP8` and `IP9`, reflecting the Interaction Model and installation/Runtime-Connection independence; (3) added three rows to the Section 2.2 out-of-scope table and one bullet to Section 2.1, naming Runtime Connection, Developer Workflow, and pre-acquisition discoverability explicitly; (4) added `INSTALL-035` (Section 5, scenario availability determinable before choice), `INSTALL-036` (Section 7, Interaction Model reporting), `INSTALL-037` (Section 8, completion determinable without inference), `INSTALL-038` and `INSTALL-039` (Section 9, stating what remains and decoupling completion from Runtime Connection), and `INSTALL-040` (Section 11, recovery state describable enough to decide on retry) — seven new rules, bringing the total to forty; (5) extended the `Traces to` column of eight existing rules — `INSTALL-008`, `009`, `010`, `011`, `015`, `016`, `018`, and `023` — with additional `PR-ONB` citations, without altering what any of them requires; (6) added `NG-13`, `NG-14`, and `NG-15`, excluding Runtime Connection, Developer Workflow, and pre-acquisition discoverability respectively, bringing the non-goal total to fifteen; (7) added `PR-ONB` and `PR-RUN-010` rows to Section 15.1, and a new Section 15.3 listing the seven `PR-ONB` identifiers this document deliberately does not trace to; (8) added two rows to Section 16 for AEOS-PRD Sections 16.4 and 18.14; (9) added a Change Control row classifying trace-only additions as Minor, and two Review Policy checklist items enforcing the new boundary; (10) updated Appendix A and Appendix B accordingly. Introduces no runtime procedure, no implementation detail, no architectural decision, and no technology choice beyond `AEOS_SUPPORTED_TECHNOLOGIES.md`. Redefines nothing stated by AEOS-VISION, AEOS-PRD, AEOS-GLOSSARY, AEOS-DOCSTD, AEOS-TECH, AEOS-BOOT, AEOS-ENVSETUP, or AEOS-LAYOUT. |
 
 ---
 
@@ -565,7 +661,8 @@ before recommending freeze:
 A practical restatement of [Section 7](#7-installation-sequence) and
 [Section 8](#8-verification-after-installation), for a Developer or an AI runtime working through
 installation directly. This checklist carries no authority of its own; where it appears to diverge
-from Sections 5 through 13, those sections govern.
+from [Section 2.4](#24-boundary-environment-setup-installation-runtime-connection-and-developer-workflow)
+or Sections 5 through 13, those sections govern.
 
 - [ ] Prerequisites confirmed ([Section 6](#6-installation-prerequisites-reference-only)).
 - [ ] Installation scenario chosen (GitHub Clone, Native Installer, MCP Distribution, or Portable
@@ -580,12 +677,14 @@ from Sections 5 through 13, those sections govern.
       ([Section 7.3](#73-step-5--what-placement-completes-by-scenario)).
 - [ ] Version and origin recorded and available to the Developer.
 - [ ] Every check in [Section 8](#8-verification-after-installation) passes.
-- [ ] Installation reported complete.
+- [ ] Installation reported complete, stating what remains — including an unconnected Runtime
+      Connection, where none was made during installation.
 
 ## Appendix B — INSTALL Rule Index (Non-Normative)
 
 **This appendix is non-normative.** The normative statement of each rule is its entry in
-[Sections 5](#5-supported-installation-scenarios) through [13](#13-upgrade-considerations).
+[Section 2.4](#24-boundary-environment-setup-installation-runtime-connection-and-developer-workflow)
+and [Sections 5](#5-supported-installation-scenarios) through [13](#13-upgrade-considerations).
 
 | ID | Section | Short label | Traces to |
 | :--- | :--- | :--- | :--- |
@@ -596,22 +695,22 @@ from Sections 5 through 13, those sections govern.
 | `INSTALL-005` | 6 | Halt and report on unmet prerequisite | `PR-SAF-002` |
 | `INSTALL-006` | 7 | Sequence order fixed | `PR-NFR-002` |
 | `INSTALL-007` | 7 | Every step stated as what, not as a command | `PR-PLT-003` · `PR-PLT-005` |
-| `INSTALL-008` | 7 | Inspection precedes obtaining and placement | `PR-DST-009` |
-| `INSTALL-009` | 7 | No proceed past a differing installation without approval | `PR-DST-009` · `PR-SAF-003` |
-| `INSTALL-010` | 7 | Matching installation reported, no change proposed | `PR-DST-009` · `PR-NFR-001` |
-| `INSTALL-011` | 7 | Only obtaining differs by scenario | `PR-DST-005` |
+| `INSTALL-008` | 7 | Inspection precedes obtaining and placement | `PR-DST-009` · `PR-ONB-005` |
+| `INSTALL-009` | 7 | No proceed past a differing installation without approval | `PR-DST-009` · `PR-SAF-003` · `PR-ONB-005` |
+| `INSTALL-010` | 7 | Matching installation reported, no change proposed | `PR-DST-009` · `PR-NFR-001` · `PR-ONB-005` |
+| `INSTALL-011` | 7 | Only obtaining differs by scenario | `PR-DST-005` · `PR-ONB-013` |
 | `INSTALL-012` | 7 | No Runtime State, credential, or selection | `PR-SAF-006` · `PR-REP-013` · `PR-REP-015` |
 | `INSTALL-013` | 7 | No CI/CD configuration established | `PR-REP-007` |
 | `INSTALL-014` | 7 | No repository-initialization performed | AEOS-BOOT Section 2.3 |
-| `INSTALL-015` | 7 | Interruption leaves a describable state | `PR-SAF-010` |
-| `INSTALL-016` | 7 | Version and origin recorded before success reported | `PR-DST-008` |
+| `INSTALL-015` | 7 | Interruption leaves a describable state | `PR-SAF-010` · `PR-ONB-007` |
+| `INSTALL-016` | 7 | Version and origin recorded before success reported | `PR-DST-008` · `PR-ONB-004` |
 | `INSTALL-017` | 8 | Verification is read-only | `PR-SAF-005` |
-| `INSTALL-018` | 8 | Verify version and origin present | `PR-DST-008` |
+| `INSTALL-018` | 8 | Verify version and origin present | `PR-DST-008` · `PR-ONB-004` |
 | `INSTALL-019` | 8 | Verify no unintended modification | `PR-SAF-009` |
 | `INSTALL-020` | 8 | Checks identical in kind across scenarios | `PR-DST-005` |
 | `INSTALL-021` | 8 | Failure reported, never silently retried | `PR-SAF-002` · `PR-NFR-001` |
 | `INSTALL-022` | 9 | Passing verification defines the expected state | `PR-NFR-001` |
-| `INSTALL-023` | 11 | Recovery begins with verification | `PR-SAF-010` |
+| `INSTALL-023` | 11 | Recovery begins with verification | `PR-SAF-010` · `PR-ONB-007` |
 | `INSTALL-024` | 11 | Recovery does not skip inspection | `PR-DST-009` |
 | `INSTALL-025` | 11 | Recovery discards only what this procedure placed | `PR-SAF-009` |
 | `INSTALL-026` | 11 | Undetermined state treated as a differing installation | `PR-SAF-002` · `PR-DST-009` |
@@ -622,11 +721,18 @@ from Sections 5 through 13, those sections govern.
 | `INSTALL-031` | 13 | Upgrade never requires project modification | `PR-DST-007` · `PR-REP-015` |
 | `INSTALL-032` | 13 | Upgrade follows inspect-then-approve discipline | `PR-DST-009` |
 | `INSTALL-033` | 13 | Upgrade completion reports new version and origin | `PR-DST-008` |
+| `INSTALL-034` | 2.4 | Installation begins only after Environment Setup, and does not perform Runtime Connection | `PR-ONB-006` · `PR-ONB-014` |
+| `INSTALL-035` | 5 | Scenario availability and requirements determinable before choice | `PR-ONB-003` |
+| `INSTALL-036` | 7 | Every step reports found, proposed, and done, per the Interaction Model | `PR-ONB-005` |
+| `INSTALL-037` | 8 | Verification makes completion determinable without inference | `PR-ONB-004` |
+| `INSTALL-038` | 9 | Completion states what remains, including an unconnected runtime | `PR-ONB-006` |
+| `INSTALL-039` | 9 | Completion never blocked by, or dependent on, Runtime Connection | `PR-ONB-014` · `PR-RUN-010` |
+| `INSTALL-040` | 11 | Recovery state describable enough to decide on retry | `PR-ONB-007` |
 
 ---
 
 **End of Installation Guide**
 
-AEOS-INSTALL · Version 1.0.0 · Traces to `PR-DST` · `PR-SAF` · `PR-NFR` · `PR-REP` · `PR-PLT`,
-referencing AEOS-VISION · AEOS-PRD · AEOS-GLOSSARY · AEOS-DOCSTD · AEOS-TECH · AEOS-BOOT ·
-AEOS-ENVSETUP · AEOS-LAYOUT without restating any of them
+AEOS-INSTALL · Version 1.1.0 · Traces to `PR-DST` · `PR-SAF` · `PR-NFR` · `PR-REP` · `PR-PLT` ·
+`PR-ONB` · `PR-RUN-010`, referencing AEOS-VISION · AEOS-PRD · AEOS-GLOSSARY · AEOS-DOCSTD · AEOS-TECH ·
+AEOS-BOOT · AEOS-ENVSETUP · AEOS-LAYOUT without restating any of them
