@@ -86,12 +86,14 @@ This clarifies separation between product-facing and specification documents.
 | :--- | :--- | :--- |
 | implementation-0001 | PROJECT_BOOTSTRAP.md | Status : Candidate |
 | implementation-0002 | REPOSITORY_LAYOUT.md | Status : Candidate |
-| ** Foundation-0001 ** | ** AEOS_PRODUCT_REQUIREMENTS.md ** | Status : Updated and Frozen |
+| **Foundation-0001** | **AEOS_PRODUCT_REQUIREMENTS.md** | Status : Updated and Frozen |
 
 ## 2026-08-04
 | number | file name | status |
 | :--- | :--- | :--- |
-| implementation-0001 | PROJECT_BOOTSTRAP.md | ** Status : shoud be updated after completion ** |
-| implementation-0002 | REPOSITORY_LAYOUT.md | ** Status : shoud be updated after completion ** |
+| implementation-0001 | PROJECT_BOOTSTRAP.md | **Status : shoud be updated after completion** |
+| implementation-0002 | REPOSITORY_LAYOUT.md | **Status : shoud be updated after completion** |
 | implementation-0003 | ENVIRONMENT_SETUP.md | Status : Frozen |
 | implementation-0004 | INSTALLATION.md | Status : Frozen |
+| implementation-0005 | CONFIGURATION.md | Status : Frozen |
+| implementation-0006 | DEVELOPMENT_WORKFLOW.md | Status : Frozen |
