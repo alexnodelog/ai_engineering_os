@@ -10,7 +10,7 @@ are attempted, and before a Contributor performs any other work in the AEOS repo
 | **Document** | Environment Setup Guide |
 | **Product** | AI Engineering Operating System (AEOS) |
 | **Document ID** | AEOS-ENVSETUP |
-| **Version** | 1.0.0 |
+| **Version** | 1.1.0 |
 | **Status** | Draft |
 | **Owner** | Product Owner, AEOS |
 | **Author** | Release Engineering Board, AEOS |
@@ -108,6 +108,11 @@ supplier ships a new release. It states nothing about repository structure that 
 AEOS-LAYOUT do not already state, and nothing about how AEOS behaves once it runs, which remains
 Runtime-layer and product-layer territory.
 
+AEOS-PRD Version 1.2.0 introduces `PR-ONB` (Developer Onboarding) and, with it, a stated boundary
+among Distribution, Installation, Runtime Connection, and Developer Workflow. This document occupies
+the phase before all four — [Section 2.4](#24-relationship-to-developer-onboarding) states exactly
+where it sits and where its own responsibility ends.
+
 Four properties bind this document, consistent with the discipline AEOS-BOOT and AEOS-LAYOUT record
 for a comparable statement of fact:
 
@@ -157,6 +162,8 @@ This list is complete.
 | How a person works day to day within an already-bootstrapped repository | Developer Guides, none of which yet exist for AEOS |
 | Selecting or configuring an AI Runtime, a Model, or a credential | The Contributor, and Runtime documents, once they exist |
 | Code, algorithms, dependency selection, and version pins | The codebase and its own manifests and lockfiles, per AEOS-TECH Section 2.2 and `TG-083` |
+| The Installation Experience — what happens after acquisition and before AEOS is usable | AEOS-PRD `PR-ONB` (`PR-ONB-004` through `PR-ONB-007`), to be realized by a future Installation Guide |
+| The Runtime Connection experience — connecting a supported AI runtime once AEOS is installed | AEOS-PRD `PR-ONB` (`PR-ONB-008` through `PR-ONB-010`), to be realized by a future Runtime document |
 
 A statement in this document that states a repository-initialization procedure, a runtime behavior,
 an architectural decision, a product requirement, or a technology choice absent from AEOS-TECH is a
@@ -175,12 +182,37 @@ Contributor's use, per AEOS-GLOSSARY's distinction between *Contributor* and *De
 state how a Developer prepares a machine to use AEOS, once built, to build their own project; that is
 a Developer Guide's subject, none of which yet exists for AEOS.
 
+### 2.4 Relationship to Developer Onboarding
+
+AEOS-PRD Section 16.4 distinguishes four related concerns so that a requirement is never mistakenly
+satisfied by the wrong one: Distribution Strategy, Installation Experience, Runtime Connection, and
+Developer Workflow. This document is none of the four; it is the phase before all of them, and this
+subsection states exactly where it ends.
+
+| Onboarding phase | Governed by | This document's relationship |
+| :--- | :--- | :--- |
+| **Environment Setup** (this document) | This document, an Implementation Guide | Prepares the host machine. Installs nothing that is AEOS itself, and connects no runtime. |
+| **Distribution** | AEOS-PRD Section 15 | Names how AEOS reaches a developer. This document is agnostic to which Distribution Method is eventually chosen, except where [Section 6](#6-required-software) already conditions the version-control client on it. |
+| **Installation** | AEOS-PRD Section 18.14 (`PR-ONB-004` through `PR-ONB-007`), to be realized by a future Installation Guide | Begins only once the state [Section 15](#15-expected-successful-environment-state) describes holds. This document performs no installation step and reports no installation outcome. |
+| **Runtime Connection** | AEOS-PRD Section 18.14 (`PR-ONB-008` through `PR-ONB-010`), to be realized by a future Runtime document | Out of scope entirely. `SETUP-024` already excludes runtime and credential configuration from this document, independent of `PR-ONB`. |
+| **Developer Workflow** | AEOS-PRD Sections 9, 10, 18.3, 18.4 | Begins once Installation and Runtime Connection are both complete. This document ends before either starts. |
+
+`PR-ONB-002` through `PR-ONB-012`, with the exception of `PR-ONB-004`, `PR-ONB-008`, and `PR-ONB-010`
+already named above for contrast, govern discoverability material, the mechanics of installation
+itself, and the first development session — none of which this document states, performs, or reports
+on. Only `PR-ONB-001`, `PR-ONB-013`, and `PR-ONB-014` bear on what this document already does; each is
+traced in [Section 19.1](#191-product-requirements) to the existing or new rule that serves it.
+
+| ID | Rule | Traces to |
+| :--- | :--- | :--- |
+| `SETUP-036` | This document's scope ends at the environment-readiness state [Section 15](#15-expected-successful-environment-state) describes. It MUST NOT describe, perform, or claim to satisfy any Installation Experience or Runtime Connection requirement AEOS-PRD Section 18.14 states. | AEOS-PRD Section 16.4 · `PR-ONB-001` |
+
 ## 3. Relationship to Other Documents
 
 | Document | Governs | This document's obligation |
 | :--- | :--- | :--- |
 | **AEOS-VISION** | Purpose and enduring intent. | This document takes no position on why AEOS exists. No rule below may require trading away an AEOS-VISION invariant. |
-| **AEOS-PRD** | Product definition and the `PR-` requirements. | Every `SETUP-` rule that binds a party traces to one or more `PR-` identifiers already established there; this document adds no new requirement. |
+| **AEOS-PRD** | Product definition and the `PR-` requirements, including `PR-ONB` (Developer Onboarding) and the Section 16.4 boundary among Distribution, Installation, Runtime Connection, and Developer Workflow. | Every `SETUP-` rule that binds a party traces to one or more `PR-` identifiers already established there; this document adds no new requirement. [Section 2.4](#24-relationship-to-developer-onboarding) states this document's position relative to Section 16.4's boundary without restating it. |
 | **AEOS-GLOSSARY** | Terminology. | This document uses *Contributor*, *Platform*, *Tool*, *Repository*, *Distribution Method*, and *Environment* exactly as AEOS-GLOSSARY defines them, disambiguating its own use of "environment" in the authority statement above rather than redefining the term. |
 | **AEOS-DOCSTD** | Documentation form and lifecycle. | This document's structure, format, normative vocabulary, and template follow it without exception. |
 | **AEOS-TECH** | Recognized technologies and their support tiers. | Every software item this document requires or recommends is drawn from AEOS-TECH's recognized categories and tiers; this document introduces no technology of its own and states no exact version pin, consistent with `TG-060` and `TG-083`. |
@@ -200,6 +232,7 @@ merely unconventional.
 | `ESP4` | This document never directs modifying, reconfiguring, or removing software a Contributor's machine already has; a difference from expectation is reported, not silently corrected. |
 | `ESP5` | Every condition this document states is independently checkable; a condition no reviewer could verify is not a rule here. |
 | `ESP6` | A gap this document has not yet decided is recorded as a non-goal, per [Section 18](#18-non-goals), and left open rather than filled by assumption. |
+| `ESP7` | This document's own scope ends at environment readiness; describing, performing, or implying completion of Installation or Runtime Connection is out of scope regardless of how a request is phrased, consistent with AEOS-PRD Section 16.4's boundary among Distribution, Installation, Runtime Connection, and Developer Workflow. |
 
 ## 5. Supported Host Operating Systems
 
@@ -221,7 +254,7 @@ table and AEOS-TECH Section 8.2 differ, AEOS-TECH governs.
 | :--- | :--- | :--- |
 | `SETUP-001` | This document provides setup guidance only for a host operating system at the Officially Supported or Conditionally Supported tier of AEOS-TECH `TC-01`, at a release still receiving supplier security support. | AEOS-TECH `TG-062` · `PR-PLT-001` |
 | `SETUP-002` | Where a host operating system meets Officially Supported or Conditionally Supported at the platform level but a specific release has reached supplier end-of-life, that release is out of scope for this document regardless of the platform's own tier. | AEOS-TECH `TG-062` |
-| `SETUP-003` | Guidance in this document MUST produce identical observable software requirements on Windows, macOS, and Linux; a requirement stated for one and not the others is a defect in this document. | `PR-PLT-002` · `PR-PLT-003` |
+| `SETUP-003` | Guidance in this document MUST produce identical observable software requirements on Windows, macOS, and Linux; a requirement stated for one and not the others is a defect in this document. | `PR-PLT-002` · `PR-PLT-003` · `PR-ONB-013` |
 
 ## 6. Required Software
 
@@ -347,7 +380,7 @@ tool's own convention; this document only notes each variable's relevance to the
 | ID | Rule | Traces to |
 | :--- | :--- | :--- |
 | `SETUP-023` | This document MUST NOT assign a value to any variable in this section; it states relevance only, and defers to each variable's owning tool for meaning and default. | AEOS-LAYOUT `LAYOUT-024` |
-| `SETUP-024` | An AI provider credential — including a key for a provider AEOS-TECH `TC-09` recognizes — MUST NOT be configured as part of environment setup under this document. Credential and Runtime selection belong to Runtime documents and to the Contributor, once those documents exist. | `PR-SAF-006` · `PR-SAF-007`, consistent with AEOS-BOOT `BOOT-011` |
+| `SETUP-024` | An AI provider credential — including a key for a provider AEOS-TECH `TC-09` recognizes — MUST NOT be configured as part of environment setup under this document. Credential and Runtime selection belong to Runtime documents and to the Contributor, once those documents exist. | `PR-SAF-006` · `PR-SAF-007` · `PR-ONB-014`, consistent with AEOS-BOOT `BOOT-011` |
 
 ## 13. Directory Prerequisites
 
@@ -403,6 +436,15 @@ This is a description of a state, not a directory tree: this document places no 
 repository. AEOS-BOOT's own [Section 9](PROJECT_BOOTSTRAP.md#9-expected-repository-state) illustrates
 the repository state that follows once Bootstrap itself runs.
 
+### 15.1 Transition to Installation
+
+The state above is this document's final output. What follows it — Installation, per AEOS-PRD
+Section 18.14 — is a different concern, owned elsewhere, and this document takes no part in it.
+
+| ID | Rule | Traces to |
+| :--- | :--- | :--- |
+| `SETUP-037` | A verification run satisfying [Section 14](#14-verification-steps) with no failure is the condition under which Environment Setup is complete and Installation may begin. This document performs no part of Installation itself, and no statement in this document may be read as reporting that Installation has occurred. | `PR-ONB-001` |
+
 ## 16. Common Setup Failures
 
 Non-normative. Each row names a symptom this document's own verification would surface, not a defect
@@ -416,6 +458,7 @@ in AEOS.
 | A path collision appears only on some machines | The AEOS repository's location is on a case-insensitive file system and two paths differ only by case. | `SETUP-028`, [Section 17](#17-troubleshooting-guidance) |
 | Package downloads fail or time out | The network prerequisite in [Section 8](#8-environment-prerequisites) is met through a proxy that a tool's default configuration does not account for. | [Section 12](#12-optional-environment-variables), [Section 17](#17-troubleshooting-guidance) |
 | A commit cannot be recorded once the AEOS repository exists | The version-control client's identity configuration `SETUP-018` requires has not been set. | `SETUP-018`, [Section 17](#17-troubleshooting-guidance) |
+| Installation is attempted before this document's checks have passed | [Section 14](#14-verification-steps) was skipped or reported a failure that was not resolved. | [Section 15.1](#151-transition-to-installation), [Section 17](#17-troubleshooting-guidance) |
 
 ## 17. Troubleshooting Guidance
 
@@ -444,6 +487,9 @@ For each failure category in [Section 16](#16-common-setup-failures):
   documentation for how it reads them.
 - **Commit identity.** Consult the version-control client's own documentation for configuring an
   identity; this document states only that `SETUP-018` must be satisfied, not how.
+- **Installation attempted early.** Return to [Section 14](#14-verification-steps) and resolve every
+  reported failure before proceeding; this document names no Installation remedy of its own, per
+  `SETUP-036` and `SETUP-037`.
 
 ## 18. Non-Goals
 
@@ -459,11 +505,14 @@ This document deliberately does not decide the following.
 | `NG-6` | Stating an exact version pin for any required item. | The AEOS repository's own manifests and lockfiles, once Implementation exists, per AEOS-TECH `TG-083`. |
 | `NG-7` | Selecting a Technology Stack for a Developer's own governed Project. | The Project and its own conventions, per AEOS-TECH Section 2.2. |
 | `NG-8` | Describing how AEOS inspects or reports on an environment once it is running. | Runtime documents and, once implemented, AEOS itself, under `PR-ENV`. |
+| `NG-9` | The Installation Experience — what happens after acquisition and before AEOS is usable. | AEOS-PRD `PR-ONB-004` through `PR-ONB-007`, to be realized by a future Installation Guide. |
+| `NG-10` | The Runtime Connection experience — connecting a supported AI runtime once AEOS is installed. | AEOS-PRD `PR-ONB-008` through `PR-ONB-010`, to be realized by a future Runtime document. |
 
 ## 19. Traceability
 
-Every `SETUP-` rule states its own trace inline, in [Sections 5](#5-supported-host-operating-systems)
-through [17](#17-troubleshooting-guidance). This section consolidates that trace by target.
+Every `SETUP-` rule states its own trace inline, in [Section 2.4](#24-relationship-to-developer-onboarding)
+and in [Sections 5](#5-supported-host-operating-systems) through [17](#17-troubleshooting-guidance).
+This section consolidates that trace by target.
 
 ### 19.1 Product Requirements
 
@@ -472,6 +521,9 @@ through [17](#17-troubleshooting-guidance). This section consolidates that trace
 | `PR-PLT-001` | `001` |
 | `PR-PLT-002` | `003` |
 | `PR-PLT-003` | `003` |
+| `PR-ONB-001` | `036`, `037` |
+| `PR-ONB-013` | `003` |
+| `PR-ONB-014` | `024` |
 | `PR-NFR-001` | `034` |
 | `PR-NFR-002` | `004` |
 | `PR-NFR-012` | `017`, `020` |
@@ -518,6 +570,7 @@ through [17](#17-troubleshooting-guidance). This section consolidates that trace
 | Document or section | What this document cites it for |
 | :--- | :--- |
 | AEOS-PRD `PR-PLT`, `PR-SAF`, `PR-NFR`, `PR-REP` | The requirement families [Section 19](#19-traceability) traces `SETUP-` rules to. |
+| AEOS-PRD Section 16.4, Section 18.14 (`PR-ONB`) | The developer-onboarding boundary this document positions itself against in [Section 2.4](#24-relationship-to-developer-onboarding) and [Section 15.1](#151-transition-to-installation). |
 | AEOS-PRD `PR-ENV`, and the *Environment* entry it authorizes in AEOS-GLOSSARY | The product-layer subject this document is related to but does not restate, disambiguated in the authority statement above. |
 | AEOS-GLOSSARY, *Contributor*, *Developer*, *Environment*, *Platform*, *Tool*, *Distribution Method* entries | The terms this document uses without redefinition. |
 | AEOS-DOCSTD Section 4.1, 4.3 | The Implementation Guide layer's position and purpose, which this document is written under. |
@@ -560,7 +613,8 @@ identify inconsistencies without redesigning the document, and recommend freezin
 or Major finding remains, per AEOS-DOCSTD Section 12.3 and 12.4. A reviewer additionally confirms,
 before recommending freeze:
 
-- [ ] Every rule in [Sections 5](#5-supported-host-operating-systems) through
+- [ ] Every rule in [Section 2.4](#24-relationship-to-developer-onboarding) and
+      [Sections 5](#5-supported-host-operating-systems) through
       [17](#17-troubleshooting-guidance) carries a `SETUP-<NNN>` identifier and a trace.
 - [ ] No item in [Section 6](#6-required-software) is absent from AEOS-TECH's recognized set at the
       tier this document requires.
@@ -569,6 +623,9 @@ before recommending freeze:
       decision, or a product requirement.
 - [ ] No AEOS-specific required environment variable, credential, or Runtime selection is introduced,
       per `SETUP-022` and `SETUP-024`.
+- [ ] `SETUP-036` and `SETUP-037` correctly bound this document's scope against Installation and
+      Runtime Connection, per AEOS-PRD `PR-ONB` and Section 16.4, and no section describes, performs,
+      or reports an installation or runtime-connection outcome.
 - [ ] All twenty-three entries in this document's Table of Contents are present, in order, and none
       is silently empty.
 - [ ] No Critical or Major finding remains open.
@@ -588,6 +645,7 @@ before recommending freeze:
 | Version | Status | Summary |
 | :--- | :--- | :--- |
 | 1.0.0 | Draft | Initial Environment Setup Guide. States supported host operating system tiers by reference to AEOS-TECH `TC-01`; required and conditional software drawn entirely from AEOS-TECH's recognized categories; a version-currency policy that states no exact pin; environmental, directory, and path prerequisites consistent with AEOS-BOOT and AEOS-LAYOUT; development-tool and editor guidance by reference to AEOS-TECH `TC-02`; required and optional environment variables, excluding any AEOS-specific or credential-bearing variable; a read-only verification procedure; the expected state of a prepared machine; common setup failures and troubleshooting guidance that defers to each tool's own documentation; eight non-goals; and thirty-five `SETUP-<NNN>` rules in total. Introduces no product requirement, no vision, no terminology, no architectural decision, no Blueprint arrangement, no specified behavior, and no repository-initialization procedure. Redefines nothing stated by AEOS-VISION, AEOS-PRD, AEOS-GLOSSARY, AEOS-DOCSTD, AEOS-TECH, AEOS-BOOT, or AEOS-LAYOUT. |
+| 1.1.0 | Draft | Incremental update following AEOS-PRD 1.2.0's introduction of `PR-ONB` (Developer Onboarding) and its Section 16.4 boundary among Distribution, Installation, Runtime Connection, and Developer Workflow. Adds [Section 2.4](#24-relationship-to-developer-onboarding), stating this document's position before all four concerns and introducing `SETUP-036`, which bounds this document against Installation Experience and Runtime Connection content. Adds [Section 15.1](#151-transition-to-installation), stating the transition from a passed [Section 14](#14-verification-steps) run to Installation, and introducing `SETUP-037`. Extends the existing trace of `SETUP-003` to `PR-ONB-013` and of `SETUP-024` to `PR-ONB-014`, recording that each rule's unchanged text already serves the newly introduced requirement; neither rule's own obligation is altered. Adds two rows to [Section 2.2](#22-what-this-document-does-not-govern) and two non-goals (`NG-9`, `NG-10`) to [Section 18](#18-non-goals), explicitly excluding the Installation Experience and the Runtime Connection experience from this document's scope. Adds principle `ESP7` to [Section 4](#4-environment-setup-principles) stating the same boundary at the principle level. Adds one illustrative row to [Section 16](#16-common-setup-failures), one corresponding bullet to [Section 17](#17-troubleshooting-guidance), and one item to Appendix A concerning the transition to Installation. Updates [Section 3](#3-relationship-to-other-documents)'s AEOS-PRD row, [Section 19.1](#191-product-requirements)'s trace table, [Section 20](#20-references), Appendix B's rule index, and the closing block accordingly; rule total rises from thirty-five to thirty-seven. No existing `SETUP-<NNN>` rule's own requirement text was changed, no existing rule was renumbered or retired, no item in [Section 6](#6-required-software) or [Section 7](#7-required-versions) was changed, and no installation procedure, runtime behavior, implementation detail, architectural decision, or technology selection beyond AEOS-TECH was introduced. |
 
 ---
 
@@ -616,14 +674,19 @@ diverge from Sections 5 through 15, those sections govern.
 - [ ] Case-sensitivity of the chosen location confirmed, where applicable (`SETUP-028`).
 - [ ] No AEOS-specific environment variable or credential configured (`SETUP-022`, `SETUP-024`).
 - [ ] AEOS-BOOT Prerequisites 1, 3, and, where applicable, 4 confirmed satisfiable.
+- [ ] All checks above passed with no unresolved failure; Environment Setup is complete and
+      Installation (owned by a future Installation Guide, per AEOS-PRD `PR-ONB`) may begin
+      (`SETUP-037`).
 
 ## Appendix B — SETUP Rule Index (Non-Normative)
 
 **This appendix is non-normative.** The normative statement of each rule is its entry in
+[Section 2.4](#24-relationship-to-developer-onboarding) and in
 [Sections 5](#5-supported-host-operating-systems) through [17](#17-troubleshooting-guidance).
 
 | Range | Subject | Count | Section |
 | :--- | :--- | :--- | :--- |
+| `SETUP-036` | Relationship to developer onboarding | 1 | [2.4](#24-relationship-to-developer-onboarding) |
 | `SETUP-001`–`SETUP-003` | Supported host operating systems | 3 | [5](#5-supported-host-operating-systems) |
 | `SETUP-004`–`SETUP-006` | Required software | 3 | [6](#6-required-software) |
 | `SETUP-007`–`SETUP-010` | Required versions | 4 | [7](#7-required-versions) |
@@ -634,12 +697,14 @@ diverge from Sections 5 through 15, those sections govern.
 | `SETUP-023`–`SETUP-024` | Optional environment variables | 2 | [12](#12-optional-environment-variables) |
 | `SETUP-025`–`SETUP-028` | Directory prerequisites | 4 | [13](#13-directory-prerequisites) |
 | `SETUP-029`–`SETUP-034` | Verification steps | 6 | [14](#14-verification-steps) |
+| `SETUP-037` | Expected successful environment state — transition to Installation | 1 | [15.1](#151-transition-to-installation) |
 | `SETUP-035` | Troubleshooting guidance | 1 | [17](#17-troubleshooting-guidance) |
-| **Total** | | **35** | — |
+| **Total** | | **37** | — |
 
 ---
 
 **End of Environment Setup Guide**
 
-AEOS-ENVSETUP · Version 1.0.0 · Traces to `PR-PLT` · `PR-NFR` · `PR-SAF` · `PR-REP`, preparing the
-host machine for AEOS-BOOT's own Prerequisites without restating AEOS-BOOT, AEOS-LAYOUT, or AEOS-TECH
+AEOS-ENVSETUP · Version 1.1.0 · Traces to `PR-PLT` · `PR-NFR` · `PR-SAF` · `PR-REP` · `PR-ONB`,
+preparing the host machine for AEOS-BOOT's own Prerequisites without restating AEOS-BOOT,
+AEOS-LAYOUT, or AEOS-TECH
