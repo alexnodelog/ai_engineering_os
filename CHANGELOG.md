@@ -78,3 +78,20 @@ This clarifies separation between product-facing and specification documents.
 | runtime-0004 | RUNTIME_CAPABILITY_SPEC.md | Status : Frozen |
 | runtime-0005 | RUNTIME_NEGOTIATION_SPEC.md | Status : Frozen |
 | runtime-0006 | RUNTIME_FLOW.md | Status : Frozen |
+
+
+## 2026-08-03
+
+| number | file name | status |
+| :--- | :--- | :--- |
+| implementation-0001 | PROJECT_BOOTSTRAP.md | Status : Candidate |
+| implementation-0002 | REPOSITORY_LAYOUT.md | Status : Candidate |
+| ** Foundation-0001 ** | ** AEOS_PRODUCT_REQUIREMENTS.md ** | Status : Updated and Frozen |
+
+## 2026-08-04
+| number | file name | status |
+| :--- | :--- | :--- |
+| implementation-0001 | PROJECT_BOOTSTRAP.md | ** Status : shoud be updated after completion ** |
+| implementation-0002 | REPOSITORY_LAYOUT.md | ** Status : shoud be updated after completion ** |
+| implementation-0003 | ENVIRONMENT_SETUP.md | Status : Frozen |
+| implementation-0004 | INSTALLATION.md | Status : Frozen |
