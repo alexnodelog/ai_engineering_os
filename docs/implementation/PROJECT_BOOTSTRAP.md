@@ -342,33 +342,87 @@ this file and Step 11's non-commit alternative applies.
 ```text
 <repository root>
 ├── README.md
-├── .gitignore
-└── docs/
-    ├── foundation/
-    │   ├── VISION.md
-    │   ├── PRD.md
-    │   ├── GLOSSARY.md
-    │   ├── DOCUMENT_STANDARD.md
-    │   └── SUPPORTED_TECHNOLOGIES.md
-    ├── architecture/
-    │   ├── ARCHITECTURE.md
-    │   └── BLUEPRINT.md
-    ├── product/
-    │   └── SPECIFICATION_STANDARD.md
-    ├── specification/
-    │   ├── SYSTEM_SPECIFICATION.md
-    │   ├── AEOS_WORKFLOW_ENGINE.md
-    │   ├── AEOS_CONTEXT_ROUTER.md
-    │   ├── AEOS_STATE_MACHINE.md
-    │   ├── RUNTIME_NEGOTIATION_SPEC.md
-    │   ├── RUNTIME_ADAPTER_SPEC.md
-    │   └── MODEL_REGISTRY.md
-    ├── runtime/
-    │   ├── RUNTIME_FLOW.md
-    │   ├── RUNTIME_REGISTRY.md
-    │   └── RUNTIME_CAPABILITY_SPEC.md
-    └── implementation/
-        └── PROJECT_BOOTSTRAP.md
+├── OVERVIEW.md
+├── CONTRIBUTING.md
+├── LICENSE
+├── SECURITY.md
+├── CODE_OF_CONDUCT.md
+├── CHANGELOG.md
+├── .gitignore
+└─ docs
+   ├─ architecture
+   │  ├─ AEOS_ARCHITECTURE.md
+   │  └─ AEOS_BLUEPRINT.md
+   ├─ foundation
+   │  ├─ AEOS_DOCUMENT_STANDARD.md
+   │  ├─ AEOS_GLOSSARY.md
+   │  ├─ AEOS_PRODUCT_REQUIREMENTS.html
+   │  ├─ AEOS_PRODUCT_REQUIREMENTS.md
+   │  ├─ AEOS_SUPPORTED_TECHNOLOGIES.md
+   │  └─ AEOS_VISION.md
+   ├─ framework
+   │  ├─ 01_constitution
+   │  │  └─ AI_DEVELOPMENT_PHILOSOPHY_v2.0.md.md
+   │  ├─ 02_framework_rules
+   │  │  └─ global_rules_revisionfinal_v10.md
+   │  ├─ 03_technology_standards
+   │  │  └─ global_technology_stack_v10.md
+   │  ├─ 04_project_rules
+   │  │  ├─ project-mobile_v01.md
+   │  │  ├─ project-monolithic_v04.md
+   │  │  ├─ project-pc-app_v04.md
+   │  │  └─ project-personal-full-stack_v01.md
+   │  ├─ 05_developer_manuals
+   │  │  ├─ COMMANDS.md
+   │  │  ├─ PROJECT_BOOTSTRAP_GUIDE.md
+   │  │  └─ PROJECT_STRUCTURE.md
+   │  ├─ 07_ai-skills
+   │  │  ├─ SKILLS.md
+   │  │  ├─ skill-create-feature.md
+   │  │  ├─ skill-generate-tests.md
+   │  │  └─ skill-review-code.md
+   │  ├─ 08_prompt_library
+   │  │  ├─ CLAUDE_CODE_PROMPTS.md
+   │  │  └─ OPENAI_PROMPTS.md
+   │  ├─ 09_project_templates
+   │  │  └─ TEMPLATE_SPEC.md
+   │  ├─ 10_knowledge_base
+   │  │  ├─ DECISIONS.md
+   │  │  └─ FRAMEWORK_HANDOVER.md
+   │  ├─ 11_reference_documents
+   │  │  └─ V10_MIGRATION_NOTES.md
+   │  ├─ BLUEPRINT_INPUT_FREEZE.md
+   │  ├─ FRAMEWORK_BLUEPRINT.md
+   │  ├─ FRAMEWORK_README.md
+   │  └─ FRAMEWORK_STATUS.md
+   ├─ implementation
+   │  ├─ BEST_PRACTICES.md
+   │  ├─ CODING_STANDARD.md
+   │  ├─ CONFIGURATION.md
+   │  ├─ DEVELOPMENT_WORKFLOW.md
+   │  ├─ ENVIRONMENT_SETUP.md
+   │  ├─ FAQ.md
+   │  ├─ INSTALLATION.md
+   │  ├─ PROJECT_BOOTSTRAP.md
+   │  ├─ REPOSITORY_LAYOUT.md
+   │  ├─ REVIEW_GUIDE.md
+   │  └─ TROUBLESHOOTING.md
+   ├─ product
+   │  └─ AEOS_SPECIFICATION_STANDARD.md
+   ├─ runtime
+   │  ├─ AEOS_RUNTIME_FLOW.md
+   │  ├─ RUNTIME_CAPABILITY_SPEC.md
+   │  └─ RUNTIME_REGISTRY.md
+   └─ specification
+      ├─ AEOS_CONTEXT_ROUTER.md
+      ├─ AEOS_SPEC.md
+      ├─ AEOS_STATE_MACHINE.md
+      ├─ AEOS_WORKFLOW_ENGINE.md
+      ├─ MODEL_REGISTRY.md
+      ├─ RUNTIME_ADAPTER_SPEC.md
+      └─ RUNTIME_NEGOTIATION_SPEC.md
+	
+		
 ```
 
 | ID | Rule | Traces to |
