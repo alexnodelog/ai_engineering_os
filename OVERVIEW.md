@@ -11,7 +11,7 @@ Implementation layers relate, and where each concept a reader hears about actual
 | **Product** | AI Engineering Operating System (AEOS) |
 | **Document ID** | AEOS-OVERVIEW |
 | **Version** | 1.1.0 |
-| **Status** | In Revision |
+| **Status** | Frozen |
 | **Owner** | Product Owner, AEOS |
 | **Author** | Documentation Governance Board, AEOS |
 | **Audience** | Users and contributors of AEOS, and AI runtimes reading this repository — anyone seeking a single, connected account of how AEOS's parts relate |
