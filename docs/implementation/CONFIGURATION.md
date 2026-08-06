@@ -11,7 +11,7 @@ carried forward after AEOS is installed and before the Project is used productiv
 | **Product** | AI Engineering Operating System (AEOS) |
 | **Document ID** | AEOS-CONFIG |
 | **Version** | 1.0.0 |
-| **Status** | Draft |
+| **Status** | Frozen |
 | **Owner** | Product Owner, AEOS |
 | **Author** | Developer Experience Board, AEOS |
 | **Audience** | Developers, and AI runtimes configuring AEOS on a Developer's behalf |

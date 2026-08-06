@@ -11,7 +11,7 @@ Implementation.*
 | **Product** | AI Engineering Operating System (AEOS) |
 | **Document ID** | AEOS-CODESTD |
 | **Version** | 1.0.0 |
-| **Status** | Draft |
+| **Status** | Frozen |
 | **Owner** | Product Owner, AEOS |
 | **Author** | Engineering Governance Board, AEOS |
 | **Audience** | Contributors, engineering reviewers, maintainers, and AI runtimes authoring or reviewing AEOS's own Implementation |

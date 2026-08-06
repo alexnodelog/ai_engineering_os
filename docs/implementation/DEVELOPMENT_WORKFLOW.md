@@ -11,7 +11,7 @@ project once Configuration and Runtime Connection are complete.*
 | **Product** | AI Engineering Operating System (AEOS) |
 | **Document ID** | AEOS-DEVWFL |
 | **Version** | 1.0.0 |
-| **Status** | Draft |
+| **Status** | Frozen |
 | **Owner** | Product Owner, AEOS |
 | **Author** | Developer Experience Board, AEOS |
 | **Audience** | Developers, AI runtimes acting on a developer's behalf, engineering leads, and reviewers working within an AEOS project once Configuration and Runtime Connection are complete |

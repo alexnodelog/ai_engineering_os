@@ -11,7 +11,7 @@ repository is recognized, classified, diagnosed, escalated, and resolved.*
 | **Product** | AI Engineering Operating System (AEOS) |
 | **Document ID** | AEOS-TRBL |
 | **Version** | 1.0.0 |
-| **Status** | Draft |
+| **Status** | Frozen |
 | **Owner** | Product Owner, AEOS |
 | **Author** | Troubleshooting Governance Board, AEOS |
 | **Audience** | Contributors, maintainers, reviewers, and AI runtimes operating within an AEOS-governed repository |

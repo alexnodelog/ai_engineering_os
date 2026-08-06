@@ -11,7 +11,7 @@ are attempted, and before a Contributor performs any other work in the AEOS repo
 | **Product** | AI Engineering Operating System (AEOS) |
 | **Document ID** | AEOS-ENVSETUP |
 | **Version** | 1.1.0 |
-| **Status** | Draft |
+| **Status** | Frozen |
 | **Owner** | Product Owner, AEOS |
 | **Author** | Release Engineering Board, AEOS |
 | **Audience** | Contributors, release engineers, maintainers, and AI runtimes preparing a machine to build, test, or contribute to AEOS |

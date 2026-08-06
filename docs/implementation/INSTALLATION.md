@@ -11,7 +11,7 @@ result, recovers from an interrupted attempt, and reinstalls or upgrades it.*
 | **Product** | AI Engineering Operating System (AEOS) |
 | **Document ID** | AEOS-INSTALL |
 | **Version** | 1.1.0 |
-| **Status** | Draft |
+| **Status** | Frozen |
 | **Owner** | Product Owner, AEOS |
 | **Author** | Release Engineering Board, AEOS |
 | **Audience** | Developers installing AEOS for the first time, Developers reinstalling or upgrading an existing installation, and AI runtimes performing installation on a Developer's behalf |

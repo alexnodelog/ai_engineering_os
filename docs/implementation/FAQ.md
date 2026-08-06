@@ -11,7 +11,7 @@ that govern each answer.*
 | **Product** | AI Engineering Operating System (AEOS) |
 | **Document ID** | AEOS-FAQ |
 | **Version** | 1.0.0 |
-| **Status** | Draft |
+| **Status** | Frozen |
 | **Owner** | Product Owner, AEOS |
 | **Author** | Documentation Governance Board, AEOS |
 | **Audience** | AEOS users, contributors, adopters evaluating AEOS, and AI runtimes consuming this repository |

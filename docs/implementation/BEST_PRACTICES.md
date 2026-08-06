@@ -10,7 +10,7 @@
 | **Product** | AI Engineering Operating System (AEOS) |
 | **Document ID** | AEOS-PRACTICES |
 | **Version** | 1.0.0 |
-| **Status** | Draft |
+| **Status** | Frozen |
 | **Owner** | Product Owner, AEOS |
 | **Author** | Engineering Practice Board, AEOS |
 | **Audience** | Contributors, Developers, engineering leads, reviewers, maintainers, and AI runtimes engineering software with AEOS |
