@@ -10,8 +10,8 @@ Implementation layers relate, and where each concept a reader hears about actual
 | **Document** | Overview |
 | **Product** | AI Engineering Operating System (AEOS) |
 | **Document ID** | AEOS-OVERVIEW |
-| **Version** | 1.0.0 |
-| **Status** | Draft |
+| **Version** | 1.1.0 |
+| **Status** | In Revision |
 | **Owner** | Product Owner, AEOS |
 | **Author** | Documentation Governance Board, AEOS |
 | **Audience** | Users and contributors of AEOS, and AI runtimes reading this repository — anyone seeking a single, connected account of how AEOS's parts relate |
@@ -20,36 +20,29 @@ Implementation layers relate, and where each concept a reader hears about actual
 | **Supersedes** | None |
 
 > **Authority of this document.**
-> This document provides a conceptual orientation to AEOS as a whole: how its Vision, Product,
-> Architecture, Blueprint, Runtime, and Implementation layers relate, and how a reader moves between
-> them. It states no product requirement, no architectural decision, no Blueprint arrangement, no
-> specified behavior, no runtime lifecycle, and no terminology of its own. Every substantive
-> statement in this document traces to, and is owned by, the frozen or in-progress document named
-> alongside it. This document does not redefine, extend, narrow, or restate a definition,
-> requirement, structural decision, or specified behavior recorded elsewhere; where a statement here
-> appears to do so, that is a defect in this document, is reported rather than acted upon, and the
-> referenced document governs.
+> This document provides a conceptual orientation to AEOS: how its Vision, Product, Architecture,
+> Blueprint, Runtime, and Implementation layers relate. It states no product requirement, no
+> architectural decision, no Blueprint arrangement, no specified behavior, no runtime lifecycle, and
+> no terminology of its own. Every substantive statement traces to, and is owned by, the document
+> named alongside it; where a statement here appears to redefine, extend, or restate what an owning
+> document already states, that is a defect in this document, reported rather than acted upon, and
+> the owning document governs.
 >
-> This document's position in the documentation hierarchy AEOS-DOCSTD Section 4.1 defines is reserved
-> to the owner's decision under AEOS-DOCSTD rule `H5`, in the manner Section 4.5 reserves the Runtime
-> layer's position. Until decided, this document complies with every rule in AEOS-DOCSTD that does
-> not itself depend on hierarchy position, and is placed directly under `docs/`, outside every
-> layer-specific subdirectory, following the placement `REPOSITORY_LAYOUT.md` Section 5.2 records for
-> itself under the same provision. This document asserts no obligation of its own and accordingly
-> uses no RFC 2119 normative language, consistent with AEOS-DOCSTD Section 7.3's treatment of a
-> document that carries no rule of its own to state.
+> This document's position in the documentation hierarchy is, like the Runtime layer's
+> (AEOS-DOCSTD Section 4.5) and `REPOSITORY_LAYOUT.md`'s own comparable position, reserved to the
+> owner's decision under AEOS-DOCSTD rule `H5`. That reservation is recorded once, here, rather than
+> repeated through the sections below; it does not prevent this document from functioning, exactly as
+> it has not prevented AEOS-RTF or AEOS-LAYOUT from doing so. Until a position is assigned, this
+> document complies with every AEOS-DOCSTD rule that does not itself depend on hierarchy position, is
+> placed directly under `docs/` outside every layer-specific subdirectory, and — asserting no
+> obligation of its own — uses no RFC 2119 normative language.
 >
-> This document differs from the repository's `README.md` in scope and depth. The README is the
-> repository's root-level entry point and is explicitly not a document of the documentation
-> hierarchy; it carries no Document ID and states, briefly, what a first-time reader needs before
-> going further. This document is a Document under AEOS-DOCSTD, addresses every documentation-hierarchy
-> layer and every Runtime document in one place, and is intended to remain the durable map between
-> them as the repository grows. Where this document and the README differ in a statement of fact, the
-> document each summarizes governs, and the difference is reported.
->
-> Where this document and a document of higher authority, or any document it summarizes, both speak
-> to a subject, the summarized or higher-authority document governs, and any conflict here is a
-> defect to be reported rather than acted upon.
+> This document differs from `README.md` in scope and depth: the README is the repository's
+> root-level entry point, carries no Document ID, and is not part of the documentation hierarchy;
+> this document is a Document under AEOS-DOCSTD that addresses every hierarchy layer and Runtime
+> document in one place. Where this document, the README, or any document it summarizes disagree on
+> a statement of fact, the summarized or higher-authority document governs, and the difference is
+> reported as a defect here.
 
 ---
 
@@ -57,23 +50,24 @@ Implementation layers relate, and where each concept a reader hears about actual
 
 1. [Executive Summary](#1-executive-summary)
 2. [Scope and Applicability](#2-scope-and-applicability)
-3. [Why AEOS Exists — The Vision](#3-why-aeos-exists--the-vision)
-4. [What AEOS Is — Product Scope](#4-what-aeos-is--product-scope)
-5. [How AEOS Is Structured — The Architecture](#5-how-aeos-is-structured--the-architecture)
-6. [The Runtime Layer — Orchestrating External AI](#6-the-runtime-layer--orchestrating-external-ai)
-7. [The Workflow Engine — Sequencing and Supervision](#7-the-workflow-engine--sequencing-and-supervision)
-8. [Agentic Orchestration — How AEOS Relates to Agents](#8-agentic-orchestration--how-aeos-relates-to-agents)
-9. [Repository Assets — Rules, Skills, Prompts, Workflows, Templates, and Profiles](#9-repository-assets--rules-skills-prompts-workflows-templates-and-profiles)
-10. [Extensibility — Extension Points, and What AEOS Does Not Yet Name](#10-extensibility--extension-points-and-what-aeos-does-not-yet-name)
-11. [The Technology Catalog — Frameworks and Recognized Technologies](#11-the-technology-catalog--frameworks-and-recognized-technologies)
-12. [The Documentation Hierarchy](#12-the-documentation-hierarchy)
-13. [Repository Organization](#13-repository-organization)
-14. [The Engineering Lifecycle and the Interaction Loop](#14-the-engineering-lifecycle-and-the-interaction-loop)
-15. [Distribution](#15-distribution)
-16. [Future Roadmap](#16-future-roadmap)
-17. [How the Pieces Connect](#17-how-the-pieces-connect)
-18. [Document Governance](#18-document-governance)
-19. [Appendix A — Document Map (Non-Normative)](#appendix-a--document-map-non-normative)
+3. [How to Use This Document](#3-how-to-use-this-document)
+4. [Why AEOS Exists — The Vision](#4-why-aeos-exists--the-vision)
+5. [What AEOS Is — Product Scope](#5-what-aeos-is--product-scope)
+6. [How AEOS Is Structured — The Architecture](#6-how-aeos-is-structured--the-architecture)
+7. [The Runtime Layer — Orchestrating External AI](#7-the-runtime-layer--orchestrating-external-ai)
+8. [The Workflow Engine — Sequencing and Supervision](#8-the-workflow-engine--sequencing-and-supervision)
+9. [Agentic Orchestration — How AEOS Relates to Agents](#9-agentic-orchestration--how-aeos-relates-to-agents)
+10. [Repository Assets — Rules, Skills, Prompts, Workflows, Templates, and Profiles](#10-repository-assets--rules-skills-prompts-workflows-templates-and-profiles)
+11. [Extensibility — Extension Points, and What AEOS Does Not Yet Name](#11-extensibility--extension-points-and-what-aeos-does-not-yet-name)
+12. [The Technology Catalog — Frameworks and Recognized Technologies](#12-the-technology-catalog--frameworks-and-recognized-technologies)
+13. [The Documentation Hierarchy](#13-the-documentation-hierarchy)
+14. [Repository Organization](#14-repository-organization)
+15. [The Engineering Lifecycle and the Interaction Loop](#15-the-engineering-lifecycle-and-the-interaction-loop)
+16. [Distribution](#16-distribution)
+17. [Future Roadmap](#17-future-roadmap)
+18. [How the Pieces Connect](#18-how-the-pieces-connect)
+19. [Document Governance](#19-document-governance)
+20. [Appendix A — Document Map (Non-Normative)](#appendix-a--document-map-non-normative)
 
 ---
 
@@ -97,6 +91,9 @@ Where this document uses a term that no frozen AEOS document currently defines, 
 rather than defining one here — consistent with the discipline `PROJECT_BOOTSTRAP.md` and
 `REPOSITORY_LAYOUT.md` already apply to themselves: a gap is recorded, not filled by invention.
 
+Not every reader needs the whole chain. [Section 3](#3-how-to-use-this-document) exists for the
+reader who wants one answer rather than a start-to-finish reading.
+
 ---
 
 ## 2. Scope and Applicability
@@ -105,13 +102,16 @@ rather than defining one here — consistent with the discipline `PROJECT_BOOTST
 
 This document provides, and is the map for:
 
+- a quick-reference guide — a conceptual-chain diagram, a concept-to-document table, and a reading
+  guide — for a reader who wants one answer rather than the whole chain;
 - the reasoning chain from why AEOS exists to what it is, how it is structured, and how it runs;
 - a one-place account of every documentation-hierarchy layer and every Runtime document, and how
   they relate to one another;
 - an accurate placement of concepts commonly asked about — an Agent, a Skill, a Hook, a Command, a
   Framework — against what AEOS actually defines, including an explicit statement where a term has
   no defined AEOS meaning;
-- the shape of the AEOS repository itself: its documentation hierarchy and its physical organization;
+- the shape of the AEOS repository itself: its documentation hierarchy and its physical organization,
+  and the distinction between the two;
 - the engineering lifecycle AEOS orchestrates and the loop every consequential action follows;
 - how AEOS reaches users, and what is planned but not yet part of the product.
 
@@ -149,11 +149,80 @@ document listed above as owner governs.
 This document applies identically to a human reader — a developer, an engineering lead, or a
 contributor — and to an AI runtime consuming this repository, consistent with AEOS-DOCSTD Section
 2.4. It is written for a first encounter with AEOS and for a returning reader who wants to relocate a
-concept quickly; [Appendix A](#appendix-a--document-map-non-normative) is built for the second case.
+concept quickly; [Section 3](#3-how-to-use-this-document) and
+[Appendix A](#appendix-a--document-map-non-normative) are built for the second case.
 
 ---
 
-## 3. Why AEOS Exists — The Vision
+## 3. How to Use This Document
+
+### 3.1 The Conceptual Chain
+
+AEOS's documents form one chain, from why the product exists to how a person works within it. A
+short version of that chain, enough to orient a first reading:
+
+```text
+VISION           why AEOS exists, and what must never change
+    |
+PRODUCT          what AEOS is, and what it must do            (AEOS-PRD)
+    |
+ARCHITECTURE     how AEOS is structured                       (AEOS-ARCH)
+    |
+BLUEPRINT        how that structure is arranged to be built   (AEOS-BLUEPRINT)
+    |
+SPECIFICATION    how each behavior must work, precisely
+    |
+IMPLEMENTATION   how specified behavior is realized
+    |
+REPOSITORY       where all of the above actually lives and runs
+```
+
+Runtime documents ([Section 7](#7-the-runtime-layer--orchestrating-external-ai)) sit alongside
+Specification, stating the observable behavior of one layer — the Runtime Layer — in the same
+precise, testable way a Specification does, under a hierarchy position AEOS-DOCSTD has not yet
+assigned. [Section 13](#13-the-documentation-hierarchy) states this chain in full, with the
+authority rule that governs it, and distinguishes it from the physical repository layout
+[Section 14](#14-repository-organization) states.
+
+### 3.2 Finding the Owning Document
+
+A reader who wants one answer, not the whole chain, can look it up here.
+
+| Looking for | Owning document | Read more |
+| :--- | :--- | :--- |
+| Why AEOS exists, its non-goals, its invariants | AEOS-VISION | [Section 4](#4-why-aeos-exists--the-vision) |
+| What AEOS must do; its ten capabilities; scope | AEOS-PRD | [Section 5](#5-what-aeos-is--product-scope) |
+| Term definitions | AEOS-GLOSSARY | Throughout |
+| How AEOS documents are written and frozen | AEOS-DOCSTD | [Section 13](#13-the-documentation-hierarchy) |
+| Recognized technologies, including Frameworks | AEOS-TECH | [Section 12](#12-the-technology-catalog--frameworks-and-recognized-technologies) |
+| The eight architectural layers | AEOS-ARCH | [Section 6](#6-how-aeos-is-structured--the-architecture) |
+| The buildable arrangement within each layer | AEOS-BLUEPRINT | [Section 6](#6-how-aeos-is-structured--the-architecture) |
+| Runtime selection, and how a Runtime is reached | AEOS-ARCH · AEOS-SPEC-ADP | [Section 7](#7-the-runtime-layer--orchestrating-external-ai) |
+| Runtime lifecycle, registry, negotiation, capability vocabulary, model registry | AEOS-RTF · AEOS-RUNTIME-REG · AEOS-SPEC-NEG · AEOS-CAP · AEOS-SPEC-MDL | [Section 7](#7-the-runtime-layer--orchestrating-external-ai) |
+| Where approval is handled; the Workflow Engine | AEOS-GLOSSARY · AEOS-BLUEPRINT | [Section 8](#8-the-workflow-engine--sequencing-and-supervision) |
+| Agentic orchestration, and how AEOS relates to agents | AEOS-PRD | [Section 9](#9-agentic-orchestration--how-aeos-relates-to-agents) |
+| Rules, Skills, Prompts, Workflows, Templates, Profiles | AEOS-PRD · AEOS-GLOSSARY | [Section 10](#10-repository-assets--rules-skills-prompts-workflows-templates-and-profiles) |
+| How to extend AEOS; Hooks and Commands | AEOS-ARCH | [Section 11](#11-extensibility--extension-points-and-what-aeos-does-not-yet-name) |
+| Which document governs a subject | AEOS-DOCSTD | [Section 13](#13-the-documentation-hierarchy) |
+| Where a file actually sits on disk | AEOS-BOOT · AEOS-LAYOUT | [Section 14](#14-repository-organization) |
+| The engineering lifecycle, and the approval loop | AEOS-PRD | [Section 15](#15-the-engineering-lifecycle-and-the-interaction-loop) |
+| How AEOS reaches users | AEOS-PRD | [Section 16](#16-distribution) |
+| What is planned, and what is only proposed | AEOS-PRD | [Section 17](#17-future-roadmap) |
+
+### 3.3 Where to Read Next
+
+- New to AEOS, and want the reasoning first → [Section 4](#4-why-aeos-exists--the-vision)
+- Want to know what AEOS must actually do → [Section 5](#5-what-aeos-is--product-scope)
+- Evaluating how AEOS is put together → [Section 6](#6-how-aeos-is-structured--the-architecture)
+- Building or reviewing a Runtime adapter → [Section 7](#7-the-runtime-layer--orchestrating-external-ai)
+- Authoring a Rule, Skill, Prompt, or Workflow → [Section 10](#10-repository-assets--rules-skills-prompts-workflows-templates-and-profiles)
+- Proposing an extension to AEOS → [Section 11](#11-extensibility--extension-points-and-what-aeos-does-not-yet-name)
+- Setting up or bootstrapping a repository → [Section 14](#14-repository-organization)
+- Deciding how to distribute or install AEOS → [Section 16](#16-distribution)
+
+---
+
+## 4. Why AEOS Exists — The Vision
 
 AEOS-VISION states why AEOS exists and what it must always remain. Its vision statement:
 
@@ -170,12 +239,19 @@ Its mission pursues that statement along four lines:
 | Keep the practice free | Let a team's accumulated engineering knowledge survive every change of tool, model, platform, and employer. |
 
 AEOS-VISION also states eight non-goals — boundaries considered and deliberately rejected, not gaps
-awaiting a future release. AEOS will not become: a replacement operating system; a proprietary AI
-platform; a single-vendor ecosystem; a fully autonomous software factory; a no-code or low-code
-platform; an IDE, editor, or application framework; a replacement for version control, CI/CD, or
-delivery systems; or (the eighth, recorded in AEOS-VISION Section 8 in full) a source of unbounded
-scope. Two of these recur throughout this document and are worth holding in view now: AEOS does not
-aim to remove the human deciding, and AEOS does not aim to become an application framework.
+awaiting a future release. AEOS will not become:
+
+- a replacement operating system;
+- a proprietary AI platform;
+- a single-vendor ecosystem;
+- a fully autonomous software factory;
+- a no-code or low-code platform;
+- an IDE, editor, or application framework;
+- a replacement for version control, CI/CD, or delivery systems; or
+- (recorded in AEOS-VISION Section 8 in full) a source of unbounded scope.
+
+Two of these recur throughout this document: AEOS does not aim to remove the human deciding, and it
+does not aim to become an application framework.
 
 Ten invariants reduce the vision to its irreducible form — the properties whose loss would mean AEOS
 no longer exists in any meaningful sense, whatever continued to carry the name:
@@ -198,7 +274,7 @@ the guiding principles for contributors — is AEOS-VISION's subject and is not 
 
 ---
 
-## 4. What AEOS Is — Product Scope
+## 5. What AEOS Is — Product Scope
 
 AEOS-PRD defines what AEOS is and what it must do, completely, as the Product Contract:
 
@@ -240,7 +316,7 @@ exclusion. The complete statement, including all 180 numbered requirements, is A
 
 ---
 
-## 5. How AEOS Is Structured — The Architecture
+## 6. How AEOS Is Structured — The Architecture
 
 AEOS-ARCH defines the structure through which AEOS-PRD's obligations are met. The structure is eight
 layers — six internal, realized by AEOS, and two external, named because the product's guarantees are
@@ -259,8 +335,33 @@ statements about what may cross their boundaries:
 
 Dependency moves in one direction only, toward lower abstraction: Human → Workflow → Context →
 Runtime → Adapter → Execution → Repository, with the External AI Layer reached only through the
-Adapter Layer. The Repository Layer depends on nothing and remains meaningful on its own. Five
-structural decisions carry most of the product's obligations:
+Adapter Layer. A simplified picture of that chain — the complete dependency table, including which
+layers Workflow reaches beyond Context, is AEOS-ARCH Section 5's subject:
+
+```text
+Human Layer
+   |
+   v
+Workflow Layer
+   |
+   v
+Context Layer
+   |
+   v
+Runtime Layer
+   |
+   v
+Adapter Layer
+   |
+   v
+External AI Layer          (external; reached only through the Adapter Layer)
+
+The Workflow Layer also reaches the Execution Layer directly, to apply an
+approved effect, and the Execution Layer performs every durable write to the
+Repository Layer, which depends on nothing and remains meaningful on its own.
+```
+
+Five structural decisions carry most of the product's obligations:
 
 | Decision | What it makes structurally true |
 | :--- | :--- |
@@ -289,7 +390,10 @@ each Blueprint layer is AEOS-BLUEPRINT's subject.
 
 ---
 
-## 6. The Runtime Layer — Orchestrating External AI
+## 7. The Runtime Layer — Orchestrating External AI
+
+AEOS reaches artificial intelligence through exactly one internal layer, and never further than that
+layer allows.
 
 > **A naming caution AEOS-ARCH states explicitly.** The *Runtime Layer* is an internal layer of AEOS
 > that contains no Runtime. A Runtime, in AEOS-GLOSSARY's sense, is an external AI system that
@@ -326,10 +430,11 @@ outlive the current runtime landscape.
 
 ---
 
-## 7. The Workflow Engine — Sequencing and Supervision
+## 8. The Workflow Engine — Sequencing and Supervision
 
-AEOS-GLOSSARY reserves the name **Workflow Engine** for a responsibility, not a component, service,
-process, or executable:
+Every consequential action in AEOS passes through one named responsibility before it can occur.
+AEOS-GLOSSARY reserves the name **Workflow Engine** for that responsibility — not a component,
+service, process, or executable:
 
 > The responsibility for executing Workflow declarations incrementally, holding each consequential
 > step to its Approval Gate, and maintaining Workflow State across interruption.
@@ -337,36 +442,32 @@ process, or executable:
 AEOS-ARCH's Workflow Layer discharges that responsibility. It is the only layer that addresses the
 Human Layer, the only layer that initiates a consequential action, and the only position at which an
 Approval Gate stands — so that the strength of a gate is a property of the action, not of whichever
-subsystem happened to reach it. AEOS-BLUEPRINT's Workflow Blueprint (`BP-WFL`) then decomposes that
-responsibility into named subsystems:
+subsystem happened to reach it.
 
-| Subsystem | Single responsibility |
-| :--- | :--- |
-| Workflow Declaration Reading | Interprets a declared Workflow into its steps, preconditions, gates, and success criteria. |
-| Step Sequencing | Advances work one verifiable step at a time. |
-| Precondition Evaluation | Determines whether a step may begin. |
-| Action Classification | Assigns the Action Class of every effect a step intends. |
-| Gate Placement | Determines, from the Action Class, where an Approval Gate stands. |
-| Rule Application | Determines which Rules apply to a step and applies them at their declared point. |
-| Skill Composition | Determines which Skills apply to a step and composes them at their declared point. |
-| Cycle Position Keeping | Holds the position within an active TDD Cycle. |
-| Capability Requirement Declaration | States, per step, the Engineering Capability the step requires. |
-| Outcome Recording | Determines what a completed, partial, or failed step contributes to Workflow State. |
-| Halt Handling | Stops the sequence on a declined proposal or a failed step. |
+AEOS-BLUEPRINT's Workflow Blueprint (`BP-WFL`) decomposes that responsibility into eleven
+subsystems, clustered around four concerns: reading and sequencing a Workflow declaration one
+verifiable step at a time (Workflow Declaration Reading, Step Sequencing, Precondition Evaluation);
+classifying each step's effect and placing its Approval Gate (Action Classification, Gate Placement);
+applying the Rules and Skills a step declares (Rule Application, Skill Composition); and holding
+position and recording outcome, including partial completion and failure (Cycle Position Keeping,
+Capability Requirement Declaration, Outcome Recording, Halt Handling). The responsibility of each
+subsystem individually, and how the eleven relate to one another, is AEOS-BLUEPRINT Section 8's
+subject.
 
 The Workflow Layer does not contain the Workflows it executes — those are Repository Assets
-([Section 9](#9-repository-assets--rules-skills-prompts-workflows-templates-and-profiles)) — holds no
-runtime-specific or platform-specific knowledge, does not reach the Adapter Layer or the External AI
-Layer directly, and does not apply an effect itself; that belongs to the Execution Layer. The
+([Section 10](#10-repository-assets--rules-skills-prompts-workflows-templates-and-profiles)) — holds
+no runtime-specific or platform-specific knowledge, does not reach the Adapter Layer or the External
+AI Layer directly, and does not apply an effect itself; that belongs to the Execution Layer. The
 engineering-lifecycle stage most associated with this layer, *agentic orchestration*, is addressed
 next.
 
 ---
 
-## 8. Agentic Orchestration — How AEOS Relates to Agents
+## 9. Agentic Orchestration — How AEOS Relates to Agents
 
-AEOS-PRD names *agentic orchestration* as one stage of the engineering lifecycle
-([Section 14](#14-the-engineering-lifecycle-and-the-interaction-loop)) and one product requirement:
+AEOS orchestrates agents without becoming one. AEOS-PRD names *agentic orchestration* as one stage of
+the engineering lifecycle ([Section 15](#15-the-engineering-lifecycle-and-the-interaction-loop)) and
+one product requirement:
 
 > `PR-WFL-012` — AEOS supports agentic orchestration: multi-step work sequenced across runtimes, with
 > each consequential step held to its approval gate.
@@ -374,7 +475,7 @@ AEOS-PRD names *agentic orchestration* as one stage of the engineering lifecycle
 No frozen AEOS document names a distinct "Agent System" as an architectural layer, a Blueprint layer,
 a Runtime document, or a Repository Asset kind. What exists instead is this: AEOS orchestrates
 *agentic runtimes* — AI-assisted development environments and comparable systems, one of the
-illustrative runtime categories named in [Section 6](#6-the-runtime-layer--orchestrating-external-ai)
+illustrative runtime categories named in [Section 7](#7-the-runtime-layer--orchestrating-external-ai)
 — exactly as it orchestrates any other Runtime, through the same Runtime Layer, the same Engineering
 Capability matching, and the same Adapter Layer boundary. An agent, in whatever sense a given Runtime
 uses that word, is external to AEOS. AEOS never reimplements one, competes with one, or becomes one.
@@ -388,17 +489,17 @@ orchestration widens what one Workflow can sequence, not who decides.
 
 ---
 
-## 9. Repository Assets — Rules, Skills, Prompts, Workflows, Templates, and Profiles
+## 10. Repository Assets — Rules, Skills, Prompts, Workflows, Templates, and Profiles
 
 AEOS-PRD defines a **Repository Asset** as any durable, versioned artifact that forms part of the
 product and lives in the repository — durable, versioned, inspectable, consumable by AI runtimes,
 portable, and extensible by users without modifying AEOS. The distinguishing test, per AEOS-PRD: if
 losing something costs only repeated work, it is Runtime State; if losing it costs product meaning, it
 is a Repository Asset. The list of asset kinds is open — new kinds may be introduced without changing
-what a Repository Asset is, a point [Section 10](#10-extensibility--extension-points-and-what-aeos-does-not-yet-name)
-returns to.
+what a Repository Asset is, a point
+[Section 11](#11-extensibility--extension-points-and-what-aeos-does-not-yet-name) returns to.
 
-### 9.1 Skills
+### 10.1 Skills
 
 A **Skill**, per AEOS-GLOSSARY, is a versioned, reusable, runtime-independent packaged engineering
 procedure. AEOS-PRD's Skill management capability (`C8`) discovers, versions, composes, and applies
@@ -408,7 +509,7 @@ vendor. AEOS-GLOSSARY records one caution explicitly: *Skill* must not be used t
 runtime-specific feature offered under the same word by a vendor; an AEOS Skill is a project's own
 asset, not a feature of whichever Runtime happens to be selected.
 
-### 9.2 The Other Asset Kinds
+### 10.2 The Other Asset Kinds
 
 | Kind | Definition | Governing capability |
 | :--- | :--- | :--- |
@@ -421,7 +522,7 @@ asset, not a feature of whichever Runtime happens to be selected.
 Every Rule has a defined scope and deterministic precedence; a Rule AEOS cannot enforce under the
 selected Runtime is reported, never silently ignored. A Prompt remains inspectable before it is sent,
 and never carries credentials or user-designated sensitive content — the mechanism
-[Section 5](#5-how-aeos-is-structured--the-architecture)'s Context Layer exists to guarantee. A
+[Section 6](#6-how-aeos-is-structured--the-architecture)'s Context Layer exists to guarantee. A
 Workflow executes unchanged across Runtimes; if a Workflow, Rule, Skill, Prompt, or repository must
 change when the Runtime changes, runtime independence has been violated. AEOS-supplied workflow
 templates for common project archetypes are recorded in AEOS-PRD Appendix A as a recommendation for a
@@ -430,7 +531,7 @@ by the project, not supplied by AEOS.
 
 ---
 
-## 10. Extensibility — Extension Points, and What AEOS Does Not Yet Name
+## 11. Extensibility — Extension Points, and What AEOS Does Not Yet Name
 
 AEOS-VISION invariant `V10` states that AEOS is extended, not modified. AEOS-ARCH makes that concrete
 with six extension points — the complete set of places where the architecture admits addition without
@@ -456,15 +557,16 @@ declared point most likely takes the shape of a Rule or a Skill applied at a Wor
 declared application point (`EP-1`), a Tool integration at the Execution Layer (`EP-5`), or — if it
 performs inference — a Runtime adapter (`EP-3`). A means of invoking AEOS from outside a running
 Workflow is an entry surface (`EP-6`), supplied by a Distribution Method
-([Section 15](#15-distribution)) and named there, not by a project-facing command vocabulary AEOS
+([Section 16](#16-distribution)) and named there, not by a project-facing command vocabulary AEOS
 itself defines. A concept that fits none of the six points is a proposal to change what AEOS owns, and
 belongs in AEOS-PRD's Appendix A of recommendations for future releases, decided only by the owner —
 not settled by naming it here.
 
 ---
 
-## 11. The Technology Catalog — Frameworks and Recognized Technologies
+## 12. The Technology Catalog — Frameworks and Recognized Technologies
 
+AEOS uses the word *framework* exactly once in its own vocabulary, and not to describe itself.
 AEOS-VISION and AEOS-PRD both state, as a considered non-goal rather than an oversight, that AEOS will
 not become an application framework: it operates alongside whatever editing surface a developer
 prefers and produces no framework the user's application must be built on. AEOS-PRD Appendix A records
@@ -494,11 +596,13 @@ a technology enters or leaves it are AEOS-TECH's subject.
 
 ---
 
-## 12. The Documentation Hierarchy
+## 13. The Documentation Hierarchy
 
-AEOS-DOCSTD assigns documentation **authority**, not merely reading order. A document must not
-contradict a document above it in the hierarchy, and every derivative document traces to the layer
-above it and ultimately to a `PR-` requirement identifier:
+AEOS-DOCSTD assigns documentation **authority**: which document governs a subject, and which must
+yield if two documents disagree. It says nothing about where a file physically sits — that is
+[Section 14](#14-repository-organization)'s different question. A document must not contradict a
+document above it in this hierarchy, and every derivative document traces to the layer above it and
+ultimately to a `PR-` requirement identifier:
 
 ```text
     AEOS-VISION            Why the product exists
@@ -534,10 +638,9 @@ above it and ultimately to a `PR-` requirement identifier:
 The Runtime layer AEOS-PRD names alongside Product, Architecture, and Specification has not yet been
 assigned a position in this hierarchy; AEOS-DOCSTD Section 4.5 reserves that decision to the owner.
 Until it is made, every Runtime document — the six named in
-[Section 6](#6-the-runtime-layer--orchestrating-external-ai) — is written to the responsibility
+[Section 7](#7-the-runtime-layer--orchestrating-external-ai) — is written to the responsibility
 boundary AEOS-PRD states for that layer and complies with every AEOS-DOCSTD rule that does not itself
-depend on hierarchy position. This document, `REPOSITORY_LAYOUT.md`, and `PROJECT_BOOTSTRAP.md` each
-record the same reservation for their own comparable position.
+depend on hierarchy position.
 
 Twelve documentation principles bind every AEOS document; four recur throughout this one and are worth
 naming directly: one document owns one responsibility (`DS-P-06`); a term is defined in exactly one
@@ -549,7 +652,21 @@ the normative-language rules, and the review-to-freeze lifecycle are AEOS-DOCSTD
 
 ---
 
-## 13. Repository Organization
+## 14. Repository Organization
+
+AEOS-VISION invariant `V5` states that the repository is the product. Documentation is one part of
+that repository; the Repository Assets
+[Section 10](#10-repository-assets--rules-skills-prompts-workflows-templates-and-profiles) names, and
+— once written — AEOS's own implementation, are the others. None of these is a separate concern from
+the rest: together they are the one artifact `V5` requires to remain meaningful when AEOS is not
+running.
+
+Where [Section 13](#13-the-documentation-hierarchy) states which document governs a subject, this
+section states where a file actually sits on disk. The two questions are related — the `docs/`
+subtree below mirrors the hierarchy's layers by name — but they are governed by different rules and
+can, in principle, change independently: relocating a file does not change which document is
+authoritative for a subject, and assigning a document a hierarchy position does not by itself move
+its file.
 
 Two documents together state the shape of the AEOS repository. `PROJECT_BOOTSTRAP.md` (AEOS-BOOT)
 states, once and normatively, the ordered procedure that produces a conformant repository from
@@ -581,7 +698,7 @@ recorded in its own metadata.
 
 ---
 
-## 14. The Engineering Lifecycle and the Interaction Loop
+## 15. The Engineering Lifecycle and the Interaction Loop
 
 AEOS-PRD Section 9 states that AEOS orchestrates the complete engineering lifecycle. Stages are ordered
 for readability; real projects re-enter them continuously.
@@ -630,7 +747,7 @@ including how a grant is issued and withdrawn, is AEOS-PRD Section 10's subject.
 
 ---
 
-## 15. Distribution
+## 16. Distribution
 
 AEOS-PRD states that the product architecture is identical regardless of installation method. Four
 distribution methods are official at minimum, with three more planned:
@@ -655,7 +772,7 @@ procedure is attempted; neither procedure is restated here.
 
 ---
 
-## 16. Future Roadmap
+## 17. Future Roadmap
 
 AEOS-PRD organizes capability maturity into four phases. Dates are set by the owner and are not part
 of the product definition.
@@ -685,7 +802,7 @@ explicit owner revision request before adoption:
 
 ---
 
-## 17. How the Pieces Connect
+## 18. How the Pieces Connect
 
 The sections above can be read independently, but they describe one chain. Tracing a single step of
 engineering work through it makes the connection concrete.
@@ -711,31 +828,36 @@ open next — [Appendix A](#appendix-a--document-map-non-normative) names it dir
 
 ---
 
-## 18. Document Governance
+## 19. Document Governance
 
-### 18.1 Status
+### 19.1 Status
 
-This document is a non-normative orientation artifact. It is not a Source of Truth for any subject —
-AEOS-GLOSSARY's registered Sources of Truth remain exactly as that document states them — and it must
-not be referenced as authoritative for a claim any summarized document could instead be cited for.
+This document is a non-normative orientation artifact, currently in revision against a recorded set
+of review findings. It is not a Source of Truth for any subject — AEOS-GLOSSARY's registered Sources
+of Truth remain exactly as that document states them — and it must not be referenced as authoritative
+for a claim any summarized document could instead be cited for.
 
-### 18.2 Change Control
+### 19.2 Change Control
+
+While this document remains in Draft or In Revision status, any change may be made by the author, per
+AEOS-DOCSTD Section 12.1. The table below states the impact each kind of change carries once this
+document reaches Approved status and its ordinary change control begins:
 
 | Change type | Requires | Version impact |
 | :--- | :--- | :--- |
 | Editorial correction with no change of meaning | Contributor change, owner acceptance | Patch |
 | Correction of a broken reference, an inaccurate summary, or an out-of-date version or status in [Appendix A](#appendix-a--document-map-non-normative) | Owner approval | Patch |
 | Addition of a section summarizing a documentation-hierarchy layer or Runtime document not yet covered | Owner approval | Minor |
-| Reordering of sections, or a change to which document a subject is attributed | Explicit owner revision request | Major |
+| Reordering of existing sections relative to one another, or a change to which document a subject is attributed | Explicit owner revision request | Major |
 | Assignment of a documentation-hierarchy position to this document | Explicit owner revision request, per AEOS-DOCSTD `H5` | Major |
 
-### 18.3 Relationship to the Architecture Freeze
+### 19.3 Relationship to the Architecture Freeze
 
 This document introduces no architecture, no product requirement, no terminology, and no specified
 behavior. An idea surfaced while reading it that would change what AEOS owns belongs in AEOS-PRD
 Appendix A, decided only after explicit owner approval — never enacted here.
 
-### 18.4 Review Policy
+### 19.4 Review Policy
 
 Reviews of this document classify findings as **Critical**, **Major**, **Minor**, or **Nitpick**,
 per AEOS-DOCSTD Section 12.3 and 12.4. A reviewer additionally confirms, before recommending freeze:
@@ -747,24 +869,27 @@ per AEOS-DOCSTD Section 12.3 and 12.4. A reviewer additionally confirms, before 
 - Every term this document states has no current AEOS definition — at the time of writing, an Agent
   System as a distinct component, a Hook, a Command, and AEOS itself as a Framework — remains
   correctly described as undefined, and is not quietly given a definition here.
+- [Section 3.2](#32-finding-the-owning-document)'s table and the detailed section it points to name
+  the same owning document for each concept.
 - [Appendix A](#appendix-a--document-map-non-normative)'s Document IDs, versions, statuses, and paths
   match each summarized document's own metadata block exactly.
 - No Critical or Major finding remains open.
 
-### 18.5 Precedence
+### 19.5 Precedence
 
 | Situation | Resolution |
 | :--- | :--- |
 | This document conflicts with any document it summarizes | The summarized document governs. The conflict is a defect in this document and is reported. |
 | This document's Appendix A falls out of date with a summarized document's own metadata | The summarized document's metadata governs. |
 | A future Developer Guide restates a concept this document also summarizes | Both stand; the Developer Guide governs day-to-day practice and this document governs orientation, consistent with AEOS-DOCSTD's derivation chain. |
-| This document names a concept — an Agent System, a Hook, a Command, or a Framework AEOS itself provides — as though AEOS defined it | That statement is a defect in this document, reported and corrected to match [Sections 8](#8-agentic-orchestration--how-aeos-relates-to-agents), [10](#10-extensibility--extension-points-and-what-aeos-does-not-yet-name), and [11](#11-the-technology-catalog--frameworks-and-recognized-technologies). |
+| This document names a concept — an Agent System, a Hook, a Command, or a Framework AEOS itself provides — as though AEOS defined it | That statement is a defect in this document, reported and corrected to match [Sections 9](#9-agentic-orchestration--how-aeos-relates-to-agents), [11](#11-extensibility--extension-points-and-what-aeos-does-not-yet-name), and [12](#12-the-technology-catalog--frameworks-and-recognized-technologies). |
 
-### 18.6 Revision History
+### 19.6 Revision History
 
 | Version | Status | Summary |
 | :--- | :--- | :--- |
 | 1.0.0 | Draft | Initial Overview. Connects AEOS-VISION, AEOS-PRD, AEOS-ARCH, AEOS-BLUEPRINT, AEOS-DOCSTD, AEOS-TECH, the six Runtime documents (AEOS-RTF, AEOS-RUNTIME-REG, AEOS-SPEC-ADP, AEOS-SPEC-NEG, AEOS-CAP, AEOS-SPEC-MDL), AEOS-BOOT, and AEOS-LAYOUT into one conceptual map spanning vision, product scope, architecture, the Runtime Layer, the Workflow Engine, agentic orchestration, Repository Assets, extensibility, the Technology Catalog, the documentation hierarchy, repository organization, the engineering lifecycle, distribution, and the roadmap. States plainly that no frozen AEOS document defines a distinct Agent System component, a Hook, a Command, or AEOS itself as a Framework, and maps each to the nearest concept AEOS does define rather than inventing one. Introduces no requirement, terminology, architecture, or specified behavior of its own. |
+| 1.1.0 | In Revision | Addressed a recorded review. Added Section 3 (How to Use This Document): a conceptual-chain diagram, a concept-to-owning-document quick-reference table, and a reading guide, placed immediately after Scope so a selective reader is no longer required to scan full sections for a single answer. Consolidated the Authority statement's repeated hierarchy-position language into one statement, removing the same restatement previously repeated in Sections 13 and 14. Added an explicit distinction between the documentation hierarchy's logical authority (Section 13) and the repository's physical layout (Section 14), and reinforced, at the start of Section 14, that documentation, Repository Assets, and implementation together constitute the one repository `V5` names as the product. Condensed the eleven-row Workflow Blueprint subsystem table in Section 8 into clustered prose that still names every subsystem, reducing subsystem-level detail while preserving traceability. Added a layer-dependency diagram to Section 6, accompanied by the prose that already stated it. Reformatted the Vision non-goals from a run-on sentence into a list, and smoothed several section openings to state a plain-language sentence before citing the document that governs it. Renumbered Sections 3 through 18 to Sections 4 through 19 to accommodate the new Section 3; no external document yet links into this one, so no dependent reference was broken. Does not resolve this document's own hierarchy position, which AEOS-DOCSTD `H5` reserves to the owner and which this revision explains rather than assigns. Introduces no new requirement, terminology, architecture, or specified behavior. |
 
 ---
 
@@ -792,7 +917,7 @@ relocation; the document's own metadata block governs if the two ever diverge.
 | Implementation | Project Bootstrap Guide | `AEOS-BOOT` | 3.0.0 | Draft | `docs/implementation/PROJECT_BOOTSTRAP.md` |
 | Implementation | Environment Setup Guide | `AEOS-ENVSETUP` | 1.0.0 | Draft | `docs/implementation/ENVIRONMENT_SETUP.md` |
 | *(reserved position)* | Repository Layout Guide | `AEOS-LAYOUT` | 1.0.0 | Draft | `docs/REPOSITORY_LAYOUT.md` |
-| *(reserved position)* | Overview *(this document)* | `AEOS-OVERVIEW` | 1.0.0 | Draft | `docs/OVERVIEW.md` |
+| *(reserved position)* | Overview *(this document)* | `AEOS-OVERVIEW` | 1.1.0 | In Revision | `docs/OVERVIEW.md` |
 
 No Developer Guide has yet been authored for AEOS; `docs/developer/` remains reserved for one.
 
@@ -800,5 +925,5 @@ No Developer Guide has yet been authored for AEOS; `docs/developer/` remains res
 
 **End of Overview**
 
-AEOS-OVERVIEW · Version 1.0.0 · Non-normative orientation — every statement traces to the document
+AEOS-OVERVIEW · Version 1.1.0 · Non-normative orientation — every statement traces to the document
 that governs it
