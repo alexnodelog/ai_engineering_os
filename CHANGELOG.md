@@ -97,3 +97,27 @@ This clarifies separation between product-facing and specification documents.
 | implementation-0004 | INSTALLATION.md | Status : Frozen |
 | implementation-0005 | CONFIGURATION.md | Status : Frozen |
 | implementation-0006 | DEVELOPMENT_WORKFLOW.md | Status : Frozen |
+
+
+## 2026-08-05
+| number | file name | status |
+| :--- | :--- | :--- |
+| implementation-0007 | DEVELOPMENT_WORKFLOW.md | Status : Frozen |
+| implementation-0008 | CODING_STANDARD.md | Status : Frozen |
+| implementation-0009 | REVIEW_GUIDE.md | Status : Frozen |
+
+
+## 2026-08-06
+| number | file name | status |
+| :--- | :--- | :--- |
+| implementation-0010 | TROUBLESHOOTING.md | Status : Frozen |
+| implementation-0011 | BEST_PRACTICES.md | Status : Frozen |
+| implementation-0012 | FAQ.md | Status : Frozen |
+| root-0001 | README.md | Status : Frozen |
+| root-0002 | OVERVIEW.md | Status : Frozen |
+
+
+## 2026-08-07
+| number | file name | status |
+| :--- | :--- | :--- |
+| root-0003 | ROADMAP.md | Status : Frozen |
