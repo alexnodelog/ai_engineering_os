@@ -65,7 +65,7 @@ the existing documents anticipate that remainder being addressed.*
 7. [Remaining Phases](#7-remaining-phases)
 8. [Major Deliverables](#8-major-deliverables)
 9. [Repository Evolution](#9-repository-evolution)
-10. [Framework Evolution](#10-framework-evolution)
+10. [Framework Evolution](#10-framework-evolution-architecture-and-blueprint)
 11. [Runtime Evolution](#11-runtime-evolution)
 12. [Adapter Evolution](#12-adapter-evolution)
 13. [Documentation Completion](#13-documentation-completion)
@@ -232,7 +232,9 @@ it is in place:
 
 Phase 1's own scope — the `PR-ENV`, `PR-PRJ`, `PR-WFL`, `PR-RUN`, `PR-TDD`, `PR-SAF`, `PR-DST-001`,
 and `PR-PLT` requirements marked Phase 1 in AEOS-PRD Section 18 — is [Section 8](#8-major-deliverables)'s
-first row.
+first row. The table above is a Phase-1-specific view; [Section 13](#13-documentation-completion)
+holds the single per-document table of what remains for every non-Frozen document, including the six
+named here.
 
 ## 7. Remaining Phases
 
@@ -267,18 +269,23 @@ requirement's assigned phase changes or a phase's status changes, per [Section 2
 
 ## 9. Repository Evolution
 
-The repository structure has already gone through one complete evolution, entirely within
-`PROJECT_BOOTSTRAP.md`'s own change control:
-
-| Version | What changed |
-| :--- | :--- |
-| `AEOS-BOOT` 1.0.0 | States a six-subdirectory `docs/` structure and derives document placement from a fixed inventory maintained inside the guide. |
-| `AEOS-BOOT` 2.0.0 | Decouples placement from that fixed inventory: a document's own Suggested-path and Status metadata now govern where it goes, so a new document arriving in an existing directory requires no revision to the guide. Separates repository initialization from version-control initialization, making the latter conditional on the Distribution Method. |
-| `AEOS-BOOT` 3.0.0 | Adds a seventh `docs/` subdirectory, `docs/developer/`, reserved for Developer Guides and created empty at bootstrap time in advance of one being authored. Adds a non-normative note distinguishing Implementation Guide content from Developer Guide content, so a future Developer Guide has an unambiguous home. |
+`PROJECT_BOOTSTRAP.md` has already carried the repository structure through three revisions — from a
+fixed, hand-maintained directory and document inventory, to placement discovered from each document's
+own metadata, to the addition of a reserved `docs/developer/` directory — without changing what it
+fundamentally governs. That chronology is recorded in full in `AEOS-BOOT` Section 13.6 and is not
+repeated here; what matters for this roadmap is the pattern it establishes, not the history itself.
 
 `REPOSITORY_LAYOUT.md` (Draft, 1.0.0) now supplies the placement authority for everything outside the
 `docs/` subtree — naming conventions, root-level entries, and where source, test, and generated
 content belong — while continuing to defer to `AEOS-BOOT` for the `docs/` subtree itself.
+
+**Going forward**, repository evolution takes one of two forms. A new document arriving inside an
+already-named `docs/` subdirectory requires no revision to either `AEOS-BOOT` or `AEOS-LAYOUT`, per
+the discovery-from-metadata model both already use — this is the ordinary case, and this roadmap
+anticipates no further work for it. A new top-level directory, a new root-level entry, or a new
+placement category is a Major revision to whichever document owns that decision, reserved to the
+owner; this roadmap does not anticipate which one, when, or on what trigger, consistent with
+[Section 21](#21-non-goals)'s exclusion of task- and schedule-level detail.
 
 **A recorded gap this roadmap surfaces rather than resolves.** `REPOSITORY_LAYOUT.md` Section 6
 (`LAYOUT-004`, `LAYOUT-005`) currently permits exactly three things at the repository root —
@@ -290,11 +297,11 @@ to the owner under its own change control; this roadmap does not perform that re
 here so the gap is recorded rather than silently worked around, consistent with this project's own
 established practice.
 
-## 10. Framework Evolution
+## 10. Framework Evolution (Architecture and Blueprint)
 
-*"Framework" here refers descriptively to the Architecture and Blueprint layers together — the
-structural documents governing how AEOS is built. It is not an AEOS-GLOSSARY term and carries no
-meaning beyond that reference.*
+"Framework" is used in this heading only as a plain-language label for the Architecture and Blueprint
+layers together; it is not an AEOS-GLOSSARY term, defines nothing, and carries no meaning beyond
+naming these two documents as a pair.
 
 Both layers are Frozen at version 1.1.0. AEOS-ARCH states eight architectural layers — six internal,
 two external — and a complete set of six extension points (`EP-1` through `EP-6`) through which
@@ -454,7 +461,7 @@ an explicit owner revision request adopting it into AEOS-PRD first.
 | R6 | Runtime capability benchmarking to advise runtime selection. | Risks appearing to rank vendors, in tension with Vendor Independence. |
 
 This is distinct from growth *within* the current product definition, which occurs through the six
-Architecture extension points [Section 10](#10-framework-evolution) already names and requires no
+Architecture extension points [Section 10](#10-framework-evolution-architecture-and-blueprint) already names and requires no
 new product recommendation to proceed.
 
 ## 18. Out-of-Scope Items
@@ -531,7 +538,7 @@ asserted on this document's own authority.
 | [6](#6-current-phase), [7](#7-remaining-phases), [15](#15-release-phase) | AEOS-PRD Section 22 |
 | [8](#8-major-deliverables) | AEOS-PRD Sections 18 and 22 |
 | [9](#9-repository-evolution) | `AEOS-BOOT` Section 13.6 (Revision History); `REPOSITORY_LAYOUT.md` Sections 5 and 6 |
-| [10](#10-framework-evolution) | AEOS-ARCH Sections 4 and 11; AEOS-BLUEPRINT Sections 4 and 16 |
+| [10](#10-framework-evolution-architecture-and-blueprint) | AEOS-ARCH Sections 4 and 11; AEOS-BLUEPRINT Sections 4 and 16 |
 | [11](#11-runtime-evolution) | `AEOS_RUNTIME_FLOW.md`, `RUNTIME_REGISTRY.md`, `RUNTIME_CAPABILITY_SPEC.md` metadata and Section 2.4 of each; AEOS-DOCSTD Section 4.5; AEOS-GLOSSARY `I4` |
 | [12](#12-adapter-evolution) | `RUNTIME_ADAPTER_SPEC.md`, `RUNTIME_NEGOTIATION_SPEC.md`, `MODEL_REGISTRY.md` metadata; AEOS-ARCH `EP-3`; AEOS-BLUEPRINT `BP-ADP` |
 | [13](#13-documentation-completion) | Each listed document's own Document Governance section |
@@ -545,12 +552,20 @@ asserted on this document's own authority.
 
 ### 23.1 Status
 
-This document is a **Draft**. It is the first Development Roadmap authored for AEOS, and is intended
-to reach Freeze candidate once the owner's review under [Section 23.4](#234-review-policy) records no
-Critical or Major finding. Unlike most AEOS documents, it is never intended to reach a terminal
-Frozen state that forecloses further change: as documents reflected here move between Draft, Freeze
-candidate, and Frozen, and as AEOS-PRD's Release Phases advance, this document is refreshed to match,
-under the change-control table below.
+This document is a **Draft**. It follows the ordinary five-stage lifecycle AEOS-DOCSTD Section 12.2
+defines for every AEOS document — Draft, Review, Revision, Approval, Freeze — with no exception made
+for it here, and is intended to reach Frozen once the owner's review under
+[Section 23.4](#234-review-policy) records no Critical or Major finding.
+
+Reaching Frozen governs this document's *structure and governance model* — its sections, its
+authority statement, its non-goals, and what it claims to reflect — not its tracked-data tables. That
+distinction is not an exception to AEOS-DOCSTD: Section 12.5 already defines Frozen as authoritative
+and unchanging *except through the document's own change control*, and every other Frozen AEOS
+document already exercises that same allowance — AEOS-VISION and AEOS-GLOSSARY have each taken a
+Patch revision since reaching Frozen, without losing Frozen status in the interval. This document's
+Patch-level refresh rule in [Section 23.2](#232-change-control) is that same ordinary mechanism,
+applied to a document whose subject — the maturity of other documents — is expected to keep changing
+after this one is itself stable.
 
 ### 23.2 Change Control
 
