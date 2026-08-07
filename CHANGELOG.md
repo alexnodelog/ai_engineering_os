@@ -121,3 +121,5 @@ This clarifies separation between product-facing and specification documents.
 | number | file name | status |
 | :--- | :--- | :--- |
 | root-0003 | ROADMAP.md | Status : Frozen |
+| root-0004 | AI_DEVELOPMENT_GUIDE.md | Status : Frozen |
+| root-0004 | CONTRIBUTING.md | Status : Frozen |
