@@ -32,39 +32,39 @@ external AI integrations, and releases.*
 >
 > This document is an **Implementation Guide**, in the sense AEOS-DOCSTD Section 4.3 defines that
 > layer: concrete guidance for building to specification, expressed at the point specification meets
-> construction. It is not a Product document, not a Vision document, not an Architecture document,
-> not a Blueprint, not a Runtime document, and not a behavioral Specification under AEOS-SPECSTD. It
-> states no product requirement, no architectural decision, no Blueprint arrangement, no specified
-> behavior, no runtime lifecycle, and no terminology; where a statement here appears to do any of
-> these, that is a defect in this document and MUST be reported rather than acted upon. AEOS-SPECSTD
-> governs the Specification layer of AEOS documentation — documents that state AEOS's own behavior
-> precisely and testably under `SP-<AREA>-<NNN>` identifiers — and this document is not one of those;
-> where this document follows a practice AEOS-SPECSTD also states, it does so because AEOS-DOCSTD
-> already requires it of every document, not because AEOS-SPECSTD's Specification-layer structure
-> applies here.
+> construction. Section 7.3 of that Standard permits normative language at this layer; what it does
+> not permit is this layer taking a responsibility a Specification document already owns. Every rule
+> below binds a procedure — reporting, disclosure, review, dependency and secret handling *at the
+> policy level* — and where a cited Specification document already states the precise, testable
+> behavioral rule a subject depends on, this document references it rather than restating it, per
+> AEOS-DOCSTD Section 5.2's guidance against convenience restatement. This document is not a Product
+> document, not a Vision document, not an Architecture document, not a Blueprint, not a Runtime
+> document, and not a behavioral Specification under AEOS-SPECSTD, which governs only documents that
+> state AEOS's own behavior under `SP-<AREA>-<NNN>` identifiers. It states no product requirement, no
+> architectural decision, no Blueprint arrangement, no specified behavior, no runtime lifecycle, and
+> no terminology; where a statement here appears to do any of these, that is a defect in this document
+> and MUST be reported rather than acted upon.
 >
 > AEOS-DOCSTD Section 4.1 positions Implementation Guides beneath Specification and above Developer
 > Guides in the documentation hierarchy. This document is written under AEOS-DOCSTD's general
 > document template and the Section 4.3 purpose statement for this layer, in the absence of a
 > dedicated Implementation Guide Standard — in the same spirit AEOS-BOOT, AEOS-LAYOUT, and
 > `ENVIRONMENT_SETUP.md` record for their own comparable position. It does not, on that account,
-> establish such a Standard.
+> establish such a Standard. Whether AEOS's security policy should instead become a distinct
+> document type of its own is a hierarchy question AEOS-DOCSTD `H5` reserves to the owner; this
+> document does not decide it, and is written to be correct as an Implementation Guide either way.
 >
 > **On this document's placement.** AEOS-LAYOUT `LAYOUT-016` requires that a Document not be placed
 > outside `docs/`, and `LAYOUT-004`–`LAYOUT-005` permit no repository-root entry beyond `README.md`,
 > `docs/`, a version-control ignore file, and an optional license file. A conventional GitHub security
 > policy is recognized when placed at a repository's root, in `.github/`, or directly in `docs/` — not
-> in a layer-specific subdirectory beneath it. Placing this document at `docs/implementation/`, where
-> AEOS-BOOT's directory table would otherwise house an Implementation Guide, would satisfy the
-> documentation hierarchy but would not be recognized by that platform convention; placing it at the
-> repository root or in `.github/` would satisfy the platform convention but would violate
-> `LAYOUT-004`–`LAYOUT-005`. This document is accordingly placed directly under `docs/`, outside every
-> layer-specific subdirectory, exactly as AEOS-LAYOUT Section 5.2 places itself and for the same
-> reason: `docs/` is already the common parent AEOS-BOOT `BOOT-002` creates, so a Document placed
-> directly within it, at any depth, is placed consistent with AEOS-BOOT `BOOT-004` and `BOOT-007`
-> without requiring a revision of AEOS-LAYOUT's directory table. This placement is a deliberate,
-> recorded decision, not an assumption; where the owner judges differently, correcting it is an
-> ordinary change to this document's own metadata, per [Section 19.2](#192-change-control).
+> in a layer-specific subdirectory beneath it. This document is accordingly placed directly under
+> `docs/`, outside every layer-specific subdirectory, exactly as AEOS-LAYOUT Section 5.2 places itself
+> and for the same reason: `docs/` is already the common parent AEOS-BOOT `BOOT-002` creates, so a
+> Document placed directly within it, at any depth, is placed consistent with AEOS-BOOT `BOOT-004` and
+> `BOOT-007` without requiring a revision of AEOS-LAYOUT's directory table. Where the owner judges
+> differently, correcting it is an ordinary change to this document's own metadata, per
+> [Section 19.2](#192-change-control).
 >
 > Where this document and a document of higher authority both speak to a subject, the
 > higher-authority document governs and any conflict here is a defect to be reported rather than
@@ -113,13 +113,13 @@ its own rule: that a credential, a secret, or an unreviewed dependency never bec
 repository carries forward.
 
 This document states that policy for the AEOS repository itself — not for a Developer's own governed
-Project, which follows its own conventions under AEOS-TECH Section 2.2. It draws every rule from
-requirements, rules, and identifiers AEOS-PRD, AEOS-TECH, AEOS-LAYOUT, AEOS-BOOT, and the frozen
-Specification and Runtime documents already state, and introduces none of its own. Where something
-about AEOS's own security posture is genuinely undecided — a dedicated contact address, a
-response-time commitment, a version-specific support table — this document says so as a finished
-statement of what is undecided, who decides it, and what happens in the meantime, consistent with
-AEOS-DOCSTD `DS-P-10`, rather than filling the gap by assumption.
+Project, which follows its own conventions under AEOS-TECH Section 2.2. Every rule traces to a
+requirement, rule, or identifier AEOS-PRD, AEOS-TECH, AEOS-LAYOUT, AEOS-BOOT, or a Specification
+document already states; where a Specification document already states the precise behavioral rule a
+subject depends on, this document cites it instead of restating it. Where something about AEOS's own
+security posture is genuinely undecided — a dedicated contact address, a response-time commitment, a
+version-specific support table — this document says so as a finished statement of what is undecided,
+who decides it, and what happens in the meantime, consistent with AEOS-DOCSTD `DS-P-10`.
 
 Four properties bind this document, consistent with the discipline AEOS-BOOT, AEOS-LAYOUT, and
 `ENVIRONMENT_SETUP.md` record for a comparable statement of fact:
@@ -147,7 +147,7 @@ beyond it:
   and AI Providers, and to review of a Contributor's proposed change regardless of its origin;
 - the dependency policy AEOS's own implementation follows, drawn entirely from AEOS-TECH's
   already-governed set;
-- the secrets policy AEOS's own implementation, adapters, and registries follow;
+- the secrets policy AEOS's own implementation, adapters, and registries follow at the policy level;
 - release-security practice, once AEOS begins issuing releases;
 - the review expectations a security-relevant change is held to;
 - what this document explicitly does not decide, so a reader does not search this document, or a
@@ -175,8 +175,9 @@ This list is complete.
 | Code, algorithms, dependency selection, and version pins | The codebase and its own manifests and lockfiles, per AEOS-TECH Section 2.2 and `TG-083` |
 
 A statement in this document that states a repository-initialization procedure, a runtime behavior,
-an architectural decision, a product requirement, or a technology choice absent from AEOS-TECH is a
-**defect in this document**. It MUST be reported rather than acted upon.
+an architectural decision, a product requirement, a technology choice absent from AEOS-TECH, or a
+precise behavioral rule a Specification document already owns is a **defect in this document**. It
+MUST be reported rather than acted upon.
 
 ### 2.3 Applicability
 
@@ -187,9 +188,10 @@ a Contributor in the AEOS-GLOSSARY sense. It applies identically to a human part
 performing a step on a human's behalf, consistent with AEOS-DOCSTD Section 2.4.
 
 This document does not apply to the security posture of a Developer's own governed Project, which the
-Developer's own conventions and AEOS-TECH Section 2.2 govern, nor to the internal security practice of
-an external Runtime, Model, or AI Provider, which is that party's own responsibility and outside
-AEOS's control, consistent with AEOS-GLOSSARY's *Runtime* entry: an integration, never a part of AEOS.
+Developer's own conventions and AEOS-TECH Section 2.2 govern (see also `NG-8`), nor to the internal
+security practice of an external Runtime, Model, or AI Provider, which is that party's own
+responsibility and outside AEOS's control, consistent with AEOS-GLOSSARY's *Runtime* entry: an
+integration, never a part of AEOS.
 
 ## 3. Relationship to Other Documents
 
@@ -197,12 +199,12 @@ AEOS's control, consistent with AEOS-GLOSSARY's *Runtime* entry: an integration,
 | :--- | :--- | :--- |
 | **AEOS-VISION** | Purpose and enduring intent, including `V1` (no inference) and `V8` (the user's machine, repository, credentials, and judgment belong to the user). | This document takes no position on why AEOS exists. Every rule below is written so that it could not require trading away either invariant. |
 | **AEOS-PRD** | Product definition and the `PR-` requirements, including `PR-SAF`, `PR-REP`, `PR-RUN`, `PR-PMT`, `PR-DST`, `PR-NFR`, and `PR-TDD`. | Every `SEC-` rule that binds a party traces to one or more `PR-` identifiers already established there; this document adds no new requirement. |
-| **AEOS-GLOSSARY** | Terminology. | This document uses *Contributor*, *Developer*, *Repository Asset*, *Runtime State*, *Runtime*, *Vendor*, *Review*, and *Distribution Method* exactly as AEOS-GLOSSARY defines them, and redefines none of them. *Credential* and *secret* are used in their ordinary sense, consistent with their use elsewhere in the frozen corpus, and are not AEOS-GLOSSARY-defined terms. |
+| **AEOS-GLOSSARY** | Terminology. | This document uses *Contributor*, *Developer*, *Repository Asset*, *Runtime State*, *Runtime*, *Vendor*, *Review*, and *Distribution Method* exactly as AEOS-GLOSSARY defines them, and redefines none of them. *Credential* and *secret* are used in their ordinary sense, consistent with their use elsewhere in the frozen corpus, and are not AEOS-GLOSSARY-defined terms; *owner* and *maintainer* are likewise ordinary terms, disambiguated in [Section 8](#8-security-contact). |
 | **AEOS-DOCSTD** | Documentation form and lifecycle. | This document's structure, format, normative vocabulary, and template follow it without exception. |
 | **AEOS-TECH** | Recognized technologies and their support tiers, in particular `TC-20` (Security). | Every technology this document names is drawn from AEOS-TECH's recognized categories and tiers; this document introduces no technology of its own, consistent with `TG-080` through `TG-087`. |
 | **AEOS-BOOT** | The ordered procedure that initializes a new AEOS repository. | This document restates none of AEOS-BOOT's sequence; it references `BOOT-011`, `BOOT-012`, and `BOOT-024` only by identifier, where a security rule depends on them. |
 | **AEOS-LAYOUT** | The permanent shape of the AEOS repository. | This document's own placement, and every repository-security rule stated here, is consistent with `LAYOUT-004`, `LAYOUT-005`, `LAYOUT-016`, and `LAYOUT-033`; it names no top-level entry AEOS-LAYOUT does not already name. |
-| **`RUNTIME_ADAPTER_SPEC.md`, `MODEL_REGISTRY.md`, `RUNTIME_REGISTRY.md`** | The precise, testable behavioral rules governing adapter, registry, and negotiation security responsibilities. | [Section 11](#11-ai-supply-chain-considerations) and [Section 13](#13-secrets-policy) cite `SP-ADP-`, `SP-MDL-`, and `RT-REG-` rules already stated there; this document restates none of them independently and states no new behavioral rule. |
+| **`RUNTIME_ADAPTER_SPEC.md`, `MODEL_REGISTRY.md`, `RUNTIME_REGISTRY.md`** | The precise, testable behavioral rules governing adapter, registry, and negotiation security responsibilities, including credential custody and non-privileging. | [Section 11](#11-ai-supply-chain-considerations) and [Section 13](#13-secrets-policy) name the specific `SP-ADP-`, `SP-MDL-`, and `RT-REG-` rules a reader depends on and cite them by identifier; this document states no independent rule about what those identifiers already require. |
 
 ## 4. Security Principles
 
@@ -215,8 +217,9 @@ merely unconventional.
 | `SECP2` | A dependency AEOS's own implementation adopts is drawn from AEOS-TECH's already-governed set; this document introduces no technology of its own and narrows no tier AEOS-TECH already assigns. |
 | `SECP3` | A security report is safety-relevant input and follows the safe path by default: an uncertain report is triaged, never dismissed, consistent with AEOS-PRD `PR-SAF-001` and `PR-SAF-002`. |
 | `SECP4` | Review of a security-relevant change is identical regardless of whether the change originates from a human Contributor or an AI runtime acting as one. |
-| `SECP5` | A gap this document has not yet decided — a contact address, a response-time commitment, a version-support table — is recorded as a Non-Goal and left open rather than filled by assumption. |
+| `SECP5` | A gap this document has not yet decided — a contact address, a response-time commitment, a version-support table, a formal severity scale — is recorded as a Non-Goal and left open rather than filled by assumption. |
 | `SECP6` | This document states policy and procedure. It grants no product capability, performs no configuration, and enables no platform feature of its own; doing so remains an action taken outside this document. |
+| `SECP7` | Where a Specification document already states the precise, testable behavioral rule a subject depends on, this document cites it by identifier and states no competing rule of its own, consistent with AEOS-DOCSTD Section 5.2. |
 
 ## 5. Supported Versions
 
@@ -228,12 +231,18 @@ merely unconventional.
 
 ## 6. Reporting Vulnerabilities
 
+> **How to report, in short.** Non-normative. Open this repository on GitHub, go to its **Security**
+> tab, and use **Report a vulnerability**. `SEC-005` requires that button to exist before this
+> document is published as the repository's live security policy — if it is missing, the copy of
+> this document being read is not yet in effect. Do not open a public issue, discussion, or pull
+> request for a vulnerability ([Section 9](#9-responsible-disclosure) states what to include).
+
 | ID | Rule | Traces to |
 | :--- | :--- | :--- |
 | `SEC-004` | A vulnerability in AEOS MUST NOT be reported through a public GitHub issue, a public discussion, or a public pull request. | `PR-SAF-008`, disclosure before exposure |
-| `SEC-005` | The designated reporting channel is the repository's own private vulnerability reporting mechanism, where a maintainer has enabled it, consistent with [Section 8](#8-security-contact). | [Section 8](#8-security-contact) |
-| `SEC-006` | A report SHOULD state the specific location affected and, where the reporter can state it, enough detail for a maintainer to reproduce the condition without further correspondence, consistent with the specificity AEOS-DOCSTD `12.4` already requires of a documentation finding. | AEOS-DOCSTD Section 12.4 |
-| `SEC-007` | A report concerning a Developer's own governed Project, rather than AEOS itself, is out of this document's scope, per [Section 16](#16-non-goals), and is directed to that Project's own security practice instead. | [Section 16](#16-non-goals) |
+| `SEC-005` | The designated reporting channel is the repository's own private vulnerability reporting feature. This document MUST NOT be committed to the repository as `docs/SECURITY.md` until that feature is enabled and its reporting button confirmed visible, per [Section 19.4](#194-review-policy). | [Section 8](#8-security-contact) |
+| `SEC-006` | A report SHOULD state the specific location affected and, where the reporter can state it, enough detail for a maintainer to reproduce the condition without further correspondence, consistent with [Appendix A](#appendix-a--reporting-checklist-non-normative). | AEOS-DOCSTD Section 12.4 |
+| `SEC-007` | A report concerning a Developer's own governed Project, rather than AEOS itself, is out of this document's scope, per [Section 2.3](#23-applicability) and `NG-8`, and is directed to that Project's own security practice instead. | [Section 2.3](#23-applicability) |
 
 ## 7. Disclosure Process
 
@@ -241,17 +250,22 @@ merely unconventional.
 | :--- | :--- | :--- |
 | `SEC-008` | A received report MUST be acknowledged, triaged, and, where confirmed, tracked privately until a fix is available, consistent with the coordinated-disclosure mechanism named in [Section 8](#8-security-contact). | `PR-SAF-002` |
 | `SEC-009` | This document states no fixed acknowledgment or resolution time. A specific target, once the owner records one, is added here under ordinary change control ([Section 19.2](#192-change-control)) rather than assumed. | `SECP5` |
-| `SEC-010` | A confirmed vulnerability is disclosed publicly only after a fix is available, or after coordination with the reporter concludes, whichever the owner determines first serves users still exposed. | `PR-SAF-001` |
+| `SEC-010` | A confirmed vulnerability is disclosed publicly only after a fix is available, or after coordination with the reporter concludes, whichever the owner — this document's own Owner field — determines first serves users still exposed. | `PR-SAF-001` |
 | `SEC-011` | Public disclosure MUST NOT include exploit detail sufficient for reproduction beyond what a published fix already reveals, until users have had a reasonable opportunity to update. | `PR-SAF-001` |
 | `SEC-012` | A declined report — one found not to be a vulnerability, or out of scope under [Section 16](#16-non-goals) — is closed with the reason stated to the reporter. | AEOS-DOCSTD `12.4`, cited-reason discipline |
+| `SEC-013` | A triaged report is disposed as a confirmed vulnerability, a declined report per `SEC-012`, or a finding classified Critical, Major, Minor, or Nitpick, using the same scheme [Section 15](#15-security-review-expectations) applies to the resulting change. This document states no severity scale beyond that one; see `NG-11`. | [Section 15](#15-security-review-expectations), `NG-11` |
 
 ## 8. Security Contact
 
+This document uses *owner* to mean the party recorded in this document's own **Owner** metadata field,
+and *maintainer* to mean any Contributor with administrative access to the repository. Neither is an
+AEOS-GLOSSARY-defined term, and this document establishes no dedicated security-maintainer role or
+security team distinct from the two, per `NG-12`.
+
 | ID | Rule | Traces to |
 | :--- | :--- | :--- |
-| `SEC-013` | The repository's private vulnerability reporting feature, where the repository owner or an administrator has enabled it, is the designated channel for a vulnerability report. This document does not itself enable that feature; doing so is an action taken outside this document, consistent with `SECP6`. | `SECP6` |
-| `SEC-014` | This document does not designate a dedicated security-contact address. Where the owner establishes one, it is recorded here under ordinary change control, and this rule is retired in place, consistent with AEOS-DOCSTD `E3`. | AEOS-DOCSTD `E3`, `SECP5` |
-| `SEC-015` | While private vulnerability reporting is not yet enabled and no dedicated address is designated, a reporter contacts a maintainer through the repository's ordinary, non-public channels rather than a public issue, consistent with [Section 6](#6-reporting-vulnerabilities). | [Section 6](#6-reporting-vulnerabilities) |
+| `SEC-014` | The repository's private vulnerability reporting feature is the designated channel for a vulnerability report, and `SEC-005` makes enabling it a precondition of this document taking effect. Enabling the feature is an action a maintainer takes outside this document, consistent with `SECP6`. | `SECP6`, [Section 6](#6-reporting-vulnerabilities) |
+| `SEC-015` | This document does not designate a dedicated security-contact address distinct from the channel `SEC-014` names. Where the owner establishes one, it is recorded here under ordinary change control, and this rule is retired in place, consistent with AEOS-DOCSTD `E3`. | AEOS-DOCSTD `E3`, `SECP5` |
 
 ## 9. Responsible Disclosure
 
@@ -269,7 +283,7 @@ merely unconventional.
 | `SEC-020` | No credential, secret, or Runtime State record is committed at any path in the AEOS repository. | AEOS-LAYOUT `LAYOUT-033` · AEOS-BOOT `BOOT-024` |
 | `SEC-021` | A change to the AEOS repository is admitted only through review, consistent with [Section 15](#15-security-review-expectations); a repository hosting configuration SHOULD enforce this with a required-review setting where the hosting platform provides one. | `PR-REP-011` |
 | `SEC-022` | Secret-scanning and dependency-auditing tooling AEOS-TECH `TC-20` recognizes SHOULD be applied to the AEOS repository itself, not only recommended to a Developer's governed Project. | AEOS-TECH `TC-20` |
-| `SEC-023` | A security tool's default configuration path that would add a new repository-root entry or top-level directory is a conflict between that tool's convention and AEOS-LAYOUT `LAYOUT-004`–`LAYOUT-005`, per [Section 16](#16-non-goals), and MUST be reported rather than silently accommodated by an undocumented root-level addition. | AEOS-LAYOUT `LAYOUT-004`–`LAYOUT-005` |
+| `SEC-023` | A security tool's default configuration path that would add a new repository-root entry or top-level directory is a conflict between that tool's convention and AEOS-LAYOUT `LAYOUT-004`–`LAYOUT-005`, per `NG-9`, and MUST be reported rather than silently accommodated by an undocumented root-level addition. | AEOS-LAYOUT `LAYOUT-004`–`LAYOUT-005` |
 | `SEC-024` | Where AEOS-TECH `TC-18` recognizes the repository's hosting platform, that platform's own built-in vulnerability- and secret-scanning features SHOULD be enabled at the repository owner's discretion; enabling them is a repository configuration action outside this document's own authority, consistent with `SECP6`. | AEOS-TECH `TC-18`, `SECP6` |
 
 ## 11. AI Supply Chain Considerations
@@ -284,50 +298,61 @@ behalf, per AEOS-GLOSSARY's *Contributor* entry.
 | :--- | :--- | :--- |
 | `SEC-025` | Every external AI Runtime, Model, or AI Provider AEOS integrates with MUST already be recognized, or be under evaluation, in AEOS-TECH's `TC-09`, `TC-10`, or `TC-11` categories; this document does not itself list, recommend, or endorse one, consistent with `TG-080` through `TG-087`. | AEOS-TECH `TC-09`–`TC-11`, `TG-080`–`TG-087` |
 | `SEC-026` | AEOS MUST NOT transmit repository content to a Runtime the user has not selected and approved, and MUST report what will leave the machine before it leaves. | `PR-SAF-007` · `PR-SAF-008` |
-| `SEC-027` | A Model's registration MUST record the identity of its declaring adapter alongside the Model's identifier, and MUST be available for inspection before a workflow step that depends on it begins. | `MODEL_REGISTRY.md` `SP-MDL-022` · `SP-MDL-023` |
-| `SEC-028` | The Model Registry and Runtime Registry behaviors MUST NOT privilege one Model, Runtime, or Vendor over another in what they make discoverable. | `MODEL_REGISTRY.md` `SP-MDL-047` · `SP-MDL-049`; AEOS-VISION `V6` |
-| `SEC-029` | A Contributor's proposed change is reviewed identically whether authored by a person or by an AI runtime acting as a Contributor, consistent with `SECP4`; an AI runtime's output MUST NOT be presented as an observed fact. | AEOS-GLOSSARY *Contributor*; `PR-SAF-011` · `PR-REP-011` |
-| `SEC-030` | A dependency, Rule, Skill, Prompt, Template, or Workflow an AI runtime proposes is subject to the same [Dependency Policy](#12-dependency-policy) and [Repository Security](#10-repository-security) rules as one a human Contributor proposes; origin MUST NOT exempt an addition from review. | `SECP4`, [Section 12](#12-dependency-policy), [Section 10](#10-repository-security) |
+| `SEC-027` | A Contributor's proposed change is reviewed identically whether authored by a person or by an AI runtime acting as a Contributor, consistent with `SECP4`; an AI runtime's output MUST NOT be presented as an observed fact. | AEOS-GLOSSARY *Contributor*; `PR-SAF-011` · `PR-REP-011` |
+| `SEC-028` | A dependency, Rule, Skill, Prompt, Template, or Workflow an AI runtime proposes is subject to the same [Dependency Policy](#12-dependency-policy) and [Repository Security](#10-repository-security) rules as one a human Contributor proposes; origin MUST NOT exempt an addition from review. | `SECP4`, [Section 12](#12-dependency-policy), [Section 10](#10-repository-security) |
+
+What a Model's registration records, and the non-privileging obligation the Model Registry and
+Runtime Registry behaviors carry toward every Model, Runtime, and Vendor, are stated in
+`MODEL_REGISTRY.md` (`SP-MDL-022`, `SP-MDL-023`, `SP-MDL-047`, `SP-MDL-049`) and are consistent with
+AEOS-VISION `V6`. This document states no independent rule about either and refers a reader there
+directly, per `SECP7`.
 
 ## 12. Dependency Policy
 
 | ID | Rule | Traces to |
 | :--- | :--- | :--- |
-| `SEC-031` | Every dependency AEOS's own implementation adopts MUST already be recognized by AEOS-TECH at Officially Supported or Preferred tier, or MUST first be proposed as a Candidate there, consistent with `TG-080`, `TG-082`, and `TG-083`. | AEOS-TECH `TG-080`, `TG-082`, `TG-083` |
-| `SEC-032` | A dependency MUST satisfy the gating criteria AEOS-TECH `TG-040` through `TG-046` state, including replaceability, local operability, active maintenance, and no secret exposure. | AEOS-TECH `TG-040`–`TG-046` |
-| `SEC-033` | The version of every adopted dependency SHOULD track its supplier's current security-support lifecycle, consistent with `TG-062`, and MUST NOT remain on a version that has reached supplier end-of-life once `TG-063`'s deprecation applies. | AEOS-TECH `TG-062` · `TG-063` |
-| `SEC-034` | A security or licensing emergency MAY compress the deprecation period an otherwise-applicable dependency change would require, consistent with `TG-071`; the compression and its reason MUST be recorded. | AEOS-TECH `TG-071` |
-| `SEC-035` | Dependency and secret auditing SHOULD be performed using tooling AEOS-TECH `TC-20` recognizes at Officially Supported or Conditionally Supported tier. | AEOS-TECH `TC-20` |
-| `SEC-036` | A dependency's removal for a security reason MAY bypass the standard one-minor-release deprecation notice `TG-033` otherwise requires, provided the exception and its rationale are recorded, consistent with `TG-033`'s sole stated exception. | AEOS-TECH `TG-033` |
+| `SEC-029` | Every dependency AEOS's own implementation adopts MUST already be recognized by AEOS-TECH at Officially Supported or Preferred tier, or MUST first be proposed as a Candidate there, consistent with `TG-080`, `TG-082`, and `TG-083`. | AEOS-TECH `TG-080`, `TG-082`, `TG-083` |
+| `SEC-030` | A dependency MUST satisfy the gating criteria AEOS-TECH `TG-040` through `TG-046` state, including replaceability, local operability, active maintenance, and no secret exposure. | AEOS-TECH `TG-040`–`TG-046` |
+| `SEC-031` | The version of every adopted dependency SHOULD track its supplier's current security-support lifecycle, consistent with `TG-062`, and MUST NOT remain on a version that has reached supplier end-of-life once `TG-063`'s deprecation applies. | AEOS-TECH `TG-062` · `TG-063` |
+| `SEC-032` | A security or licensing emergency MAY compress the deprecation period an otherwise-applicable dependency change would require, consistent with `TG-071`; the compression and its reason MUST be recorded. | AEOS-TECH `TG-071` |
+| `SEC-033` | Dependency and secret auditing SHOULD be performed using tooling AEOS-TECH `TC-20` recognizes at Officially Supported or Conditionally Supported tier. | AEOS-TECH `TC-20` |
+| `SEC-034` | A dependency's removal for a security reason MAY bypass the standard one-minor-release deprecation notice `TG-033` otherwise requires, provided the exception and its rationale are recorded, consistent with `TG-033`'s sole stated exception. | AEOS-TECH `TG-033` |
 
 ## 13. Secrets Policy
 
 | ID | Rule | Traces to |
 | :--- | :--- | :--- |
-| `SEC-037` | A credential or a secret MUST NOT be placed in a prompt, a log, a report, documentation, or a Repository Asset. | `PR-SAF-006` · `PR-REP-013` · `PR-PMT-008` |
-| `SEC-038` | No file at any path in the AEOS repository MUST contain a credential, a secret, or a Runtime State record. | AEOS-LAYOUT `LAYOUT-033` · AEOS-BOOT `BOOT-011` · `BOOT-024` |
-| `SEC-039` | A Runtime Adapter MUST NOT record a credential in any durable artifact, including its own declaration, and MUST hold a credential its mediated Runtime requires only as Runtime State, for no longer than the invocation it authorizes. | `RUNTIME_ADAPTER_SPEC.md` `SP-ADP-065` · `SP-ADP-066` |
-| `SEC-040` | The Runtime Registry and the Model Registry behaviors MUST NOT hold or expose a credential. | `RUNTIME_REGISTRY.md` `RT-REG-003` · `RT-REG-009` · `RT-REG-011`; `MODEL_REGISTRY.md` `SP-MDL-051` |
-| `SEC-041` | Where a secret is stored on a Contributor's or a Developer's own machine, it SHOULD be stored using a platform-native credential store AEOS-TECH `TC-20` lists at Preferred tier, and MUST NOT be committed to the repository in a configuration file, consistent with `TC-20`'s Not Recommended entry. | AEOS-TECH `TC-20` |
+| `SEC-035` | A credential or a secret MUST NOT be placed in a prompt, a log, a report, documentation, or a Repository Asset. | `PR-SAF-006` · `PR-REP-013` · `PR-PMT-008` |
+| `SEC-036` | No file at any path in the AEOS repository MUST contain a credential, a secret, or a Runtime State record. | AEOS-LAYOUT `LAYOUT-033` · AEOS-BOOT `BOOT-011` · `BOOT-024` |
+| `SEC-037` | Where a secret is stored on a Contributor's or a Developer's own machine, it SHOULD be stored using a platform-native credential store AEOS-TECH `TC-20` lists at Preferred tier, and MUST NOT be committed to the repository in a configuration file, consistent with `TC-20`'s Not Recommended entry. | AEOS-TECH `TC-20` |
+
+Credential custody within a Runtime Adapter, the Runtime Registry, and the Model Registry is governed
+precisely and testably by `RUNTIME_ADAPTER_SPEC.md` (`SP-ADP-065`, `SP-ADP-066`), `RUNTIME_REGISTRY.md`
+(`RT-REG-003`, `RT-REG-009`, `RT-REG-011`), and `MODEL_REGISTRY.md` (`SP-MDL-051`). This document
+states no independent rule about any of them and refers a reader there directly, for the reason
+[Section 11](#11-ai-supply-chain-considerations) already states.
 
 ## 14. Release Security
 
+Every rule below is forward policy: `SEC-038` records that no release yet exists, and `SEC-039`
+through `SEC-041` govern a release once one does. None describes a current operational fact.
+
 | ID | Rule | Traces to |
 | :--- | :--- | :--- |
-| `SEC-042` | AEOS has not yet reached a first Distribution-bearing release under AEOS-PRD Section 22. This section states the policy that governs a release once one exists; it does not describe a current operational fact. | AEOS-PRD Section 22, `SECP5` |
-| `SEC-043` | Every release MUST report its version and origin. | `PR-DST-008` |
-| `SEC-044` | Where a release artifact is produced, it SHOULD be signed, or accompanied by a software bill of materials, using a mechanism AEOS-TECH `TC-20` already recognizes at Conditionally Supported tier; this document introduces no signing or attestation mechanism of its own. | AEOS-TECH `TC-20`, `TG-085` |
-| `SEC-045` | A security or licensing emergency MAY compress an otherwise-applicable release or removal notice period, consistent with `TG-071`, and MUST be recorded with its reason. | AEOS-TECH `TG-071` |
+| `SEC-038` | AEOS has not yet reached a first Distribution-bearing release under AEOS-PRD Section 22. | AEOS-PRD Section 22, `SECP5` |
+| `SEC-039` | Every release MUST report its version and origin. | `PR-DST-008` |
+| `SEC-040` | Where a release artifact is produced, it SHOULD be signed, or accompanied by a software bill of materials, using a mechanism AEOS-TECH `TC-20` already recognizes at Conditionally Supported tier; this document introduces no signing or attestation mechanism of its own. | AEOS-TECH `TC-20`, `TG-085` |
+| `SEC-041` | A security or licensing emergency MAY compress an otherwise-applicable release or removal notice period, consistent with `TG-071`, and MUST be recorded with its reason. | AEOS-TECH `TG-071` |
 
 ## 15. Security Review Expectations
 
 | ID | Rule | Traces to |
 | :--- | :--- | :--- |
-| `SEC-046` | A change addressing a security-relevant defect follows the TDD workflow AEOS-PRD `PR-TDD-001` through `PR-TDD-008` state, including a test demonstrating the defect before the fix, where a test can express it. | `PR-TDD-001`–`PR-TDD-008` |
-| `SEC-047` | A review of a security-relevant change classifies findings as Critical, Major, Minor, or Nitpick, consistent with AEOS-GLOSSARY's *Review* entry and `PR-REP-011`, and MUST NOT redesign the change under review. | AEOS-GLOSSARY *Review*; `PR-REP-011` |
-| `SEC-048` | A security-relevant Critical or Major finding MUST be resolved, or escalated to the owner, before the change is merged; it MUST NOT be deferred to a later revision by a reviewer's discretion alone. | `PR-SAF-002` |
-| `SEC-049` | A security advisory, once published, MUST record what was affected and what was fixed, and, where determinable, the earliest affected point. | `PR-REP-012` |
-| `SEC-050` | Credit for a reported vulnerability MAY be recorded at the reporter's request, and MUST NOT be recorded against the reporter's request. | `PR-NFR-001` |
+| `SEC-042` | A change addressing a security-relevant defect follows the TDD workflow AEOS-PRD `PR-TDD-001` through `PR-TDD-008` state, including a test demonstrating the defect before the fix, where a test can express it. | `PR-TDD-001`–`PR-TDD-008` |
+| `SEC-043` | A review of a security-relevant change classifies findings as Critical, Major, Minor, or Nitpick, consistent with AEOS-GLOSSARY's *Review* entry and `PR-REP-011`, and MUST NOT redesign the change under review. | AEOS-GLOSSARY *Review*; `PR-REP-011` |
+| `SEC-044` | A security-relevant Critical or Major finding MUST be resolved, or escalated to the owner, before the change is merged; it MUST NOT be deferred to a later revision by a reviewer's discretion alone. | `PR-SAF-002` |
+| `SEC-045` | A security advisory, once published, MUST record what was affected and what was fixed, and, where determinable, the earliest affected point. | `PR-REP-012` |
+| `SEC-046` | Credit for a reported vulnerability MAY be recorded at the reporter's request, and MUST NOT be recorded against the reporter's request. | `PR-NFR-001` |
 
 ## 16. Non-Goals
 
@@ -338,13 +363,15 @@ This document deliberately does not decide the following.
 | `NG-1` | Establishing a CVE Numbering Authority role, or assigning CVE identifiers, for AEOS. | The owner, should AEOS later pursue CNA status; not decided here. |
 | `NG-2` | Establishing a bug-bounty or monetary reward program. | The owner; a future decision this document does not anticipate. |
 | `NG-3` | Stating a fixed acknowledgment or resolution-time commitment. | The owner, recorded here under ordinary change control once set. See `SEC-009`. |
-| `NG-4` | Designating a dedicated security-contact address. | The owner. See `SEC-014`. |
+| `NG-4` | Designating a dedicated security-contact address. | The owner. See `SEC-015`. |
 | `NG-5` | Stating a version-specific support table. | This document, once AEOS reaches a first Distribution-bearing release under AEOS-PRD Section 22. See [Section 5](#5-supported-versions). |
 | `NG-6` | Claiming an external security certification or compliance attestation (for example, SOC 2 or ISO/IEC 27001) for AEOS. | The owner, should such an attestation later be pursued. |
 | `NG-7` | Establishing CI/CD security-scanning configuration for the AEOS repository. | The project's own delivery systems, consistent with the reasoning AEOS-BOOT `BOOT-012` states for Bootstrap. |
 | `NG-8` | Stating security guidance for a Developer's own governed Project. | The Developer's own conventions and, where applicable, AEOS-TECH, per AEOS-TECH Section 2.2. |
 | `NG-9` | Resolving where a security tool's default root-level configuration file is placed, where its convention conflicts with AEOS-LAYOUT `LAYOUT-004` or `LAYOUT-005`. | AEOS-LAYOUT's own change control, or the tool's non-default configuration option, at the owner's discretion. See `SEC-023`. |
 | `NG-10` | Cryptographic implementation guidance. | Not applicable — AEOS performs no inference and provides no cryptographic implementation of its own, per AEOS-VISION `V1`. |
+| `NG-11` | A formal severity-classification scheme, such as CVSS, beyond the Critical/Major/Minor/Nitpick classification `SEC-013` and [Section 15](#15-security-review-expectations) already apply. | The owner, should a finer scale later prove necessary; not decided here. |
+| `NG-12` | Establishing a dedicated security-maintainer role or security team distinct from the owner and maintainer roles [Section 8](#8-security-contact) already names. | The owner, should AEOS's scale later warrant one. |
 
 ## 17. Traceability
 
@@ -356,19 +383,19 @@ Every `SEC-` rule states its own trace inline, in [Sections 5](#5-supported-vers
 | `PR-` identifier | `SEC-` rules that trace to it |
 | :--- | :--- |
 | `PR-SAF-001` | `010`, `011`, `017` |
-| `PR-SAF-002` | `008`, `019` (via `SECP3`), `048` |
-| `PR-SAF-006` | `037` |
+| `PR-SAF-002` | `008`, `019` (via `SECP3`), `044` |
+| `PR-SAF-006` | `035` |
 | `PR-SAF-007` | `026` |
 | `PR-SAF-008` | `004`, `026` |
 | `PR-SAF-009` | `018` |
-| `PR-SAF-011` | `029` |
-| `PR-REP-011` | `021`, `029`, `047` |
-| `PR-REP-012` | `049` |
-| `PR-REP-013` | `037` |
-| `PR-PMT-008` | `037` |
-| `PR-DST-008` | `003`, `043` |
-| `PR-NFR-001` | `050` |
-| `PR-TDD-001`–`PR-TDD-008` | `046` |
+| `PR-SAF-011` | `027` |
+| `PR-REP-011` | `021`, `027`, `043` |
+| `PR-REP-012` | `045` |
+| `PR-REP-013` | `035` |
+| `PR-PMT-008` | `035` |
+| `PR-DST-008` | `003`, `039` |
+| `PR-NFR-001` | `046` |
+| `PR-TDD-001`–`PR-TDD-008` | `042` |
 
 ### 17.2 AEOS-TECH
 
@@ -376,35 +403,37 @@ Every `SEC-` rule states its own trace inline, in [Sections 5](#5-supported-vers
 | :--- | :--- |
 | `TC-09`–`TC-11` | `025` |
 | `TC-18` | `024` |
-| `TC-20` | `022`, `035`, `041`, `044` |
-| `TG-033` | `036` |
-| `TG-040`–`TG-046` | `032` |
-| `TG-062` | `033` |
-| `TG-063` | `033` |
-| `TG-071` | `034`, `045` |
-| `TG-080`, `TG-082`, `TG-083` | `025`, `031` |
-| `TG-085` | `044` |
+| `TC-20` | `022`, `033`, `037`, `040` |
+| `TG-033` | `034` |
+| `TG-040`–`TG-046` | `030` |
+| `TG-062` | `031` |
+| `TG-063` | `031` |
+| `TG-071` | `032`, `041` |
+| `TG-080`, `TG-082`, `TG-083` | `025`, `029` |
+| `TG-085` | `040` |
 
 ### 17.3 Specification and Runtime Documents
 
-| Document rule | `SEC-` rules that trace to it |
+Cited directly in prose in [Section 11](#11-ai-supply-chain-considerations) and
+[Section 13](#13-secrets-policy), not restated as an independent `SEC-` rule, consistent with `SECP7`.
+
+| Document rule | Cited from |
 | :--- | :--- |
-| `RUNTIME_ADAPTER_SPEC.md` `SP-ADP-065`, `SP-ADP-066` | `039` |
-| `MODEL_REGISTRY.md` `SP-MDL-022`, `SP-MDL-023` | `027` |
-| `MODEL_REGISTRY.md` `SP-MDL-047`, `SP-MDL-049` | `028` |
-| `MODEL_REGISTRY.md` `SP-MDL-051` | `040` |
-| `RUNTIME_REGISTRY.md` `RT-REG-003`, `RT-REG-009`, `RT-REG-011` | `040` |
+| `RUNTIME_ADAPTER_SPEC.md` `SP-ADP-065`, `SP-ADP-066` | [Section 13](#13-secrets-policy) |
+| `MODEL_REGISTRY.md` `SP-MDL-022`, `SP-MDL-023`, `SP-MDL-047`, `SP-MDL-049` | [Section 11](#11-ai-supply-chain-considerations) |
+| `MODEL_REGISTRY.md` `SP-MDL-051` | [Section 13](#13-secrets-policy) |
+| `RUNTIME_REGISTRY.md` `RT-REG-003`, `RT-REG-009`, `RT-REG-011` | [Section 13](#13-secrets-policy) |
 
 ### 17.4 AEOS-BOOT and AEOS-LAYOUT
 
 | Document rule | `SEC-` rules that trace to it |
 | :--- | :--- |
-| AEOS-BOOT `BOOT-011` | `038` |
+| AEOS-BOOT `BOOT-011` | `036` |
 | AEOS-BOOT `BOOT-012` | `NG-7` |
-| AEOS-BOOT `BOOT-024` | `020`, `038` |
+| AEOS-BOOT `BOOT-024` | `020`, `036` |
 | AEOS-LAYOUT `LAYOUT-004`–`LAYOUT-005` | `023`, `NG-9` |
 | AEOS-LAYOUT `LAYOUT-016` | Document placement, [Authority statement](#aeos--security-policy) |
-| AEOS-LAYOUT `LAYOUT-033` | `020`, `038` |
+| AEOS-LAYOUT `LAYOUT-033` | `020`, `036` |
 
 ## 18. References
 
@@ -413,8 +442,8 @@ Every `SEC-` rule states its own trace inline, in [Sections 5](#5-supported-vers
 | AEOS-PRD `PR-SAF`, `PR-REP`, `PR-PMT`, `PR-RUN`, `PR-DST`, `PR-NFR`, `PR-TDD` | The requirement families [Section 17](#17-traceability) traces `SEC-` rules to. |
 | AEOS-PRD Section 22, Release Phases | The absence of a first release, which [Sections 5](#5-supported-versions) and [14](#14-release-security) state rather than assume around. |
 | AEOS-GLOSSARY *Contributor*, *Developer*, *Repository Asset*, *Runtime State*, *Runtime*, *Vendor*, *Review*, *Distribution Method* entries | The terms this document uses without redefinition. |
-| AEOS-DOCSTD Section 4.1, 4.3 | The Implementation Guide layer's position and purpose, which this document is written under. |
-| AEOS-DOCSTD `DS-P-10`, `E3`, Section 12.4 | The gap-recording, retirement, and finding-specificity discipline [Sections 5](#5-supported-versions), [8](#8-security-contact), [6](#6-reporting-vulnerabilities), and [12.1](#16-non-goals) apply. |
+| AEOS-DOCSTD Section 4.1, 4.3, 5.2 | The Implementation Guide layer's position and purpose, and the convenience-restatement antipattern [Sections 11](#11-ai-supply-chain-considerations) and [13](#13-secrets-policy) avoid. |
+| AEOS-DOCSTD `DS-P-10`, `E3`, Section 12.4 | The gap-recording, retirement, and finding-specificity discipline [Sections 5](#5-supported-versions), [8](#8-security-contact), [6](#6-reporting-vulnerabilities), and [16](#16-non-goals) apply. |
 | AEOS-TECH `TC-09`–`TC-11`, `TC-18`, `TC-20` | The recognized technology categories [Sections 10](#10-repository-security), [11](#11-ai-supply-chain-considerations), [12](#12-dependency-policy), [13](#13-secrets-policy), and [14](#14-release-security) draw from without restating. |
 | AEOS-TECH `TG-033`, `TG-040`–`TG-046`, `TG-060`–`TG-065`, `TG-071`, `TG-080`–`TG-087` | The dependency lifecycle, gating, and source-of-truth rules [Section 12](#12-dependency-policy) applies by reference. |
 | AEOS-BOOT `BOOT-002`, `BOOT-004`, `BOOT-007`, `BOOT-011`, `BOOT-012`, `BOOT-024` | The bootstrap and placement rules this document's own placement and [Sections 10](#10-repository-security) and [13](#13-secrets-policy) remain consistent with. |
@@ -428,7 +457,7 @@ Every `SEC-` rule states its own trace inline, in [Sections 5](#5-supported-vers
 This document is a **Draft**. It is the first Security Policy authored for AEOS, and is intended to
 become the Security Source of Truth once the owner's review under [Section 19.4](#194-review-policy)
 records no Critical or Major finding, at which point it is intended to be placed at `docs/SECURITY.md`
-as its own metadata block already states.
+as its own metadata block already states — subject to `SEC-005`'s precondition being met first.
 
 ### 19.2 Change Control
 
@@ -460,10 +489,14 @@ before recommending freeze:
 - [ ] Every rule in [Sections 5](#5-supported-versions) through
       [15](#15-security-review-expectations) carries a `SEC-<NNN>` identifier and a trace.
 - [ ] No rule states a repository-initialization procedure, a runtime behavior, an architectural
-      decision, a product requirement, or a technology absent from AEOS-TECH.
-- [ ] No section states a fixed response-time commitment, a dedicated contact address, or a
-      version-support table not already recorded as a Non-Goal.
+      decision, a product requirement, a technology absent from AEOS-TECH, or a precise behavioral
+      rule a Specification document already owns (`SECP7`).
+- [ ] No section states a fixed response-time commitment, a dedicated contact address, a
+      version-support table, or a formal severity scale not already recorded as a Non-Goal.
 - [ ] No credential, secret, or contact detail is fabricated anywhere in this document.
+- [ ] The repository's private vulnerability reporting feature is enabled and its "Report a
+      vulnerability" button is confirmed visible, before this document is committed as the
+      repository's live `docs/SECURITY.md` (`SEC-005`).
 - [ ] All twenty-one entries in this document's Table of Contents are present, in order, and none
       is silently empty.
 - [ ] No Critical or Major finding remains open.
@@ -483,7 +516,7 @@ before recommending freeze:
 
 | Version | Status | Summary |
 | :--- | :--- | :--- |
-| 1.0.0 | Draft | Initial Security Policy. States the reporting channel, disclosure process, and responsible-disclosure expectations for a vulnerability in AEOS itself; a security contact section that designates GitHub's own private vulnerability reporting as the channel and explicitly declines to fabricate a dedicated contact address, recorded as `NG-4`; repository-security, AI supply-chain, dependency, secrets, release-security, and security-review-expectations sections drawn entirely from already-governed `PR-`, `TG-`, `SP-`, `RT-`, `LAYOUT-`, and `BOOT-` identifiers; a Supported Versions section that records AEOS's pre-release status rather than inventing a version table, per `NG-5`; ten explicit Non-Goals; and fifty `SEC-<NNN>` rules in total. States, in its own authority statement, the reasoning for placing this document directly under `docs/` rather than in a layer-specific subdirectory or at the repository root, consistent with the precedent AEOS-LAYOUT Section 5.2 records for its own placement. Introduces no product requirement, no vision, no terminology, no architectural decision, no Blueprint arrangement, and no specified behavior. Redefines nothing stated by AEOS-VISION, AEOS-PRD, AEOS-GLOSSARY, AEOS-DOCSTD, AEOS-TECH, AEOS-BOOT, AEOS-LAYOUT, or any Specification document. |
+| 1.0.0 | Draft | Initial Security Policy. States the reporting channel, disclosure process, and responsible-disclosure expectations for a vulnerability in AEOS itself, including a non-normative "how to report" lead-in and a rule (`SEC-005`) making the repository's private-vulnerability-reporting feature a precondition of this document taking effect rather than a standing hedge; a Security Contact section that disambiguates *owner* and *maintainer* and explicitly declines to fabricate a dedicated contact address, recorded as `NG-4`; a triage rule (`SEC-013`) that ties report disposition to the existing Critical/Major/Minor/Nitpick classification instead of a new severity scale, with a corresponding Non-Goal (`NG-11`) and a Non-Goal recording that no dedicated security-maintainer role is established (`NG-12`); repository-security, AI supply-chain, dependency, secrets, release-security, and security-review-expectations sections drawn entirely from already-governed `PR-`, `TG-`, `LAYOUT-`, and `BOOT-` identifiers, with adapter, registry, and model-security behavior cited directly from `RUNTIME_ADAPTER_SPEC.md`, `MODEL_REGISTRY.md`, and `RUNTIME_REGISTRY.md` in prose rather than restated as independent `SEC-` rules, consistent with new principle `SECP7` and AEOS-DOCSTD Section 5.2; a Supported Versions section that records AEOS's pre-release status rather than inventing a version table, per `NG-5`; twelve explicit Non-Goals; and forty-six `SEC-<NNN>` rules in total. States, in its own authority statement, the reasoning for placing this document directly under `docs/` rather than in a layer-specific subdirectory or at the repository root, and notes that whether AEOS's security policy should become a distinct document type is a hierarchy question reserved to the owner under `H5`. Introduces no product requirement, no vision, no terminology, no architectural decision, no Blueprint arrangement, and no specified behavior. Redefines nothing stated by AEOS-VISION, AEOS-PRD, AEOS-GLOSSARY, AEOS-DOCSTD, AEOS-TECH, AEOS-BOOT, AEOS-LAYOUT, or any Specification document. |
 
 ---
 
@@ -495,8 +528,8 @@ carries no authority of its own; where it appears to diverge from those sections
 
 - [ ] The concern is about AEOS itself, not about a Developer's own governed Project (`SEC-007`).
 - [ ] No public GitHub issue, discussion, or pull request has been opened for the concern (`SEC-004`).
-- [ ] The repository's private vulnerability reporting feature has been checked for availability
-      before any other channel is used (`SEC-005`, `SEC-013`).
+- [ ] The repository's **Security** tab shows a **Report a vulnerability** button; if it does not,
+      this copy of the document is not yet in effect (`SEC-005`, `SEC-014`).
 - [ ] The report states the specific location affected and, where known, reproduction detail
       (`SEC-006`).
 - [ ] No investigation has touched another party's repository content or credentials (`SEC-018`).
@@ -512,22 +545,22 @@ carries no authority of its own; where it appears to diverge from those sections
 | :--- | :--- | :--- | :--- |
 | `SEC-001`–`SEC-003` | Supported versions | 3 | [5](#5-supported-versions) |
 | `SEC-004`–`SEC-007` | Reporting vulnerabilities | 4 | [6](#6-reporting-vulnerabilities) |
-| `SEC-008`–`SEC-012` | Disclosure process | 5 | [7](#7-disclosure-process) |
-| `SEC-013`–`SEC-015` | Security contact | 3 | [8](#8-security-contact) |
+| `SEC-008`–`SEC-013` | Disclosure process | 6 | [7](#7-disclosure-process) |
+| `SEC-014`–`SEC-015` | Security contact | 2 | [8](#8-security-contact) |
 | `SEC-016`–`SEC-019` | Responsible disclosure | 4 | [9](#9-responsible-disclosure) |
 | `SEC-020`–`SEC-024` | Repository security | 5 | [10](#10-repository-security) |
-| `SEC-025`–`SEC-030` | AI supply chain considerations | 6 | [11](#11-ai-supply-chain-considerations) |
-| `SEC-031`–`SEC-036` | Dependency policy | 6 | [12](#12-dependency-policy) |
-| `SEC-037`–`SEC-041` | Secrets policy | 5 | [13](#13-secrets-policy) |
-| `SEC-042`–`SEC-045` | Release security | 4 | [14](#14-release-security) |
-| `SEC-046`–`SEC-050` | Security review expectations | 5 | [15](#15-security-review-expectations) |
-| **Total** | | **50** | — |
+| `SEC-025`–`SEC-028` | AI supply chain considerations | 4 | [11](#11-ai-supply-chain-considerations) |
+| `SEC-029`–`SEC-034` | Dependency policy | 6 | [12](#12-dependency-policy) |
+| `SEC-035`–`SEC-037` | Secrets policy | 3 | [13](#13-secrets-policy) |
+| `SEC-038`–`SEC-041` | Release security | 4 | [14](#14-release-security) |
+| `SEC-042`–`SEC-046` | Security review expectations | 5 | [15](#15-security-review-expectations) |
+| **Total** | | **46** | — |
 
 ---
 
 **End of Security Policy**
 
 AEOS-SEC · Version 1.0.0 · Traces to `PR-SAF` · `PR-REP` · `PR-PMT` · `PR-DST` · `PR-NFR` · `PR-TDD`,
-applying AEOS-TECH `TC-09`–`TC-11`, `TC-18`, `TC-20`, AEOS-LAYOUT, AEOS-BOOT, and the adapter, model,
-and registry Specification documents to the security of the AEOS repository itself, without restating
-any of them
+applying AEOS-TECH `TC-09`–`TC-11`, `TC-18`, `TC-20`, AEOS-LAYOUT, and AEOS-BOOT to the security of the
+AEOS repository itself, and citing the adapter, model, and registry Specification documents directly
+rather than restating them
