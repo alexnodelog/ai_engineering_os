@@ -13,8 +13,8 @@
 | **Status** | Draft |
 | **Owner** | Product Owner, AEOS |
 | **Author** | Documentation Governance Board, AEOS |
-| **Audience** | Contributors, community participants, reviewers, and AI runtimes participating in the AEOS repository |
-| **Suggested path** | `docs/developer/CODE_OF_CONDUCT.md` |
+| **Audience** | Contributors, community participants, reviewers, and the AI runtimes that read this document on their behalf |
+| **Suggested path** | `docs/CODE_OF_CONDUCT.md` |
 | **Companion documents** | `AEOS_VISION.md` (AEOS-VISION) · `AEOS_GLOSSARY.md` (AEOS-GLOSSARY) · `AEOS_DOCUMENT_STANDARD.md` (AEOS-DOCSTD) |
 | **Supersedes** | None |
 
@@ -73,6 +73,7 @@ across open-source projects for this purpose — into AEOS's own documentation f
 | `COC-002` | An AEOS community space is the AEOS repository itself, including its issues, pull requests, discussions, and code review comments, together with any other space the project owner designates in writing as an AEOS community space. | — |
 | `COC-003` | This document also applies to an individual's conduct outside an AEOS community space where that individual is officially representing AEOS — for example, using an official AEOS email address, posting from an official AEOS social media account, or acting as an appointed representative at an event. | — |
 | `COC-004` | Where a change or communication a Contributor submits is produced by an AI runtime, the human who submitted it remains responsible for that content's compliance with this document. | AEOS-VISION `V2` · `G6` |
+| `COC-005` | An AI runtime is not itself a subject of this document's enforcement provisions. Only a human participant — including the human operating an AI runtime — is subject to [Section 7](#7-enforcement); an AI runtime's output is addressed through `COC-004`, by way of the human responsible for it. | AEOS-VISION `V2` |
 
 ### 2.2 What This Document Does Not Cover
 
@@ -133,24 +134,25 @@ descriptively rather than as checkable obligations, consistent with [Section 2.3
 
 | ID | Rule |
 | :--- | :--- |
-| `COC-005` | A participant MUST NOT use sexualized language or imagery, or make a sexual advance or give unwelcome sexual attention of any kind, in an AEOS community space. |
-| `COC-006` | A participant MUST NOT engage in trolling, an insulting or derogatory comment, or a personal or political attack directed at another participant. |
-| `COC-007` | A participant MUST NOT engage in public or private harassment of another participant. |
-| `COC-008` | A participant MUST NOT publish another participant's private information — including a physical address, an email address, or other identifying information — without that person's explicit permission. |
-| `COC-009` | A participant MUST NOT engage in conduct that could reasonably be considered inappropriate in a professional setting, beyond the conduct `COC-005` through `COC-008` already name. |
+| `COC-006` | A participant MUST NOT use sexualized language or imagery, or make a sexual advance or give unwelcome sexual attention of any kind, in an AEOS community space. |
+| `COC-007` | A participant MUST NOT engage in trolling, an insulting or derogatory comment, or a personal or political attack directed at another participant. |
+| `COC-008` | A participant MUST NOT engage in public or private harassment of another participant. |
+| `COC-009` | A participant MUST NOT publish another participant's private information — including a physical address, an email address, or other identifying information — without that person's explicit permission. |
+| `COC-010` | A participant MUST NOT engage in conduct that could reasonably be considered inappropriate in a professional setting, beyond the conduct `COC-006` through `COC-009` already name. |
 
 ## 6. Reporting
 
 | ID | Rule |
 | :--- | :--- |
-| `COC-010` | A participant who experiences or witnesses conduct that may violate this document SHOULD report it as soon as reasonably possible, through the channel this section states. |
-| `COC-011` | The specific contact channel through which a report is submitted is reserved to the project owner's designation and is not yet established in this repository's governing documents. Until a channel is designated, a report MUST be directed to the project owner through a channel the project owner has made available outside the public AEOS repository, and MUST NOT be filed as a public issue or comment where the report itself would disclose identifying or sensitive information about anyone involved. |
-| `COC-012` | A report SHOULD include a description of the conduct, when and where it occurred, and any other participant involved, to the extent the reporter can safely provide it. |
-| `COC-013` | A report, and the identity of the reporter, MUST be handled with as much confidentiality as the circumstances allow, and disclosed further only to the extent needed to investigate or address it. |
+| `COC-011` | A participant who experiences or witnesses conduct that may violate this document SHOULD report it as soon as reasonably possible, through the channel this section states. |
+| `COC-012` | The specific contact channel through which a report is submitted is reserved to the project owner's designation and is not yet established in this repository's governing documents. Until a channel is designated, a report MUST be directed to the project owner through a channel the project owner has made available outside the public AEOS repository, and MUST NOT be filed as a public issue or comment where the report itself would disclose identifying or sensitive information about anyone involved. Where the report concerns the conduct of the project owner or of the person the project owner has designated to receive reports, `COC-018` states the recusal rule that applies in place of this rule. |
+| `COC-013` | A report SHOULD include a description of the conduct, when and where it occurred, and any other participant involved, to the extent the reporter can safely provide it. |
+| `COC-014` | A report, and the identity of the reporter, MUST be handled with as much confidentiality as the circumstances allow. Confidentiality cannot be guaranteed in every circumstance — for example, where the nature of the incident, the number of people involved, or a legal obligation requires some disclosure — and it MUST be disclosed further only to the extent needed to investigate or address the report. |
+| `COC-015` | A reporter MAY request a reasonable accommodation in how a report is made, discussed, or followed up on — for example, written rather than live communication — and the person handling the report SHOULD accommodate the request where practicable. |
 
-This document records `COC-011`'s open item as a finished statement about an undecided detail, per
+This document records `COC-012`'s open item as a finished statement about an undecided detail, per
 AEOS-DOCSTD `DS-P-10`: what is undecided is the specific reporting channel; who decides it is the
-project owner; what this document does in the meantime is stated in `COC-011` itself.
+project owner; what this document does in the meantime is stated in `COC-012` itself.
 
 ## 7. Enforcement
 
@@ -158,20 +160,22 @@ project owner; what this document does in the meantime is stated in `COC-011` it
 
 | ID | Rule |
 | :--- | :--- |
-| `COC-014` | The project owner is responsible for clarifying and enforcing this document's standards, and MAY designate another person in writing to assist with enforcement. |
-| `COC-015` | The project owner, or a person designated under `COC-014`, MUST review a report received under [Section 6](#6-reporting) and respond in a manner appropriate to the circumstances. |
-| `COC-016` | The project owner, or a person designated under `COC-014`, MAY remove, edit, or reject a comment, commit, code contribution, wiki edit, issue, or other contribution that does not align with this document, and MUST state the reason for doing so when it is not self-evident from the action itself. |
+| `COC-016` | The project owner is responsible for clarifying and enforcing this document's standards, and MAY designate another person in writing to assist with enforcement. |
+| `COC-017` | The project owner, or a person designated under `COC-016`, MUST review a report received under [Section 6](#6-reporting) and respond in a manner appropriate to the circumstances. |
+| `COC-018` | The project owner, or a person designated under `COC-016`, MUST recuse from reviewing, responding to, or enforcing a specific report where that person is the subject of the report or a named party to the conduct it describes. |
+| `COC-019` | Where `COC-018` requires recusal and no other person is designated to act in the recused person's place, this document records that limitation as a finished statement about an undecided detail, per AEOS-DOCSTD `DS-P-10`: what is undecided is who acts in the recused person's place; who decides it is the project owner, in advance of the need arising; what this document does in the meantime is that the report is held pending a person able to act impartially, rather than being reviewed by the recused person. |
+| `COC-020` | The project owner, or a person designated under `COC-016`, MAY reject a pull request or code contribution that does not align with this document, and MAY remove or edit an issue, comment, wiki edit, or other repository content that does not align with this document, and MUST state the reason for doing so when it is not self-evident from the action itself. |
 
 ### 7.2 Consequences
 
 | ID | Rule |
 | :--- | :--- |
-| `COC-017` | Enforcement action is proportionate to the community impact the conduct caused, following the tiers below, and is not limited to a single tier where the conduct or its impact warrants otherwise. |
+| `COC-021` | Enforcement action is proportionate to the community impact the conduct caused, following the tiers below, and is not limited to a single tier where the conduct or its impact warrants otherwise. |
 
 | Tier | Community impact | Consequence |
 | :--- | :--- | :--- |
 | 1. Correction | A single instance of unclear, unprofessional, or unwelcome conduct. | A private, written explanation of why the conduct was inappropriate, and, where appropriate, a request for a public or private apology. |
-| 2. Warning | A single significant violation, or a pattern of conduct across multiple instances. | A written warning stating the consequence of continued conduct, together with a stated period during which the participant is expected to have no unrequested interaction with those involved, in AEOS community spaces and in any external channel the project owner has authority over. Violating these terms MAY lead to a temporary or permanent ban. |
+| 2. Warning | A single significant violation, or a pattern of conduct across multiple instances. | A written warning stating the consequence of continued conduct, together with a stated period during which the participant is expected to have no unrequested interaction with those involved, in the AEOS community spaces `COC-002` names and the public-representation contexts `COC-003` names. Violating these terms MAY lead to a temporary or permanent ban. |
 | 3. Temporary ban | A serious violation, including a sustained pattern of inappropriate conduct. | A temporary ban from any interaction or public communication with the AEOS community, for a period the project owner states. No public or private interaction with those involved is permitted during that period. Violating these terms MAY lead to a permanent ban. |
 | 4. Permanent ban | A pattern of violation, sustained inappropriate conduct, harassment of an individual, or aggression toward or disparagement of a class of individuals. | A permanent ban from any public interaction within the AEOS community. |
 
@@ -180,7 +184,9 @@ project owner; what this document does in the meantime is stated in `COC-011` it
 ### 8.1 Status
 
 This document is a **Draft**. It is not authoritative until the project owner reviews and approves it,
-per AEOS-DOCSTD Section 12.
+per AEOS-DOCSTD Section 12. Freeze is additionally blocked while `COC-012` and `COC-019` each record an
+undesignated contact, per this document's own Critical-finding threshold in
+[Section 8.3](#83-review-policy).
 
 ### 8.2 Change Control
 
@@ -188,7 +194,7 @@ per AEOS-DOCSTD Section 12.
 | :--- | :--- | :--- |
 | Editorial correction with no change of meaning | Contributor change, project owner acceptance | Patch |
 | Clarification of an existing standard or process | Project owner approval | Minor |
-| Designation or change of the reporting channel (`COC-011`) | Project owner decision, recorded in a revision history entry | Minor |
+| Designation or change of the reporting channel (`COC-012`) or the recusal fallback (`COC-019`) | Project owner decision, recorded in a revision history entry | Minor |
 | Addition of a standard, process, or enforcement tier | Explicit project owner revision request | Major |
 | Removal of a standard or enforcement tier | Explicit project owner decision, recorded, with the reasoning preserved in place | Major |
 
@@ -196,7 +202,10 @@ per AEOS-DOCSTD Section 12.
 
 Reviews of this document classify findings as **Critical**, **Major**, **Minor**, or **Nitpick**, per
 AEOS-DOCSTD Section 12.3, and recommend freezing the document only when no Critical or Major finding
-remains open.
+remains open. `COC-012`'s undesignated reporting channel and `COC-019`'s undesignated recusal fallback
+are each a Critical finding under that classification until the project owner resolves them, because an
+unreachable reporting or enforcement path would cause a reporter to act on incorrect information if this
+document were treated as complete.
 
 ### 8.4 Precedence
 
@@ -211,7 +220,8 @@ remains open.
 
 | Version | Status | Summary |
 | :--- | :--- | :--- |
-| 1.0.0 | Draft | Initial Code of Conduct. Establishes community standards, expected and unacceptable behavior, a reporting path, and a four-tier enforcement ladder, adapted from the Contributor Covenant, version 2.1. Records a deliberate deviation from AEOS-DOCSTD Section 7.3's Developer Guide default against normative language, limited to the sections where an obligation must be checkable to be enforceable. Leaves the specific reporting contact channel undesignated, per `COC-011`, pending a project-owner decision. Introduces no product requirement, no architectural decision, and no redefinition of any AEOS-GLOSSARY term. |
+| 1.0.0 | Draft | Initial Code of Conduct. Establishes community standards, expected and unacceptable behavior, a reporting path, and a four-tier enforcement ladder, adapted from the Contributor Covenant, version 2.1. Records a deliberate deviation from AEOS-DOCSTD Section 7.3's Developer Guide default against normative language, limited to the sections where an obligation must be checkable to be enforceable. Leaves the specific reporting contact channel undesignated, per `COC-012`, pending a project-owner decision. Introduces no product requirement, no architectural decision, and no redefinition of any AEOS-GLOSSARY term. |
+| 1.0.0 | Draft | Revised in response to an external review. Added `COC-005` clarifying that an AI runtime is not itself subject to enforcement. Added `COC-018` and `COC-019`, a recusal rule for a report naming the project owner or a designated enforcer, following the same undesignated-detail pattern `COC-012` already used. Reworded `COC-020` (previously `COC-016`) to separate rejecting a pull request or code contribution from removing or editing repository content that can actually be edited or removed. Aligned Tier 2's external-conduct language with the scope `COC-002` and `COC-003` already state, rather than a separately worded external-channel test. Added `COC-014`'s confidentiality caveat and `COC-015`'s accommodation rule. Changed the suggested path from `docs/developer/CODE_OF_CONDUCT.md` to `docs/CODE_OF_CONDUCT.md`, matching REPOSITORY_LAYOUT.md's own precedent of a repository-structural file sitting directly under `docs/` rather than inside a layer subdirectory, and matching GitHub's documented community-health-file discovery locations (repository root, `.github/`, or the top-level `docs/` folder — not a nested subdirectory). Converted Appendix A's raw URLs to Markdown links. Recorded `COC-012` and `COC-019` as Critical findings blocking freeze, per Section 8.3, rather than leaving the freeze blocker implicit. Introduces no product requirement, no architectural decision, and no redefinition of any AEOS-GLOSSARY term; the suggested-path change is a placement recommendation only and remains subject to the project owner's confirmation, consistent with REPOSITORY_LAYOUT.md and PROJECT_BOOTSTRAP.md, neither of which was accessible for direct re-verification in this session. |
 
 ---
 
@@ -219,20 +229,20 @@ remains open.
 
 **This appendix is non-normative.**
 
-This document adapts the Contributor Covenant, version 2.1, available at
-`https://www.contributor-covenant.org/version/2/1/code_of_conduct.html`, reworded throughout for the
-AEOS repository's documentation form and for the terminology AEOS-GLOSSARY defines. The Contributor
-Covenant is authored by Coraline Ada Ehmke and is made available under the Creative Commons
-Attribution 4.0 International License (`https://creativecommons.org/licenses/by/4.0/`). The four-tier
-enforcement structure in [Section 7.2](#72-consequences) follows the general shape of the Contributor
-Covenant's own enforcement guidelines, which the Contributor Covenant in turn credits to Mozilla's code
-of conduct enforcement ladder (`https://github.com/mozilla/diversity`).
+This document adapts the [Contributor Covenant, version 2.1](https://www.contributor-covenant.org/version/2/1/code_of_conduct.html),
+reworded throughout for the AEOS repository's documentation form and for the terminology AEOS-GLOSSARY
+defines. The Contributor Covenant is authored by Coraline Ada Ehmke and is made available under the
+[Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
+The four-tier enforcement structure in [Section 7.2](#72-consequences) follows the general shape of the
+Contributor Covenant's own enforcement guidelines, which the Contributor Covenant in turn credits to
+[Mozilla's code of conduct enforcement ladder](https://github.com/mozilla/diversity).
 
-Answers to common questions about the source document are available at
-`https://www.contributor-covenant.org/faq`, and translations of the source document are available at
-`https://www.contributor-covenant.org/translations`. Neither the FAQ nor the translations have been
-independently adapted for AEOS; this document, in its English form, is the sole authoritative Code of
-Conduct for the AEOS repository unless the project owner states otherwise.
+Answers to common questions about the source document are available in the
+[Contributor Covenant FAQ](https://www.contributor-covenant.org/faq), and translations of the source
+document are available on the [Contributor Covenant translations page](https://www.contributor-covenant.org/translations).
+Neither the FAQ nor the translations have been independently adapted for AEOS; this document, in its
+English form, is the sole authoritative Code of Conduct for the AEOS repository unless the project
+owner states otherwise.
 
 ---
 
