@@ -184,7 +184,9 @@ provide it:
 
 In plain terms: the project owner enforces this document and can delegate that role, acknowledges and
 looks into a report, steps aside from any report naming them personally, and explains decisions and
-outcomes.
+outcomes. This concentrates enforcement authority in one role, which is appropriate while AEOS has a
+single project owner and no separate maintainer body; if that changes, this document is where a
+different distribution of enforcement authority is recorded.
 
 | ID | Rule |
 | :--- | :--- |
@@ -254,7 +256,7 @@ document were treated as complete.
 
 | Version | Status | Summary |
 | :--- | :--- | :--- |
-| 1.0.0 | Draft | Establishes the AEOS Code of Conduct: community standards, expected and unacceptable behavior, reporting, and a four-tier enforcement ladder with recusal, appeal, and anti-retaliation provisions, adapted from the Contributor Covenant, version 2.1. Deliberately leaves two items open, each tracked as a Critical finding blocking freeze per Section 8.3: the reporting channel (`COC-012`) and the independent recusal fallback (`COC-021`), pending a project-owner decision. Suggested repository path is `docs/CODE_OF_CONDUCT.md`, pending confirmation once `REPOSITORY_LAYOUT.md` and `PROJECT_BOOTSTRAP.md` are available for direct re-verification. Introduces no product requirement, no architectural decision, and no redefinition of any AEOS-GLOSSARY term. Consolidated as a single Draft entry per `AEOS-DOCSTD` §12.1; per-version entries resume from Review onward. |
+| 1.0.0 | Draft | Initial AEOS Code of Conduct, adapted from the Contributor Covenant, version 2.1: community standards, reporting, and a four-tier enforcement ladder with recusal, appeal, and anti-retaliation provisions. Introduces no product requirement, no architectural decision, and no redefinition of any AEOS-GLOSSARY term. `COC-012` (reporting channel) and `COC-021` (recusal fallback) remain open pending a project-owner decision and block freeze per Section 8.3; suggested repository path (`docs/CODE_OF_CONDUCT.md`) is likewise pending confirmation. Consolidated as a single Draft entry per `AEOS-DOCSTD` §12.1; per-version entries resume from Review onward. |
 
 ---
 
