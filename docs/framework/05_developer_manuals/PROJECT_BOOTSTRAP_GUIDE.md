@@ -112,7 +112,7 @@ Where no template exists, scaffold the project manually, conforming to both:
 1. `PROJECT_STRUCTURE.md` (Layer 5) — the canonical directory-structure reference, and
 2. `TEMPLATE_SPEC.md` (Layer 9) — the same structural requirements a template would otherwise have satisfied for you.
 
-Manual scaffolding is not a lower-rigor path; it is the same requirement set applied without the convenience of a pre-built starting point. **Before proceeding:** confirm both `PROJECT_STRUCTURE.md` and `TEMPLATE_SPEC.md` are `Active` per `FRAMEWORK_README.md`. If either is not, stop and follow Section 5.3 of this guide.
+Manual scaffolding is not a lower-rigor path; it is the same requirement set applied without the convenience of a pre-built starting point. **Before proceeding:** confirm both `PROJECT_STRUCTURE.md` and `TEMPLATE_SPEC.md` are `Active` per `FRAMEWORK_README.md`. If either is not, stop and follow Section 5.4 of this guide.
 
 ### 4.5 Step 5 — Validate the Scaffold
 
@@ -141,7 +141,7 @@ Initialize the project's Git repository per `CONTRIBUTING.md` (Layer 5) and the 
 
 Append the project's initial architectural choices (archetype selection, template or manual-scaffold decision, and any deviation from Layer 4 defaults that Gate 1 approved) to `DECISIONS.md` (Layer 10), following the required entry fields defined in `global_rules_revisionfinal_v10.md`, Section 8.3, and `FRAMEWORK_BLUEPRINT.md`, Section 13.1: date, decision identifier, context, options considered, decision made, and rationale.
 
-**Before proceeding:** confirm `DECISIONS.md` exists and is `Active`. If it does not yet exist, stop and follow Section 5.4 of this guide rather than skipping this step silently.
+**Before proceeding:** confirm `DECISIONS.md` exists and is `Active`. If it does not yet exist, stop and follow Section 5.6 of this guide rather than skipping this step silently.
 
 ### 4.9 Step 9 — Project Ready for Layer 7 Skill Execution
 
@@ -151,7 +151,7 @@ Once Gate 1 has been approved, the Git repository initialized, and the initial d
 
 ## 5. Current Applicability at Framework v10's Mid-Migration State
 
-Section 4 above states the canonical procedure in full, independent of which documents currently exist. As of this revision, every document that procedure depends on is `Active` for the Desktop, Full-Stack, and Monolithic archetypes. This section is retained to record the resolution of each subsection's previously-open gap (Sections 5.1–5.6) and the net effect on the flow as a whole (Section 5.7), so that a reader can see the framework's mid-migration trajectory rather than only its current end state.
+Section 4 above states the canonical procedure in full, independent of which documents currently exist. As of this revision, every document that procedure depends on is `Active` for **all four archetypes** — Desktop, Full-Stack, Monolithic, and Mobile. This section is retained to record the resolution of each subsection's previously-open gap (Sections 5.1–5.6) and the net effect on the flow as a whole (Section 5.7), so that a reader can see the framework's mid-migration trajectory rather than only its current end state.
 
 **Governing rule.** Per `FRAMEWORK_README.md`, Section 4: "An AI agent MUST treat any document not listed as `Active` in this section as unavailable for new work." Nothing in this section grants an exception to that rule. A gap identified below is a reason to stop and escalate, never a reason to improvise the missing document's content or substitute a deprecated legacy document in its place.
 
@@ -163,19 +163,25 @@ Section 4 above states the canonical procedure in full, independent of which doc
 
 `project-personal-full-stack_v01.md` and `project-monolithic_v04.md` are both `Active`. A Full-Stack- or Monolithic-archetype project MAY now proceed through Step 3 (Section 4.3) against the matching document in full. This subsection is retained for historical traceability of the gap it previously described; no escalation is required for either archetype.
 
-### 5.3 Mobile Archetype
+### 5.3 Mobile Archetype — `project-mobile_v01.md` (Resolved)
 
-`project-mobile_v01.md` is `Pending (Tier 3 / v10.1)` — out of scope for the current v10 release entirely (`FRAMEWORK_BLUEPRINT.md`, Section 18.4). A Mobile-archetype bootstrap request at this stage MUST be declined at the framework level, not merely deferred, until v10.1 scope begins.
+`project-mobile_v01.md` is `Active`, generated as an explicit Owner-approved pull-forward from Tier 3 / v10.1 scope, recorded as `DECISIONS.md` entry `DEC-011` (`FRAMEWORK_STATUS.md`, Flag 19). A Mobile-archetype project MAY now proceed through Step 3 (Section 4.3) against this document in full, exactly as the other three archetypes already do.
 
-### 5.4 Layer 9 — `TEMPLATE_SPEC.md` (Resolved) and `template-fastapi-sqlite/` (Still Pending)
+This subsection previously instructed that a Mobile-archetype bootstrap request **MUST be declined at the framework level, not merely deferred**, since `project-mobile_v01.md` was `Pending`. **That instruction is now stale and MUST NOT be followed.** The governing Layer 4 document this flow depends on now exists and is `Active`; declining a Mobile-archetype request today, on the grounds this subsection previously stated, would itself be a defect — the exact class of drift `FRAMEWORK_STATUS.md`'s Open Inconsistency Flags exist to catch (Flag 19). No escalation is required for this archetype.
 
-`TEMPLATE_SPEC.md` is `Active`. Step 4 of Section 4.4 above resolves the manual-scaffold branch (4.4b) against it in full, together with `PROJECT_STRUCTURE.md` (also `Active`, Section 5.5 below) — Step 5 (Scaffold Validation) can now be completed through the canonical manual-scaffold path for every currently `Active` archetype.
+### 5.4 Layer 9 — `TEMPLATE_SPEC.md` (Resolved) and `template-fastapi-sqlite/` (Resolved)
 
-`template-fastapi-sqlite/`, the concrete Layer 9 template, remains `Pending` — but not on account of any missing governing-layer document. Its generation is blocked solely on an explicit, unresolved Owner decision: with both `project-personal-full-stack_v01.md` and `project-monolithic_v04.md` now `Active`, `TEMPLATE_SPEC.md` does not itself state which of the two FastAPI-capable archetypes this template is intended to target (`FRAMEWORK_STATUS.md`, Flag 10). This is a Level 1 (human Engineering CEO) decision an agent MUST NOT infer, per Section 4.1 above. Step 4a of this guide (Clone Template) therefore remains unavailable for a FastAPI-based project until that decision is made; Step 4b (Manual Scaffold) remains fully available in the interim.
+`TEMPLATE_SPEC.md` is `Active`. Step 4 of Section 4.4 above resolves the manual-scaffold branch (4.4b) against it in full, together with `PROJECT_STRUCTURE.md` (also `Active`, Section 5.5 below) — Step 5 (Scaffold Validation) can be completed through the canonical manual-scaffold path for every currently `Active` archetype.
 
-### 5.5 Layer 5 — `PROJECT_STRUCTURE.md` and `COMMANDS.md` (Resolved)
+`template-fastapi-sqlite/`, the concrete Layer 9 template, is now `Active` as well. This subsection previously tracked, as an open blocker, the question of which of two capable Layer 4 archetypes the template should target — `project-personal-full-stack_v01.md` or `project-monolithic_v04.md`. **That question is resolved: the Owner explicitly confirmed `project-personal-full-stack_v01.md` (Full-Stack), recorded as `DECISIONS.md` entry `DEC-010`, and `template-fastapi-sqlite/` has been generated and validated against it.**
 
-`PROJECT_STRUCTURE.md` is `Active`. Per Section 4.4b above, it is available for manual scaffolding for every currently `Active` archetype, and Step 5 (Scaffold Validation) may be performed against it directly. `COMMANDS.md` is also `Active` and now supplies the canonical command reference for Step 7's Git initialization and every other command-line operation this guide points to, in place of the Layer 3 technology stack document alone.
+Step 4a of this guide (Clone Template) is therefore now available for a **Full-Stack**-archetype project. It remains unavailable for the Desktop, Monolithic, and Mobile archetypes, for which no Layer 9 template yet exists — full template-set expansion beyond `template-fastapi-sqlite/` remains deferred v10.1 scope (`FRAMEWORK_STATUS.md`, "Documents To Generate"), not authorized without its own, separate Gate 1 decision (`FRAMEWORK_BLUEPRINT.md`, Section 18.4). Step 4b (Manual Scaffold) remains the fully available path for those three archetypes in the interim.
+
+### 5.5 Layer 5 — `PROJECT_STRUCTURE.md` and `COMMANDS.md` (Resolved for Desktop, Full-Stack, Monolithic; Mobile subsections pending)
+
+`PROJECT_STRUCTURE.md` is `Active`. Per Section 4.4b above, it is available for manual scaffolding for every currently `Active` archetype, and Step 5 (Scaffold Validation) may be performed against it directly. `COMMANDS.md` is also `Active` and supplies the canonical command reference for Step 7's Git initialization and every other command-line operation this guide points to.
+
+Both documents' own Mobile-archetype sections currently remain deferred placeholders as of this revision (`PROJECT_STRUCTURE.md`, Section 7; `COMMANDS.md`, Section 9.4) — each is separately flagged for synchronization following `project-mobile_v01.md`'s completion (`FRAMEWORK_STATUS.md`, Flag 19). This does not block Step 4b (Manual Scaffold) for a Mobile-archetype project, since `project-mobile_v01.md`, Section 4, itself already supplies the authoritative directory layout that scaffold MUST conform to; `PROJECT_STRUCTURE.md`'s and `COMMANDS.md`'s own Mobile sections are cross-archetype lookup conveniences, not the primary source of that requirement.
 
 ### 5.6 Layer 10 — `DECISIONS.md` (Resolved)
 
@@ -183,7 +189,9 @@ Section 4 above states the canonical procedure in full, independent of which doc
 
 ### 5.7 Net Effect (Resolved)
 
-Taken together, Sections 5.1 through 5.6 mean that, as of this revision, **every currently `Active` archetype — Desktop, Full-Stack, and Monolithic — can now be bootstrapped end to end through the canonical flow**, via the manual-scaffold path (Section 4.4b) validated against `PROJECT_STRUCTURE.md` and `TEMPLATE_SPEC.md`, both `Active`. This is a materially different state from this guide's original generation, when no archetype could complete the flow. The sole remaining limitation is narrower and archetype-specific: the *template-clone* path (Section 4.4a) is unavailable for a FastAPI-based project (Full-Stack or Monolithic) until the Owner resolves which archetype `template-fastapi-sqlite/` targets (`FRAMEWORK_STATUS.md`, Flag 10); the manual-scaffold path remains fully available for that project in the interim. An AI agent asked to bootstrap a project today SHOULD proceed through the canonical flow directly, reporting only the narrower, archetype-specific template-clone limitation where it applies, rather than reporting the flow as blocked in general.
+Taken together, Sections 5.1 through 5.6 mean that, as of this revision, **every archetype the framework currently defines — Desktop, Full-Stack, Monolithic, and Mobile — can now be bootstrapped end to end through the canonical flow.** Every archetype MAY proceed via the manual-scaffold path (Section 4.4b), validated against `PROJECT_STRUCTURE.md` and `TEMPLATE_SPEC.md`, both `Active`. The Full-Stack archetype additionally has the template-clone path (Section 4.4a) available, via `template-fastapi-sqlite/`, following the Owner's archetype-target decision (`DEC-010`).
+
+This is a materially different — and now fully resolved — state from this guide's original generation, when no archetype could complete the flow at all. The only limitation remaining is narrower and archetype-specific: the template-clone path is unavailable for the Desktop, Monolithic, and Mobile archetypes until a Layer 9 template is generated for each, which remains deferred v10.1 scope, not currently Gate-1-authorized; the manual-scaffold path remains fully available for all three in the interim. An AI agent asked to bootstrap a project today SHOULD proceed through the canonical flow directly for any of the four archetypes, reporting only the narrower, archetype-specific template-clone limitation where it applies (Desktop, Monolithic, Mobile), rather than reporting the flow as blocked in general or declining any archetype outright.
 
 ---
 
@@ -211,4 +219,10 @@ This guide is one of six Layer 5 documents (`FRAMEWORK_BLUEPRINT.md`, Section 2.
 
 ## Closing Statement
 
-This guide operationalizes `FRAMEWORK_BLUEPRINT.md` Section 16 into a procedure an AI agent or human developer can follow without ambiguity: select an archetype, read the matching Layer 4 document, resolve the template-or-manual-scaffold branch, validate the scaffold, pass Gate 1, initialize Git, record the initial decision, and hand off to Layer 7 Skill execution. No step here introduces a rule that Layers 1–4 did not already establish. As stated plainly in Section 5.7, this flow can now be completed end to end for every currently `Active` archetype (Desktop, Full-Stack, Monolithic) via the manual-scaffold path — a materially improved condition this guide is required to report accurately, consistent with the same discipline that previously required it to report the flow as blocked. The only narrower, archetype-specific limitation remaining is the template-clone path for a FastAPI-based project, pending the Owner's archetype-disambiguation decision (`FRAMEWORK_STATUS.md`, Flag 10).
+This guide operationalizes `FRAMEWORK_BLUEPRINT.md` Section 16 into a procedure an AI agent or human developer can follow without ambiguity: select an archetype, read the matching Layer 4 document, resolve the template-or-manual-scaffold branch, validate the scaffold, pass Gate 1, initialize Git, record the initial decision, and hand off to Layer 7 Skill execution. No step here introduces a rule that Layers 1–4 did not already establish.
+
+As stated plainly in Section 5.7, this flow can now be completed end to end for **every archetype the framework currently defines — Desktop, Full-Stack, Monolithic, and Mobile** — via the manual-scaffold path, with the Full-Stack archetype additionally supporting the template-clone path via `template-fastapi-sqlite/`, per the Owner's archetype-target decision (`DEC-010`). The only limitation remaining is the template-clone path's unavailability for the Desktop, Monolithic, and Mobile archetypes, pending their own Layer 9 templates — deferred v10.1 scope, not currently Gate-1-authorized. A Mobile-archetype bootstrap request MUST NOT be declined; it now proceeds through the canonical flow exactly as the other three archetypes already do.
+
+---
+
+**Reminder:** Per this document's own Section 7, Rule 2, please update `FRAMEWORK_STATUS.md` to record that this document's Mobile-archetype and `template-fastapi-sqlite/` staleness (`FRAMEWORK_STATUS.md`, Flag 19, item 1) has been resolved, in the same change.
