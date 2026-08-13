@@ -5,8 +5,8 @@
 **Framework Version:** v10
 **Tier:** 2 (Required)
 **Purpose:** Serve as the single canonical, cross-archetype directory-structure reference for Framework v10 (`FRAMEWORK_BLUEPRINT.md`, Section 2.5, "Responsibilities": "Define the canonical command reference (`COMMANDS.md`) and canonical directory structure reference (`PROJECT_STRUCTURE.md`)") — the lookup document a human developer or an AI agent consults to see, in one place, the directory layout of every currently `Active` Layer 4 archetype, the structural invariants that recur across all of them, and the mandatory root-level documents every project MUST contain, so that a project's scaffold can be validated without re-deriving structure from four separate documents each time.
-**Authority:** Structural derivative of `FRAMEWORK_BLUEPRINT.md`, Sections 2.5 and 17. This document introduces no architectural decision of its own. Every directory tree reproduced below is transcribed, without alteration, from the single Layer 4 Project Rule document that is its authoritative source (`project-pc-app_v04.md`, `project-personal-full-stack_v01.md`, `project-monolithic_v04.md`, each Section 4). Where this document's reproduction and its Layer 4 source ever diverge, the Layer 4 document is authoritative and this document is in error and **MUST** be corrected (Section 14).
-**Inherits from:** `AI_DEVELOPMENT_PHILOSOPHY_v2.0.md` (Layer 1 — the Development Environment principle, Section 10; the Dev Container philosophy, Section 11); `global_rules_revisionfinal_v10.md` (Layer 2 — the Clean Architecture Boundary, Section 3.2; the TDD Boundary, Section 4; the Security Baseline requiring an environment-configuration example with no real secrets, Section 9.2); `global_technology_stack_v10.md` (Layer 3 — indirectly, through the Layer 4 documents that apply it); and `project-pc-app_v04.md`, `project-personal-full-stack_v01.md`, and `project-monolithic_v04.md` (Layer 4 — the three currently `Active` archetype documents, each Section 4, supplying every directory tree reproduced below). Every rule and tree drawn from these documents is referenced below by name; none is reinterpreted.
+**Authority:** Structural derivative of `FRAMEWORK_BLUEPRINT.md`, Sections 2.5 and 17. This document introduces no architectural decision of its own. Every directory tree reproduced below is transcribed, without alteration, from the single Layer 4 Project Rule document that is its authoritative source (`project-pc-app_v04.md`, `project-personal-full-stack_v01.md`, `project-monolithic_v04.md`, `project-mobile_v01.md`, each Section 4). Where this document's reproduction and its Layer 4 source ever diverge, the Layer 4 document is authoritative and this document is in error and **MUST** be corrected (Section 14).
+**Inherits from:** `AI_DEVELOPMENT_PHILOSOPHY_v2.0.md` (Layer 1 — the Development Environment principle, Section 10; the Dev Container philosophy, Section 11); `global_rules_revisionfinal_v10.md` (Layer 2 — the Clean Architecture Boundary, Section 3.2; the TDD Boundary, Section 4; the Security Baseline requiring an environment-configuration example with no real secrets, Section 9.2); `global_technology_stack_v10.md` (Layer 3 — indirectly, through the Layer 4 documents that apply it); and `project-pc-app_v04.md`, `project-personal-full-stack_v01.md`, `project-monolithic_v04.md`, and `project-mobile_v01.md` (Layer 4 — the four currently `Active` archetype documents, each Section 4, supplying every directory tree reproduced below). Every rule and tree drawn from these documents is referenced below by name; none is reinterpreted.
 **Governs:** Nothing below it. This is an operational Layer 5 document; it does not create new obligations for Layers 6–11 beyond what they already owe to Layers 1–4. Per `TEMPLATE_SPEC.md`, Section 5 (Category 1) and Section 9 (Category 5), a concrete Layer 9 template's directory structure **MUST**, once this document is `Active`, additionally conform to the canonical cross-archetype reference this document supplies, in addition to its target Layer 4 document.
 **Supersedes:** None. This is the first version of this document.
 **Read order:** Read after `FRAMEWORK_README.md`, `PROJECT_BOOTSTRAP_GUIDE.md`, `COMMANDS.md`, and the Layer 4 Project Rule document matching the current project's archetype — at the point in the Project Creation Flow (`FRAMEWORK_BLUEPRINT.md`, Section 16) where a scaffold (template-derived or manual) is validated (`PROJECT_BOOTSTRAP_GUIDE.md`, Section 4.4b–4.5). Per `FRAMEWORK_BLUEPRINT.md`, Section 2.5's AI interaction model, this document — together with `COMMANDS.md` — is "referenced continuously as a lookup table during execution," not read once and set aside.
@@ -26,7 +26,7 @@ Layer 3 — Technology Standards                  global_technology_stack_v10.md
 Layer 4 — Project Rules                         project-pc-app_v04.md               (Active)
                                                  project-personal-full-stack_v01.md  (Active)
                                                  project-monolithic_v04.md           (Active)
-                                                 project-mobile_v01.md               (Tier 3 / v10.1, pending)
+                                                 project-mobile_v01.md               (Active)
         ↓ (this document inherits from all four layers above, by reference)
 Layer 5 — Developer Manuals   FRAMEWORK_README.md          (Active)
                               PROJECT_BOOTSTRAP_GUIDE.md   (Active)
@@ -38,10 +38,10 @@ Layer 5 — Developer Manuals   FRAMEWORK_README.md          (Active)
 Layer 6 — Reference Implementations
 Layer 7 — AI Skills
 Layer 8 — Prompt Library
-Layer 9 — Project Templates    TEMPLATE_SPEC.md (Active); template-fastapi-sqlite/ (pending)
+Layer 9 — Project Templates    TEMPLATE_SPEC.md (Active); template-fastapi-sqlite/ (Active — conforms to project-personal-full-stack_v01.md, per DEC-010)
 ```
 
-**What this document contains.** A single, consolidated, cross-archetype directory-structure reference (`FRAMEWORK_BLUEPRINT.md`, Section 2.5, "Responsibilities"): the structural invariants shared by every currently `Active` archetype (Section 3); the full directory tree of each currently `Active` archetype, reproduced verbatim from its Layer 4 source for lookup convenience (Sections 4–6); the mandatory root-level documents every archetype requires (Section 7); and this document's role in scaffold conformance validation during project bootstrap and template creation (Section 9).
+**What this document contains.** A single, consolidated, cross-archetype directory-structure reference (`FRAMEWORK_BLUEPRINT.md`, Section 2.5, "Responsibilities"): the structural invariants shared by every currently `Active` archetype (Section 3); the full directory tree of each currently `Active` archetype, reproduced verbatim from its Layer 4 source for lookup convenience (Sections 4–7); the mandatory root-level documents every archetype requires (Section 8, renumbered from the prior revision's Section 10 — see Section 15 for the renumbering note); and this document's role in scaffold conformance validation during project bootstrap and template creation (Section 9).
 
 **What this document does not contain, by design.** Per the Layer 5 prohibited responsibilities (`FRAMEWORK_BLUEPRINT.md`, Section 2.5):
 
@@ -69,9 +69,9 @@ Per the inheritance rule that a Layer 5 document does not restate a governing-la
 | From | Document | What is inherited |
 |---|---|---|
 | Layer 1 | `AI_DEVELOPMENT_PHILOSOPHY_v2.0.md` | The Development Environment principle (Section 10); the Dev Container philosophy (Section 11) — both of which every archetype's directory tree is scaffolded to support. |
-| Layer 2 | `global_rules_revisionfinal_v10.md` | The Clean Architecture Boundary (Section 3.2), which every archetype's `domain` / `application` / `infrastructure` separation (Section 3 below) directly implements; the TDD Boundary (Section 4), which every archetype's test-directory mapping (Section 3 below) directly implements; the Security Baseline requirement that every project provide an environment-configuration example containing no real secret values (Section 9.2), which grounds the mandatory `.env.example` file (Section 7 below). |
-| Layer 3 | `global_technology_stack_v10.md` | Not consulted directly by this document; inherited transitively through the three Layer 4 documents below, each of which already applies the canonical technology table to its own archetype. |
-| Layer 4 | `project-pc-app_v04.md`, `project-personal-full-stack_v01.md`, `project-monolithic_v04.md` | The complete, authoritative directory layout of each archetype (each document's own Section 4), reproduced verbatim in Sections 4–6 of this document. This document does not alter, extend, or reinterpret any of the three trees. |
+| Layer 2 | `global_rules_revisionfinal_v10.md` | The Clean Architecture Boundary (Section 3.2), which every archetype's `domain` / `application` / `infrastructure` separation (Section 3 below) directly implements; the TDD Boundary (Section 4), which every archetype's test-directory mapping (Section 3 below) directly implements; the Security Baseline requirement that every project provide an environment-configuration example containing no real secret values (Section 9.2), which grounds the mandatory `.env.example` file (Section 8 below). |
+| Layer 3 | `global_technology_stack_v10.md` | Not consulted directly by this document; inherited transitively through the four Layer 4 documents below, each of which already applies the canonical technology table to its own archetype. |
+| Layer 4 | `project-pc-app_v04.md`, `project-personal-full-stack_v01.md`, `project-monolithic_v04.md`, `project-mobile_v01.md` | The complete, authoritative directory layout of each archetype (each document's own Section 4), reproduced verbatim in Sections 4–7 of this document. This document does not alter, extend, or reinterpret any of the four trees. |
 
 Where this document states a structural fact, it is either (a) a verbatim reproduction of a Layer 4 directory tree, cited to its source, or (b) a cross-archetype organizational observation over content Layer 2 or Layer 4 already fixes (Section 3). It is never a new architectural decision.
 
@@ -83,41 +83,42 @@ Where this document states a structural fact, it is either (a) a verbatim reprod
 
 ### 3.1 The Clean Architecture Boundary, By Archetype
 
-Every currently `Active` archetype maps the Layer 2 Clean Architecture Boundary (`global_rules_revisionfinal_v10.md`, Section 3.2) onto its own directory tree using the same three inner-layer names — `domain`, `application`, `infrastructure` — differing only in where the delivery/presentation layer(s) sit, which is itself a direct, non-arbitrary consequence of each archetype's own process/deployment model (Electron's multi-process split; the Full-Stack archetype's two independently deployable applications; the Monolithic archetype's single deployable combining an API and a bundled frontend).
+Every currently `Active` archetype maps the Layer 2 Clean Architecture Boundary (`global_rules_revisionfinal_v10.md`, Section 3.2) onto its own directory tree using the same three inner-layer names — `domain`, `application`, `infrastructure` — differing only in where the delivery/presentation layer(s) sit, which is itself a direct, non-arbitrary consequence of each archetype's own process/deployment model (Electron's multi-process split; the Full-Stack archetype's two independently deployable applications; the Monolithic archetype's single deployable combining an API and a bundled frontend; the Mobile archetype's single JavaScript runtime bridged to native platform capability).
 
-| Boundary layer (Layer 2 definition) | PC App (Electron) | Full-Stack | Monolithic |
-|---|---|---|---|
-| Domain (pure business logic; no framework or I/O imports) | `src/domain/` | `backend/src/domain/` | `backend/domain/` |
-| Application (use-case orchestration; ports/interfaces) | `src/application/` | `backend/src/application/` | `backend/application/` |
-| Infrastructure (only layer permitted to import a vendor SDK/driver) | `src/infrastructure/` | `backend/src/infrastructure/` | `backend/infrastructure/` |
-| Delivery/presentation (archetype-specific; never contains business logic) | `src/main/`, `src/preload/`, `src/renderer/` | `backend/src/api/`, `frontend/` | `backend/api/`, `frontend/` |
+| Boundary layer (Layer 2 definition) | PC App (Electron) | Full-Stack | Monolithic | Mobile (React Native + Expo) |
+|---|---|---|---|---|
+| Domain (pure business logic; no framework or I/O imports) | `src/domain/` | `backend/src/domain/` | `backend/domain/` | `src/domain/` |
+| Application (use-case orchestration; ports/interfaces) | `src/application/` | `backend/src/application/` | `backend/application/` | `src/application/` |
+| Infrastructure (only layer permitted to import a vendor SDK/driver) | `src/infrastructure/` | `backend/src/infrastructure/` | `backend/infrastructure/` | `src/infrastructure/` |
+| Delivery/presentation (archetype-specific; never contains business logic) | `src/main/`, `src/preload/`, `src/renderer/` | `backend/src/api/`, `frontend/` | `backend/api/`, `frontend/` | `src/navigation/`, `src/screens/`, `src/components/` |
 
-Per the Layer 2 rule this table organizes (`global_rules_revisionfinal_v10.md`, Section 3.1.3, 3.2.2), a file inside a domain or application directory **MUST NOT** import a delivery- or infrastructure-layer module, in any archetype. This is not a new rule; it is the same rule each Layer 4 document already states for its own archetype (`project-pc-app_v04.md`, Section 4, Rule 1; `project-personal-full-stack_v01.md`, Section 4, Rule 1; `project-monolithic_v04.md`, Section 4, Rule 1), reproduced here as a single cross-archetype observation.
+Per the Layer 2 rule this table organizes (`global_rules_revisionfinal_v10.md`, Section 3.1.3, 3.2.2), a file inside a domain or application directory **MUST NOT** import a delivery- or infrastructure-layer module, in any archetype. This is not a new rule; it is the same rule each Layer 4 document already states for its own archetype (`project-pc-app_v04.md`, Section 4, Rule 1; `project-personal-full-stack_v01.md`, Section 4, Rule 1; `project-monolithic_v04.md`, Section 4, Rule 1; `project-mobile_v01.md`, Section 4, Rule 1), reproduced here as a single cross-archetype observation.
 
 ### 3.2 The TDD Boundary, By Archetype
 
-Every currently `Active` archetype maps the Layer 2 TDD Boundary (`global_rules_revisionfinal_v10.md`, Section 4) onto its own test-directory tree using the same zone-to-rigor mapping; only the concrete paths differ, per each archetype's own directory layout (Sections 4–6 below).
+Every currently `Active` archetype maps the Layer 2 TDD Boundary (`global_rules_revisionfinal_v10.md`, Section 4) onto its own test-directory tree using the same zone-to-rigor mapping; only the concrete paths differ, per each archetype's own directory layout (Sections 4–7 below).
 
-| TDD Boundary zone (Layer 2 definition, `global_rules_revisionfinal_v10.md` §4) | PC App (Electron) test directory | Full-Stack test directory | Monolithic test directory |
-|---|---|---|---|
-| Business/domain logic (**MUST** be test-first) | `tests/domain/` | `backend/tests/domain/` | `tests/domain/` |
-| Application/use-case orchestration (**SHOULD** test-first, **MUST** have coverage) | `tests/application/` | `backend/tests/application/` | `tests/application/` |
-| Infrastructure adapters (**SHOULD** have integration-level coverage) | `tests/infrastructure/` | `backend/tests/infrastructure/` | `tests/infrastructure/` |
-| UI/presentation, framework glue, end-to-end (**MAY**, behavior-level preferred) | `tests/e2e/` | `backend/tests/api/`, `frontend/tests/unit/`, `frontend/tests/e2e/` | `tests/api/`, `tests/e2e/` |
+| TDD Boundary zone (Layer 2 definition, `global_rules_revisionfinal_v10.md` §4) | PC App (Electron) test directory | Full-Stack test directory | Monolithic test directory | Mobile test directory |
+|---|---|---|---|---|
+| Business/domain logic (**MUST** be test-first) | `tests/domain/` | `backend/tests/domain/` | `tests/domain/` | `tests/domain/` |
+| Application/use-case orchestration (**SHOULD** test-first, **MUST** have coverage) | `tests/application/` | `backend/tests/application/` | `tests/application/` | `tests/application/` |
+| Infrastructure adapters (**SHOULD** have integration-level coverage) | `tests/infrastructure/` | `backend/tests/infrastructure/` | `tests/infrastructure/` | `tests/infrastructure/` |
+| UI/presentation, framework glue, end-to-end (**MAY**, behavior-level preferred) | `tests/e2e/` | `backend/tests/api/`, `frontend/tests/unit/`, `frontend/tests/e2e/` | `tests/api/`, `tests/e2e/` | `tests/e2e/` |
 
-This table restates no new requirement; it is the same TDD Boundary application each Layer 4 document already states in its own Section 9 (`project-pc-app_v04.md`, Section 9; `project-personal-full-stack_v01.md`, Section 9; `project-monolithic_v04.md`, Section 9), consolidated for single-lookup convenience.
+This table restates no new requirement; it is the same TDD Boundary application each Layer 4 document already states in its own Section 9 (`project-pc-app_v04.md`, Section 9; `project-personal-full-stack_v01.md`, Section 9; `project-monolithic_v04.md`, Section 9; `project-mobile_v01.md`, Section 9), consolidated for single-lookup convenience.
 
 ### 3.3 The Vendor-Independence Seam, By Archetype
 
-In every currently `Active` archetype, exactly one directory is permitted to import a vendor SDK, database driver, or other external dependency directly, satisfying the Layer 2 vendor-independence rule that external dependencies be accessed only through an owned interface (`global_rules_revisionfinal_v10.md`, Section 2.2):
+In every currently `Active` archetype, exactly one directory is permitted to import a vendor SDK, database driver, native-module binding, or other external dependency directly, satisfying the Layer 2 vendor-independence rule that external dependencies be accessed only through an owned interface (`global_rules_revisionfinal_v10.md`, Section 2.2):
 
 | Archetype | Directory permitted to import a vendor SDK/driver directly | Port/interface location |
 |---|---|---|
 | PC App (Electron) | `src/infrastructure/` | `src/application/ports/` |
 | Full-Stack | `backend/src/infrastructure/` | `backend/src/application/ports/` |
 | Monolithic | `backend/infrastructure/` | `backend/application/ports/` |
+| Mobile (React Native + Expo) | `src/infrastructure/` | `src/application/ports/` |
 
-No other directory in any archetype's tree — including the delivery layer (`src/renderer/`, `frontend/`, `backend/src/api/`, `backend/api/`) — **MUST** import a vendor SDK or database driver directly, per the same Layer 2 rule.
+No other directory in any archetype's tree — including the delivery layer (`src/renderer/`, `frontend/`, `backend/src/api/`, `backend/api/`, `src/navigation/`, `src/screens/`, `src/components/`) — **MUST** import a vendor SDK, database driver, or native-module binding directly, per the same Layer 2 rule.
 
 ---
 
@@ -260,11 +261,42 @@ project-root/
 
 ---
 
-## 7. Canonical Directory Structure — Mobile Application (Deferred)
+## 7. Canonical Directory Structure — Mobile Application (React Native + Expo)
 
-`project-mobile_v01.md` (Layer 4, Mobile archetype) is `Pending (Tier 3 / v10.1)` (`FRAMEWORK_README.md`, Section 4.3). No canonical directory structure for this archetype is defined by this document, since no authoritative Layer 4 source yet exists for this document to reproduce from. Per `PROJECT_BOOTSTRAP_GUIDE.md`, Section 5.3, a Mobile-archetype bootstrap request **MUST** be declined at the framework level entirely, not merely deferred, until v10.1 scope begins. This document accordingly defines no Mobile-archetype directory reference. An agent asked for a Mobile-archetype directory structure **MUST** report this as an out-of-scope request for the current framework version, consistent with `PROJECT_BOOTSTRAP_GUIDE.md`, Section 5.3, rather than improvise a directory layout.
+**Authoritative source:** `project-mobile_v01.md`, Section 4. This tree is reproduced verbatim for cross-archetype lookup convenience. Where this reproduction and `project-mobile_v01.md` ever diverge, `project-mobile_v01.md` is authoritative and this document **MUST** be corrected in the same change (Section 14). This section replaces the deferred placeholder that previously stood here while `project-mobile_v01.md` remained `Pending` — see Section 13 for the resolution note.
 
-This section **MUST** be replaced with a full canonical directory reference, reproduced from `project-mobile_v01.md`, Section 4, in the same change that document transitions from `Pending` to `Active` (Section 15 below).
+```
+project-root/
+├── src/
+│   ├── domain/                   # Pure business logic. No React Native, no Expo, no I/O.
+│   │   ├── entities/
+│   │   ├── value-objects/
+│   │   └── errors/
+│   ├── application/                # Use cases; orchestrates domain + port interfaces.
+│   │   ├── use-cases/
+│   │   └── ports/                   # Repository, native-capability, and network interfaces.
+│   ├── infrastructure/              # Concrete adapters. Only layer allowed to import native/Expo SDKs or a network client.
+│   │   ├── persistence/
+│   │   │   └── sqlite/              # Local SQLite repository implementations.
+│   │   ├── native/                  # Expo SDK / native-module adapters (secure storage, biometrics, camera, notifications).
+│   │   └── network/                 # Remote backend API client adapters, where the app consumes one (optional).
+│   ├── navigation/                  # Route definitions and navigator configuration. Delivery-layer glue only.
+│   ├── screens/                     # Presentation layer — one module per screen.
+│   ├── components/                  # Reusable presentation components.
+│   └── state/                       # Client-side view-state store.
+├── tests/
+│   ├── domain/                      # Test-first, per the TDD Boundary.
+│   ├── application/
+│   ├── infrastructure/
+│   └── e2e/                          # Whole-application behavioral tests (screen/navigation flows).
+├── assets/                            # Icons, splash screens, fonts, images, non-code build inputs.
+├── app.config.ts                      # Expo application configuration. Bootstrap only — no business logic.
+├── .env.example
+├── .gitignore
+└── README.md
+```
+
+**Binding rules governing this tree** (restated from `project-mobile_v01.md`, Section 4, by reference — not reinterpreted here): business logic **MUST** live under `src/domain/` and `src/application/` only; `src/infrastructure/` is the only directory permitted to import a native-module binding, an Expo SDK module beyond core app bootstrap, or a network client library directly; `src/application/ports/` **MUST** hold every interface `src/infrastructure/` implements, whether the concrete implementation is a persistence repository, a native-capability adapter, or a network adapter; `app.config.ts` **MUST** contain bootstrap and build configuration only, with no business logic; the six top-level boundaries under `src/` (`domain`, `application`, `infrastructure`, `navigation`, `screens`, `components`, plus `state`) **MUST NOT** be collapsed or renamed.
 
 ---
 
@@ -278,16 +310,16 @@ This document supplies the directory reference for each archetype once selected;
 
 ### 9.1 Manual Scaffolding
 
-Per `PROJECT_BOOTSTRAP_GUIDE.md`, Section 4.4b, where no Layer 9 template exists for the selected archetype, a project **MUST** be scaffolded manually, conforming to both `PROJECT_STRUCTURE.md` (this document) and `TEMPLATE_SPEC.md` (Layer 9). With this document now `Active`, that conformance check is fully performable for the three currently `Active` archetypes: an agent scaffolding manually **MUST** reproduce the directory tree stated in Section 4, 5, or 6 above (matching the selected archetype) exactly, and **MUST** include the mandatory root-level documents of Section 10 below, before presenting the scaffold for validation (`PROJECT_BOOTSTRAP_GUIDE.md`, Section 4.5).
+Per `PROJECT_BOOTSTRAP_GUIDE.md`, Section 4.4b, where no Layer 9 template exists for the selected archetype, a project **MUST** be scaffolded manually, conforming to both `PROJECT_STRUCTURE.md` (this document) and `TEMPLATE_SPEC.md` (Layer 9). With this document now `Active`, that conformance check is fully performable for all four currently `Active` archetypes: an agent scaffolding manually **MUST** reproduce the directory tree stated in Section 4, 5, 6, or 7 above (matching the selected archetype) exactly, and **MUST** include the mandatory root-level documents of Section 8 below, before presenting the scaffold for validation (`PROJECT_BOOTSTRAP_GUIDE.md`, Section 4.5).
 
 ### 9.2 Template Validation
 
-Per `TEMPLATE_SPEC.md`, Section 5 (Category 1) and Section 9 (Category 5), a concrete Layer 9 template's directory structure **MUST**, now that this document is `Active`, conform to this document's canonical cross-archetype reference in addition to its target Layer 4 document. Because Sections 4–6 of this document are verbatim reproductions of the corresponding Layer 4 trees, a template that conforms to its target Layer 4 document's directory layout necessarily conforms to this document as well, absent an undetected drift between the two (Section 14) — this document does not impose an additional, independent structural requirement beyond what Layer 4 already states; it supplies the single point at which that requirement is checked across archetypes.
+Per `TEMPLATE_SPEC.md`, Section 5 (Category 1) and Section 9 (Category 5), a concrete Layer 9 template's directory structure **MUST**, now that this document is `Active`, conform to this document's canonical cross-archetype reference in addition to its target Layer 4 document. Because Sections 4–7 of this document are verbatim reproductions of the corresponding Layer 4 trees, a template that conforms to its target Layer 4 document's directory layout necessarily conforms to this document as well, absent an undetected drift between the two (Section 14) — this document does not impose an additional, independent structural requirement beyond what Layer 4 already states; it supplies the single point at which that requirement is checked across archetypes. `template-fastapi-sqlite/` (Layer 9, `Active`, conforming to `project-personal-full-stack_v01.md` per `DEC-010`) is validated against this document's Section 5 in exactly this manner.
 
 ```mermaid
 flowchart TD
-    Scaffold["Scaffold produced\n(template clone or manual)"] --> CheckL4["Check against the matching\nLayer 4 archetype document\n(Sections 4–6, this document)"]
-    CheckL4 --> CheckStruct["Check against this document's\ncross-archetype invariants\n(Section 3) and mandatory\nroot documents (Section 10)"]
+    Scaffold["Scaffold produced\n(template clone or manual)"] --> CheckL4["Check against the matching\nLayer 4 archetype document\n(Sections 4–7, this document)"]
+    CheckL4 --> CheckStruct["Check against this document's\ncross-archetype invariants\n(Section 3) and mandatory\nroot documents (Section 8)"]
     CheckStruct --> Match{"Both checks pass?"}
     Match -->|Yes| Ready["Scaffold conforms.\nMAY proceed to Gate 1\n(PROJECT_BOOTSTRAP_GUIDE.md, Section 4.6)\nor to TEMPLATE_SPEC.md Section 10\nfor a Layer 9 template."]
     Match -->|No| Fail["Non-conformant.\nMUST be corrected before\npresenting as bootstrap-ready\nor placing in Layer 9."]
@@ -295,18 +327,18 @@ flowchart TD
 
 ### 9.3 Drift Detection
 
-Because this document's Sections 4–6 are reproductions rather than an independent source, a conformance check that passes against Section 4/5/6 above but fails against the same archetype's own Layer 4 document indicates that this document has drifted out of sync with its source — this is a defect in `PROJECT_STRUCTURE.md`, not a new archetype variant, and **MUST** be corrected per Section 14 and Section 15 below, never resolved by treating the two documents as independently authoritative.
+Because this document's Sections 4–7 are reproductions rather than an independent source, a conformance check that passes against Section 4/5/6/7 above but fails against the same archetype's own Layer 4 document indicates that this document has drifted out of sync with its source — this is a defect in `PROJECT_STRUCTURE.md`, not a new archetype variant, and **MUST** be corrected per Section 14 and Section 15 below, never resolved by treating the two documents as independently authoritative.
 
 ---
 
 ## 10. Root-Level Mandatory Documents
 
-Regardless of archetype, every project **MUST** contain, at minimum, the following root-level (or, for the two-application archetypes, per-application) documents, consistent with the fixed requirement `TEMPLATE_SPEC.md`, Section 6, already states for every Layer 9 template and which this document extends, by the same reasoning, to every project regardless of whether it was scaffolded from a template:
+Regardless of archetype, every project **MUST** contain, at minimum, the following root-level (or, for the two-application Full-Stack archetype, per-application) documents, consistent with the fixed requirement `TEMPLATE_SPEC.md`, Section 6, already states for every Layer 9 template and which this document extends, by the same reasoning, to every project regardless of whether it was scaffolded from a template:
 
 | Document | Requirement | Governing rule |
 |---|---|---|
 | `README.md` | **MUST** be present at the project root. **MUST** state, at minimum, the project's archetype and a pointer to `PROJECT_BOOTSTRAP_GUIDE.md`. | `AI_DEVELOPMENT_PHILOSOPHY_v2.0.md`, Section 17 (Documentation Philosophy); `TEMPLATE_SPEC.md`, Section 6. |
-| `.env.example` | **MUST** be present (at the project root for single-application archetypes; per-application for the Full-Stack archetype, per Section 5 above) and **MUST** contain no real secret values. | `global_rules_revisionfinal_v10.md`, Section 9.2. |
+| `.env.example` | **MUST** be present (at the project root for single-application archetypes — Desktop, Monolithic, Mobile; per-application for the Full-Stack archetype, per Section 5 above) and **MUST** contain no real secret values. | `global_rules_revisionfinal_v10.md`, Section 9.2. |
 | `.gitignore` | **MUST** be present at the project root and **MUST**, at minimum, exclude build artifacts, dependency directories, and any local environment file that could contain real secret values. | `global_rules_revisionfinal_v10.md`, Section 9.1. |
 
 A project **MUST NOT** omit any of these three documents on the grounds that its archetype "doesn't need" one of them, consistent with `TEMPLATE_SPEC.md`, Section 6, Rule 1 — the requirement is archetype-independent.
@@ -337,25 +369,27 @@ Consistent with `FRAMEWORK_BLUEPRINT.md`, Section 2.5, this document explicitly 
 | `FRAMEWORK_README.md` | Read *before* this document, every session. Supplies the current document-status tables this document's Section 13 depends on. |
 | `PROJECT_BOOTSTRAP_GUIDE.md` | Governs the *procedure* within which this document's reference is consulted — Step 4b (manual scaffold) and Step 5 (scaffold validation) of Section 4.4–4.5. This document supplies the *structure*; that guide supplies the *process surrounding it*. |
 | `COMMANDS.md` | Governs the command-line syntax for operations performed against the structure this document defines (e.g., which command creates a given directory's contents). This document supplies the *paths*; `COMMANDS.md` supplies the *commands run against them* (`COMMANDS.md`, Section 9). |
-| `TEMPLATE_SPEC.md` (Layer 9) | Requires every concrete Layer 9 template to conform to this document's cross-archetype reference, once `Active`, in addition to its target Layer 4 document (`TEMPLATE_SPEC.md`, Sections 5 and 9). This document's completion resolves the previously-open `PROJECT_STRUCTURE.md`-dependent portion of `TEMPLATE_SPEC.md`'s Categories 1 and 5 (`TEMPLATE_SPEC.md`, Section 14.2). |
+| `TEMPLATE_SPEC.md` (Layer 9) | Requires every concrete Layer 9 template to conform to this document's cross-archetype reference, once `Active`, in addition to its target Layer 4 document (`TEMPLATE_SPEC.md`, Sections 5 and 9). |
 | `AI_DEVELOPMENT_MANUAL.md` (Tier 3, v10.1, pending) | Will house the comprehensive AI-agent operational manual; this document covers only directory structure, not the broader operational guidance that document will eventually provide. |
 
 ---
 
 ## 13. Current Applicability at Framework v10's Mid-Migration State
 
-1. **Mobile archetype.** Per Section 7 above, no directory reference is defined for the Mobile archetype, consistent with `project-mobile_v01.md` remaining `Pending (Tier 3 / v10.1)` and `PROJECT_BOOTSTRAP_GUIDE.md`, Section 5.3. This gap remains open.
-2. **`template-fastapi-sqlite/` archetype-disambiguation question.** This document reproduces the directory trees of both `project-personal-full-stack_v01.md` and `project-monolithic_v04.md` (Sections 5–6 above), since both are currently `Active` and both are capable FastAPI-based archetypes. This document does not, and cannot, resolve which of the two `template-fastapi-sqlite/` is intended to target — that remains an open question requiring explicit Owner confirmation (`FRAMEWORK_STATUS.md`, "Current Work," Flag 10), and this document's own existence does not close it. This gap remains open.
-3. **Prompt Library dependency (Resolved).** The Prompt Library (Layer 8) is now `Active` as a whole, with `CLAUDE_CODE_PROMPTS.md` and `OPENAI_PROMPTS.md` satisfying the Tier 2 two-tool minimum. `TEMPLATE_SPEC.md`'s Category 4 (mandatory Prompt Library references) gap is therefore fully resolved, per `TEMPLATE_SPEC.md`, Section 14.1. Combined with this document's own resolution of the `PROJECT_STRUCTURE.md`-dependent portion of `TEMPLATE_SPEC.md` Categories 1 and 5 (Section 12 above), every `TEMPLATE_SPEC.md` category is now fully checkable for the three currently `Active` archetypes; only item 2 above (the archetype-disambiguation question) remains a standing blocker on `template-fastapi-sqlite/`'s generation.
+Both items this section previously tracked as open are now resolved.
 
-An agent encountering one of the two gaps still open above (items 1 and 2) **MUST** report it plainly rather than improvise a substitute.
+1. **Mobile archetype (Resolved).** `project-mobile_v01.md` is `Active`, pulled forward from Tier 3 / v10.1 scope per the Owner's Gate 1 decision recorded as `DECISIONS.md` entry `DEC-011` (`FRAMEWORK_STATUS.md`, Flag 19). Section 7 above now reproduces its directory tree in full, replacing the deferred placeholder this subsection previously described. This gap is closed.
+2. **`template-fastapi-sqlite/` archetype-disambiguation question (Resolved).** The Owner explicitly confirmed, in response to a direct question, that `template-fastapi-sqlite/` targets `project-personal-full-stack_v01.md` (Full-Stack) rather than `project-monolithic_v04.md` (Monolithic) — recorded as `DECISIONS.md` entry `DEC-010`. `template-fastapi-sqlite/` has since been generated and validated against Section 5 of this document. This gap is closed.
+3. **Prompt Library dependency (Resolved).** The Prompt Library (Layer 8) is `Active` as a whole, with `CLAUDE_CODE_PROMPTS.md` and `OPENAI_PROMPTS.md` satisfying the Tier 2 two-tool minimum. `TEMPLATE_SPEC.md`'s Category 4 (mandatory Prompt Library references) gap is fully resolved, per `TEMPLATE_SPEC.md`, Section 14.1.
+
+No gap currently remains open within this document's own scope. Every `TEMPLATE_SPEC.md` category is fully checkable for all four `Active` archetypes, and a conforming Layer 9 template exists for one of them (`template-fastapi-sqlite/`, targeting Full-Stack). A future gap would arise only from a new Layer 4 archetype being introduced (none is currently planned, per `project-mobile_v01.md`, Section 12, Rule 6) or from the full Layer 9 template set expanding to the remaining three archetypes (Desktop, Monolithic, Mobile), which remains deferred v10.1 scope and is not itself a defect in this document.
 
 ---
 
 ## 14. Authority and Conflict Resolution
 
 1. Per the downward authority rule (KA-002, `FRAMEWORK_BLUEPRINT.md`, Section 6), this document **MUST NOT** contradict `AI_DEVELOPMENT_PHILOSOPHY_v2.0.md` (Layer 1), `global_rules_revisionfinal_v10.md` (Layer 2), `global_technology_stack_v10.md` (Layer 3), or any Active Layer 4 Project Rule document. Where a tree or rule in this document appears to conflict with any of those, the higher-priority document wins and this document **MUST** be corrected.
-2. Specifically, where this document's reproduction of a Layer 4 directory tree (Sections 4–6) ever diverges from that tree's own Layer 4 source — whether through an update to the Layer 4 document that this document has not yet mirrored, or through a transcription error — the Layer 4 document is authoritative without exception, and this document's reproduction is in error and **MUST** be corrected in the same change that the divergence is discovered (Section 15).
+2. Specifically, where this document's reproduction of a Layer 4 directory tree (Sections 4–7) ever diverges from that tree's own Layer 4 source — whether through an update to the Layer 4 document that this document has not yet mirrored, or through a transcription error — the Layer 4 document is authoritative without exception, and this document's reproduction is in error and **MUST** be corrected in the same change that the divergence is discovered (Section 15).
 3. A Layer 9 Template validated against this document **MUST NOT** be treated as conformant on the strength of this document alone if it conflicts with the template's target Layer 4 document; Layer 4 conformance is the primary check, and this document's conformance check is subordinate to it (`TEMPLATE_SPEC.md`, Section 16, Rule 4, applies the same precedence).
 4. The full conflict-resolution procedure, including same-layer conflicts, is defined in `FRAMEWORK_BLUEPRINT.md`, Section 6, and is not restated here.
 
@@ -364,13 +398,17 @@ An agent encountering one of the two gaps still open above (items 1 and 2) **MUS
 ## 15. Change Control
 
 1. This document **MUST NOT** be edited silently to introduce a new directory boundary, invariant, or mandatory document beyond what Sections 3 and 10 already state. A change of that kind is an architectural change and **MUST** follow the amendment procedure defined in `FRAMEWORK_BLUEPRINT.md`, Section 18.2: proposal → Gate 2 (Architecture Approval) → amendment → `DECISIONS.md` entry → `FRAMEWORK_HANDOVER.md` update in the same commit.
-2. **Mandatory mirroring rule.** Any change to a directory tree in `project-pc-app_v04.md`, `project-personal-full-stack_v01.md`, or `project-monolithic_v04.md` (each document's own Section 4) **MUST** be accompanied, in the same change, by an update to the corresponding section of this document (Section 4, 5, or 6 respectively), so that this document's reproduction never drifts from its authoritative source. This is not itself a new architectural decision each time it is applied — it is the transcription obligation this document's own authority statement (header, above) already establishes.
-3. Section 7 of this document **MUST** be replaced with a full canonical directory reference, reproduced from `project-mobile_v01.md`, Section 4, in the same change that document transitions from `Pending` to `Active`, rather than left silent about an archetype the framework has since adopted — mirroring the identical obligation `COMMANDS.md`, Section 15, Rule 4, already places on its own archetype-specific section.
-4. Section 13 of this document **MUST** be updated in the same change as any transition of a document it names (most directly, resolution of the `template-fastapi-sqlite/` archetype-disambiguation question, or Layer 8's generation) from open-gap to resolved, so that this document never claims a gap that no longer exists or stays silent about one that does.
-5. Upon this document's creation, `FRAMEWORK_README.md`, Sections 4–6, and `FRAMEWORK_STATUS.md` **MUST** be updated in the same change to reflect its new `Active` status and its removal from the "Pending (Tier 2)" lists, per `FRAMEWORK_README.md`, Section 9, and the AI Session Instructions in `FRAMEWORK_STATUS.md`.
+2. **Mandatory mirroring rule.** Any change to a directory tree in `project-pc-app_v04.md`, `project-personal-full-stack_v01.md`, `project-monolithic_v04.md`, or `project-mobile_v01.md` (each document's own Section 4) **MUST** be accompanied, in the same change, by an update to the corresponding section of this document (Section 4, 5, 6, or 7 respectively), so that this document's reproduction never drifts from its authoritative source. This is not itself a new architectural decision each time it is applied — it is the transcription obligation this document's own authority statement (header, above) already establishes.
+3. This document's Section 7 was replaced with a full canonical directory reference, reproduced from `project-mobile_v01.md`, Section 4, in this same change that document transitioned from `Pending` to `Active` — satisfying the obligation the prior revision of this section pre-declared, mirroring the identical obligation `COMMANDS.md`, Section 15, Rule 4, places on its own archetype-specific section.
+4. Section 13 of this document **MUST** be updated in the same change as any transition of a document it names from open-gap to resolved (or vice versa, should a new gap be discovered), so that this document never claims a gap that no longer exists or stays silent about one that does.
+5. Upon this document's creation, `FRAMEWORK_README.md`, Sections 4–6, and `FRAMEWORK_STATUS.md` **MUST** be updated in the same change to reflect its new `Active` status.
 
 ---
 
 ## Closing Statement
 
-This document is the canonical, cross-archetype directory-structure reference for Framework v10 (`FRAMEWORK_BLUEPRINT.md`, Section 2.5) — the single lookup document consolidating the directory trees of every currently `Active` archetype (Desktop/Electron, Full-Stack, Monolithic), the structural invariants that recur across all of them (the Clean Architecture Boundary, the TDD Boundary, and the vendor-independence seam), and the mandatory root-level documents every project requires. No architectural decision has been introduced beyond what `FRAMEWORK_BLUEPRINT.md`, Section 2.5, assigns to this layer's responsibility; every tree reproduced above is transcribed verbatim from its Layer 4 source, and every cross-archetype observation organizes a rule already frozen at Layer 2 or Layer 4. This document's completion resolves the previously-open `PROJECT_STRUCTURE.md`-dependent portion of `TEMPLATE_SPEC.md`'s Categories 1 and 5 (Section 12 above); the separately-tracked Category 4 Prompt Library gap has since been resolved by Layer 8 reaching `Active` (Section 13, item 3, above). The sole remaining open item is the `template-fastapi-sqlite/` archetype-disambiguation question (Section 13, item 2), which is the framework's sole remaining Tier 2 target, per `FRAMEWORK_STATUS.md`, "Current Work."
+This document is the canonical, cross-archetype directory-structure reference for Framework v10 (`FRAMEWORK_BLUEPRINT.md`, Section 2.5) — the single lookup document consolidating the directory trees of every currently `Active` archetype (Desktop/Electron, Full-Stack, Monolithic, and now Mobile), the structural invariants that recur across all of them (the Clean Architecture Boundary, the TDD Boundary, and the vendor-independence seam, each now mapped across all four archetypes in Section 3), and the mandatory root-level documents every project requires. No architectural decision has been introduced beyond what `FRAMEWORK_BLUEPRINT.md`, Section 2.5, assigns to this layer's responsibility; every tree reproduced above is transcribed verbatim from its Layer 4 source, and every cross-archetype observation organizes a rule already frozen at Layer 2 or Layer 4. Both gaps this document previously tracked as open — the Mobile archetype's deferred directory reference, and the `template-fastapi-sqlite/` archetype-disambiguation question — are now resolved (Section 13). No further gap currently remains within this document's own scope; the full Layer 9 template set beyond `template-fastapi-sqlite/` remains a separately-tracked, deferred v10.1 objective, not a defect here.
+
+---
+
+**Reminder:** Please update `FRAMEWORK_STATUS.md` to record that this document's Mobile-archetype staleness (`FRAMEWORK_STATUS.md`, Flag 19, item 2) has been resolved, in the same change, per this document's own Section 15, Rule 4.
